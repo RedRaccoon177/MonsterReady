@@ -22,6 +22,16 @@ public class PlayerController : MonoBehaviour
     // 현재 프레임에서 이동할 방향 벡터
     Vector3 _moveVec;
 
+    public Vector3 _playerPos; // 플레이어 위치
+    public int _playerGold =1; // 플레이어 골드
+    public int _playergem = 2; // 플레이어 보석
+    public int _playerPassLevel = 1; // 배틀 패스 레벨
+    public int _playerSpeedLevel = 1; // 이동 속도 레벨
+    public int _playerHoldMaxLevel = 1; // 드는 용량 레벨
+    public int _playerMakeMoneyLevel = 1; // 수익률 레벨
+
+
+
     void Awake()
     {
         _rg = GetComponent<Rigidbody>();

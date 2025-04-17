@@ -30,7 +30,7 @@ public class DataManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SavePlayerAllData();
-            SaveObjectData(GameManager._Instance._interactObjs);
+            SaveObjectData(GameManager._instance._interactObjs);
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -67,7 +67,7 @@ public class DataManager : MonoBehaviour
             string objectJsonData = File.ReadAllText(filePathGrill); // 파일에서 JSON 읽기
             GameObjectData objectList = JsonUtility.FromJson<GameObjectData>(objectJsonData); // JSON을 객체로 변환
             Dictionary<string, InteractionObject> objectDict = new Dictionary<string, InteractionObject>();
-            foreach (var obj in GameManager._Instance._interactObjs)
+            foreach (var obj in GameManager._instance._interactObjs)
             {
                 objectDict.Add(obj.objectKeyName, obj);
             }

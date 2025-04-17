@@ -4,39 +4,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager _instance {  get; private set; }
+    [Header("플레이어")] public GameObject _player;
+    [Header("그릴")] public Grill[] _grill;
+    [Header("테이블")] public Table[] _table;
+    [Header("상호 가능 오브젝트")] public InteractionObject[] _interactObjs;
+    //[Header("땅에 떨어진 돈 오브젝트")] public InteractionObject[] _GroundMoney;
 
     [Header("매장 문")] public Door _isOpenDoor;
 
-    //[Header("그릴 활성화 비활성화")] public bool[] _isOpenTable;
-    //[Header("그릴 오브젝트")][SerializeField] GameObject[] _grill;
-    
-    //[Header("계산대 활성화 비활성화")][SerializeField] bool[] _isOpenCounter;
-    //[Header("계산대 오브젝트")][SerializeField] GameObject[] _counter;
-
-    //[Header("NPC 종업원 활성화 비활성화")][SerializeField] bool[] _isOpenNpc;
-    //[Header("NPC 종업원 오브젝트")][SerializeField] GameObject[] _npc;
-
-    //[Header("기타 오브젝트들 활성화 비활성화")][SerializeField] bool[] _isOpenOtherObj;
-    //[Header("기타 오브젝트")][SerializeField] GameObject[] _otherObj;
-
-    void Awake()
+    private void Awake()
     {
-        if (Instance == null)
+        if (_instance == null)
         {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
+            _instance = this;
         }
     }
 
-
+    //모든 오브젝트 활성화 및 비활성화
     public void ActiveAllObject()
     {
         //문 활성화
         _isOpenDoor.SetActiveObj(true);
-
     }
 }

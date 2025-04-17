@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
         {
             other.GetComponent<PlayerController>().SpendGold(_payGold);
             _isOpen = true;
-            GameManager.Instance.ActiveAllObject();
+            GameManager._instance.ActiveAllObject();
         }   
     }
 

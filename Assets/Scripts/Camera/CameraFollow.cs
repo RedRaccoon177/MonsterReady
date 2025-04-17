@@ -6,10 +6,7 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
 
     // 카메라가 따라갈 때의 위치 오프셋 (카메라 기준 좌측 8, 위로 14, 뒤로 12 떨어진 위치)
-    public Vector3 offset = new Vector3(8, 14f, -12f);
-
-    // 부드럽게 따라가는 속도 (값이 클수록 빠르게 따라감)
-    public float smoothSpeed = 1f;
+    public Vector3 offset = new Vector3(-8, 14f, -12f);
 
     void FixedUpdate()
     {

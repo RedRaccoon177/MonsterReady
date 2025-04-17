@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("그릴")] public Grill[] _grill;
     [Header("테이블")] public Table[] _table;
     [Header("상호 가능 오브젝트")] public InteractionObject[] _interactObjs;
+    //[Header("땅에 떨어진 돈 오브젝트")] public InteractionObject[] _GroundMoney;
 
     private void Awake()
     {

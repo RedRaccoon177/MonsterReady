@@ -26,5 +26,5 @@ public class PlayerData
         playerHoldMaxLevel = _playerHoldMaxLevel;
         playerMakeMoneyLevel = _playerMakeMoneyLevel;
     }
-
+     
 }

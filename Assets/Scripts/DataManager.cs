@@ -7,7 +7,6 @@ using UnityEngine.Playables;
 public class DataManager : MonoBehaviour
 {
 
-    //!!!!!
     public static DataManager _Instance { get; private set; }
     [Header("플레이어 스크립트")] [SerializeField] PlayerController _playerController;
     PlayerData playerData;
@@ -19,7 +18,7 @@ public class DataManager : MonoBehaviour
     private void Awake()
     {
         filePath = Path.Combine(Application.persistentDataPath, "playerData.json");
-        filePathGrill = Path.Combine(Application.persistentDataPath, "grillData.json");
+        filePathGrill = Path.Combine(Application.persistentDataPath, "objectData.json");
         Debug.Log("데이터 저장 경로!" + filePath);
         if (_Instance == null)
         {
@@ -48,8 +47,7 @@ public class DataManager : MonoBehaviour
         for (int i=0; i< interactObj.Length; i++)
         {
             ObjectData data = new ObjectData();
-            data.name = interactObj[i].objectName;
-            data.key = interactObj[i].objectKey;
+            data.keyName = interactObj[i].objectKeyName;
             data.isActive = interactObj[i].objectIsActive;
             data.level = interactObj[i].objectLevel;
             gameData.objectDatas.Add(data);
@@ -68,25 +66,25 @@ public class DataManager : MonoBehaviour
         {
             string objectJsonData = File.ReadAllText(filePathGrill); // 파일에서 JSON 읽기
             GameObjectData objectList = JsonUtility.FromJson<GameObjectData>(objectJsonData); // JSON을 객체로 변환
+            Dictionary<string, InteractionObject> objectDict = new Dictionary<string, InteractionObject>();
+            foreach (var obj in GameManager._Instance._interactObjs)
+            {
+                objectDict.Add(obj.objectKeyName, obj);
+            }
+
             for (int i=0; i< objectList.objectDatas.Count; i++)
             {
-                if (
-                    objectList.objectDatas[i].name == 
-                    GameManager._Instance._interactObjs[i].objectName &&
-                    objectList.objectDatas[i].key ==
-                    GameManager._Instance._interactObjs[i].objectKey
-                    )
+                if (objectDict.TryGetValue(objectList.objectDatas[i].keyName, out var target))
                 {
-                    var tmep = GameManager._Instance._interactObjs[i];
-                    GameManager._Instance._interactObjs[i].objectKey = objectList.objectDatas[i].key;
-                    GameManager._Instance._interactObjs[i].objectName = objectList.objectDatas[i].name;
-                    GameManager._Instance._interactObjs[i].objectLevel = objectList.objectDatas[i].level;
-                    GameManager._Instance._interactObjs[i].objectIsActive = objectList.objectDatas[i].isActive;
-                    Debug.Log("objectKey : " + tmep.objectKey);
-                    Debug.Log("objectName : " + tmep.objectName);
-                    Debug.Log("objectLevel : " + tmep.objectLevel); 
+                    //target.objectKeyName = objectList.objectDatas[i].keyName;
+                    target.objectLevel = objectList.objectDatas[i].level;
+                    target.objectIsActive = objectList.objectDatas[i].isActive;
                 }
-            }
+                else
+                {
+                    Debug.Log("일치한 오브젝트 못찾음");
+                }
+            } 
         }
         else
         {

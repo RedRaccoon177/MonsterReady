@@ -6,7 +6,6 @@ using UnityEngine.Playables;
 
 public class DataManager : MonoBehaviour
 {
-
     public static DataManager _Instance { get; private set; }
     [Header("플레이어 스크립트")] [SerializeField] PlayerController _playerController;
     PlayerData playerData;
@@ -99,12 +98,12 @@ public class DataManager : MonoBehaviour
     {
         playerData = new PlayerData(
             _playerController.gameObject.transform.position
-            , _playerController._playerGold
-            , _playerController._playergem
-            , _playerController._playerPassLevel
-            , _playerController._playerSpeedLevel
-            , _playerController._playerHoldMaxLevel
-            , _playerController._playerMakeMoneyLevel
+            , _playerController._Gold
+            , _playerController._Gem
+            , _playerController._PassLevel
+            , _playerController._SpeedLevel
+            , _playerController._HoldMaxLevel
+            , _playerController._MakeMoneyLevel
             );
         string playerJsonData = JsonUtility.ToJson(playerData, true);
         File.WriteAllText(filePath, playerJsonData); // 파일에 저장
@@ -119,12 +118,12 @@ public class DataManager : MonoBehaviour
             string playerJsonData = File.ReadAllText(filePath); // 파일에서 JSON 읽기
             PlayerData player = JsonUtility.FromJson<PlayerData>(playerJsonData); // JSON을 객체로 변환
             _playerController.gameObject.transform.position = player.playerPos;
-            _playerController._playerGold = player.playerGold;
-            _playerController._playergem = player.playergem;
-            _playerController._playerPassLevel = player.playerPassLevel;
-            _playerController._playerSpeedLevel = player.playerSpeedLevel;
-            _playerController._playerHoldMaxLevel = player.playerHoldMaxLevel;
-            _playerController._playerMakeMoneyLevel = player.playerMakeMoneyLevel;
+            _playerController._Gold = player.playerGold;
+            _playerController._Gem = player.playergem;
+            _playerController._PassLevel = player.playerPassLevel;
+            _playerController._SpeedLevel = player.playerSpeedLevel;
+            _playerController._HoldMaxLevel = player.playerHoldMaxLevel;
+            _playerController._MakeMoneyLevel = player.playerMakeMoneyLevel;
         }
         else
         {

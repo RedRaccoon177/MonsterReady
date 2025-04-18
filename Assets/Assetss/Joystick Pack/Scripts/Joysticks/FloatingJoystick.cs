@@ -35,5 +35,8 @@ public class FloatingJoystick : Joystick
 
         // 부모 클래스의 OnPointerUp 호출 → 조이스틱 조작 종료 처리
         base.OnPointerUp(eventData);
+
+        // 손 뗐을 때 이벤트 발생
+        PlayerController.InvokeJoystickReleased();
     }
 }

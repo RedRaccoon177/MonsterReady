@@ -6,8 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region 싱글톤 및 이벤트
-    public static PlayerController _instance { get; private set; }
-    public static event Action<int> OnGoldChanged;
+    public static PlayerController _instance { get; private set; }  // 플레이어 싱글톤
+    public static event Action OnJoystickReleased;                  //조이 스틱 이벤트
+    public static event Action<int> OnGoldChanged;                  // 골드 변화 이벤트
     #endregion
 
     #region 플레이어 변수들
@@ -29,25 +30,67 @@ public class PlayerController : MonoBehaviour
     // 이동할 방향 벡터
     Vector3 _moveVec;
 
-    public Vector3 _playerPos;              // 플레이어 위치
-    public int _playerGold = 0;             // 플레이어 골드
-    public int _playergem = 2;              // 플레이어 보석
-    public int _playerPassLevel = 1;        // 배틀 패스 레벨
-    public int _playerSpeedLevel = 1;       // 이동 속도 레벨
-    public int _playerHoldMaxLevel = 1;     // 드는 용량 레벨
-    public int _playerMakeMoneyLevel = 1;   // 수익률 레벨
+    Vector3 _playerPos;              // 플레이어 위치
+    int _playerGold = 0;             // 플레이어 골드
+    int _playerGem = 0;              // 플레이어 보석
+    int _playerPassLevel = 1;        // 배틀 패스 레벨
+    int _playerSpeedLevel = 1;       // 이동 속도 레벨
+    int _playerHoldMaxLevel = 1;     // 드는 용량 레벨
+    int _playerMakeMoneyLevel = 1;   // 수익률 레벨
     #endregion
 
-    #region 변수들의 프로퍼티
-    public int _Gold 
+    #region 변수들 프로퍼티
+    public Vector3 _MoveVec 
+    {
+        get => _moveVec;
+        set => _moveVec = value;
+    }
+
+    public Vector3 _PlayerPos
+    {
+        get => _playerPos;
+        set => _playerPos = value;
+    }
+
+    public int _Gold
     {
         get => _playerGold;
-        set 
+        set
         {
-            if (value < 0) _playerGold = 0;
-            else _playerGold = value;
-            OnGoldChanged?.Invoke(_playerGold);
+            _playerGold = Mathf.Max(0, value);
+            OnGoldChanged?.Invoke(_playerGold); // 옵저버 패턴 이벤트 호출
         }
+    }
+
+    public int _Gem
+    {
+        get => _playerGem;
+        set => _playerGem = Mathf.Max(0, value);
+        //TODO: 추후 잼도 옵저버 패턴으로 이벤트 호출해야함
+    }
+
+    public int _PassLevel
+    {
+        get => _playerPassLevel;
+        set => _playerPassLevel = Mathf.Max(1, value);
+    }
+
+    public int _SpeedLevel
+    {
+        get => _playerSpeedLevel;
+        set => _playerSpeedLevel = Mathf.Max(1, value);
+    }
+
+    public int _HoldMaxLevel
+    {
+        get => _playerHoldMaxLevel;
+        set => _playerHoldMaxLevel = Mathf.Max(1, value);
+    }
+
+    public int _MakeMoneyLevel
+    {
+        get => _playerMakeMoneyLevel;
+        set => _playerMakeMoneyLevel = Mathf.Max(1, value);
     }
     #endregion
 
@@ -78,6 +121,7 @@ public class PlayerController : MonoBehaviour
         // 회전 처리
         RotateToMoveDirection();
     }
+
     void LateUpdate()
     {
         //TODO : 애니메이션 추후 추가할 예정.
@@ -111,7 +155,7 @@ public class PlayerController : MonoBehaviour
     /// 골드 감소. 감소 값이 현재 값보다 크면 실패
     /// </summary>
     /// <param name="amount">사용할 골드</param>
-    /// <returns>성공 여부</returns>
+    /// <returns> 0 혹은 (변수 값 = 변수 값 - _gold) </returns>
     public int SpendGold(int amount)
     {
         if (_Gold >= amount)
@@ -129,4 +173,8 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    public static void InvokeJoystickReleased()
+    {
+        OnJoystickReleased?.Invoke();
+    }
 }

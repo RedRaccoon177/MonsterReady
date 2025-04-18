@@ -11,19 +11,19 @@ public class GoldObject : MonoBehaviour
     [SerializeField] Transform _goldParent;   // 생성된 골드바들을 담을 부모 오브젝트 (정렬 기준)
 
     [Header("배치 설정")]
-    [SerializeField] int _maxX = 4;               // 골드바 가로 개수 (열 수)
-    [SerializeField] int _maxZ = 2;               // 골드바 세로 개수 (행 수)
-    [SerializeField] int _maxY = 40;              // 골드바 층 수 (높이)
-    [SerializeField] float _spacingX = 0.25f;     // 가로 간격 (x축 간격)
-    [SerializeField] float _spacingY = 0.11f;     // 높이 간격 (y축 간격)
-    [SerializeField] float _spacingZ = 0.5f;      // 세로 간격 (z축 간격)
-    [SerializeField] Vector3 _spawnRotation = new Vector3(0f, 90f, 0f); // 골드바 회전값
+    int _maxX = 4;               // 골드바 가로 개수 (열 수)
+    int _maxZ = 2;               // 골드바 세로 개수 (행 수)
+    int _maxY = 40;              // 골드바 층 수 (높이)
+    float _spacingX = 0.25f;     // 가로 간격 (x축 간격)
+    float _spacingY = 0.11f;     // 높이 간격 (y축 간격)
+    float _spacingZ = 0.5f;      // 세로 간격 (z축 간격)
+    Vector3 _spawnRotation = new Vector3(0f, 90f, 0f); // 골드바 회전값
 
     // 생성된 골드바들을 추적하는 리스트
     List<GameObject> _goldInstances = new List<GameObject>();
 
     // 현재 골드 수치 (화면에 표시되는 수가 아님, 논리적 수치)
-    int _currentGold = 180;
+    [SerializeField] int _currentGold = 0;
 
     // 최대 시각적으로 표현 가능한 골드바 수 (가로 x 세로 x 높이)
     int _maxVisualGold => _maxX * _maxZ * _maxY;

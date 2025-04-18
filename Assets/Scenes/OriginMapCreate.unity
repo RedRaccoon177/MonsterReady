@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -553,7 +553,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 260652118}
   offset: {x: -8, y: 14, z: -12}
-  smoothSpeed: 1
 --- !u!4 &42803534 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4960793137522956, guid: 31ff7a649f5f7e54394b8e59e1739375, type: 3}
@@ -1572,6 +1571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2341552a502e4f34ca6fe6bb8d2286dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gold: 0
   _joy: {fileID: 1818614044}
   _moveSpeed: 5
   _playerPos: {x: 0, y: 0, z: 0}
@@ -2004,6 +2004,7 @@ MonoBehaviour:
   - {fileID: 1972163537}
   - {fileID: 195587708}
   - {fileID: 686416308}
+  _isOpenDoor: {fileID: 0}
 --- !u!1001 &344881924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8549,7 +8550,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

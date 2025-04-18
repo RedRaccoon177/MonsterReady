@@ -1,19 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region 싱글톤 및 이벤트
+    public static PlayerController _instance { get; private set; }
+    public static event Action<int> OnGoldChanged;
+    #endregion
+
     #region 플레이어 변수들
     // 플레이어가 들 수 있는 최대 아이템 개수
     int _holdMaxAmount;
 
     // 수익을 저장하는 변수
     float _revenue;
-
-    // 골드
-    public int _gold = 0;
-    int _gem;
 
     // 조이스틱 입력 참조용 (FloatingJoystick 연결)
     public FloatingJoystick _joy;
@@ -27,24 +29,24 @@ public class PlayerController : MonoBehaviour
     // 이동할 방향 벡터
     Vector3 _moveVec;
 
-    public Vector3 _playerPos; // 플레이어 위치
-    public int _playerGold = 1; // 플레이어 골드
-    public int _playergem = 2; // 플레이어 보석
-    public int _playerPassLevel = 1; // 배틀 패스 레벨
-    public int _playerSpeedLevel = 1; // 이동 속도 레벨
-    public int _playerHoldMaxLevel = 1; // 드는 용량 레벨
-    public int _playerMakeMoneyLevel = 1; // 수익률 레벨
-
+    public Vector3 _playerPos;              // 플레이어 위치
+    public int _playerGold = 0;             // 플레이어 골드
+    public int _playergem = 2;              // 플레이어 보석
+    public int _playerPassLevel = 1;        // 배틀 패스 레벨
+    public int _playerSpeedLevel = 1;       // 이동 속도 레벨
+    public int _playerHoldMaxLevel = 1;     // 드는 용량 레벨
+    public int _playerMakeMoneyLevel = 1;   // 수익률 레벨
     #endregion
 
     #region 변수들의 프로퍼티
     public int _Gold 
     {
-        get => _gold;
+        get => _playerGold;
         set 
         {
-            if (value < 0) _gold = 0;
-            else _gold = value;
+            if (value < 0) _playerGold = 0;
+            else _playerGold = value;
+            OnGoldChanged?.Invoke(_playerGold);
         }
     }
     #endregion
@@ -52,6 +54,11 @@ public class PlayerController : MonoBehaviour
     #region Awake, FixedUpdata, LateUpdate
     void Awake()
     {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+
         _rg = GetComponent<Rigidbody>();
     }
 
@@ -77,7 +84,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    //회전 함수
+    #region 플레이어 움직임 회전 함수
     void RotateToMoveDirection()
     {
         if (_moveVec.sqrMagnitude < 0.0001f) return; // 방향 벡터가 거의 0이라면 회전하지 않음
@@ -87,6 +94,7 @@ public class PlayerController : MonoBehaviour
         Quaternion _moveQuat = Quaternion.Slerp(_rg.rotation, _dirQuat, 0.3f);
         _rg.MoveRotation(_moveQuat);
     }
+    #endregion
 
     #region 골드 관련 메서드
     /// <summary>
@@ -96,7 +104,6 @@ public class PlayerController : MonoBehaviour
     public int AddGold(int amount)
     {
         _Gold += amount;
-        Debug.Log($"[골드 획득] 현재 골드: {_Gold}");
         return 0;
     }
 
@@ -110,13 +117,12 @@ public class PlayerController : MonoBehaviour
         if (_Gold >= amount)
         {
             _Gold -= amount;
-            Debug.Log($"[골드 사용] {amount} 사용됨. 남은 골드: {_Gold}");
+
         }
         else if(_Gold < amount)
         {
             _Gold = 0;
             amount -= _Gold;
-            Debug.Log($"[골드 사용] {amount} 사용됨. 남은 골드: {_Gold}");
             return amount;
         }
         return 0;

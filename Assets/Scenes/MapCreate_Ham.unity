@@ -3704,7 +3704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88cc1325df1291943bf604080cd5e6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 260652118}
   _grill: []
   _table: []
   _interactObjs:
@@ -3725,6 +3724,7 @@ MonoBehaviour:
   - {fileID: 15381739}
   - {fileID: 202999177}
   - {fileID: 1349180475}
+  _GroundMoney: 
   _isOpenDoor: {fileID: 0}
 --- !u!4 &540737832
 Transform:

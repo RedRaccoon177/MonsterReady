@@ -5,11 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class GroundMoneyDataList
 {
-    List<GroundMoneyData> GroundMoneys;
+    public List<int> groundMoneyList;
 }
 
 [System.Serializable]
 public class GroundMoneyData
 {
     int currentMoney;
+    string money;
 }
+

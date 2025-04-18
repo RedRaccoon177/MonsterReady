@@ -22,12 +22,18 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player") && _isOpen == false)
         {
-            other.GetComponent<PlayerController>().SpendGold(_payGold);
-            _isOpen = true;
-            GameManager._instance.ActiveAllObject();
-        }   
-    }
+            PlayerController player = other.GetComponent<PlayerController>();
 
+            _payGold = player.SpendGold(_payGold);
+
+            if (_payGold == 0)
+            {
+                _isOpen = true;
+                GameManager._instance.ActiveAllObject();
+
+            }
+        }
+    }
     public void SetActiveObj(bool _isOpen)
     {
         _storeDoor.SetActive(_isOpen);

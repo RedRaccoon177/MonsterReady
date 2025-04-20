@@ -4,11 +4,11 @@ using System.Collections.Generic;
 public class GoldObject : MonoBehaviour
 {
     [Header("오브젝트 풀링 연결")]
-    [SerializeField] ObjectPooling _goldPool; // 골드바를 관리하는 오브젝트 풀링 시스템
+    [SerializeField] ObjectPooling _goldPool; // 골드바를 관리하는 오브젝트 풀
 
     [Header("골드 프리팹 및 부모")]
-    [SerializeField] GameObject _goldPrefab;  // 골드바 프리팹 (크기 정보도 여기에 저장됨)
-    [SerializeField] Transform _goldParent;   // 생성된 골드바들을 담을 부모 오브젝트 (정렬 기준)
+    [SerializeField] GameObject _goldPrefab;  // 골드바 프리팹
+    [SerializeField] Transform _goldParent;   // 생성된 골드바들을 담을 위치
 
     [Header("배치 설정")]
     int _maxX = 4;               // 골드바 가로 개수 (열 수)

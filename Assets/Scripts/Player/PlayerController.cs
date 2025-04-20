@@ -37,7 +37,26 @@ public class PlayerController : MonoBehaviour
     int _playerSpeedLevel = 1;       // 이동 속도 레벨
     int _playerHoldMaxLevel = 1;     // 드는 용량 레벨
     int _playerMakeMoneyLevel = 1;   // 수익률 레벨
+
+    //플레이어의 고기
+    int _maxMeat;       //현재 들수 있는 고기 최대 수
+    int _currentMeat;   //현재 들고 있는 고기 수
     #endregion
+
+    public int _MaxMeat 
+    { 
+        get => _maxMeat;
+        set => _maxMeat = value;
+    }
+
+    public int _CurrentMeat
+    {
+        get => _currentMeat;
+        set 
+        {
+            _currentMeat = Mathf.Max(0, _MaxMeat);
+        } 
+    }
 
     #region 변수들 프로퍼티
     public Vector3 _MoveVec 
@@ -144,34 +163,60 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 골드 증가
     /// </summary>
-    /// <param name="amount">증가량</param>
-    public int AddGold(int amount)
+    /// <param name="gold">증가량</param>
+    public int AddGold(int gold)
     {
-        _Gold += amount;
+        _Gold += gold;
         return 0;
     }
 
     /// <summary>
-    /// 골드 감소. 감소 값이 현재 값보다 크면 실패
+    /// 골드 감소
     /// </summary>
-    /// <param name="amount">사용할 골드</param>
+    /// <param name="gold">사용할 골드</param>
     /// <returns> 0 혹은 (변수 값 = 변수 값 - _gold) </returns>
-    public int SpendGold(int amount)
+    public int MinusGold(int gold)
     {
-        if (_Gold >= amount)
+        if (_Gold >= gold)
         {
-            _Gold -= amount;
+            _Gold -= gold;
 
         }
-        else if(_Gold < amount)
+        else if(_Gold < gold)
         {
             _Gold = 0;
-            amount -= _Gold;
-            return amount;
+            gold -= _Gold;
+            return gold;
         }
         return 0;
     }
     #endregion
+
+    #region 고기 관련 메서드
+    /// <summary>
+    /// 고기 증가. 넘칠 경우, 넘치는 양을 반환
+    /// </summary>
+    public int AddMeat(int meat)
+    {
+        int spaceLeft = _MaxMeat - _currentMeat;
+        int toAdd = Mathf.Min(spaceLeft, meat);
+
+        _currentMeat += toAdd;
+
+        return meat - toAdd; // 넘친 양
+    }
+
+    /// <summary>
+    /// 고기 감소
+    /// </summary>
+    public int RemoveMeat(int amount)
+    {
+        int removed = Mathf.Min(_currentMeat, amount);
+        _currentMeat -= removed;
+        return removed;
+    }
+    #endregion
+
 
     public static void InvokeJoystickReleased()
     {

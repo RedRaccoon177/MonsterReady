@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -9,33 +10,44 @@ public class DataManager : MonoBehaviour
     public static DataManager _Instance { get; private set; }
     [Header("플레이어 스크립트")] [SerializeField] PlayerController _playerController;
     PlayerData playerData;
-    GameObjectDataList gameData;
+
+    GameObjectDataList objectDataList;
+    ActivatorList activatorList;
+    ActiveObjectList activeObjectList;
     GroundMoneyDataList groundMoneyDatas;
 
     string filePathPlayer; // 플레이어 데이터 저장 경로
     string filePathObject; // 화로,테이블,카운터 데이터 저장 경로
     string filePathGroundGold; // 땅에 떨어져 있는 돈 데이터 저장 경로
+    string filePathActivatorObject; // 
+    string filePathActiveObject; // 
 
     private void Awake()
     {
         filePathPlayer = Path.Combine(Application.persistentDataPath, "playerData.json");
         filePathObject = Path.Combine(Application.persistentDataPath, "objectData.json");
-        filePathGroundGold = Path.Combine(Application.persistentDataPath, "groundGold.json");
+        filePathActivatorObject = Path.Combine(Application.persistentDataPath, "unlockObject.json");
+        filePathActiveObject = Path.Combine(Application.persistentDataPath, "activeObject.json");
+        // 해금 오브젝트 정보 저장 주머니
+        activatorList = new ActivatorList();
+        activatorList.activators = new List<Activator>();
+
+        // 모든 오브젝트 정보(활성화) 저장 주머니
+        activeObjectList = new ActiveObjectList();
+        activeObjectList.activeObjects = new List<ActiveObject>();
+
+        // List<ObjectData>를 가지고 있는 직렬화 클래스
+        objectDataList = new GameObjectDataList();
+        objectDataList.objectDatas = new List<ObjectData>();
+
+        // List<int>를 가지고 있는 직렬화 클래스
+        groundMoneyDatas = new GroundMoneyDataList();
+        groundMoneyDatas.groundMoneyList = new List<int>();
         Debug.Log("데이터 저장 경로!" + filePathPlayer);
         if (_Instance == null)
         {
             _Instance = this;
         }
-    }
-    private void Start()
-    {
-        // List<ObjectData>를 가지고 있는 직렬화 클래스
-        gameData = new GameObjectDataList();
-        gameData.objectDatas = new List<ObjectData>();
-
-        // List<int>를 가지고 있는 직렬화 클래스
-        groundMoneyDatas = new GroundMoneyDataList();
-        groundMoneyDatas.groundMoneyList = new List<int>();
     }
     private void Update()
     {
@@ -48,9 +60,71 @@ public class DataManager : MonoBehaviour
         {
             LoadPlayerAllData();
             LoadObjectData();
-            GameManager._instance.CreateInteractionObject();
+            LoadActivatorData();
+            //GameManager._instance.CreateInteractionObject();
         }
     }
+    public void SaveActivatorData(ObjectsActivator[] activator)
+    {
+        activatorList.activators.Clear();
+        for (int i = 0; i < activator.Length; i++)
+        {
+            Debug.Log(i);
+            if (activator[i] != null)
+            {
+                Activator data = new Activator();
+                data.step = activator[i]._step;
+                data.isActive = activator[i]._isActive;
+                activatorList.activators.Add(data);
+            }
+        }
+        string activatorJsonData = JsonUtility.ToJson(activatorList, true);
+        File.WriteAllText(filePathActivatorObject, activatorJsonData);
+    }
+    public void LoadActivatorData()
+    {
+        if (File.Exists(filePathActivatorObject))
+        {
+            string objectJsonData = File.ReadAllText(filePathActivatorObject); // 파일에서 JSON 읽기
+            ActivatorList objectList = JsonUtility.FromJson<ActivatorList>(objectJsonData); // JSON을 객체로 변환
+
+            Dictionary<int, ObjectsActivator> objectDictGM = new Dictionary<int, ObjectsActivator>();
+            foreach (var obj in GameManager._instance._activator)
+            {
+                objectDictGM.Add(obj._step, obj);
+            }
+            for (int i = 0; i < objectList.activators.Count; i++)
+            {
+                // 딕셔너리 안에 있는 키와 내 저장 데이터 키가 일치하다면
+                if (objectDictGM.TryGetValue(objectList.activators[i].step, out var target))
+                {
+                    target._isActive = objectList.activators[i].isActive;
+                    target.gameObject.SetActive(target._isActive);
+                }
+                else
+                {
+                    Debug.Log("일치하는 항목 없음");
+                }
+            }
+        }
+    }
+
+    public void SaveActiveObjectData(List<IActivable> isActiveObjectArr)
+    {
+        activeObjectList.activeObjects.Clear();
+        for (int i = 0; i < isActiveObjectArr.Count; i++)
+        {
+            ActiveObject data = new ActiveObject();
+            //data.key = ;
+            data.isActive = isActiveObjectArr[i].isActive();
+            activeObjectList.activeObjects.Add(data);
+        }
+    }
+    public void LoadActiveObjectData()
+    {
+
+    }
+
 
     /// <summary>
     /// 화로,카운터,테이블들의 정보들 저장하는 함수
@@ -59,15 +133,16 @@ public class DataManager : MonoBehaviour
     /// <param name="interactObj"></param>
     public void SaveObjectData(InteractionObject[] interactObj)
     {
+        objectDataList.objectDatas.Clear();
         for (int i=0; i< interactObj.Length; i++)
         {
             ObjectData data = new ObjectData();
             data.keyName = interactObj[i].objectKeyName;
             data.isActive = interactObj[i].objectIsActive;
             data.level = interactObj[i].objectLevel;
-            gameData.objectDatas.Add(data);
+            objectDataList.objectDatas.Add(data);
         }
-        string playerJsonData = JsonUtility.ToJson(gameData, true);
+        string playerJsonData = JsonUtility.ToJson(objectDataList, true);
         File.WriteAllText(filePathObject, playerJsonData); // 파일에 저장
         Debug.Log("데이터 저장 완료!" + playerJsonData);
     }
@@ -91,8 +166,6 @@ public class DataManager : MonoBehaviour
             {
                 objectDictGM.Add(obj.objectKeyName, obj);
             }
-
-            
             for (int i=0; i< objectList.objectDatas.Count; i++)
             {
                 // 딕셔너리 안에 있는 키와 내 저장 데이터 키가 일치하다면

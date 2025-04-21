@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Counter : InteractionObject, IActivable
+public class Door : MonoBehaviour, IActivable
 {
+
     [SerializeField] bool _isActive;
     public bool isActive()
     {

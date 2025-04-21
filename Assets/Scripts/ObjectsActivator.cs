@@ -6,15 +6,18 @@ public class ObjectsActivator : MonoBehaviour
 {
     [SerializeField, Header("활성화 하고자 하는 오브젝트")]
     GameObject _ActivateObj;
+    IActivable _iActive;
+    [field: SerializeField] public int _step { get; private set; }
 
     [SerializeField, Header("비활성화 하고자 하는 오브젝트")]
-    GameObject _DeactivateObj;
+    GameObject[] _DeactivateObj;
 
     [SerializeField, Header("지불해야 할 총 골드")]
     int _maxPayGold;
 
     [SerializeField] int _currentPayGold;
-    bool _isActivated = false;
+    bool _isUnlock = false; // 해금 오브젝트 Unlock 여부
+    public bool _isActive = false; // 해금 오브젝트 활성화 여부
 
     bool _playerInTrigger = false;
 
@@ -30,12 +33,16 @@ public class ObjectsActivator : MonoBehaviour
 
     void Start()
     {
+        if (_ActivateObj != null)
+        {
+            _iActive = _ActivateObj.GetComponent<IActivable>();
+        }
         _currentPayGold = _maxPayGold;
     }
     
     private void OnJoystickReleased()
     {
-        if (_isActivated) return;
+        if (_isUnlock) return;
         if (!_playerInTrigger) return;
 
         PlayerController player = PlayerController._instance;
@@ -48,8 +55,8 @@ public class ObjectsActivator : MonoBehaviour
 
             if (_currentPayGold <= 0)
             {
-                Activate();
-                _isActivated = true;
+                UnlockObject();
+                _isUnlock = true;
             }
         }
     }
@@ -66,9 +73,26 @@ public class ObjectsActivator : MonoBehaviour
             _playerInTrigger = false;
     }
 
-    void Activate()
+
+    /// <summary>
+    ///  조건이 만족되서 해금 되엇을 때 실행되는 함수
+    /// </summary>
+    /// <param name="step"></param>
+    void UnlockObject()
     {
-        _ActivateObj.SetActive(true);
-        _DeactivateObj.SetActive(false);
+        _isActive = false;
+        if (_iActive != null)
+        {
+            _iActive.OnActive();
+        }
+        for (int i=0; i< _DeactivateObj.Length; i++)
+        {
+            if (_DeactivateObj != null)
+            {
+                _DeactivateObj[i].SetActive(false);
+            }
+        }
+        GameManager._instance.OnUnlockObject(_step);
     }
+
 }

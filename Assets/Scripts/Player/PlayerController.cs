@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour
     int _playerMakeMoneyLevel = 1;   // 수익률 레벨
 
     //플레이어의 고기
-    int _maxMeat;       //현재 들수 있는 고기 최대 수
-    int _currentMeat;   //현재 들고 있는 고기 수
+    [SerializeField] int _maxMeat;       //현재 들수 있는 고기 최대 수
+    [SerializeField] int _currentMeat;   //현재 들고 있는 고기 수
     #endregion
 
     public int _MaxMeat 
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         get => _currentMeat;
         set 
         {
-            _currentMeat = Mathf.Max(0, _MaxMeat);
+            _currentMeat = Mathf.Clamp(0, value, _MaxMeat);
         } 
     }
 
@@ -122,8 +122,10 @@ public class PlayerController : MonoBehaviour
         }
 
         _rg = GetComponent<Rigidbody>();
-    }
 
+        _MaxMeat = 4;
+        _CurrentMeat = 0;
+    }
     void FixedUpdate()
     {
         // 조이스틱 입력값 받아옴
@@ -209,14 +211,13 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 고기 감소
     /// </summary>
-    public int RemoveMeat(int amount)
+    public int MinusMeat(int amount)
     {
         int removed = Mathf.Min(_currentMeat, amount);
         _currentMeat -= removed;
         return removed;
     }
     #endregion
-
 
     public static void InvokeJoystickReleased()
     {

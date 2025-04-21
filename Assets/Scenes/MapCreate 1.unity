@@ -657,15 +657,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4184876291677888, guid: c02b650387655ad41b77e855e938843c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.83333325
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4184876291677888, guid: c02b650387655ad41b77e855e938843c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8333333
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4184876291677888, guid: c02b650387655ad41b77e855e938843c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.83333325
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4184876291677888, guid: c02b650387655ad41b77e855e938843c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -706,6 +706,10 @@ PrefabInstance:
     - target: {fileID: 4184876291677888, guid: c02b650387655ad41b77e855e938843c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184876291677888, guid: c02b650387655ad41b77e855e938843c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1625,6 +1629,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1534571615272658, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544901693182084, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688473659769710, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689906543416508, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730350276098898, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1916933298521316, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1730,6 +1754,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joy: {fileID: 788636116}
   _moveSpeed: 10
+  _maxMeat: 0
+  _currentMeat: 0
 --- !u!4 &260652121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4161623206887378, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
@@ -2932,7 +2958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
-  _goldParent: {fileID: 450985695}
+  _goldSpawnLocation: {fileID: 450985695}
   _currentGold: 180
 --- !u!65 &450985692
 BoxCollider:
@@ -3014,8 +3040,8 @@ Transform:
   m_GameObject: {fileID: 450985690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.38, y: 0, z: 1.56}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalPosition: {x: -1.38, y: 0.11, z: 1.56}
+  m_LocalScale: {x: 2, y: 0.3, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -7464,11 +7490,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4834758975795178, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.186
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4834758975795178, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.6
+      value: -13.19
       objectReference: {fileID: 0}
     - target: {fileID: 4834758975795178, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7498,6 +7524,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4834758975795178, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64596983168561642, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
     m_RemovedGameObjects: []
@@ -7512,6 +7542,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1440769224180704, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1234799934}
+    - targetCorrespondingSourceObject: {fileID: 1440769224180704, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1234799937}
   m_SourcePrefab: {fileID: 100100000, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
 --- !u!4 &1234799931 stripped
 Transform:
@@ -7559,12 +7592,34 @@ MonoBehaviour:
   objectLevel: 0
   objectKeyName: 
   objectIsActive: 0
-  _meat: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
-  _locationOfMeat: {fileID: 1397118996}
-  _maxMeatCount: 20
+  _meatPool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _meatSpawnLocation: {fileID: 1397118996}
+  _maxMeatCount: 4
   _currentMeatCount: 0
   _cooltimeMeatGrill: 3
   _stackHeight: 0.1
+--- !u!65 &1234799937
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234799932}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.4949203, y: 4.5609503, z: 5.9}
+  m_Center: {x: 0, y: 0, z: 2}
 --- !u!4 &1252691812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4978646082267340, guid: 13087e211b7388945b22bab7dd93cb8f, type: 3}
@@ -11993,7 +12048,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
-  _initialSize: 6400
+  _goldInitialSize: 100
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _meatInitialSize: 100
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _boneInitialSize: 100
 --- !u!4 &2111446581
 Transform:
   m_ObjectHideFlags: 0

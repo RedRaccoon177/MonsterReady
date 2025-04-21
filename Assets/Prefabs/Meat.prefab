@@ -12,21 +12,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1b44384680e85354eb765cb6230f060b, type: 3}
+      propertyPath: m_TagString
+      value: Meat
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1b44384680e85354eb765cb6230f060b, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1b44384680e85354eb765cb6230f060b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1b44384680e85354eb765cb6230f060b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1b44384680e85354eb765cb6230f060b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1b44384680e85354eb765cb6230f060b, type: 3}
       propertyPath: m_LocalPosition.x

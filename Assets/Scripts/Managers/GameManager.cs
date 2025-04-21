@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 다음 해금 오브젝트 활서오하
+    /// 다음 해금 오브젝트 활성화
     /// </summary>
     /// <param name="_step"></param>
     public void OnUnlockObject(int _step)
@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
     {
         Array.Sort(_activator, (a, b) => a._step.CompareTo(b._step));    
     }
-
 
     /// <summary>
     /// MonoBehaviour 타입 배열 요소들을 List<IActivable> 로 옮김

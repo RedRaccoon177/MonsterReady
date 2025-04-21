@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grill : BaseObject, ILevelable
+public class Counter : BaseObject, ILevelable
 {
-    #region 레벨 키값 변수들
+    #region 기본 정보
     [SerializeField] public int _level;
 
     public string GetKey()
@@ -39,14 +39,8 @@ public class Grill : BaseObject, ILevelable
     [Header("고기 배치하는 곳")]
     [SerializeField] Transform _meatSpawnLocation;
 
-    [Header("최대치 고기 갯수")]
-    [SerializeField] int _maxMeatCount = 5;
-
-    [Header("현재 만들어진 고기")]
+    [Header("현재 고기 갯수")]
     [SerializeField] int _currentMeatCount = 0;
-
-    [Header("고기 굽는 쿨타임 (초)")]
-    [SerializeField] float _cooltimeMeatGrill = 3f;
 
     [Header("고기 쌓일 높이 간격")]
     [SerializeField] float _stackHeight = 0.11f;
@@ -59,69 +53,6 @@ public class Grill : BaseObject, ILevelable
 
     //플레이어 정보
     PlayerController _player;
-    #endregion
-
-    #region Start, OnTriggerEnter
-    void Start()
-    {
-        _player = PlayerController._instance;
-        // 게임 시작 시 고기 자동 생성 시작
-        StartGrill();
-    }
-
-    // 플레이어가 범위에 들어왔을 때 고기 자동 제공
-    private void OnTriggerEnter(Collider other)
-    {
-        // 태그가 Player가 아닐 경우 무시
-        if (!other.CompareTag("Player")) return;
-
-
-        //플레이어의 정보를 바탕으로 빼야할 고기 값
-        if (other.CompareTag("Player"))
-        {
-            if (_player._MaxMeat != _player._CurrentMeat)
-            {
-                int _minusMeat = _player._MaxMeat - _player._CurrentMeat;
-                _player.AddMeat(MinusMeat(_minusMeat));
-            }
-        }
-        else if (other.CompareTag("NPC"))
-        {
-            //TODO: NPC 캐릭터들 고기 획득
-        }
-    }
-    #endregion
-
-    #region 고기 생성 코루틴
-    // 고기 굽기 시작
-    public void StartGrill()
-    {
-        // 중복 실행 방지
-        if (_grillRoutine == null)
-        {
-            _grillRoutine = StartCoroutine(GrillLoop());
-        }
-    }
-    
-    // 고기 굽기 루프
-    IEnumerator GrillLoop()
-    {
-        while (true)
-        {
-            // 고기 굽는 시간 대기
-            yield return new WaitForSeconds(_cooltimeMeatGrill);
-
-            // 최대치에 도달하면 대기 (생성 중단)
-            if (_currentMeatCount >= _maxMeatCount)
-            {
-                yield return null;
-                continue;   //아래 코드 무시하고 다시 while처음으로 이동
-            }
-
-            // 고기 생성
-            AddMeat(1);
-        }
-    }
     #endregion
 
     #region 고기 증가 및 감소
@@ -189,4 +120,4 @@ public class Grill : BaseObject, ILevelable
         );
     }
     #endregion
-} 
+}

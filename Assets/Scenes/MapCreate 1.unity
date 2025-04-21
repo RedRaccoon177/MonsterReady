@@ -1274,10 +1274,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88da3cafdbc77694790e3177660210c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <_step>k__BackingField: 0
   _ActivateObj: {fileID: 867878985}
   _DeactivateObj: {fileID: 148697934}
   _maxPayGold: 100
   _currentPayGold: 0
+  _isActive: 0
 --- !u!1001 &176004868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1675,7 +1677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4161623206887378, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.69
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4161623206887378, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1722,8 +1724,21 @@ PrefabInstance:
       value: 10.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1689906543416508, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+    - {fileID: 1975750047983618, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+    - {fileID: 1688473659769710, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+    - {fileID: 1534571615272658, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+    - {fileID: 1259673362630748, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+    - {fileID: 1781810585322212, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+    - {fileID: 1286821425136648, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+    - {fileID: 1899708127392150, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+    - {fileID: 1736475815349676, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+    - {fileID: 1549346041990048, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4161623206887378, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1560469889}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1916933298521316, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
       insertIndex: -1
@@ -1756,6 +1771,10 @@ MonoBehaviour:
   _moveSpeed: 10
   _maxMeat: 0
   _currentMeat: 0
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _meatPool: {fileID: 2111446580}
+  _stackHeight: 0.11
+  _meatSpawnLocation: {fileID: 1560469889}
 --- !u!4 &260652121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4161623206887378, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
@@ -2617,10 +2636,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88cc1325df1291943bf604080cd5e6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grill: []
-  _table: []
-  _interactObjs: []
-  _GroundMoney: 
+  _monoObjectArr: []
+  _groundMoneyArr: []
+  _isActiveObjectArr: []
+  _activator: []
+  _progress: 0
 --- !u!1001 &404757487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2956,6 +2976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _key: 
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 450985695}
@@ -3040,7 +3061,7 @@ Transform:
   m_GameObject: {fileID: 450985690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.38, y: 0.11, z: 1.56}
+  m_LocalPosition: {x: -7.54, y: 0.11, z: 4.71}
   m_LocalScale: {x: 2, y: 0.3, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7589,9 +7610,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210a85291f485b54aac105cf764ddd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectLevel: 0
-  objectKeyName: 
-  objectIsActive: 0
+  _keyName: 
+  _isActive: 0
+  _level: 0
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatSpawnLocation: {fileID: 1397118996}
@@ -9345,6 +9366,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4796592812863908, guid: 907c5b82ea9e5224ab3eee6c8057fc2e, type: 3}
   m_PrefabInstance: {fileID: 1314043725}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1560469888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560469889}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1560469889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560469888}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.315, z: 0.438}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 260652121}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1565034309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12048,7 +12100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
-  _goldInitialSize: 100
+  _goldInitialSize: 4800
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatInitialSize: 100
   _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
@@ -12139,8 +12191,8 @@ SceneRoots:
   - {fileID: 448158713}
   - {fileID: 1716065521}
   - {fileID: 388968047}
-  - {fileID: 260652117}
   - {fileID: 29435556}
   - {fileID: 27654974}
   - {fileID: 450985695}
   - {fileID: 2111446581}
+  - {fileID: 260652117}

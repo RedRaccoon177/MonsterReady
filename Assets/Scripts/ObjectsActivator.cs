@@ -97,5 +97,4 @@ public class ObjectsActivator : MonoBehaviour
         GameManager._instance.OnUnlockObject(_step);
         gameObject.SetActive(false);
     }
-
 }

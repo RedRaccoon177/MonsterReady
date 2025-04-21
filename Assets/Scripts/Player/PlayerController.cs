@@ -38,25 +38,23 @@ public class PlayerController : MonoBehaviour
     int _playerHoldMaxLevel = 1;     // 드는 용량 레벨
     int _playerMakeMoneyLevel = 1;   // 수익률 레벨
 
-    //플레이어의 고기
-    [SerializeField] int _maxMeat;       //현재 들수 있는 고기 최대 수
-    [SerializeField] int _currentMeat;   //현재 들고 있는 고기 수
+    [Header("플레이어의 고기")]
+    [SerializeField] int _maxMeat;              //현재 들수 있는 고기 최대 수
+    [SerializeField] int _currentMeat;          //현재 들고 있는 고기 수
+    List<GameObject> _meatList = new List<GameObject>();    //생성된 고기 오브젝트들 담는 리스트
+
+    [Header("고기 프리펩")]
+    [SerializeField] GameObject _meatPrefab;
+
+    [Header("오브젝트 풀링 연결")]
+    [SerializeField] ObjectPooling _meatPool; // 고기를 관리하는 오브젝트 풀
+
+    [Header("고기 쌓일 높이 간격")]
+    [SerializeField] float _stackHeight = 0.11f;
+
+    [Header("고기 배치하는 곳")]
+    [SerializeField] Transform _meatSpawnLocation;
     #endregion
-
-    public int _MaxMeat 
-    { 
-        get => _maxMeat;
-        set => _maxMeat = value;
-    }
-
-    public int _CurrentMeat
-    {
-        get => _currentMeat;
-        set 
-        {
-            _currentMeat = Mathf.Clamp(0, value, _MaxMeat);
-        } 
-    }
 
     #region 변수들 프로퍼티
     public Vector3 _MoveVec 
@@ -110,6 +108,21 @@ public class PlayerController : MonoBehaviour
     {
         get => _playerMakeMoneyLevel;
         set => _playerMakeMoneyLevel = Mathf.Max(1, value);
+    }
+
+    public int _MaxMeat
+    {
+        get => _maxMeat;
+        set => _maxMeat = value;
+    }
+
+    public int _CurrentMeat
+    {
+        get => _currentMeat;
+        set
+        {
+            _currentMeat = Mathf.Clamp(0, value, _MaxMeat);
+        }
     }
     #endregion
 
@@ -205,6 +218,7 @@ public class PlayerController : MonoBehaviour
 
         _currentMeat += toAdd;
 
+        UpdateMeatDisplay(_currentMeat);
         return meat - toAdd; // 넘친 양
     }
 
@@ -215,12 +229,48 @@ public class PlayerController : MonoBehaviour
     {
         int removed = Mathf.Min(_currentMeat, amount);
         _currentMeat -= removed;
+
+        UpdateMeatDisplay(_currentMeat);
         return removed;
+    }
+
+    /// <summary>
+    /// 고기 시각화 함수
+    /// </summary>
+    /// <param name="currentMeat"></param>
+    public void UpdateMeatDisplay(int currentMeat)
+    {
+        // 1. 고기 개수가 부족하면 채워줌
+        while (_meatList.Count < currentMeat)
+        {
+            GameObject meat = _meatPool.GetMeat(); // 오브젝트 풀에서 꺼냄
+            meat.transform.SetParent(_meatSpawnLocation, false);
+            // 생성 위치값, 회전값, 크기값
+            meat.transform.localPosition = GetStackPosition(_meatList.Count);
+            meat.transform.localRotation = Quaternion.identity;
+            meat.transform.localScale = _meatPrefab.transform.localScale;
+
+            _meatList.Add(meat);
+        }
+
+        // 2. 고기 개수가 초과되면 제거 (위에서부터 하나씩)
+        while (_meatList.Count > currentMeat)
+        {
+            GameObject lastMeat = _meatList[_meatList.Count - 1];
+            _meatList.RemoveAt(_meatList.Count - 1);
+            _meatPool.ReturnToPool(lastMeat);
+        }
+    }
+    Vector3 GetStackPosition(int index)
+    {
+        return new Vector3(0, index * _stackHeight, 0);
     }
     #endregion
 
+    #region 조이스틱 이벤트 함수
     public static void InvokeJoystickReleased()
     {
         OnJoystickReleased?.Invoke();
     }
+    #endregion
 }

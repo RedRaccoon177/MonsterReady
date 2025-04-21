@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grill : InteractionObject, IActivable
+public class Grill : BaseObject, ILevelable
 {
-    [SerializeField] bool _isActive;
-    public bool isActive()
+    [SerializeField] public int _level;
+
+    public string GetKey()
     {
-        return _isActive;
+        return _keyName;
     }
-    public void DeActive()
+
+    public int SetLevel(int level)
     {
-        _isActive = false;
+        _level = level;
+        return level;
     }
-    public void OnActive()
+
+    public void LevelUp()
     {
-        _isActive = true;
-        gameObject.SetActive(true);
+        _level++;
+    }
+
+    public int GetLevel()
+    {
+        return _level;
     }
 }

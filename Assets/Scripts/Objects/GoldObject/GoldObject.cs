@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class GoldObject : MonoBehaviour
 {
+    [SerializeField] string _key;               // 골드바 가로 개수 (열 수)
     [Header("오브젝트 풀링 연결")]
     [SerializeField] ObjectPooling _goldPool; // 골드바를 관리하는 오브젝트 풀링 시스템
 

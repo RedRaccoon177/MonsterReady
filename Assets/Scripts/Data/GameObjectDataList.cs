@@ -11,8 +11,7 @@ public class GameObjectDataList
 [System.Serializable]
 public class ObjectData
 {
-    public string keyName;
-    public bool isActive;
+    public string key;
     public int level;
 }
 

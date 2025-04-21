@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ObjectsActivator : MonoBehaviour
 {
+    [field: SerializeField] public int _step { get; private set; }
     [SerializeField, Header("활성화 하고자 하는 오브젝트")]
     GameObject _ActivateObj;
-    IActivable _iActive;
-    [field: SerializeField] public int _step { get; private set; }
+    BaseObject _activeObjBaseScript;
 
     [SerializeField, Header("비활성화 하고자 하는 오브젝트")]
-    GameObject[] _DeactivateObj;
+    GameObject _DeactivateObj;
+    BaseObject _deactivateObjScript;
 
     [SerializeField, Header("지불해야 할 총 골드")]
     int _maxPayGold;
@@ -35,7 +36,11 @@ public class ObjectsActivator : MonoBehaviour
     {
         if (_ActivateObj != null)
         {
-            _iActive = _ActivateObj.GetComponent<IActivable>();
+            _activeObjBaseScript = _ActivateObj.GetComponent<BaseObject>();
+        }
+        if (_DeactivateObj != null)
+        {
+            _deactivateObjScript = _DeactivateObj.GetComponent<BaseObject>();
         }
         _currentPayGold = _maxPayGold;
     }
@@ -80,19 +85,17 @@ public class ObjectsActivator : MonoBehaviour
     /// <param name="step"></param>
     void UnlockObject()
     {
+        if (_activeObjBaseScript != null)
+        {
+            _activeObjBaseScript.OnActive();
+        }
+        if (_deactivateObjScript != null)
+        {
+            _deactivateObjScript.DeActive();
+        }
         _isActive = false;
-        if (_iActive != null)
-        {
-            _iActive.OnActive();
-        }
-        for (int i=0; i< _DeactivateObj.Length; i++)
-        {
-            if (_DeactivateObj != null)
-            {
-                _DeactivateObj[i].SetActive(false);
-            }
-        }
         GameManager._instance.OnUnlockObject(_step);
+        gameObject.SetActive(false);
     }
 
 }

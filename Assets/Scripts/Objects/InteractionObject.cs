@@ -2,18 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractionObject : MonoBehaviour
+public class BaseObject : MonoBehaviour
 {
-    public int objectLevel;
-    public string objectKeyName;
-    public bool objectIsActive;
+    public string _keyName;
+    public bool _isActive;
+    public bool isActive() 
+    {
+        return _isActive;
+    }
+    public void DeActive()
+    {
+        _isActive = false;
+        gameObject.SetActive(false);
+    }
+    public void OnActive()
+    {
+        _isActive = true;
+        gameObject.SetActive(true);
+    }
 }
 
-public interface IActivable
+public interface ILevelable 
 {
-    //int isKeyName();
-    bool isActive();
-    void OnActive();
-    void DeActive();
+    int GetLevel();
+    int SetLevel(int level);
+    void LevelUp();
 }
 

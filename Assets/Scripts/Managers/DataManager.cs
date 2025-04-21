@@ -14,7 +14,7 @@ public class DataManager : MonoBehaviour
     GameObjectDataList objectDataList;
     ActivatorList activatorList;
     ActiveObjectList activeObjectList;
-    GroundMoneyDataList groundMoneyDatas;
+    GroundMoneyDataList groundMoneyDataList;
 
     string filePathPlayer; // 플레이어 데이터 저장 경로
     string filePathObject; // 화로,테이블,카운터 데이터 저장 경로
@@ -24,6 +24,7 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log(Application.persistentDataPath);
         filePathPlayer = Path.Combine(Application.persistentDataPath, "playerData.json");
         filePathObject = Path.Combine(Application.persistentDataPath, "objectData.json");
         filePathActivatorObject = Path.Combine(Application.persistentDataPath, "unlockObject.json");
@@ -41,9 +42,8 @@ public class DataManager : MonoBehaviour
         objectDataList.objectDatas = new List<ObjectData>();
 
         // List<int>를 가지고 있는 직렬화 클래스
-        groundMoneyDatas = new GroundMoneyDataList();
-        groundMoneyDatas.groundMoneyList = new List<int>();
-        Debug.Log("데이터 저장 경로!" + filePathPlayer);
+        groundMoneyDataList = new GroundMoneyDataList();
+        groundMoneyDataList.groundMoneys = new List<GroundMoneyData>();
         if (_Instance == null)
         {
             _Instance = this;
@@ -54,7 +54,8 @@ public class DataManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SavePlayerAllData();
-            SaveObjectData(GameManager._instance._interactObjs);
+            SaveObjectData(GameManager._instance._iLevelObject);
+            SaveActiveObjectData(GameManager._instance._isActiveObjectArr);
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -69,7 +70,6 @@ public class DataManager : MonoBehaviour
         activatorList.activators.Clear();
         for (int i = 0; i < activator.Length; i++)
         {
-            Debug.Log(i);
             if (activator[i] != null)
             {
                 Activator data = new Activator();
@@ -109,20 +109,43 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public void SaveActiveObjectData(List<IActivable> isActiveObjectArr)
+    public void SaveActiveObjectData(BaseObject[] isActiveObjectArr)
     {
         activeObjectList.activeObjects.Clear();
-        for (int i = 0; i < isActiveObjectArr.Count; i++)
+        for (int i = 0; i < isActiveObjectArr.Length; i++)
         {
             ActiveObject data = new ActiveObject();
-            //data.key = ;
             data.isActive = isActiveObjectArr[i].isActive();
+            data.key = isActiveObjectArr[i]._keyName;
             activeObjectList.activeObjects.Add(data);
         }
+        string activeObjectJsonData = JsonUtility.ToJson(activeObjectList, true);
+        File.WriteAllText(filePathActiveObject, activeObjectJsonData);
     }
     public void LoadActiveObjectData()
     {
-
+        if (File.Exists(filePathActiveObject))
+        {
+            string objectJsonData = File.ReadAllText(filePathActiveObject); // 파일에서 JSON 읽기
+            ActiveObjectList objectList = JsonUtility.FromJson<ActiveObjectList>(objectJsonData); // JSON을 객체로 변환
+            Dictionary<string, BaseObject> objectDictGM = new Dictionary<string, BaseObject>();
+            foreach (var obj in GameManager._instance._isActiveObjectArr)
+            {
+                objectDictGM.Add(obj._keyName, obj);
+            }
+            for (int i = 0; i < objectList.activeObjects.Count; i++)
+            {
+                if (objectDictGM.TryGetValue(objectList.activeObjects[i].key, out var target))
+                {
+                    target._isActive = objectList.activeObjects[i].isActive;
+                    target.gameObject.SetActive(target._isActive);
+                }
+                else
+                {
+                    Debug.Log("일치하는 항목 없음");
+                }
+            }
+        }
     }
 
 
@@ -131,15 +154,14 @@ public class DataManager : MonoBehaviour
     /// 새로운 오브젝트 데이터 변경시 호출해서 저장 해줘야함
     /// </summary>
     /// <param name="interactObj"></param>
-    public void SaveObjectData(InteractionObject[] interactObj)
+    public void SaveObjectData(List<ILevelable> levelObject)
     {
         objectDataList.objectDatas.Clear();
-        for (int i=0; i< interactObj.Length; i++)
+        for (int i=0; i< levelObject.Count; i++)
         {
             ObjectData data = new ObjectData();
-            data.keyName = interactObj[i].objectKeyName;
-            data.isActive = interactObj[i].objectIsActive;
-            data.level = interactObj[i].objectLevel;
+            data.key = ((BaseObject)levelObject[i])._keyName;
+            data.level = levelObject[i].GetLevel();
             objectDataList.objectDatas.Add(data);
         }
         string playerJsonData = JsonUtility.ToJson(objectDataList, true);
@@ -161,19 +183,16 @@ public class DataManager : MonoBehaviour
 
             // 게임 매니져에 있는 상호작용 배열들을 딕셔너리에 복사
             // 사용 이유: 키값으로 안전하게 오브젝트 매칭시키기 위해
-            Dictionary<string, InteractionObject> objectDictGM = new Dictionary<string, InteractionObject>();
-            foreach (var obj in GameManager._instance._interactObjs)
+            Dictionary<string, ILevelable> objectDictGM = new Dictionary<string, ILevelable>();
+            foreach (var obj in GameManager._instance._iLevelObject)
             {
-                objectDictGM.Add(obj.objectKeyName, obj);
+                objectDictGM.Add(((BaseObject)obj)._keyName, obj);
             }
             for (int i=0; i< objectList.objectDatas.Count; i++)
             {
-                // 딕셔너리 안에 있는 키와 내 저장 데이터 키가 일치하다면
-                if (objectDictGM.TryGetValue(objectList.objectDatas[i].keyName, out var target))
+                if (objectDictGM.TryGetValue(objectList.objectDatas[i].key, out var target))
                 {
-                    target.objectKeyName = objectList.objectDatas[i].keyName;
-                    target.objectLevel = objectList.objectDatas[i].level;
-                    target.objectIsActive = objectList.objectDatas[i].isActive;
+                    target.SetLevel(objectList.objectDatas[i].level);
                 }
                 else
                 {
@@ -236,13 +255,13 @@ public class DataManager : MonoBehaviour
 
     public void SaveGroundMoney()
     {
-        var GameManagerArr = GameManager._instance._GroundMoney;
+        var GameManagerArr = GameManager._instance._groundMoneyArr;
         for (int i=0; i< GameManagerArr.Length; i++)
         {
-            groundMoneyDatas.groundMoneyList.Add(GameManagerArr[i]);
+            //groundMoneyDatas.groundMoneyList.Add(GameManagerArr[i]);
         }
-        string groundGoldDataJson = JsonUtility.ToJson(groundMoneyDatas, true);
-        File.WriteAllText(filePathGroundGold, groundGoldDataJson); // 파일에 저장
+        //string groundGoldDataJson = JsonUtility.ToJson(groundMoneyDatas, true);
+        //File.WriteAllText(filePathGroundGold, groundGoldDataJson); // 파일에 저장
     }
 
     public void LoadGroundMoney()

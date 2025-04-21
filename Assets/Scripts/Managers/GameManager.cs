@@ -6,12 +6,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager _instance {  get; private set; }
-    [Header("정보(레벨)를 가진 모든 오브젝트")] public MonoBehaviour[] _monoObjectArr; // 정보를 가진 모든 오브젝트
     [Header("땅에 떨어진 돈 오브젝트 배열")] public GoldObject[] _groundMoneyArr;      // 땅에 떨어진 돈 오브젝트
-    [Header("활성화 가능한 모든 오브젝트 배열")] public BaseObject[] _isActiveObjectArr;// 활성화 가능한 모든 오브젝트
     [Header("해금 오브젝트")] public ObjectsActivator[] _activator; // 해금 오브젝트 관리 배열
     [Header("현재 해금 진행 상태")] public int _progress = 0; // 현재 해금 진행 상황
-    public List<ILevelable> _iLevelObject = new List<ILevelable>(); // 카운터 , 테이블 , 화로들을 담는 배열 - level 등 정보 관리를 위해 사용
+
+    public Table[] _tables;
+    public Counter[] _counters;
+    public Grill[] _grills;
+    public Expen[] _expens;
 
     private void Awake()
     {
@@ -22,12 +24,15 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        SettingIsActiveObjectArr(); // mono배열 바꾸기
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
+
+        //OnUnlockObject(0); // 처음 부터 시작
+
         DataManager._Instance.LoadActivatorData();
-        DataManager._Instance.LoadActiveObjectData();
-        DataManager._Instance.LoadObjectData();
-        //OnUnlockObject(0);
+        DataManager._Instance.LoadObjectData(ObjectType.Table);
+        DataManager._Instance.LoadObjectData(ObjectType.Grill);
+        DataManager._Instance.LoadObjectData(ObjectType.Counter);
+        DataManager._Instance.LoadObjectData(ObjectType.Expand);
     }
 
     /// <summary>
@@ -41,8 +46,11 @@ public class GameManager : MonoBehaviour
         _activator[_step]._isActive = true;
         Debug.Log(_activator[_step].name);
         Debug.Log(_activator[_step]._isActive);
+        DataManager._Instance.SaveTableData(_tables,ObjectType.Table);
+        DataManager._Instance.SaveTableData(_grills, ObjectType.Grill);
+        DataManager._Instance.SaveTableData(_counters, ObjectType.Counter);
+        DataManager._Instance.SaveTableData(_expens, ObjectType.Expand);
         DataManager._Instance.SaveActivatorData(_activator);
-        DataManager._Instance.SaveActiveObjectData(_isActiveObjectArr);
     }
 
     /// <summary>
@@ -55,34 +63,4 @@ public class GameManager : MonoBehaviour
         Array.Sort(_activator, (a, b) => a._step.CompareTo(b._step));    
     }
 
-
-    /// <summary>
-    /// MonoBehaviour 타입 배열 요소들을 List<IActivable> 로 옮김
-    /// 사용 이유: 인터페이스 배열,리스트는 인스펙터에 나오지 않아서 monovihaviour 배열로 받아 놓고
-    /// 인게임 때 변경
-    /// </summary>
-    /// 
-    public void SettingIsActiveObjectArr()
-    {
-        for (int i = 0; i < _monoObjectArr.Length; i++)
-        {
-            _iLevelObject.Add((ILevelable)_monoObjectArr[i]);
-        }
-    }
-    //모든 오브젝트 활성화 및 비활성화
-    // 상호 작용 오브젝트 배열들을 돌면서 활성화 , 비활성화 해줌
-    //public void createinteractionobject()
-    //{
-    //    for (int i = 0; i < _isActiveObjectArr.Count; i++)
-    //    {
-    //        if (_isActiveObjectArr[i].isActive() == true)
-    //        {
-    //            _isActiveObjectArr[i].OnActive();
-    //        }
-    //        else
-    //        {
-    //            _isActiveObjectArr[i].DeActive();
-    //        }
-    //    }
-    //}
 }

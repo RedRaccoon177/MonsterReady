@@ -56,7 +56,7 @@ public class ObjectsActivator : MonoBehaviour
         // °ñµå ÁöºÒ
         if (_currentPayGold > 0)
         {
-            _currentPayGold = player.SpendGold(_currentPayGold);
+            _currentPayGold = player.MinusGold(_currentPayGold);
 
             if (_currentPayGold <= 0)
             {

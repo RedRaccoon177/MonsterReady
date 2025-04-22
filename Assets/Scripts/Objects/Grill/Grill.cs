@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grill : BaseObject, ILevelable
 {
-    #region 레벨 키값 변수들
+    #region 키값 및 레벨
     [SerializeField] public int _level;
 
     public string GetKey()
@@ -141,12 +141,18 @@ public class Grill : BaseObject, ILevelable
     /// <param name="_minusMeat"></param>
     int MinusMeat(int _minusMeat)
     {
-        int _playerGetMeat = _currentMeatCount;
+        int _playerGetMeat;
 
         if (_currentMeatCount < _minusMeat)
+        {
+            _playerGetMeat = _currentMeatCount;
             _currentMeatCount = 0;
-        else if (_currentMeatCount >= _minusMeat)
+        }
+        else
+        {
+            _playerGetMeat = _minusMeat;
             _currentMeatCount -= _minusMeat;
+        }
 
         UpdateMeatDisplay(_currentMeatCount);
         return _playerGetMeat;

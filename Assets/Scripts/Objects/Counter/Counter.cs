@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Counter : BaseObject, ILevelable
 {
-    #region 기본 정보
+    #region 키값 및 레벨
     [SerializeField] public int _level;
 
     public string GetKey()
@@ -53,31 +53,45 @@ public class Counter : BaseObject, ILevelable
 
     //플레이어 정보
     PlayerController _player;
+
+    [Header("카운터 옆에 달린 현금")]
+    [SerializeField] GoldObject _goldObject;
     #endregion
+
+    void Start()
+    {
+        _player = PlayerController._instance;
+    }
 
     #region 고기 증가 및 감소
     /// <summary>
-    /// 고기 증가
+    /// 카운터 고기 증가 함수
     /// </summary>
     /// <param name="_meatCount"></param>
     void AddMeat(int _meatCount)
     {
-        _currentMeatCount = Mathf.Clamp(_currentMeatCount + _meatCount, 0, _maxMeatCount);
+        _currentMeatCount = Mathf.Max(0, _currentMeatCount + _meatCount);
         UpdateMeatDisplay(_currentMeatCount);
     }
 
     /// <summary>
-    /// 고기 감소
+    /// 카운터 고기 감소
     /// </summary>
     /// <param name="_minusMeat"></param>
     int MinusMeat(int _minusMeat)
     {
-        int _playerGetMeat = _currentMeatCount;
+        int _playerGetMeat;
 
         if (_currentMeatCount < _minusMeat)
+        {
+            _playerGetMeat = _currentMeatCount;
             _currentMeatCount = 0;
-        else if (_currentMeatCount >= _minusMeat)
+        }
+        else
+        {
+            _playerGetMeat = _minusMeat;
             _currentMeatCount -= _minusMeat;
+        }
 
         UpdateMeatDisplay(_currentMeatCount);
         return _playerGetMeat;
@@ -109,7 +123,6 @@ public class Counter : BaseObject, ILevelable
             _meatPool.ReturnToPool(lastMeat);
         }
     }
-
     Vector3 GetStackPosition(int index)
     {
         return new Vector3
@@ -120,4 +133,25 @@ public class Counter : BaseObject, ILevelable
         );
     }
     #endregion
+
+    // 플레이어가 범위에 들어왔을 때 고기 자동 제공
+    private void OnTriggerEnter(Collider other)
+    {
+        // 태그가 Player가 아닐 경우 무시
+        if (!other.CompareTag("Player")) return;
+
+        //플레이어의 정보를 바탕으로 더해야 할 고기
+        if (other.CompareTag("Player"))
+        {
+            if (0 != _player._CurrentMeat)
+            {
+                AddMeat( _player._CurrentMeat );
+                _player.MinusMeat(_currentMeatCount);
+            }
+        }
+        else if (other.CompareTag("NPC"))
+        {
+            //TODO: NPC 캐릭터들 고기 획득
+        }
+    }
 }

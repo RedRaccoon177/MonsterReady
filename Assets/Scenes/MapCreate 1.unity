@@ -257,7 +257,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_Name
-      value: SM_Prop_Camp_Chest_02
+      value: Counter
       objectReference: {fileID: 0}
     - target: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_LocalScale.x
@@ -314,13 +314,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 15381739}
   m_SourcePrefab: {fileID: 100100000, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
 --- !u!4 &15381737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
   m_PrefabInstance: {fileID: 15381736}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &15381738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
+  m_PrefabInstance: {fileID: 15381736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &15381739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15381738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34316b27786d11f40ae9599c512c4b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _keyName: 
+  _isActive: 0
+  _level: 0
+  _meatPool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _meatSpawnLocation: {fileID: 15381737}
+  _currentMeatCount: 0
+  _stackHeight: 0.11
+  _goldObject: {fileID: 0}
 --- !u!1 &20450550
 GameObject:
   m_ObjectHideFlags: 0

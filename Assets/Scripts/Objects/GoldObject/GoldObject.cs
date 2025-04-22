@@ -69,11 +69,6 @@ public class GoldObject : MonoBehaviour
             }
         }
     }
-    public void AddGold(int _addGold)
-    {
-        _currentGold += _addGold;
-        UpdateGoldDisplay(_currentGold);
-    }
     /// <summary>
     /// 주어진 인덱스를 기준으로 3D 위치를 계산하여 골드바를 정렬합니다.
     /// 중심 기준으로 퍼지도록 오프셋도 적용됩니다.
@@ -99,7 +94,7 @@ public class GoldObject : MonoBehaviour
     }
     #endregion
 
-    void AddGold(int _addGold)
+    public void AddGold(int _addGold)
     {
         _currentGold += _addGold;
         UpdateGoldDisplay(_currentGold);

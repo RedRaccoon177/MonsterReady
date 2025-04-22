@@ -44,6 +44,7 @@ public class Counter : BaseObject, ILevelable
 
     [Header("고기 쌓일 높이 간격")]
     [SerializeField] float _stackHeight = 0.11f;
+    [SerializeField] float _counterY = 1.65f;
 
     // 생성된 고기 오브젝트들을 담는 리스트
     List<GameObject> _meatList = new List<GameObject>();
@@ -128,7 +129,7 @@ public class Counter : BaseObject, ILevelable
         return new Vector3
         (
             _meatSpawnLocation.position.x,
-            _meatSpawnLocation.position.y + index * _stackHeight,
+            _meatSpawnLocation.position.y + index * _stackHeight + _counterY,
             _meatSpawnLocation.position.z
         );
     }

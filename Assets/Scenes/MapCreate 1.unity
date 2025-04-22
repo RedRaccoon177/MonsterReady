@@ -311,6 +311,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 64189179088149574, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2665,11 +2669,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88cc1325df1291943bf604080cd5e6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monoObjectArr: []
   _groundMoneyArr: []
-  _isActiveObjectArr: []
   _activator: []
-  _progress: 0
+  _tables: []
+  _counters: []
+  _grills: []
+  _expens: []
 --- !u!1001 &404757487
 PrefabInstance:
   m_ObjectHideFlags: 0

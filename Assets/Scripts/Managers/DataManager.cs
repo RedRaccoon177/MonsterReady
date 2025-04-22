@@ -56,9 +56,9 @@ public class DataManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SaveTableData(GameManager._instance._tables,ObjectType.Table);
-            SaveTableData(GameManager._instance._counters,ObjectType.Counter);
-            SaveTableData(GameManager._instance._tables,ObjectType.Grill);
+            SaveObjectData(GameManager._instance._tables,ObjectType.Table);
+            SaveObjectData(GameManager._instance._counters,ObjectType.Counter);
+            SaveObjectData(GameManager._instance._tables,ObjectType.Grill);
             SavePlayerAllData();
         }
         if (Input.GetKeyDown(KeyCode.P))
@@ -70,13 +70,43 @@ public class DataManager : MonoBehaviour
             LoadObjectData(ObjectType.Grill);
         }
     }
+    public void SaveGroundMoney(GoldObject[] groundMoneyArr)
+    {
+        groundMoneyDataList.groundMoneys.Clear();
+        for (int i = 0; i < groundMoneyArr.Length; i++)
+        {
+            GroundMoneyData _temp = new GroundMoneyData();
+            _temp.key = groundMoneyArr[i]._key;
+            _temp.currentGold = groundMoneyArr[i]._currentGold;
+            groundMoneyDataList.groundMoneys.Add(_temp);
+        }
+        string groundGoldJson = JsonUtility.ToJson(groundMoneyDataList, true);
+        File.WriteAllText(filePathGroundGold, groundGoldJson);
+    }
+    public void LoadGroundMoney()
+    {
+        var json = File.ReadAllText(filePathGroundGold);
+        GroundMoneyDataList objectList = JsonUtility.FromJson<GroundMoneyDataList>(json); //
+        Dictionary<string,GoldObject> goldObjectDict = new Dictionary<string,GoldObject>();
+        foreach (var item in GameManager._instance._groundMoneyArr)
+        {
+            goldObjectDict.Add(item._key, item);
+        }
+        for (int i=0; i< goldObjectDict.Count; i++)
+        {
+            if (goldObjectDict.TryGetValue(objectList.groundMoneys[i].key, out var target))
+            {
+                target.AddGold(objectList.groundMoneys[i].currentGold);
+            }
+        }
+    }
     /// <summary>
     ///  BaseObject를 상속받은 오브젝트 배열을 받아 json에 저장 하는 함수 
     ///  - 오브젝트 활성화 될때 호출!
     /// </summary>
     /// <param name="baseObject"></param>
     /// <param name="type"></param>
-    public void SaveTableData(BaseObject[] baseObject, ObjectType type)
+    public void SaveObjectData(BaseObject[] baseObject, ObjectType type)
     {
         objectDataList.objectDatas.Clear();
         for (int i = 0; i < baseObject.Length; i++)
@@ -274,4 +304,6 @@ public class DataManager : MonoBehaviour
             Debug.LogWarning("저장된 파일이 없습니다!");
         }
     }
-  }
+
+    
+}

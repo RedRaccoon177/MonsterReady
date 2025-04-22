@@ -11,7 +11,7 @@ public class GroundMoneyDataList
 [System.Serializable]
 public class GroundMoneyData
 {
-    string key;
-    int currentMoney;
+    public string key;
+    public int currentGold;
 }
 

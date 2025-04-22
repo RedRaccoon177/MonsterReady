@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     public static GameManager _instance {  get; private set; }
     [Header("땅에 떨어진 돈 오브젝트 배열")] public GoldObject[] _groundMoneyArr;      // 땅에 떨어진 돈 오브젝트
     [Header("해금 오브젝트")] public ObjectsActivator[] _activator; // 해금 오브젝트 관리 배열
-    [Header("현재 해금 진행 상태")] public int _progress = 0; // 현재 해금 진행 상황
 
     public Table[] _tables;
     public Counter[] _counters;
@@ -33,6 +32,7 @@ public class GameManager : MonoBehaviour
         DataManager._Instance.LoadObjectData(ObjectType.Grill);
         DataManager._Instance.LoadObjectData(ObjectType.Counter);
         DataManager._Instance.LoadObjectData(ObjectType.Expand);
+        DataManager._Instance.LoadGroundMoney();
     }
 
     /// <summary>
@@ -46,10 +46,11 @@ public class GameManager : MonoBehaviour
         _activator[_step]._isActive = true;
         Debug.Log(_activator[_step].name);
         Debug.Log(_activator[_step]._isActive);
-        DataManager._Instance.SaveTableData(_tables,ObjectType.Table);
-        DataManager._Instance.SaveTableData(_grills, ObjectType.Grill);
-        DataManager._Instance.SaveTableData(_counters, ObjectType.Counter);
-        DataManager._Instance.SaveTableData(_expens, ObjectType.Expand);
+        DataManager._Instance.SaveGroundMoney(_groundMoneyArr);
+        DataManager._Instance.SaveObjectData(_tables,ObjectType.Table);
+        DataManager._Instance.SaveObjectData(_grills, ObjectType.Grill);
+        DataManager._Instance.SaveObjectData(_counters, ObjectType.Counter);
+        DataManager._Instance.SaveObjectData(_expens, ObjectType.Expand);
         DataManager._Instance.SaveActivatorData(_activator);
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class GoldObject : MonoBehaviour
 {
-    [SerializeField] string _key;               // 골드바 가로 개수 (열 수)
+    [SerializeField] public string _key;               // 골드바 가로 개수 (열 수)
     [Header("오브젝트 풀링 연결")]
     [SerializeField] ObjectPooling _goldPool; // 골드바를 관리하는 오브젝트 풀
 
@@ -24,7 +24,7 @@ public class GoldObject : MonoBehaviour
     List<GameObject> _goldInstances = new List<GameObject>();
 
     // 현재 골드 수치 (화면에 표시되는 수가 아님, 논리적 수치)
-    [SerializeField] int _currentGold = 0;
+    [SerializeField] public int _currentGold = 0;
 
     // 최대 시각적으로 표현 가능한 골드바 수 (가로 x 세로 x 높이)
     int _maxVisualGold => _maxX * _maxZ * _maxY;
@@ -69,7 +69,11 @@ public class GoldObject : MonoBehaviour
             }
         }
     }
-
+    public void AddGold(int _addGold)
+    {
+        _currentGold += _addGold;
+        UpdateGoldDisplay(_currentGold);
+    }
     /// <summary>
     /// 주어진 인덱스를 기준으로 3D 위치를 계산하여 골드바를 정렬합니다.
     /// 중심 기준으로 퍼지도록 오프셋도 적용됩니다.

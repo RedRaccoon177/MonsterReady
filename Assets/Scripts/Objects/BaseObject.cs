@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ObjectType
+{
+    Table,Counter,Grill,Expand
+}
+
 public class BaseObject : MonoBehaviour
 {
     public string _keyName;

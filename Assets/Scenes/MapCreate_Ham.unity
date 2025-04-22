@@ -261,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_LocalScale.x
@@ -595,7 +595,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 27665699}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &27665701
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1832,7 +1832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &195587707
 Transform:
   m_ObjectHideFlags: 0
@@ -1880,7 +1880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_LocalScale.x
@@ -2114,7 +2114,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 246024880}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &246024882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2653,7 +2653,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 273719855}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &273719857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3496,7 +3496,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 351446081}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &351446083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3902,7 +3902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &414288475
 Transform:
   m_ObjectHideFlags: 0
@@ -4221,11 +4221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: 
+  _key: "\uBB38"
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 450985695}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &450985692
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4611,7 +4611,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 500816504}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &500816506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4808,47 +4808,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88cc1325df1291943bf604080cd5e6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monoObjectArr:
-  - {fileID: 1859480516}
-  - {fileID: 1972163537}
-  - {fileID: 195587708}
-  - {fileID: 686416308}
-  - {fileID: 616625219}
-  - {fileID: 1720150017}
-  - {fileID: 1578919567}
-  - {fileID: 414288476}
-  - {fileID: 697027517}
-  - {fileID: 1175497743}
-  - {fileID: 1390874451}
-  - {fileID: 633785923}
-  - {fileID: 1234799934}
-  - {fileID: 1253148051}
-  - {fileID: 15381739}
-  - {fileID: 1349180475}
-  - {fileID: 202999177}
-  _groundMoneyArr: []
-  _isActiveObjectArr:
-  - {fileID: 1667347901}
-  - {fileID: 1859480516}
-  - {fileID: 1972163537}
-  - {fileID: 195587708}
-  - {fileID: 686416308}
-  - {fileID: 616625219}
-  - {fileID: 1720150017}
-  - {fileID: 1578919567}
-  - {fileID: 414288476}
-  - {fileID: 697027517}
-  - {fileID: 1175497743}
-  - {fileID: 1390874451}
-  - {fileID: 633785923}
-  - {fileID: 15381739}
-  - {fileID: 1349180475}
-  - {fileID: 202999177}
-  - {fileID: 1234799934}
-  - {fileID: 1253148051}
-  - {fileID: 634177049}
-  - {fileID: 1452243728}
-  - {fileID: 1953462664}
+  _groundMoneyArr:
+  - {fileID: 450985691}
+  - {fileID: 1140346839}
+  - {fileID: 1942485948}
+  - {fileID: 1914077470}
+  - {fileID: 246024881}
+  - {fileID: 27665700}
+  - {fileID: 351446082}
+  - {fileID: 1435843262}
+  - {fileID: 933696647}
+  - {fileID: 273719856}
+  - {fileID: 1865798270}
+  - {fileID: 1289081015}
+  - {fileID: 500816505}
+  - {fileID: 900881495}
+  - {fileID: 2086698837}
   _activator:
   - {fileID: 148697939}
   - {fileID: 1132547893}
@@ -4872,6 +4847,31 @@ MonoBehaviour:
   - {fileID: 1034354465}
   - {fileID: 1875863841}
   _progress: 0
+  _tables:
+  - {fileID: 1859480516}
+  - {fileID: 1972163537}
+  - {fileID: 195587708}
+  - {fileID: 686416308}
+  - {fileID: 616625219}
+  - {fileID: 1720150017}
+  - {fileID: 1578919567}
+  - {fileID: 414288476}
+  - {fileID: 697027517}
+  - {fileID: 1175497743}
+  - {fileID: 1390874451}
+  - {fileID: 633785923}
+  _counters:
+  - {fileID: 15381739}
+  - {fileID: 1349180475}
+  - {fileID: 202999177}
+  _grills:
+  - {fileID: 1234799934}
+  - {fileID: 1253148051}
+  _expens:
+  - {fileID: 1507659556}
+  - {fileID: 1953462664}
+  - {fileID: 634177049}
+  - {fileID: 1452243728}
 --- !u!4 &540737832
 Transform:
   m_ObjectHideFlags: 0
@@ -5366,7 +5366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &616625218
 Transform:
   m_ObjectHideFlags: 0
@@ -5496,7 +5496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &633785922
 Transform:
   m_ObjectHideFlags: 0
@@ -5870,7 +5870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &686416307
 Transform:
   m_ObjectHideFlags: 0
@@ -5920,7 +5920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &697027516
 Transform:
   m_ObjectHideFlags: 0
@@ -7069,7 +7069,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 900881494}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &900881496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7270,7 +7270,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 933696646}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &933696648
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8957,7 +8957,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 1140346838}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &1140346840
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9309,7 +9309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1175497742
 Transform:
   m_ObjectHideFlags: 0
@@ -10251,7 +10251,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 1289081014}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &1289081016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10761,7 +10761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_LocalScale.x
@@ -11044,7 +11044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1390874450
 Transform:
   m_ObjectHideFlags: 0
@@ -11437,11 +11437,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE147+"
+  _key: "\uD14C\uC774\uBE147"
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 1435843261}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &1435843263
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12154,7 +12154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1578919566
 Transform:
   m_ObjectHideFlags: 0
@@ -13085,7 +13085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1720150016
 Transform:
   m_ObjectHideFlags: 0
@@ -13811,7 +13811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1859480515
 Transform:
   m_ObjectHideFlags: 0
@@ -14036,7 +14036,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 1865798269}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &1865798271
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14588,7 +14588,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 1914077469}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &1914077471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14835,7 +14835,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 1942485947}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &1942485949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15132,7 +15132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1972163536
 Transform:
   m_ObjectHideFlags: 0
@@ -16264,7 +16264,7 @@ MonoBehaviour:
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldParent: {fileID: 2086698836}
-  _currentGold: 180
+  _currentGold: 0
 --- !u!65 &2086698838
 BoxCollider:
   m_ObjectHideFlags: 0

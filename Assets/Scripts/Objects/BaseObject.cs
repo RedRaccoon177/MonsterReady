@@ -35,6 +35,7 @@ public class BaseObject : MonoBehaviour
         _isActive = true;
         gameObject.SetActive(true);
     }
+
     private void OnDrawGizmos()
     {
         Vector3 center = transform.position;

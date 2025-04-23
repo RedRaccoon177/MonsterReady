@@ -18,25 +18,10 @@ public class Node : MonoBehaviour
     // 노드의 그리드 상 좌표 (A*에서 거리 계산용으로 사용)
     [SerializeField] Vector2Int _gridPos;
 
-    [Header("노드간 길이 확인용")]
-    [SerializeField] float _detectDistance = 2.1f;
     #endregion
 
-    private void Start()
+    void Start()
     {
-        // 8방향 벡터 정의 (정규화 포함)
-        _directions = new Vector3[]
-        {
-            Vector3.right,                         // 오른쪽
-            Vector3.left,                          // 왼쪽
-            Vector3.forward,                       // 위 (Z+)
-            Vector3.back,                          // 아래 (Z-)
-            new Vector3(1, 0, 1).normalized,       // 오른쪽 위 대각선
-            new Vector3(1, 0, -1).normalized,      // 오른쪽 아래 대각선
-            new Vector3(-1, 0, 1).normalized,      // 왼쪽 위 대각선
-            new Vector3(-1, 0, -1).normalized      // 왼쪽 아래 대각선
-        };
-
         // 이동 가능으로 초기값 설정
         _isWalkale = true;
 
@@ -62,25 +47,6 @@ public class Node : MonoBehaviour
         {
             _isWalkale = false;
         }
-
-        // 주변 노드 탐색 시작
-        RaycastHit hitS;
-        foreach (var a in _directions)
-        {
-            // 해당 방향으로 Ray를 발사하여 인접 노드 확인
-            if (Physics.Raycast(transform.position, a, out hitS, _detectDistance, LayerMask.GetMask("Node")))
-            {
-                Node node = hitS.collider.GetComponent<Node>();
-                if (node != null)
-                {
-                    // 중복 연결 방지
-                    if (!_connectionNodes.Contains(node))
-                    {
-                        _connectionNodes.Add(node); // 인접 노드 목록에 추가
-                    }
-                }
-            }
-        }
     }
 
     /// <summary>
@@ -96,7 +62,7 @@ public class Node : MonoBehaviour
     /// 에디터에서 노드 시각화
     /// 겹치는 장애물이 있으면 빨간색, 이동 가능하면 연두색
     /// </summary>
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         if (!Application.isPlaying)
             _isWalkale = true; // 편집 중에는 항상 초록으로 보기 위해 초기화
@@ -104,5 +70,35 @@ public class Node : MonoBehaviour
         Gizmos.color = _isWalkale ? new Color(0f, 1f, 0f, 0.3f) : new Color(1f, 0f, 0f, 0.3f);
         Vector3 halfExtents = new Vector3(0.7f, 1f, 0.7f);
         Gizmos.DrawCube(transform.position, halfExtents * 2); // 시각화 크기 = full size
+    }
+
+    public void ConnectionNodes()
+    {
+        // 8방향 오프셋
+        Vector2Int[] offsets = new Vector2Int[]
+        {
+        new Vector2Int(-1, -1), new Vector2Int(-1, 0), new Vector2Int(-1, 1),
+        new Vector2Int(0, -1),                     new Vector2Int(0, 1),
+        new Vector2Int(1, -1),  new Vector2Int(1, 0),  new Vector2Int(1, 1)
+        };
+
+        foreach (var offset in offsets)
+        {
+            int newX = _gridPos.x + offset.x;
+            int newY = _gridPos.y + offset.y;
+
+            // 배열 범위 체크
+            if (newX >= 0 && newX < NodeManager._instance._nodeList.GetLength(0) &&
+                newY >= 0 && newY < NodeManager._instance._nodeList.GetLength(1))
+            {
+                Node neighbor = NodeManager._instance._nodeList[newX, newY];
+
+                //이동 가능한 노드만 연결
+                if (neighbor != null && neighbor._isWalkale && !_connectionNodes.Contains(neighbor))
+                {
+                    _connectionNodes.Add(neighbor);
+                }
+            }
+        }
     }
 }

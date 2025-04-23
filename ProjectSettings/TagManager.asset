@@ -8,6 +8,10 @@ TagManager:
   - Meat
   - Bone
   - NPC
+  - Plane
+  - Door
+  - Node
+  - ExpandWall
   layers:
   - Default
   - TransparentFX
@@ -15,8 +19,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
+  - Obstacle
+  - Node
   - 
   - 
   - 

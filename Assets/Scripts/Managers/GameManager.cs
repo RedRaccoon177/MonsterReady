@@ -46,12 +46,12 @@ public class GameManager : MonoBehaviour
         _activator[_step]._isActive = true;
         Debug.Log(_activator[_step].name);
         Debug.Log(_activator[_step]._isActive);
-        DataManager._Instance.SaveGroundMoney(_groundMoneyArr);
-        DataManager._Instance.SaveObjectData(_tables,ObjectType.Table);
-        DataManager._Instance.SaveObjectData(_grills, ObjectType.Grill);
-        DataManager._Instance.SaveObjectData(_counters, ObjectType.Counter);
-        DataManager._Instance.SaveObjectData(_expens, ObjectType.Expand);
-        DataManager._Instance.SaveActivatorData(_activator);
+        //DataManager._Instance.SaveGroundMoney(_groundMoneyArr);
+        //DataManager._Instance.SaveObjectData(_tables,ObjectType.Table);
+        //DataManager._Instance.SaveObjectData(_grills, ObjectType.Grill);
+        //DataManager._Instance.SaveObjectData(_counters, ObjectType.Counter);
+        //DataManager._Instance.SaveObjectData(_expens, ObjectType.Expand);
+        //DataManager._Instance.SaveActivatorData(_activator);
     }
 
     /// <summary>

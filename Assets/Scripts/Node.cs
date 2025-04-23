@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class NodeHam : MonoBehaviour
+public class Node : MonoBehaviour
 {
     // 주변 방향 벡터들 (상하좌우 + 대각선 총 8방향)
     Vector3[] directions;
@@ -12,7 +12,7 @@ public class NodeHam : MonoBehaviour
     [SerializeField] public bool _isWalkale;
 
     // 연결된 인접 노드 목록
-    public List<NodeHam> _connectionNodes = new List<NodeHam>();
+    public List<Node> _connectionNodes = new List<Node>();
 
     private void Start()
     {
@@ -61,7 +61,7 @@ public class NodeHam : MonoBehaviour
             // 지정된 방향으로 Ray를 쏴서 Node 레이어에 충돌했는지 확인
             if (Physics.Raycast(transform.position, a, out hitS, Mathf.Infinity, LayerMask.GetMask("Node")))
             {
-                NodeHam node = hitS.collider.GetComponent<NodeHam>();
+                Node node = hitS.collider.GetComponent<Node>();
                 if (node != null)
                 {
                     // 충돌한 오브젝트에 NodeHam이 있다면 연결 노드로 등록

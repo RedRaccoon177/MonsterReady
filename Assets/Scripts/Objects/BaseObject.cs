@@ -30,7 +30,7 @@ public class BaseObject : MonoBehaviour
         Collider[] hits = Physics.OverlapBox(gameObject.transform.position, halfExtents,Quaternion.identity,LayerMask.GetMask("Node"));
         foreach (var hit in hits)
         {
-            hit.gameObject.GetComponent<NodeHam>()._isWalkale = false;
+            hit.gameObject.GetComponent<Node>()._isWalkale = false;
         }
         _isActive = true;
         gameObject.SetActive(true);

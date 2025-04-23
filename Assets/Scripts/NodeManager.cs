@@ -8,13 +8,13 @@ public class NodeManager : MonoBehaviour
     public static NodeManager _instance;
 
     // 2차원 노드 배열 [행, 열] = [z, x]
-    NodeHam[,] nodeList = new NodeHam[23, 25];
+    Node[,] nodeList = new Node[23, 25];
 
     // 노드 프리팹 참조 (에디터에 연결 필요)
-    [SerializeField] public NodeHam nodePrefab;
+    [SerializeField] public Node nodePrefab;
 
     // 인스턴스화한 노드에 접근하기 위한 임시 변수
-    [SerializeField] public NodeHam nodeScript;
+    [SerializeField] public Node nodeScript;
 
     // 맵 좌측 하단 기준 위치 오프셋
     int minX = -12;

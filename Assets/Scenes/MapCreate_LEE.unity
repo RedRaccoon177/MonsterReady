@@ -5647,6 +5647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c85e379d4aab6e46be73f630a7d9280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _XWidth: 23
+  _YLength: 25
   _nodePrefab: {fileID: 5229445202444492414, guid: 451c053e2ec047248a71b86c295d8cd5, type: 3}
 --- !u!4 &645065414
 Transform:
@@ -12206,6 +12208,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyName: "\uC624\uB978\uCABD\uBCBD"
   _isActive: 0
+--- !u!1 &1538723422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1538723424}
+  - component: {fileID: 1538723423}
+  m_Layer: 0
+  m_Name: CustomerSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1538723423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538723422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790635d7cdc8c914cacb9c7ff001cf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _customerPrefab: {fileID: 8269424388737075522, guid: bab016c0133cc5a4d9042967a2778a17, type: 3}
+  _spawnNodeGridPos: {x: 1, y: 24}
+--- !u!4 &1538723424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538723422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1539624353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16794,3 +16842,4 @@ SceneRoots:
   - {fileID: 1142258510}
   - {fileID: 2111446581}
   - {fileID: 1882618415}
+  - {fileID: 1538723424}

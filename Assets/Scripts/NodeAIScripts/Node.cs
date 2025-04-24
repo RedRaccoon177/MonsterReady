@@ -17,7 +17,6 @@ public class Node : MonoBehaviour
 
     // 노드의 그리드 상 좌표 (A*에서 거리 계산용으로 사용)
     [SerializeField] Vector2Int _gridPos;
-
     #endregion
 
     void Start()
@@ -72,6 +71,9 @@ public class Node : MonoBehaviour
         Gizmos.DrawCube(transform.position, halfExtents * 2); // 시각화 크기 = full size
     }
 
+    /// <summary>
+    /// 주변 갈 수 있는 노드 연결
+    /// </summary>
     public void ConnectionNodes()
     {
         // 8방향 오프셋

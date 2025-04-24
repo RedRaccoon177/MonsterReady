@@ -59,7 +59,6 @@ public class NodeManager : MonoBehaviour
                 _nodeList[i, j] = node;
             }
         }
-
         StartCoroutine(DelayedConnection());
     }
 

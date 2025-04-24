@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         //DataManager._Instance.SaveObjectData(_expens, ObjectType.Expand);
         //DataManager._Instance.SaveActivatorData(_activator);
     }
-
+    
     /// <summary>
     /// 각 해금 오브젝트가 가지고 있는 step 변수를 이용해 오름차순 정렬하는 함수
     ///  - 오름차순 정렬 IntroSort 방식

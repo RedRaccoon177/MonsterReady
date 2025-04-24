@@ -43,7 +43,7 @@ public class Grill : BaseObject, ILevelable
     [SerializeField] int _maxMeatCount = 5;
 
     [Header("현재 만들어진 고기")]
-    [SerializeField] int _currentMeatCount = 0;
+    [SerializeField] public int _currentMeatCount = 0;
 
     [Header("고기 굽는 쿨타임 (초)")]
     [SerializeField] float _cooltimeMeatGrill = 3f;

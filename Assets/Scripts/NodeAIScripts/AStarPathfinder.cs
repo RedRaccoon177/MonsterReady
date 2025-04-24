@@ -68,26 +68,26 @@ public static class AStarPathfinder
             _closedList.Add(_current);
 
             // 현재 노드에 연결된 모든 이웃 노드들을 확인
-            foreach (Node neighbor in _current._connectionNodes)
+            foreach (Node _neighbor in _current._connectionNodes)
             {
-                if (_closedList.Contains(neighbor))
+                if (_closedList.Contains(_neighbor))
                     continue; // 이미 본 노드는 다시 보지 않음
 
                 // 지금까지 걸어온 거리 + 이웃 노드까지 거리
-                float tentativeG = _nodeDataMap[_current]._G + Vector3.Distance(_current.transform.position, neighbor.transform.position);
+                float _tentativeG = _nodeDataMap[_current]._G + Vector3.Distance(_current.transform.position, _neighbor.transform.position);
 
                 // 처음 방문하거나 더 짧은 경로 발견 시 갱신
-                if (!_nodeDataMap.ContainsKey(neighbor) || tentativeG < _nodeDataMap[neighbor]._G)
+                if (!_nodeDataMap.ContainsKey(_neighbor) || _tentativeG < _nodeDataMap[_neighbor]._G)
                 {
-                    if (!_nodeDataMap.ContainsKey(neighbor))
-                        _nodeDataMap[neighbor] = new NodeDataFGH();
+                    if (!_nodeDataMap.ContainsKey(_neighbor))
+                        _nodeDataMap[_neighbor] = new NodeDataFGH();
 
-                    _nodeDataMap[neighbor]._G = tentativeG;
-                    _nodeDataMap[neighbor]._H = GetDistance(neighbor, _goal);
-                    _nodeDataMap[neighbor]._parent = _current;
+                    _nodeDataMap[_neighbor]._G = _tentativeG;
+                    _nodeDataMap[_neighbor]._H = GetDistance(_neighbor, _goal);
+                    _nodeDataMap[_neighbor]._parent = _current;
 
-                    if (!_openList.Contains(neighbor))
-                        _openList.Add(neighbor);
+                    if (!_openList.Contains(_neighbor))
+                        _openList.Add(_neighbor);
                 }
             }
         }

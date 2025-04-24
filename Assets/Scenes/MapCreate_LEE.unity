@@ -1778,6 +1778,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE143"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1001 &202999174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3943,6 +3944,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE148"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1 &427386969
 GameObject:
   m_ObjectHideFlags: 0
@@ -5440,6 +5442,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE145"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1001 &617283407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5567,6 +5570,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE1412"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1 &634177047
 GameObject:
   m_ObjectHideFlags: 0
@@ -6087,6 +6091,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE144"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1 &697027515
 GameObject:
   m_ObjectHideFlags: 0
@@ -6136,6 +6141,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE149"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1001 &715573197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9819,6 +9825,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE1410"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1001 &1184319278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11395,6 +11402,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE1411"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1001 &1394926019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12239,6 +12247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customerPrefab: {fileID: 8269424388737075522, guid: bab016c0133cc5a4d9042967a2778a17, type: 3}
   _spawnNodeGridPos: {x: 1, y: 24}
+  _spawnDelay: 2
 --- !u!4 &1538723424
 Transform:
   m_ObjectHideFlags: 0
@@ -12563,6 +12572,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE147"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1001 &1582904727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13501,6 +13511,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE146"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1001 &1729409588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14225,6 +14236,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE141"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1001 &1859573541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15640,6 +15652,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE142"
   _isActive: 0
   _level: 0
+  _currentTrashCount: 0
 --- !u!1001 &1981820099
 PrefabInstance:
   m_ObjectHideFlags: 0

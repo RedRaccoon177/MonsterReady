@@ -29,12 +29,12 @@ public class GameManager : MonoBehaviour
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
         //OnUnlockObject(0); // 처음 부터 시작
 
-        DataManager._Instance.LoadActivatorData();
-        DataManager._Instance.LoadObjectData(ObjectType.Table);
-        DataManager._Instance.LoadObjectData(ObjectType.Grill);
-        DataManager._Instance.LoadObjectData(ObjectType.Counter);
-        DataManager._Instance.LoadObjectData(ObjectType.Expand);
-        DataManager._Instance.LoadGroundMoney();
+        //DataManager._Instance.LoadActivatorData();
+        //DataManager._Instance.LoadObjectData(ObjectType.Table);
+        //DataManager._Instance.LoadObjectData(ObjectType.Grill);
+        //DataManager._Instance.LoadObjectData(ObjectType.Counter);
+        //DataManager._Instance.LoadObjectData(ObjectType.Expand);
+        //DataManager._Instance.LoadGroundMoney();
         SettingStackableObjectList();
     }
     public void SettingStackableObjectList()

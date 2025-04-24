@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
     public Table[] _tables;
     public Counter[] _counters;
     public Grill[] _grills;
+    // 테이블,카운터,그릴에 쌓인게 있는지 
+    public List<IStackChecker> _stackableObjectList = new List<IStackChecker>();
     public Expen[] _expens;
+    
 
     private void Awake()
     {
@@ -24,7 +27,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
-
         //OnUnlockObject(0); // 처음 부터 시작
 
         DataManager._Instance.LoadActivatorData();
@@ -33,8 +35,23 @@ public class GameManager : MonoBehaviour
         DataManager._Instance.LoadObjectData(ObjectType.Counter);
         DataManager._Instance.LoadObjectData(ObjectType.Expand);
         DataManager._Instance.LoadGroundMoney();
+        SettingStackableObjectList();
     }
-
+    public void SettingStackableObjectList()
+    {
+        for (int i= 0; i< _tables.Length; i++)
+        {
+            _stackableObjectList.Add(_tables[i]);
+        }
+        for (int i = 0; i < _counters.Length; i++)
+        {
+            _stackableObjectList.Add(_counters[i]);
+        }
+        for (int i = 0; i < _grills.Length; i++)
+        {
+            _stackableObjectList.Add(_grills[i]);
+        }
+    }
     /// <summary>
     /// 다음 해금 오브젝트 활성화
     /// </summary>

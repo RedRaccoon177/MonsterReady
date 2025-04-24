@@ -121,7 +121,7 @@ public class CustomerMoveToCounterState : ICustomerState
                 minDist = dist;
                 closest = node;
             }
-        }
+        } 
 
         if (closest == null)
             Debug.LogError("GetClosestNode(): 유효한 노드가 없음");

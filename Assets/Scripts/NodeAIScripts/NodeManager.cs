@@ -52,6 +52,7 @@ public class NodeManager : MonoBehaviour
         {
             for (int j = 0; j < _nodeList.GetLength(1); j++)
             {
+                //TODO: 노드들 오브젝트 풀링으로 담기
                 Node node = Instantiate(_nodePrefab, new Vector3(_minX + j * 2, 0, _minY + i * 2), Quaternion.identity);
 
                 node.Init(new Vector2Int(i, j)); // 좌표 설정

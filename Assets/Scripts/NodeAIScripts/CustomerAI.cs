@@ -17,7 +17,7 @@ public class CustomerAI : MonoBehaviour
     IEnumerator Start()
     {
         yield return null; // 한 프레임 기다림
-        SetState(new MoveToCounterState());
+        SetState(new CustomerMoveToCounterState());
     }
 
     public void SetState(ICustomerState newState)
@@ -33,7 +33,7 @@ public class CustomerAI : MonoBehaviour
     }
 }
 
-public class MoveToCounterState : ICustomerState
+public class CustomerMoveToCounterState : ICustomerState
 {
     List<Node> _path;           // A*로 계산된 경로를 저장할 리스트
     int _currentIndex;          // 현재 따라가고 있는 경로 인덱스
@@ -65,7 +65,7 @@ public class MoveToCounterState : ICustomerState
         // 경로가 없거나 이미 도착했다면 다음 상태로 전환
         if (_path == null || _currentIndex >= _path.Count)
         {
-            customer.SetState(new OrderAndWait()); // 다음 행동 상태로 전환 (주문 대기 등)
+            customer.SetState(new CustomerOrderAndWait()); // 다음 행동 상태로 전환 (주문 대기 등)
             return;
         }
 
@@ -132,7 +132,7 @@ public class MoveToCounterState : ICustomerState
 }
 
 
-public class WaitState : ICustomerState 
+public class CustomerWaitState : ICustomerState 
 {
     public void Enter(CustomerAI customer)
     { 
@@ -150,7 +150,7 @@ public class WaitState : ICustomerState
     }
 }
 
-public class OrderAndWait : ICustomerState
+public class CustomerOrderAndWait : ICustomerState
 {
     public void Enter(CustomerAI customer)
     {
@@ -168,7 +168,7 @@ public class OrderAndWait : ICustomerState
     }
 }
 
-public class MoveToTable : ICustomerState
+public class CustomerMoveToTable : ICustomerState
 {
     public void Enter(CustomerAI customer)
     {
@@ -186,7 +186,7 @@ public class MoveToTable : ICustomerState
     }
 }
 
-public class Eating : ICustomerState
+public class CustomerEating : ICustomerState
 {
     public void Enter(CustomerAI customer)
     {
@@ -204,7 +204,7 @@ public class Eating : ICustomerState
     }
 }
 
-public class GoingHome : ICustomerState
+public class CustomerGoingHome : ICustomerState
 {
     public void Enter(CustomerAI customer)
     {

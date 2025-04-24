@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Counter : BaseObject, ILevelable
+public class Counter : BaseObject, ILevelable, IStackChecker
 {
     #region 키값 및 레벨
     [SerializeField] public int _level;
@@ -154,5 +154,10 @@ public class Counter : BaseObject, ILevelable
         {
             //TODO: NPC 캐릭터들 고기 획득
         }
+    }
+
+    public bool CheckStack()
+    {
+        return _currentMeatCount > 0;
     }
 }

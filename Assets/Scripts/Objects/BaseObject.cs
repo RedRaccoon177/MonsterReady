@@ -52,3 +52,8 @@ public interface ILevelable
     void LevelUp();
 }
 
+public interface IStackChecker
+{
+    public bool CheckStack();
+}
+

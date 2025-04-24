@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Table : BaseObject, ILevelable
+public class Table : BaseObject, ILevelable , IStackChecker
 {
     [SerializeField] public int _level;
-    [SerializeField] public bool _isTrash { get; private set; }
-    [SerializeField] public int _trashCount { get; private set; }
+    [SerializeField] int _currentTrashCount;
 
     private void Start()
     {
-        _trashCount = 0;
-        _isTrash = false;
+        _currentTrashCount = 0;
     }
     public string GetKey()
     {
@@ -33,5 +31,10 @@ public class Table : BaseObject, ILevelable
     public int GetLevel()
     {
         return _level;
+    }
+
+    public bool CheckStack()
+    {
+        return _currentTrashCount > 0  ;
     }
 }

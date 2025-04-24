@@ -76,4 +76,16 @@ public class NodeManager : MonoBehaviour
             }
         }
     }
+    public Node GetNearestNodeOptimized(Vector3 worldPos)
+    {
+        // 좌표 기준으로 인덱스 추정
+        int x = Mathf.RoundToInt((worldPos.z - _minY) / 2f);
+        int y = Mathf.RoundToInt((worldPos.x - _minX) / 2f);
+
+        // 범위 클램프
+        x = Mathf.Clamp(x, 0, _nodeList.GetLength(0) - 1);
+        y = Mathf.Clamp(y, 0, _nodeList.GetLength(1) - 1);
+
+        return _nodeList[x, y];
+    }
 }

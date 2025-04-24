@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grill : BaseObject, ILevelable
+public class Grill : BaseObject, ILevelable,IStackChecker
 {
     #region 키값 및 레벨
     [SerializeField] public int _level;
@@ -193,6 +193,11 @@ public class Grill : BaseObject, ILevelable
             _meatSpawnLocation.position.y + index * _stackHeight,
             _meatSpawnLocation.position.z
         );
+    }
+
+    public bool CheckStack()
+    {
+        return _currentMeatCount > 0;
     }
     #endregion
 } 

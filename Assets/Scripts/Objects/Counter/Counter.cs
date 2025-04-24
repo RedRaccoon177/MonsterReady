@@ -33,6 +33,7 @@ public class Counter : BaseObject, ILevelable, IStackChecker
     [Header("오브젝트 풀링 연결")]
     [SerializeField] ObjectPooling _meatPool; // 고기를 관리하는 오브젝트 풀
 
+
     [Header("고기 프리펩")]
     [SerializeField] GameObject _meatPrefab;
 
@@ -51,6 +52,8 @@ public class Counter : BaseObject, ILevelable, IStackChecker
 
     //고기 굽는거 담는 코루틴
     Coroutine _grillRoutine;
+
+    [Header("카운터 옆에 달린 현금")] public Node _myNode; //npc 목적지로 설정할 카운터 노드 
 
     //플레이어 정보
     PlayerController _player;

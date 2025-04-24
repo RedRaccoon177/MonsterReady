@@ -35,7 +35,15 @@ public class Node : MonoBehaviour
                 continue; // 자기 자신 제외
 
             // 예외 태그는 충돌체로 판단하지 않음
-            if (hit.CompareTag("Player") || hit.CompareTag("Door") || hit.CompareTag("Plane") || hit.CompareTag("ExpandWall"))
+            if (
+                hit.CompareTag("Player") || 
+                hit.CompareTag("Door") ||
+                hit.CompareTag("Plane") ||
+                hit.CompareTag("ExpandWall") ||
+                hit.CompareTag("Grill") ||
+                hit.CompareTag("Counter") ||
+                hit.CompareTag("Table") 
+                )
                 continue;
 
             count++; // 무시할 수 없는 장애물 존재

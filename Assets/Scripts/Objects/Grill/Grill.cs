@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Grill : BaseObject, ILevelable,IStackChecker
 {
+    [Header("NPCAI 그릴 목적지")] public Node _myNode;
     #region 키값 및 레벨
     [SerializeField] public int _level;
 

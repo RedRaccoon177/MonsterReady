@@ -12,6 +12,9 @@ TagManager:
   - Door
   - Node
   - ExpandWall
+  - Grill
+  - Counter
+  - Table
   layers:
   - Default
   - TransparentFX

@@ -365,6 +365,7 @@ MonoBehaviour:
   _currentMeatCount: 0
   _stackHeight: 0.11
   _counterY: 1.65
+  _myNode: {fileID: 0}
   _goldObject: {fileID: 0}
 --- !u!65 &15381743
 BoxCollider:
@@ -1886,6 +1887,7 @@ MonoBehaviour:
   _currentMeatCount: 0
   _stackHeight: 0.11
   _counterY: 1.65
+  _myNode: {fileID: 0}
   _goldObject: {fileID: 0}
 --- !u!1 &224543832
 GameObject:
@@ -7362,6 +7364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyName: "\uADF8\uB9B41"
   _isActive: 0
+  _myNode: {fileID: 0}
   _level: 0
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
@@ -11094,6 +11097,7 @@ MonoBehaviour:
   _currentMeatCount: 0
   _stackHeight: 0.11
   _counterY: 1.65
+  _myNode: {fileID: 0}
   _goldObject: {fileID: 0}
 --- !u!1001 &1363231403
 PrefabInstance:
@@ -11239,8 +11243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyName: "\uADF8\uB9B42"
   _isActive: 0
+  _myNode: {fileID: 0}
   _level: 0
-  _meatPool: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatSpawnLocation: {fileID: 295109713}
   _maxMeatCount: 4

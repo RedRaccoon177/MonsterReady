@@ -14,9 +14,8 @@ public class CustomerAI : MonoBehaviour
 {
     ICustomerState _currentState;
 
-    IEnumerator Start()
+    public void Start()
     {
-        yield return null; // 한 프레임 기다림
         SetState(new CustomerMoveToCounterState());
     }
 

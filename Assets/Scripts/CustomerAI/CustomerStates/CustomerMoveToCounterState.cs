@@ -13,16 +13,16 @@ public class CustomerMoveToCounterState : ICustomerState
     public void Enter(CustomerAI customer)
     {
         // 현재 위치에서 가장 가까운 시작 노드 찾기
-        Node start = GetClosestNode(customer.transform.position);
+        Node _startNode = GetClosestNode(customer.transform.position);
 
         // 도착지 노드 설정 (예: 카운터 위치의 특정 좌표)
-        Node goal = NodeManager._instance._nodeList[15, 5];
+        Node _goalNode = NodeManager._instance._nodeList[15, 5];
 
-        if (start == null || goal == null)
+        if (_startNode == null || _goalNode == null)
             return;
 
         // A* 알고리즘으로 경로 계산
-        _path = AStarPathfinder.FindPath(start, goal);
+        _path = AStarPathfinder.FindPath(_startNode, _goalNode);
         _currentIndex = 0; // 경로 시작 인덱스 초기화
     }
 
@@ -34,28 +34,38 @@ public class CustomerMoveToCounterState : ICustomerState
         // 경로가 없거나 이미 도착했다면 다음 상태로 전환
         if (_path == null || _currentIndex >= _path.Count)
         {
+            //손님이 줄에 도착했는것
+            if(_path != null)
+            {
+                _path[_currentIndex - 1]._isCustomerWaiting = true;
+            }
+
             customer.SetState(new CustomerOrderAndWait()); // 다음 행동 상태로 전환 (주문 대기 등)
             return;
         }
 
         // 다음 이동 목표 노드 설정
-        Node targetNode = _path[_currentIndex];
-        Vector3 targetPos = targetNode.transform.position;
-        float step = 3f * Time.deltaTime; // 프레임 기반 이동 거리 계산
+        Node _targetNode = _path[_currentIndex];
+        Vector3 _targetPos = _targetNode.transform.position;
+        float _step = 3f * Time.deltaTime; // 프레임 기반 이동 거리 계산
+
+        //앞에 노드에 손님이 줄서고 있다면?
+        if (_targetNode._isCustomerWaiting)
+        {
+            //손님이 잠시 대기
+            customer.SetState(new CustomerWaitState());
+        }
 
         // 손님을 다음 노드 위치로 이동시킴
-        customer.transform.position = Vector3.MoveTowards(customer.transform.position, targetPos, step);
+        customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
 
         // 목표 위치에 거의 도착했다면 다음 노드로 전환
-        if (Vector3.Distance(customer.transform.position, targetPos) < 0.1f)
+        if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
         {
             _currentIndex++;
         }
-    }
+    }   
 
-    /// <summary>
-    /// 상태 종료 시 호출. 현재는 처리 없음
-    /// </summary>
     public void Exit(CustomerAI customer) { }
 
     /// <summary>
@@ -63,39 +73,37 @@ public class CustomerMoveToCounterState : ICustomerState
     /// </summary>
     /// <param name="pos">현재 손님의 위치</param>
     /// <returns>가장 가까운 Node</returns>
-    private Node GetClosestNode(Vector3 pos)
+    Node GetClosestNode(Vector3 pos)
     {
-        float minDist = float.MaxValue;
-        Node closest = null;
+        //초기값 최대로
+        float _minDist = float.MaxValue;
+        Node _closestNode = null;
 
-        foreach (Node node in NodeManager._instance._nodeList)
+        foreach (Node _node in NodeManager._instance._nodeList)
         {
-            if (node == null)
+            if (_node == null)
             {
                 Debug.Log("null node 발견됨");
                 continue;
             }
 
-            if (!node._isWalkale)
+            if (!_node._isWalkale)
             {
-                Debug.DrawLine(pos, node.transform.position, Color.red, 2f); // 빨간선
                 continue;
             }
 
-            Debug.DrawLine(pos, node.transform.position, Color.green, 2f); // 유효한 노드: 초록선
-
-            float dist = Vector3.Distance(pos, node.transform.position);
-            if (dist < minDist)
+            float _dist = Vector3.Distance(pos, _node.transform.position);
+            if (_dist < _minDist)
             {
-                minDist = dist;
-                closest = node;
+                _minDist = _dist;
+                _closestNode = _node;
             }
         } 
 
-        if (closest == null)
+        if (_closestNode == null)
             Debug.LogError("GetClosestNode(): 유효한 노드가 없음");
 
-        return closest;
+        return _closestNode;
     }
 
 }

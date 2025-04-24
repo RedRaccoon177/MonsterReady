@@ -17,6 +17,9 @@ public class Node : MonoBehaviour
 
     // 노드의 그리드 상 좌표 (A*에서 거리 계산용으로 사용)
     [SerializeField] Vector2Int _gridPos;
+
+    // 손님의 대기 유무
+    public bool _isCustomerWaiting;
     #endregion
 
     void Start()
@@ -85,23 +88,23 @@ public class Node : MonoBehaviour
     public void ConnectionNodes()
     {
         // 8방향 오프셋
-        Vector2Int[] offsets = new Vector2Int[]
+        Vector2Int[] _offsets = new Vector2Int[]
         {
         new Vector2Int(-1, -1), new Vector2Int(-1, 0), new Vector2Int(-1, 1),
         new Vector2Int(0, -1),                     new Vector2Int(0, 1),
         new Vector2Int(1, -1),  new Vector2Int(1, 0),  new Vector2Int(1, 1)
         };
 
-        foreach (var offset in offsets)
+        foreach (var _offset in _offsets)
         {
-            int newX = _gridPos.x + offset.x;
-            int newY = _gridPos.y + offset.y;
+            int _newX = _gridPos.x + _offset.x;
+            int _newY = _gridPos.y + _offset.y;
 
             // 배열 범위 체크
-            if (newX >= 0 && newX < NodeManager._instance._nodeList.GetLength(0) &&
-                newY >= 0 && newY < NodeManager._instance._nodeList.GetLength(1))
+            if (_newX >= 0 && _newX < NodeManager._instance._nodeList.GetLength(0) &&
+                _newY >= 0 && _newY < NodeManager._instance._nodeList.GetLength(1))
             {
-                Node neighbor = NodeManager._instance._nodeList[newX, newY];
+                Node neighbor = NodeManager._instance._nodeList[_newX, _newY];
 
                 //이동 가능한 노드만 연결
                 if (neighbor != null && neighbor._isWalkale && !_connectionNodes.Contains(neighbor))

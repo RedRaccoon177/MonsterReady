@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -161,6 +161,7 @@ MonoBehaviour:
   - {fileID: 257790184}
   - {fileID: 807371085}
   _gridPos: {x: 8, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &357234
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -314,6 +315,7 @@ MonoBehaviour:
   - {fileID: 1111741313}
   - {fileID: 1002872838}
   _gridPos: {x: 10, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &4300312
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -574,6 +576,7 @@ MonoBehaviour:
   - {fileID: 1698662861}
   - {fileID: 1029522038}
   _gridPos: {x: 12, y: 4}
+  _isCustomerWaiting: 0
 --- !u!135 &6878807
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -689,6 +692,7 @@ MonoBehaviour:
   - {fileID: 1662185098}
   - {fileID: 374007996}
   _gridPos: {x: 10, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &9312039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -977,7 +981,6 @@ MonoBehaviour:
   _keyName: "\uCE74\uC6B4\uD1301"
   _isActive: 1
   _level: 0
-  _nodeGridNum: {x: 0, y: 0}
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatSpawnLocation: {fileID: 15381737}
@@ -1069,6 +1072,7 @@ MonoBehaviour:
   - {fileID: 1588587968}
   - {fileID: 911638929}
   _gridPos: {x: 4, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &19239027
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1219,6 +1223,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 958130261}
   _gridPos: {x: 22, y: 5}
+  _isCustomerWaiting: 0
 --- !u!135 &20248537
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1621,6 +1626,7 @@ MonoBehaviour:
   - {fileID: 674423204}
   - {fileID: 96696753}
   _gridPos: {x: 16, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &32554648
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2008,6 +2014,7 @@ MonoBehaviour:
   - {fileID: 1432822006}
   - {fileID: 41398581}
   _gridPos: {x: 10, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &40331181
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2203,6 +2210,7 @@ MonoBehaviour:
   - {fileID: 187769566}
   - {fileID: 365320735}
   _gridPos: {x: 9, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &40535810
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2318,6 +2326,7 @@ MonoBehaviour:
   - {fileID: 1743503891}
   - {fileID: 1961681993}
   _gridPos: {x: 11, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &41398582
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2512,6 +2521,7 @@ MonoBehaviour:
   - {fileID: 1043148222}
   - {fileID: 1605241747}
   _gridPos: {x: 21, y: 9}
+  _isCustomerWaiting: 0
 --- !u!135 &47351644
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2664,6 +2674,7 @@ MonoBehaviour:
   - {fileID: 924401149}
   - {fileID: 415519255}
   _gridPos: {x: 21, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &49316476
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2818,6 +2829,7 @@ MonoBehaviour:
   - {fileID: 458233628}
   - {fileID: 1463784678}
   _gridPos: {x: 12, y: 16}
+  _isCustomerWaiting: 0
 --- !u!135 &50181217
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2929,6 +2941,7 @@ MonoBehaviour:
   - {fileID: 1399158917}
   - {fileID: 1818438083}
   _gridPos: {x: 11, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &55775676
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3126,6 +3139,7 @@ MonoBehaviour:
   - {fileID: 530413231}
   - {fileID: 1192954040}
   _gridPos: {x: 13, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &57686396
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3234,6 +3248,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1377553090}
   _gridPos: {x: 5, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &58016736
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3391,6 +3406,7 @@ MonoBehaviour:
   - {fileID: 207832200}
   - {fileID: 1093875900}
   _gridPos: {x: 18, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &58912939
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3545,6 +3561,7 @@ MonoBehaviour:
   - {fileID: 629152855}
   - {fileID: 791290981}
   _gridPos: {x: 0, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &60014225
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3700,6 +3717,7 @@ MonoBehaviour:
   - {fileID: 351975828}
   - {fileID: 807503317}
   _gridPos: {x: 21, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &61846674
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3936,6 +3954,7 @@ MonoBehaviour:
   - {fileID: 926673250}
   - {fileID: 152765529}
   _gridPos: {x: 16, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &67823648
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4132,6 +4151,7 @@ MonoBehaviour:
   - {fileID: 770520453}
   - {fileID: 953325217}
   _gridPos: {x: 21, y: 15}
+  _isCustomerWaiting: 0
 --- !u!135 &71455031
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4243,6 +4263,7 @@ MonoBehaviour:
   - {fileID: 333743157}
   - {fileID: 1803182684}
   _gridPos: {x: 0, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &73336716
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4593,6 +4614,7 @@ MonoBehaviour:
   - {fileID: 2119025578}
   - {fileID: 586902051}
   _gridPos: {x: 17, y: 3}
+  _isCustomerWaiting: 0
 --- !u!135 &78398110
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4745,6 +4767,7 @@ MonoBehaviour:
   - {fileID: 1605241747}
   - {fileID: 1784408307}
   _gridPos: {x: 21, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &79116024
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4979,6 +5002,7 @@ MonoBehaviour:
   - {fileID: 807371085}
   - {fileID: 514993316}
   _gridPos: {x: 10, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &90397993
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5135,6 +5159,7 @@ MonoBehaviour:
   - {fileID: 350724483}
   - {fileID: 188947221}
   _gridPos: {x: 17, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &96696754
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5332,6 +5357,7 @@ MonoBehaviour:
   - {fileID: 773461446}
   - {fileID: 1671542882}
   _gridPos: {x: 4, y: 18}
+  _isCustomerWaiting: 0
 --- !u!135 &99361048
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5604,6 +5630,7 @@ MonoBehaviour:
   - {fileID: 894628025}
   - {fileID: 1094723776}
   _gridPos: {x: 8, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &105140558
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5759,6 +5786,7 @@ MonoBehaviour:
   - {fileID: 170611513}
   - {fileID: 112825031}
   _gridPos: {x: 18, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &111288476
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5911,6 +5939,7 @@ MonoBehaviour:
   - {fileID: 411722702}
   - {fileID: 883857698}
   _gridPos: {x: 20, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &111665430
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6065,6 +6094,7 @@ MonoBehaviour:
   - {fileID: 278167975}
   - {fileID: 1215686140}
   _gridPos: {x: 19, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &112825032
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6262,6 +6292,7 @@ MonoBehaviour:
   - {fileID: 2069205860}
   - {fileID: 773461446}
   _gridPos: {x: 4, y: 17}
+  _isCustomerWaiting: 0
 --- !u!135 &127048840
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6374,6 +6405,7 @@ MonoBehaviour:
   - {fileID: 1785918203}
   - {fileID: 2052495087}
   _gridPos: {x: 20, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &132597735
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6652,6 +6684,7 @@ MonoBehaviour:
   - {fileID: 810325654}
   - {fileID: 1676190677}
   _gridPos: {x: 3, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &138199938
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6808,6 +6841,7 @@ MonoBehaviour:
   - {fileID: 1182897388}
   - {fileID: 105140557}
   _gridPos: {x: 7, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &145211230
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6965,6 +6999,7 @@ MonoBehaviour:
   - {fileID: 41398581}
   - {fileID: 1607287759}
   _gridPos: {x: 10, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &145978605
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7122,6 +7157,7 @@ MonoBehaviour:
   - {fileID: 730378179}
   - {fileID: 679342821}
   _gridPos: {x: 20, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &146963982
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7400,6 +7436,7 @@ MonoBehaviour:
   - {fileID: 617615285}
   - {fileID: 1688382849}
   _gridPos: {x: 17, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &152765530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7557,6 +7594,7 @@ MonoBehaviour:
   - {fileID: 2031918304}
   - {fileID: 698549497}
   _gridPos: {x: 2, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &165761177
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7712,6 +7750,7 @@ MonoBehaviour:
   - {fileID: 286700893}
   - {fileID: 254718225}
   _gridPos: {x: 18, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &170611514
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7866,6 +7905,7 @@ MonoBehaviour:
   - {fileID: 1131748916}
   - {fileID: 835944649}
   _gridPos: {x: 1, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &174975957
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8020,6 +8060,7 @@ MonoBehaviour:
   - {fileID: 1845357709}
   - {fileID: 1908189624}
   _gridPos: {x: 3, y: 19}
+  _isCustomerWaiting: 0
 --- !u!54 &175338789
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8280,6 +8321,7 @@ MonoBehaviour:
   - {fileID: 807371085}
   - {fileID: 90397992}
   _gridPos: {x: 9, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &177093116
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8393,6 +8435,7 @@ MonoBehaviour:
   - {fileID: 784721285}
   - {fileID: 2003233361}
   _gridPos: {x: 15, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &177494572
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8545,6 +8588,7 @@ MonoBehaviour:
   - {fileID: 1234703896}
   - {fileID: 868517711}
   _gridPos: {x: 20, y: 2}
+  _isCustomerWaiting: 0
 --- !u!54 &184902153
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8699,6 +8743,7 @@ MonoBehaviour:
   - {fileID: 836409731}
   - {fileID: 1503119616}
   _gridPos: {x: 10, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &187769567
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8856,6 +8901,7 @@ MonoBehaviour:
   - {fileID: 591118711}
   - {fileID: 350923881}
   _gridPos: {x: 18, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &188947222
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9021,7 +9067,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 13, y: 13}
 --- !u!65 &195587709
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9155,7 +9200,6 @@ MonoBehaviour:
   _keyName: "\uCE74\uC6B4\uD1303"
   _isActive: 0
   _level: 0
-  _nodeGridNum: {x: 0, y: 0}
   _meatPool: {fileID: 0}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatSpawnLocation: {fileID: 202999175}
@@ -9227,6 +9271,7 @@ MonoBehaviour:
   - {fileID: 836409731}
   - {fileID: 1503119616}
   _gridPos: {x: 10, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &204294649
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9384,6 +9429,7 @@ MonoBehaviour:
   - {fileID: 1203557303}
   - {fileID: 883857698}
   _gridPos: {x: 19, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &207832201
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9538,6 +9584,7 @@ MonoBehaviour:
   - {fileID: 1742476403}
   - {fileID: 306539168}
   _gridPos: {x: 0, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &213152081
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9695,6 +9742,7 @@ MonoBehaviour:
   - {fileID: 896199713}
   - {fileID: 58912938}
   _gridPos: {x: 17, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &214596437
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9891,6 +9939,7 @@ MonoBehaviour:
   - {fileID: 1671542882}
   - {fileID: 664407380}
   _gridPos: {x: 4, y: 20}
+  _isCustomerWaiting: 0
 --- !u!135 &219331219
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10041,6 +10090,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1603095485}
   _gridPos: {x: 8, y: 9}
+  _isCustomerWaiting: 0
 --- !u!135 &220176565
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10154,6 +10204,7 @@ MonoBehaviour:
   - {fileID: 338161206}
   - {fileID: 567277584}
   _gridPos: {x: 4, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &220613868
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10381,6 +10432,7 @@ MonoBehaviour:
   - {fileID: 1179619607}
   - {fileID: 237666024}
   _gridPos: {x: 11, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &229779319
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10492,6 +10544,7 @@ MonoBehaviour:
   - {fileID: 886907954}
   - {fileID: 808340940}
   _gridPos: {x: 12, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &237028292
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10645,6 +10698,7 @@ MonoBehaviour:
   - {fileID: 1064900773}
   - {fileID: 2037078132}
   _gridPos: {x: 10, y: 11}
+  _isCustomerWaiting: 0
 --- !u!54 &237666025
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10842,6 +10896,7 @@ MonoBehaviour:
   - {fileID: 338161206}
   - {fileID: 567277584}
   _gridPos: {x: 4, y: 6}
+  _isCustomerWaiting: 0
 --- !u!135 &239914647
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11019,6 +11074,7 @@ MonoBehaviour:
   - {fileID: 1913757156}
   - {fileID: 1652408844}
   _gridPos: {x: 11, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &243700204
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11298,6 +11354,7 @@ MonoBehaviour:
   - {fileID: 928389566}
   - {fileID: 629423540}
   _gridPos: {x: 7, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &253346648
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11449,6 +11506,7 @@ MonoBehaviour:
   - {fileID: 170611513}
   - {fileID: 286700893}
   _gridPos: {x: 19, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &254718226
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11643,6 +11701,7 @@ MonoBehaviour:
   - {fileID: 1619960982}
   - {fileID: 924401149}
   _gridPos: {x: 21, y: 12}
+  _isCustomerWaiting: 0
 --- !u!135 &255147427
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11752,6 +11811,7 @@ MonoBehaviour:
   - {fileID: 273182287}
   - {fileID: 357233}
   _gridPos: {x: 7, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &257790185
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12090,6 +12150,7 @@ MonoBehaviour:
   - {fileID: 1375018206}
   - {fileID: 785069708}
   _gridPos: {x: 18, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &261694729
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12245,6 +12306,7 @@ MonoBehaviour:
   - {fileID: 204294648}
   - {fileID: 187769566}
   _gridPos: {x: 9, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &266141490
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12644,6 +12706,7 @@ MonoBehaviour:
   - {fileID: 1544657131}
   - {fileID: 257790184}
   _gridPos: {x: 6, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &273182288
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12984,6 +13047,7 @@ MonoBehaviour:
   - {fileID: 112825031}
   - {fileID: 1215686140}
   _gridPos: {x: 19, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &278167976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13141,6 +13205,7 @@ MonoBehaviour:
   - {fileID: 2041414849}
   - {fileID: 740194283}
   _gridPos: {x: 7, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &281037371
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13296,6 +13361,7 @@ MonoBehaviour:
   - {fileID: 40331180}
   - {fileID: 145978604}
   _gridPos: {x: 9, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &283896690
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13509,6 +13575,7 @@ MonoBehaviour:
   - {fileID: 785069708}
   - {fileID: 1722221236}
   _gridPos: {x: 20, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &285488875
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13663,6 +13730,7 @@ MonoBehaviour:
   - {fileID: 170611513}
   - {fileID: 254718225}
   _gridPos: {x: 18, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &286700894
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13985,6 +14053,7 @@ MonoBehaviour:
   - {fileID: 1167718884}
   - {fileID: 2006639323}
   _gridPos: {x: 13, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &295736720
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14139,6 +14208,7 @@ MonoBehaviour:
   - {fileID: 1841459504}
   - {fileID: 333743157}
   _gridPos: {x: 0, y: 2}
+  _isCustomerWaiting: 0
 --- !u!54 &299714636
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14396,6 +14466,7 @@ MonoBehaviour:
   - {fileID: 1402013052}
   - {fileID: 639344231}
   _gridPos: {x: 4, y: 9}
+  _isCustomerWaiting: 0
 --- !u!135 &302786016
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14581,6 +14652,7 @@ MonoBehaviour:
   - {fileID: 1136087894}
   - {fileID: 1592926069}
   _gridPos: {x: 1, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &306539169
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14777,6 +14849,7 @@ MonoBehaviour:
   - {fileID: 184902152}
   - {fileID: 1722221236}
   _gridPos: {x: 20, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &315316099
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14888,6 +14961,7 @@ MonoBehaviour:
   - {fileID: 1077710777}
   - {fileID: 4300311}
   _gridPos: {x: 9, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &318229697
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15107,6 +15181,7 @@ MonoBehaviour:
   - {fileID: 1937941231}
   - {fileID: 1147065748}
   _gridPos: {x: 14, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &318795658
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15261,6 +15336,7 @@ MonoBehaviour:
   - {fileID: 718811463}
   - {fileID: 2041414849}
   _gridPos: {x: 7, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &322650507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15557,6 +15633,7 @@ MonoBehaviour:
   - {fileID: 751653174}
   - {fileID: 1685355444}
   _gridPos: {x: 6, y: 7}
+  _isCustomerWaiting: 0
 --- !u!135 &329763177
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15672,6 +15749,7 @@ MonoBehaviour:
   - {fileID: 1948926971}
   - {fileID: 1615839062}
   _gridPos: {x: 1, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &331150719
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15823,6 +15901,7 @@ MonoBehaviour:
   - {fileID: 995138864}
   - {fileID: 1767749900}
   _gridPos: {x: 13, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &331202682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15980,6 +16059,7 @@ MonoBehaviour:
   - {fileID: 1091641972}
   - {fileID: 364766832}
   _gridPos: {x: 1, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &333743158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16132,6 +16212,7 @@ MonoBehaviour:
   - {fileID: 940019863}
   - {fileID: 1698662861}
   _gridPos: {x: 12, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &336050034
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16285,6 +16366,7 @@ MonoBehaviour:
   - {fileID: 1876247603}
   - {fileID: 2007301868}
   _gridPos: {x: 3, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &337478226
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16440,6 +16522,7 @@ MonoBehaviour:
   - {fileID: 1721876108}
   - {fileID: 751653174}
   _gridPos: {x: 5, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &338161207
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16674,6 +16757,7 @@ MonoBehaviour:
   - {fileID: 1324665139}
   - {fileID: 1077710777}
   _gridPos: {x: 9, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &339982698
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16786,6 +16870,7 @@ MonoBehaviour:
   - {fileID: 1443420034}
   - {fileID: 1061240896}
   _gridPos: {x: 22, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &340708636
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17015,6 +17100,7 @@ MonoBehaviour:
   - {fileID: 1250650050}
   - {fileID: 591118711}
   _gridPos: {x: 18, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &350724484
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17241,6 +17327,7 @@ MonoBehaviour:
   - {fileID: 1279570876}
   - {fileID: 1203557303}
   _gridPos: {x: 19, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &350923882
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17517,6 +17604,7 @@ MonoBehaviour:
   - {fileID: 951144372}
   - {fileID: 807503317}
   _gridPos: {x: 22, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &351975829
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17673,6 +17761,7 @@ MonoBehaviour:
   - {fileID: 1821525313}
   - {fileID: 1201760750}
   _gridPos: {x: 14, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &357760855
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17889,6 +17978,7 @@ MonoBehaviour:
   - {fileID: 1217319889}
   - {fileID: 177494571}
   _gridPos: {x: 15, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &363131578
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18044,6 +18134,7 @@ MonoBehaviour:
   - {fileID: 1676190677}
   - {fileID: 2001882560}
   _gridPos: {x: 2, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &364766833
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18196,6 +18287,7 @@ MonoBehaviour:
   - {fileID: 426821766}
   - {fileID: 243700203}
   _gridPos: {x: 10, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &365320736
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18350,6 +18442,7 @@ MonoBehaviour:
   - {fileID: 581171801}
   - {fileID: 1831906564}
   _gridPos: {x: 0, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &368734779
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18541,11 +18634,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4985280301865612, guid: 379fd31c3e1844749aec583bb7aea46f, type: 3}
   m_PrefabInstance: {fileID: 369744604}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &370601933 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4194070364360746, guid: 05ecb317a3ea6a147ac4b2eb6ced4dc4, type: 3}
-  m_PrefabInstance: {fileID: 1011018656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &374007995
 GameObject:
   m_ObjectHideFlags: 0
@@ -18589,6 +18677,7 @@ MonoBehaviour:
   - {fileID: 1399158917}
   - {fileID: 1818438083}
   _gridPos: {x: 11, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &374007997
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18746,6 +18835,7 @@ MonoBehaviour:
   - {fileID: 96696753}
   - {fileID: 1772809649}
   _gridPos: {x: 16, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &382421417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18897,6 +18987,7 @@ MonoBehaviour:
   - {fileID: 1342793835}
   - {fileID: 1643567989}
   _gridPos: {x: 15, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &385799857
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19131,6 +19222,7 @@ MonoBehaviour:
   - {fileID: 285488874}
   - {fileID: 184902152}
   _gridPos: {x: 19, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &387032010
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -19274,6 +19366,7 @@ MonoBehaviour:
   - {fileID: 1198826628}
   - {fileID: 331150718}
   _gridPos: {x: 0, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &393392721
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19428,6 +19521,7 @@ MonoBehaviour:
   - {fileID: 1467761772}
   - {fileID: 1260640442}
   _gridPos: {x: 5, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &402888097
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19648,6 +19742,7 @@ MonoBehaviour:
   - {fileID: 679514381}
   - {fileID: 1447454402}
   _gridPos: {x: 16, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &407795324
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19883,6 +19978,7 @@ MonoBehaviour:
   - {fileID: 1818114129}
   - {fileID: 1301146328}
   _gridPos: {x: 1, y: 1}
+  _isCustomerWaiting: 0
 --- !u!54 &411263347
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20037,6 +20133,7 @@ MonoBehaviour:
   - {fileID: 883857698}
   - {fileID: 111665429}
   _gridPos: {x: 19, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &411722703
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20201,7 +20298,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 7, y: 12}
 --- !u!65 &414288477
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20261,6 +20357,7 @@ MonoBehaviour:
   - {fileID: 924401149}
   - {fileID: 770520453}
   _gridPos: {x: 22, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &415519256
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20414,6 +20511,7 @@ MonoBehaviour:
   - {fileID: 1066990493}
   - {fileID: 1131207100}
   _gridPos: {x: 3, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &424155578
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20608,6 +20706,7 @@ MonoBehaviour:
   - {fileID: 1784408307}
   - {fileID: 1619960982}
   _gridPos: {x: 21, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &426258055
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20720,6 +20819,7 @@ MonoBehaviour:
   - {fileID: 1467661714}
   - {fileID: 1913757156}
   _gridPos: {x: 11, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &426821767
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20917,6 +21017,7 @@ MonoBehaviour:
   - {fileID: 953325217}
   - {fileID: 1188735644}
   _gridPos: {x: 21, y: 16}
+  _isCustomerWaiting: 0
 --- !u!135 &426936146
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21195,6 +21296,7 @@ MonoBehaviour:
   - {fileID: 350724483}
   - {fileID: 1250650050}
   _gridPos: {x: 18, y: 12}
+  _isCustomerWaiting: 0
 --- !u!135 &430705004
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21348,6 +21450,7 @@ MonoBehaviour:
   - {fileID: 1645008219}
   - {fileID: 639344231}
   _gridPos: {x: 4, y: 8}
+  _isCustomerWaiting: 0
 --- !u!135 &431748642
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21597,6 +21700,7 @@ MonoBehaviour:
   - {fileID: 1250650050}
   - {fileID: 591118711}
   _gridPos: {x: 20, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &439367214
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21749,6 +21853,7 @@ MonoBehaviour:
   - {fileID: 90397992}
   - {fileID: 514993316}
   _gridPos: {x: 10, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &440228274
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21902,6 +22007,7 @@ MonoBehaviour:
   - {fileID: 785069708}
   - {fileID: 783606443}
   _gridPos: {x: 18, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &444231892
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -22208,6 +22314,7 @@ MonoBehaviour:
   - {fileID: 679514381}
   - {fileID: 1447454402}
   _gridPos: {x: 16, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &451185267
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22359,6 +22466,7 @@ MonoBehaviour:
   - {fileID: 1615012253}
   - {fileID: 859345345}
   _gridPos: {x: 8, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &452614900
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22553,6 +22661,7 @@ MonoBehaviour:
   - {fileID: 112825031}
   - {fileID: 1215686140}
   _gridPos: {x: 20, y: 7}
+  _isCustomerWaiting: 0
 --- !u!135 &453781299
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -22666,6 +22775,7 @@ MonoBehaviour:
   - {fileID: 374007996}
   - {fileID: 55775675}
   _gridPos: {x: 10, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &457902905
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22819,6 +22929,7 @@ MonoBehaviour:
   - {fileID: 1463784678}
   - {fileID: 357760854}
   _gridPos: {x: 13, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &458233629
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23047,6 +23158,7 @@ MonoBehaviour:
   - {fileID: 1201760750}
   - {fileID: 1479595058}
   _gridPos: {x: 14, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &463436505
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23199,6 +23311,7 @@ MonoBehaviour:
   - {fileID: 1375018206}
   - {fileID: 261694728}
   _gridPos: {x: 17, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &473168775
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23373,6 +23486,7 @@ MonoBehaviour:
   - {fileID: 829775497}
   - {fileID: 1286876604}
   _gridPos: {x: 0, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &476939007
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23567,6 +23681,7 @@ MonoBehaviour:
   - {fileID: 257790184}
   - {fileID: 357233}
   _gridPos: {x: 7, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &479103331
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23865,6 +23980,7 @@ MonoBehaviour:
   - {fileID: 41398581}
   - {fileID: 1607287759}
   _gridPos: {x: 10, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &489515020
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24058,6 +24174,7 @@ MonoBehaviour:
   - {fileID: 1383776218}
   - {fileID: 2126779166}
   _gridPos: {x: 5, y: 14}
+  _isCustomerWaiting: 0
 --- !u!135 &492436141
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -24173,6 +24290,7 @@ MonoBehaviour:
   - {fileID: 1785918203}
   - {fileID: 2052495087}
   _gridPos: {x: 20, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &497052039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25055,6 +25173,7 @@ MonoBehaviour:
   - {fileID: 1542690930}
   - {fileID: 2102037809}
   _gridPos: {x: 0, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &501109390
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25212,6 +25331,7 @@ MonoBehaviour:
   - {fileID: 1480579412}
   - {fileID: 585884865}
   _gridPos: {x: 4, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &507727197
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25397,6 +25517,7 @@ MonoBehaviour:
   - {fileID: 90397992}
   - {fileID: 2124007026}
   _gridPos: {x: 11, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &514993317
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25548,6 +25669,7 @@ MonoBehaviour:
   - {fileID: 976178424}
   - {fileID: 318229696}
   _gridPos: {x: 8, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &516571611
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25703,6 +25825,7 @@ MonoBehaviour:
   - {fileID: 594686726}
   - {fileID: 969739848}
   _gridPos: {x: 14, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &524378139
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25900,6 +26023,7 @@ MonoBehaviour:
   - {fileID: 1975977514}
   - {fileID: 2069205860}
   _gridPos: {x: 4, y: 16}
+  _isCustomerWaiting: 0
 --- !u!135 &525113407
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26079,6 +26203,7 @@ MonoBehaviour:
   - {fileID: 674423204}
   - {fileID: 286700893}
   _gridPos: {x: 17, y: 11}
+  _isCustomerWaiting: 0
 --- !u!54 &526404067
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26273,6 +26398,7 @@ MonoBehaviour:
   - {fileID: 336050033}
   - {fileID: 1698662861}
   _gridPos: {x: 12, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &528028378
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26425,6 +26551,7 @@ MonoBehaviour:
   - {fileID: 1741316345}
   - {fileID: 958130261}
   _gridPos: {x: 21, y: 4}
+  _isCustomerWaiting: 0
 --- !u!135 &529874264
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26537,6 +26664,7 @@ MonoBehaviour:
   - {fileID: 1821525313}
   - {fileID: 1201760750}
   _gridPos: {x: 14, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &530413232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26730,6 +26858,7 @@ MonoBehaviour:
   - {fileID: 1682857773}
   - {fileID: 1603095485}
   _gridPos: {x: 7, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &530857043
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26842,6 +26971,7 @@ MonoBehaviour:
   - {fileID: 306539168}
   - {fileID: 1563732896}
   _gridPos: {x: 0, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &533478473
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27036,6 +27166,7 @@ MonoBehaviour:
   - {fileID: 331202681}
   - {fileID: 1767749900}
   _gridPos: {x: 12, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &535684988
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -27406,6 +27537,7 @@ MonoBehaviour:
   - {fileID: 1202477296}
   - {fileID: 1205013154}
   _gridPos: {x: 13, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &557896248
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27563,6 +27695,7 @@ MonoBehaviour:
   - {fileID: 867727030}
   - {fileID: 1627789307}
   _gridPos: {x: 1, y: 11}
+  _isCustomerWaiting: 0
 --- !u!54 &565632760
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27716,6 +27849,7 @@ MonoBehaviour:
   - {fileID: 1721876108}
   - {fileID: 751653174}
   _gridPos: {x: 5, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &567277585
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27938,6 +28072,7 @@ MonoBehaviour:
   - {fileID: 2004365848}
   - {fileID: 629423540}
   _gridPos: {x: 7, y: 19}
+  _isCustomerWaiting: 0
 --- !u!54 &575013072
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28130,6 +28265,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 112825031}
   _gridPos: {x: 20, y: 8}
+  _isCustomerWaiting: 0
 --- !u!135 &579659336
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -28245,6 +28381,7 @@ MonoBehaviour:
   - {fileID: 1989524244}
   - {fileID: 1812773711}
   _gridPos: {x: 1, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &581171802
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28501,6 +28638,7 @@ MonoBehaviour:
   - {fileID: 1615012253}
   - {fileID: 452614899}
   _gridPos: {x: 7, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &583664998
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -28613,6 +28751,7 @@ MonoBehaviour:
   - {fileID: 1260640442}
   - {fileID: 1334738311}
   _gridPos: {x: 5, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &585884866
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28769,6 +28908,7 @@ MonoBehaviour:
   - {fileID: 2103503506}
   - {fileID: 851158368}
   _gridPos: {x: 18, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &586902052
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29018,6 +29158,7 @@ MonoBehaviour:
   - {fileID: 1503119616}
   - {fileID: 426821766}
   _gridPos: {x: 10, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &589889784
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -29131,6 +29272,7 @@ MonoBehaviour:
   - {fileID: 350923881}
   - {fileID: 1279570876}
   _gridPos: {x: 19, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &591118712
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29393,6 +29535,7 @@ MonoBehaviour:
   - {fileID: 286700893}
   - {fileID: 254718225}
   _gridPos: {x: 18, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &591957224
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -29544,6 +29687,7 @@ MonoBehaviour:
   - {fileID: 365320735}
   - {fileID: 2087128194}
   _gridPos: {x: 9, y: 20}
+  _isCustomerWaiting: 0
 --- !u!135 &592358438
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -29657,6 +29801,7 @@ MonoBehaviour:
   - {fileID: 1965309038}
   - {fileID: 1868476277}
   _gridPos: {x: 15, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &594686727
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29850,6 +29995,7 @@ MonoBehaviour:
   - {fileID: 350724483}
   - {fileID: 1250650050}
   _gridPos: {x: 19, y: 12}
+  _isCustomerWaiting: 0
 --- !u!135 &597165694
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -30130,6 +30276,7 @@ MonoBehaviour:
   - {fileID: 940019863}
   - {fileID: 1679922701}
   _gridPos: {x: 10, y: 4}
+  _isCustomerWaiting: 0
 --- !u!135 &605573597
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -30284,6 +30431,7 @@ MonoBehaviour:
   - {fileID: 322650506}
   - {fileID: 718811463}
   _gridPos: {x: 7, y: 21}
+  _isCustomerWaiting: 0
 --- !u!135 &606285326
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -30435,6 +30583,7 @@ MonoBehaviour:
   - {fileID: 1579851427}
   - {fileID: 1043148222}
   _gridPos: {x: 21, y: 8}
+  _isCustomerWaiting: 0
 --- !u!135 &606968668
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -30546,6 +30695,7 @@ MonoBehaviour:
   - {fileID: 1738470055}
   - {fileID: 524378138}
   _gridPos: {x: 13, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &612081911
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30713,7 +30863,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 10, y: 14}
 --- !u!65 &616625220
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30857,6 +31006,7 @@ MonoBehaviour:
   - {fileID: 1813973277}
   - {fileID: 1975056051}
   _gridPos: {x: 18, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &617615286
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31009,6 +31159,7 @@ MonoBehaviour:
   - {fileID: 1897147424}
   - {fileID: 867712536}
   _gridPos: {x: 8, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &618020976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31166,6 +31317,7 @@ MonoBehaviour:
   - {fileID: 876220207}
   - {fileID: 1167718884}
   _gridPos: {x: 13, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &621007280
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31360,6 +31512,7 @@ MonoBehaviour:
   - {fileID: 1377553090}
   - {fileID: 1615012253}
   _gridPos: {x: 6, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &621859540
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -31475,6 +31628,7 @@ MonoBehaviour:
   - {fileID: 1615839062}
   - {fileID: 1131748916}
   _gridPos: {x: 1, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &629152856
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31630,6 +31784,7 @@ MonoBehaviour:
   - {fileID: 266141489}
   - {fileID: 1981050739}
   _gridPos: {x: 8, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &629423541
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31825,6 +31980,7 @@ MonoBehaviour:
   - {fileID: 105140557}
   - {fileID: 1979926423}
   _gridPos: {x: 7, y: 7}
+  _isCustomerWaiting: 0
 --- !u!135 &631328680
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -31947,7 +32103,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 7, y: 2}
 --- !u!65 &633785924
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32057,6 +32212,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1682857773}
   _gridPos: {x: 5, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &639344232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32211,6 +32367,7 @@ MonoBehaviour:
   - {fileID: 507727196}
   - {fileID: 1974227292}
   _gridPos: {x: 3, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &639846143
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32412,6 +32569,7 @@ MonoBehaviour:
   - {fileID: 411263346}
   - {fileID: 1841459504}
   _gridPos: {x: 0, y: 1}
+  _isCustomerWaiting: 0
 --- !u!54 &649046883
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32567,6 +32725,7 @@ MonoBehaviour:
   - {fileID: 424155577}
   - {fileID: 1131207100}
   _gridPos: {x: 2, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &649484137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32890,6 +33049,7 @@ MonoBehaviour:
   - {fileID: 863990447}
   - {fileID: 1467661714}
   _gridPos: {x: 11, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &661322112
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -33046,6 +33206,7 @@ MonoBehaviour:
   - {fileID: 237028291}
   - {fileID: 735931419}
   _gridPos: {x: 11, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &662930061
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -33199,6 +33360,7 @@ MonoBehaviour:
   - {fileID: 278167975}
   - {fileID: 1215686140}
   _gridPos: {x: 20, y: 5}
+  _isCustomerWaiting: 0
 --- !u!135 &663591779
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -33309,6 +33471,7 @@ MonoBehaviour:
   - {fileID: 838882367}
   - {fileID: 1696140662}
   _gridPos: {x: 5, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &664407381
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33612,6 +33775,7 @@ MonoBehaviour:
   - {fileID: 96696753}
   - {fileID: 350724483}
   _gridPos: {x: 17, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &674423205
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33808,6 +33972,7 @@ MonoBehaviour:
   - {fileID: 928389566}
   - {fileID: 266141489}
   _gridPos: {x: 8, y: 16}
+  _isCustomerWaiting: 0
 --- !u!135 &677463889
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -33923,6 +34088,7 @@ MonoBehaviour:
   - {fileID: 1443420034}
   - {fileID: 340708635}
   _gridPos: {x: 21, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &679342822
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34080,6 +34246,7 @@ MonoBehaviour:
   - {fileID: 2107601618}
   - {fileID: 1125568449}
   _gridPos: {x: 17, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &679514382
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34234,6 +34401,7 @@ MonoBehaviour:
   - {fileID: 1889035454}
   - {fileID: 1683740356}
   _gridPos: {x: 18, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &681830530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34524,7 +34692,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 13, y: 9}
 --- !u!65 &686416309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34597,7 +34764,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 7, y: 8}
 --- !u!65 &697027518
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34660,6 +34826,7 @@ MonoBehaviour:
   - {fileID: 2031918304}
   - {fileID: 1697447508}
   _gridPos: {x: 3, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &698549498
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34811,6 +34978,7 @@ MonoBehaviour:
   - {fileID: 2124007026}
   - {fileID: 1342793835}
   _gridPos: {x: 13, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &702780740
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35006,6 +35174,7 @@ MonoBehaviour:
   - {fileID: 1643567989}
   - {fileID: 1375018206}
   _gridPos: {x: 16, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &707839755
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -35119,6 +35288,7 @@ MonoBehaviour:
   - {fileID: 2068651789}
   - {fileID: 451185266}
   _gridPos: {x: 15, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &711709051
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35419,6 +35589,7 @@ MonoBehaviour:
   - {fileID: 283896689}
   - {fileID: 1112794766}
   _gridPos: {x: 8, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &718811464
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35576,6 +35747,7 @@ MonoBehaviour:
   - {fileID: 807503317}
   - {fileID: 1443420034}
   _gridPos: {x: 21, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &730378180
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35811,6 +35983,7 @@ MonoBehaviour:
   - {fileID: 1065932592}
   - {fileID: 253346647}
   _gridPos: {x: 6, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &734375801
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35964,6 +36137,7 @@ MonoBehaviour:
   - {fileID: 612081910}
   - {fileID: 1738470055}
   _gridPos: {x: 12, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &735931420
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36116,6 +36290,7 @@ MonoBehaviour:
   - {fileID: 886337291}
   - {fileID: 1803182684}
   _gridPos: {x: 0, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &739071933
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36270,6 +36445,7 @@ MonoBehaviour:
   - {fileID: 1112794766}
   - {fileID: 1347481405}
   _gridPos: {x: 8, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &740194284
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36466,6 +36642,7 @@ MonoBehaviour:
   - {fileID: 1803182684}
   - {fileID: 364766832}
   _gridPos: {x: 1, y: 5}
+  _isCustomerWaiting: 0
 --- !u!135 &743418564
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -36578,6 +36755,7 @@ MonoBehaviour:
   - {fileID: 145211229}
   - {fileID: 1685355444}
   _gridPos: {x: 6, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &751653175
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36808,6 +36986,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1579851427}
   _gridPos: {x: 22, y: 7}
+  _isCustomerWaiting: 0
 --- !u!135 &769644422
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -36917,6 +37096,7 @@ MonoBehaviour:
   - {fileID: 415519255}
   - {fileID: 953325217}
   _gridPos: {x: 22, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &770520454
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37195,6 +37375,7 @@ MonoBehaviour:
   - {fileID: 1288362887}
   - {fileID: 838882367}
   _gridPos: {x: 5, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &773461447
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37443,6 +37624,7 @@ MonoBehaviour:
   - {fileID: 1588587968}
   - {fileID: 273182287}
   _gridPos: {x: 5, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &774937337
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -37556,6 +37738,7 @@ MonoBehaviour:
   - {fileID: 985986368}
   - {fileID: 1933235673}
   _gridPos: {x: 3, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &774943212
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37752,6 +37935,7 @@ MonoBehaviour:
   - {fileID: 1741316345}
   - {fileID: 958130261}
   _gridPos: {x: 21, y: 3}
+  _isCustomerWaiting: 0
 --- !u!135 &778443071
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -37867,6 +38051,7 @@ MonoBehaviour:
   - {fileID: 1767170585}
   - {fileID: 617615285}
   _gridPos: {x: 17, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &779466077
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38082,6 +38267,7 @@ MonoBehaviour:
   - {fileID: 184902152}
   - {fileID: 868517711}
   _gridPos: {x: 19, y: 2}
+  _isCustomerWaiting: 0
 --- !u!54 &783606444
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38237,6 +38423,7 @@ MonoBehaviour:
   - {fileID: 2003233361}
   - {fileID: 1287704608}
   _gridPos: {x: 15, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &784721286
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38388,6 +38575,7 @@ MonoBehaviour:
   - {fileID: 261694728}
   - {fileID: 285488874}
   _gridPos: {x: 19, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &785069709
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38545,6 +38733,7 @@ MonoBehaviour:
   - {fileID: 1131748916}
   - {fileID: 835944649}
   _gridPos: {x: 1, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &791290982
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38738,6 +38927,7 @@ MonoBehaviour:
   - {fileID: 639344231}
   - {fileID: 1682857773}
   _gridPos: {x: 5, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &794279995
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -38892,6 +39082,7 @@ MonoBehaviour:
   - {fileID: 2092176565}
   - {fileID: 951144372}
   _gridPos: {x: 21, y: 18}
+  _isCustomerWaiting: 0
 --- !u!135 &798792703
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -39047,6 +39238,7 @@ MonoBehaviour:
   - {fileID: 1671542882}
   - {fileID: 664407380}
   _gridPos: {x: 4, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &799142187
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -39200,6 +39392,7 @@ MonoBehaviour:
   - {fileID: 1759057765}
   - {fileID: 58016735}
   _gridPos: {x: 4, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &803079350
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -39356,6 +39549,7 @@ MonoBehaviour:
   - {fileID: 1682936123}
   - {fileID: 1122054918}
   _gridPos: {x: 14, y: 9}
+  _isCustomerWaiting: 0
 --- !u!135 &805034854
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -39509,6 +39703,7 @@ MonoBehaviour:
   - {fileID: 1378853913}
   - {fileID: 1942776312}
   _gridPos: {x: 6, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &805441431
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -39663,6 +39858,7 @@ MonoBehaviour:
   - {fileID: 1696140662}
   - {fileID: 1467761772}
   _gridPos: {x: 5, y: 21}
+  _isCustomerWaiting: 0
 --- !u!135 &806940978
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -39772,6 +39968,7 @@ MonoBehaviour:
   - {fileID: 357233}
   - {fileID: 90397992}
   _gridPos: {x: 9, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &807371086
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -39926,6 +40123,7 @@ MonoBehaviour:
   - {fileID: 351975828}
   - {fileID: 1443420034}
   _gridPos: {x: 22, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &807503318
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40081,6 +40279,7 @@ MonoBehaviour:
   - {fileID: 1247206548}
   - {fileID: 524378138}
   _gridPos: {x: 13, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &808340941
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40359,6 +40558,7 @@ MonoBehaviour:
   - {fileID: 1876247603}
   - {fileID: 138199937}
   _gridPos: {x: 3, y: 2}
+  _isCustomerWaiting: 0
 --- !u!54 &810325655
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40653,6 +40853,7 @@ MonoBehaviour:
   - {fileID: 1167718884}
   - {fileID: 2006639323}
   _gridPos: {x: 13, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &822881609
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40810,6 +41011,7 @@ MonoBehaviour:
   - {fileID: 165761176}
   - {fileID: 2026602482}
   _gridPos: {x: 1, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &829775498
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41042,6 +41244,7 @@ MonoBehaviour:
   - {fileID: 1481924442}
   - {fileID: 639846142}
   _gridPos: {x: 2, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &835944650
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41197,6 +41400,7 @@ MonoBehaviour:
   - {fileID: 1442576328}
   - {fileID: 863990447}
   _gridPos: {x: 11, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &836409732
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41395,6 +41599,7 @@ MonoBehaviour:
   - {fileID: 1740165347}
   - {fileID: 1644542204}
   _gridPos: {x: 13, y: 4}
+  _isCustomerWaiting: 0
 --- !u!135 &837725464
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -41592,6 +41797,7 @@ MonoBehaviour:
   - {fileID: 575013071}
   - {fileID: 2004365848}
   _gridPos: {x: 6, y: 19}
+  _isCustomerWaiting: 0
 --- !u!54 &838882368
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41747,6 +41953,7 @@ MonoBehaviour:
   - {fileID: 1065932592}
   - {fileID: 928389566}
   _gridPos: {x: 7, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &843862423
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41902,6 +42109,7 @@ MonoBehaviour:
   - {fileID: 278167975}
   - {fileID: 1215686140}
   _gridPos: {x: 19, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &851158369
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42134,6 +42342,7 @@ MonoBehaviour:
   - {fileID: 357760854}
   - {fileID: 530413231}
   _gridPos: {x: 13, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &852237753
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42287,6 +42496,7 @@ MonoBehaviour:
   - {fileID: 1064900773}
   - {fileID: 1324665139}
   _gridPos: {x: 9, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &859345346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42544,6 +42754,7 @@ MonoBehaviour:
   - {fileID: 2031918304}
   - {fileID: 58016735}
   _gridPos: {x: 4, y: 12}
+  _isCustomerWaiting: 0
 --- !u!135 &861343106
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -42656,6 +42867,7 @@ MonoBehaviour:
   - {fileID: 1463784678}
   - {fileID: 852237752}
   _gridPos: {x: 12, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &863990448
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42808,6 +43020,7 @@ MonoBehaviour:
   - {fileID: 1897147424}
   - {fileID: 1755528522}
   _gridPos: {x: 9, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &867712537
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42965,6 +43178,7 @@ MonoBehaviour:
   - {fileID: 1756239249}
   - {fileID: 1759057765}
   _gridPos: {x: 2, y: 11}
+  _isCustomerWaiting: 0
 --- !u!54 &867727031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -43118,6 +43332,7 @@ MonoBehaviour:
   - {fileID: 2103503506}
   - {fileID: 184902152}
   _gridPos: {x: 20, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &868517712
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -43315,6 +43530,7 @@ MonoBehaviour:
   - {fileID: 2004365848}
   - {fileID: 322650506}
   _gridPos: {x: 6, y: 21}
+  _isCustomerWaiting: 0
 --- !u!135 &872229129
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -43512,6 +43728,7 @@ MonoBehaviour:
   - {fileID: 363131577}
   - {fileID: 177494571}
   _gridPos: {x: 14, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &876220208
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -43664,6 +43881,7 @@ MonoBehaviour:
   - {fileID: 1390306737}
   - {fileID: 1287089267}
   _gridPos: {x: 22, y: 1}
+  _isCustomerWaiting: 0
 --- !u!54 &878797346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -43859,6 +44077,7 @@ MonoBehaviour:
   - {fileID: 273182287}
   - {fileID: 257790184}
   _gridPos: {x: 6, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &879376171
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -43971,6 +44190,7 @@ MonoBehaviour:
   - {fileID: 1203557303}
   - {fileID: 111665429}
   _gridPos: {x: 20, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &883857699
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -44123,6 +44343,7 @@ MonoBehaviour:
   - {fileID: 501109389}
   - {fileID: 1542690930}
   _gridPos: {x: 0, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &886337292
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -44276,6 +44497,7 @@ MonoBehaviour:
   - {fileID: 808340940}
   - {fileID: 1247206548}
   _gridPos: {x: 13, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &886907955
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -44495,6 +44717,7 @@ MonoBehaviour:
   - {fileID: 1716154250}
   - {fileID: 1953032838}
   _gridPos: {x: 1, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &891085782
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -44653,8 +44876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyName: "\uADF8\uB9B41"
   _isActive: 0
-  _nodeGridNum: {x: 19, y: 9}
-  _myNodeY: 9
+  _myNode: {fileID: 0}
   _level: 0
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
@@ -44707,6 +44929,7 @@ MonoBehaviour:
   - {fileID: 9312038}
   - {fileID: 457902904}
   _gridPos: {x: 9, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &894628026
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -44864,6 +45087,7 @@ MonoBehaviour:
   - {fileID: 350923881}
   - {fileID: 207832200}
   _gridPos: {x: 18, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &896199714
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -45141,6 +45365,7 @@ MonoBehaviour:
   - {fileID: 1831906564}
   - {fileID: 565632759}
   _gridPos: {x: 0, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &905302912
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -45294,6 +45519,7 @@ MonoBehaviour:
   - {fileID: 1378853913}
   - {fileID: 1147947468}
   _gridPos: {x: 5, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &911638930
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -45448,6 +45674,7 @@ MonoBehaviour:
   - {fileID: 2041414849}
   - {fileID: 740194283}
   _gridPos: {x: 7, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &915667195
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -45646,6 +45873,7 @@ MonoBehaviour:
   - {fileID: 1964508509}
   - {fileID: 2002887763}
   _gridPos: {x: 14, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &919587287
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -45755,6 +45983,7 @@ MonoBehaviour:
   - {fileID: 1619960982}
   - {fileID: 415519255}
   _gridPos: {x: 22, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &924401150
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -45912,6 +46141,7 @@ MonoBehaviour:
   - {fileID: 617615285}
   - {fileID: 1688382849}
   _gridPos: {x: 17, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &926673251
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -46067,6 +46297,7 @@ MonoBehaviour:
   - {fileID: 266141489}
   - {fileID: 1981050739}
   _gridPos: {x: 8, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &928389567
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -46466,6 +46697,7 @@ MonoBehaviour:
   - {fileID: 711709050}
   - {fileID: 1821525313}
   _gridPos: {x: 14, y: 16}
+  _isCustomerWaiting: 0
 --- !u!135 &935042658
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -46620,6 +46852,7 @@ MonoBehaviour:
   - {fileID: 1002872838}
   - {fileID: 735931419}
   _gridPos: {x: 11, y: 15}
+  _isCustomerWaiting: 0
 --- !u!135 &936315082
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -46735,6 +46968,7 @@ MonoBehaviour:
   - {fileID: 851158368}
   - {fileID: 278167975}
   _gridPos: {x: 18, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &937290889
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -46890,6 +47124,7 @@ MonoBehaviour:
   - {fileID: 336050033}
   - {fileID: 1595187938}
   _gridPos: {x: 11, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &940019864
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47199,6 +47434,7 @@ MonoBehaviour:
   - {fileID: 331150718}
   - {fileID: 629152855}
   _gridPos: {x: 0, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &950577411
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47351,6 +47587,7 @@ MonoBehaviour:
   - {fileID: 2092176565}
   - {fileID: 351975828}
   _gridPos: {x: 22, y: 19}
+  _isCustomerWaiting: 0
 --- !u!54 &951144373
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47505,6 +47742,7 @@ MonoBehaviour:
   - {fileID: 337478225}
   - {fileID: 1876247603}
   _gridPos: {x: 2, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &952675983
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47656,6 +47894,7 @@ MonoBehaviour:
   - {fileID: 770520453}
   - {fileID: 1188735644}
   _gridPos: {x: 22, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &953325218
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47914,6 +48153,7 @@ MonoBehaviour:
   - {fileID: 1738470055}
   - {fileID: 458233628}
   _gridPos: {x: 12, y: 15}
+  _isCustomerWaiting: 0
 --- !u!135 &956096454
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -48022,6 +48262,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1741316345}
   _gridPos: {x: 22, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &958130262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48216,6 +48457,7 @@ MonoBehaviour:
   - {fileID: 783606443}
   - {fileID: 1234703896}
   _gridPos: {x: 18, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &962397404
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -48329,6 +48571,7 @@ MonoBehaviour:
   - {fileID: 1868476277}
   - {fileID: 2068651789}
   _gridPos: {x: 15, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &969739849
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48483,6 +48726,7 @@ MonoBehaviour:
   - {fileID: 61846673}
   - {fileID: 730378179}
   _gridPos: {x: 20, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &972587172
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48640,6 +48884,7 @@ MonoBehaviour:
   - {fileID: 58912938}
   - {fileID: 2107601618}
   _gridPos: {x: 17, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &974397070
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48859,6 +49104,7 @@ MonoBehaviour:
   - {fileID: 843862422}
   - {fileID: 516571610}
   _gridPos: {x: 7, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &976178425
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -49018,6 +49264,7 @@ MonoBehaviour:
   - {fileID: 1910095167}
   - {fileID: 829775497}
   _gridPos: {x: 0, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &984368695
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -49174,6 +49421,7 @@ MonoBehaviour:
   - {fileID: 1933235673}
   - {fileID: 507727196}
   _gridPos: {x: 3, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &985986369
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -49371,6 +49619,7 @@ MonoBehaviour:
   - {fileID: 407795323}
   - {fileID: 1520729236}
   _gridPos: {x: 15, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &990795715
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -49592,6 +49841,7 @@ MonoBehaviour:
   - {fileID: 911638929}
   - {fileID: 1378177406}
   _gridPos: {x: 4, y: 3}
+  _isCustomerWaiting: 0
 --- !u!135 &995113708
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -49703,6 +49953,7 @@ MonoBehaviour:
   - {fileID: 331202681}
   - {fileID: 2006639323}
   _gridPos: {x: 13, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &995138865
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -49860,6 +50111,7 @@ MonoBehaviour:
   - {fileID: 1131207100}
   - {fileID: 1645008219}
   _gridPos: {x: 2, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &995139155
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -50090,6 +50342,7 @@ MonoBehaviour:
   - {fileID: 4300311}
   - {fileID: 735931419}
   _gridPos: {x: 11, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &1002872839
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -50451,12 +50704,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyName: 
   _pickUpObject: 0
-  _maxMeat: 0
-  _currentMeat: 0
-  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
-  _meatPool: {fileID: 2111446580}
-  _stackHeight: 0.11
-  _meatSpawnLocation: {fileID: 370601933}
 --- !u!65 &1011018661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50586,6 +50833,7 @@ MonoBehaviour:
   - {fileID: 976178424}
   - {fileID: 516571610}
   _gridPos: {x: 7, y: 14}
+  _isCustomerWaiting: 0
 --- !u!135 &1015561847
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -50701,6 +50949,7 @@ MonoBehaviour:
   - {fileID: 621007279}
   - {fileID: 295736719}
   _gridPos: {x: 12, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &1018522017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -50973,6 +51222,7 @@ MonoBehaviour:
   - {fileID: 1682857773}
   - {fileID: 1603095485}
   _gridPos: {x: 6, y: 8}
+  _isCustomerWaiting: 0
 --- !u!135 &1028073014
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -51086,6 +51336,7 @@ MonoBehaviour:
   - {fileID: 1644542204}
   - {fileID: 876220207}
   _gridPos: {x: 13, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &1029522039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -51279,6 +51530,7 @@ MonoBehaviour:
   - {fileID: 58016735}
   - {fileID: 1377553090}
   _gridPos: {x: 5, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &1032257546
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -51556,6 +51808,7 @@ MonoBehaviour:
   - {fileID: 286700893}
   - {fileID: 254718225}
   _gridPos: {x: 19, y: 9}
+  _isCustomerWaiting: 0
 --- !u!135 &1039050377
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -51743,6 +51996,7 @@ MonoBehaviour:
   - {fileID: 1579851427}
   - {fileID: 1605241747}
   _gridPos: {x: 22, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &1043148223
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -51938,6 +52192,7 @@ MonoBehaviour:
   - {fileID: 452614899}
   - {fileID: 516571610}
   _gridPos: {x: 7, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &1043279231
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -52160,6 +52415,7 @@ MonoBehaviour:
   - {fileID: 1428799969}
   - {fileID: 1279765803}
   _gridPos: {x: 16, y: 7}
+  _isCustomerWaiting: 0
 --- !u!135 &1059188133
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -52312,6 +52568,7 @@ MonoBehaviour:
   - {fileID: 2052495087}
   - {fileID: 340708635}
   _gridPos: {x: 22, y: 24}
+  _isCustomerWaiting: 0
 --- !u!135 &1061240897
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -52466,6 +52723,7 @@ MonoBehaviour:
   - {fileID: 1383776218}
   - {fileID: 1975977514}
   _gridPos: {x: 4, y: 15}
+  _isCustomerWaiting: 0
 --- !u!135 &1061452352
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -52632,6 +52890,7 @@ MonoBehaviour:
   - {fileID: 664407380}
   - {fileID: 402888096}
   _gridPos: {x: 4, y: 21}
+  _isCustomerWaiting: 0
 --- !u!135 &1064808832
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -52743,6 +53002,7 @@ MonoBehaviour:
   - {fileID: 1324665139}
   - {fileID: 2037078132}
   _gridPos: {x: 10, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &1064900774
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -52900,6 +53160,7 @@ MonoBehaviour:
   - {fileID: 1908189624}
   - {fileID: 774943211}
   _gridPos: {x: 2, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1065029965
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -53054,6 +53315,7 @@ MonoBehaviour:
   - {fileID: 1198609901}
   - {fileID: 1198826628}
   _gridPos: {x: 0, y: 19}
+  _isCustomerWaiting: 0
 --- !u!54 &1065762898
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -53210,6 +53472,7 @@ MonoBehaviour:
   - {fileID: 928389566}
   - {fileID: 629423540}
   _gridPos: {x: 7, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &1065932593
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -53363,6 +53626,7 @@ MonoBehaviour:
   - {fileID: 424155577}
   - {fileID: 220613867}
   _gridPos: {x: 3, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &1066990494
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -53635,6 +53899,7 @@ MonoBehaviour:
   - {fileID: 514993316}
   - {fileID: 2124007026}
   _gridPos: {x: 11, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &1069294035
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -53790,6 +54055,7 @@ MonoBehaviour:
   - {fileID: 1188735644}
   - {fileID: 2092176565}
   _gridPos: {x: 21, y: 17}
+  _isCustomerWaiting: 0
 --- !u!135 &1071535427
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -53901,6 +54167,7 @@ MonoBehaviour:
   - {fileID: 4300311}
   - {fileID: 1002872838}
   _gridPos: {x: 10, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &1077710778
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -54096,6 +54363,7 @@ MonoBehaviour:
   - {fileID: 1631069918}
   - {fileID: 1585355754}
   _gridPos: {x: 13, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &1077887108
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -54246,6 +54514,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1603095485}
   _gridPos: {x: 8, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &1078083680
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -54535,6 +54804,7 @@ MonoBehaviour:
   - {fileID: 138199937}
   - {fileID: 1676190677}
   _gridPos: {x: 2, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &1091641973
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -54692,6 +54962,7 @@ MonoBehaviour:
   - {fileID: 883857698}
   - {fileID: 111665429}
   _gridPos: {x: 19, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &1093875901
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -54846,6 +55117,7 @@ MonoBehaviour:
   - {fileID: 9312038}
   - {fileID: 457902904}
   _gridPos: {x: 9, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &1094723777
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -55038,6 +55310,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1215686140}
   _gridPos: {x: 21, y: 6}
+  _isCustomerWaiting: 0
 --- !u!135 &1096035467
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -55362,6 +55635,7 @@ MonoBehaviour:
   - {fileID: 995138864}
   - {fileID: 331202681}
   _gridPos: {x: 12, y: 9}
+  _isCustomerWaiting: 0
 --- !u!135 &1102133644
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -55473,6 +55747,7 @@ MonoBehaviour:
   - {fileID: 204294648}
   - {fileID: 836409731}
   _gridPos: {x: 10, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &1111741314
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -55669,6 +55944,7 @@ MonoBehaviour:
   - {fileID: 237666024}
   - {fileID: 1064900773}
   _gridPos: {x: 9, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &1112047722
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -55784,6 +56060,7 @@ MonoBehaviour:
   - {fileID: 145978604}
   - {fileID: 489515019}
   _gridPos: {x: 9, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1112794767
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -55940,6 +56217,7 @@ MonoBehaviour:
   - {fileID: 382421416}
   - {fileID: 1965309038}
   _gridPos: {x: 15, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &1113598154
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -56134,6 +56412,7 @@ MonoBehaviour:
   - {fileID: 55775675}
   - {fileID: 1818438083}
   _gridPos: {x: 11, y: 9}
+  _isCustomerWaiting: 0
 --- !u!135 &1114933055
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -56370,6 +56649,7 @@ MonoBehaviour:
   - {fileID: 4300311}
   - {fileID: 1111741313}
   _gridPos: {x: 9, y: 15}
+  _isCustomerWaiting: 0
 --- !u!135 &1119494835
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -56487,6 +56767,7 @@ MonoBehaviour:
   - {fileID: 1935325778}
   - {fileID: 1756002026}
   _gridPos: {x: 15, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &1122054919
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -56641,6 +56922,7 @@ MonoBehaviour:
   - {fileID: 1093875900}
   - {fileID: 411722702}
   _gridPos: {x: 18, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &1125568450
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -56795,6 +57077,7 @@ MonoBehaviour:
   - {fileID: 424155577}
   - {fileID: 1645008219}
   _gridPos: {x: 3, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &1131207101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -56952,6 +57235,7 @@ MonoBehaviour:
   - {fileID: 1481924442}
   - {fileID: 639846142}
   _gridPos: {x: 2, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1131748917
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -57303,6 +57587,7 @@ MonoBehaviour:
   - {fileID: 1983142974}
   - {fileID: 1845357709}
   _gridPos: {x: 2, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &1136087895
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -57683,6 +57968,7 @@ MonoBehaviour:
   - {fileID: 1342793835}
   - {fileID: 1631069918}
   _gridPos: {x: 13, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &1141271942
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -57833,6 +58119,7 @@ MonoBehaviour:
   - {fileID: 1688864272}
   - {fileID: 1540586557}
   _gridPos: {x: 15, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1147065749
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -57989,6 +58276,7 @@ MonoBehaviour:
   - {fileID: 1942776312}
   - {fileID: 145211229}
   _gridPos: {x: 6, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &1147947469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -58244,6 +58532,7 @@ MonoBehaviour:
   - {fileID: 1179619607}
   - {fileID: 55775675}
   _gridPos: {x: 10, y: 9}
+  _isCustomerWaiting: 0
 --- !u!135 &1157760761
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -58421,6 +58710,7 @@ MonoBehaviour:
   - {fileID: 177494571}
   - {fileID: 784721285}
   _gridPos: {x: 14, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &1167718885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -58683,6 +58973,7 @@ MonoBehaviour:
   - {fileID: 2087128194}
   - {fileID: 40331180}
   _gridPos: {x: 9, y: 21}
+  _isCustomerWaiting: 0
 --- !u!135 &1170127833
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -58833,6 +59124,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1250650050}
   _gridPos: {x: 20, y: 12}
+  _isCustomerWaiting: 0
 --- !u!135 &1170578150
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -59033,7 +59325,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 13, y: 2}
 --- !u!65 &1175497744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59139,6 +59430,7 @@ MonoBehaviour:
   - {fileID: 852237752}
   - {fileID: 1621796887}
   _gridPos: {x: 12, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &1178544007
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -59247,6 +59539,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 237666024}
   _gridPos: {x: 10, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &1179619608
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -59402,6 +59695,7 @@ MonoBehaviour:
   - {fileID: 1460670952}
   - {fileID: 894628025}
   _gridPos: {x: 8, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &1182897389
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -59597,6 +59891,7 @@ MonoBehaviour:
   - {fileID: 718811463}
   - {fileID: 283896689}
   _gridPos: {x: 8, y: 21}
+  _isCustomerWaiting: 0
 --- !u!135 &1183887470
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -59828,6 +60123,7 @@ MonoBehaviour:
   - {fileID: 1131207100}
   - {fileID: 567277584}
   _gridPos: {x: 4, y: 7}
+  _isCustomerWaiting: 0
 --- !u!135 &1184864787
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -59937,6 +60233,7 @@ MonoBehaviour:
   - {fileID: 953325217}
   - {fileID: 2092176565}
   _gridPos: {x: 22, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &1188735645
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -60247,6 +60544,7 @@ MonoBehaviour:
   - {fileID: 1479595058}
   - {fileID: 1937941231}
   _gridPos: {x: 14, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1192954041
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -60404,6 +60702,7 @@ MonoBehaviour:
   - {fileID: 318795657}
   - {fileID: 1202477296}
   _gridPos: {x: 13, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &1194557732
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -60598,6 +60897,7 @@ MonoBehaviour:
   - {fileID: 867712536}
   - {fileID: 1755528522}
   _gridPos: {x: 9, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &1198453034
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -60713,6 +61013,7 @@ MonoBehaviour:
   - {fileID: 1940366020}
   - {fileID: 1065029964}
   _gridPos: {x: 1, y: 19}
+  _isCustomerWaiting: 0
 --- !u!54 &1198609902
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -60870,6 +61171,7 @@ MonoBehaviour:
   - {fileID: 1065029964}
   - {fileID: 1948926971}
   _gridPos: {x: 1, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1198826629
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -61027,6 +61329,7 @@ MonoBehaviour:
   - {fileID: 1464599779}
   - {fileID: 779466076}
   _gridPos: {x: 16, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &1199730519
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -61223,6 +61526,7 @@ MonoBehaviour:
   - {fileID: 2001882560}
   - {fileID: 1066990493}
   _gridPos: {x: 2, y: 5}
+  _isCustomerWaiting: 0
 --- !u!135 &1199828730
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -61335,6 +61639,7 @@ MonoBehaviour:
   - {fileID: 2011893332}
   - {fileID: 1217319889}
   _gridPos: {x: 15, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &1201018885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -61489,6 +61794,7 @@ MonoBehaviour:
   - {fileID: 451185266}
   - {fileID: 407795323}
   _gridPos: {x: 15, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &1201760751
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -61646,6 +61952,7 @@ MonoBehaviour:
   - {fileID: 1147065748}
   - {fileID: 1997087481}
   _gridPos: {x: 14, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1202477297
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -61800,6 +62107,7 @@ MonoBehaviour:
   - {fileID: 1279570876}
   - {fileID: 883857698}
   _gridPos: {x: 20, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &1203557304
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62035,6 +62343,7 @@ MonoBehaviour:
   - {fileID: 1997087481}
   - {fileID: 2090189288}
   _gridPos: {x: 14, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1205013155
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62226,6 +62535,7 @@ MonoBehaviour:
   - {fileID: 679342821}
   - {fileID: 1785918203}
   _gridPos: {x: 20, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1209403014
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62378,6 +62688,7 @@ MonoBehaviour:
   - {fileID: 278167975}
   - {fileID: 112825031}
   _gridPos: {x: 20, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &1215686141
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62532,6 +62843,7 @@ MonoBehaviour:
   - {fileID: 1201018884}
   - {fileID: 363131577}
   _gridPos: {x: 15, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &1217319890
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62727,6 +63039,7 @@ MonoBehaviour:
   - {fileID: 698549497}
   - {fileID: 58016735}
   _gridPos: {x: 4, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &1218562325
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -62942,6 +63255,7 @@ MonoBehaviour:
   - {fileID: 1201018884}
   - {fileID: 2003586046}
   _gridPos: {x: 16, y: 3}
+  _isCustomerWaiting: 0
 --- !u!135 &1224850499
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -63055,6 +63369,7 @@ MonoBehaviour:
   - {fileID: 184902152}
   - {fileID: 868517711}
   _gridPos: {x: 19, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &1234703897
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -63210,6 +63525,7 @@ MonoBehaviour:
   - {fileID: 2002887763}
   - {fileID: 1113598153}
   _gridPos: {x: 14, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &1247206549
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -63362,6 +63678,7 @@ MonoBehaviour:
   - {fileID: 188947221}
   - {fileID: 591118711}
   _gridPos: {x: 19, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &1250650051
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -63643,6 +63960,7 @@ MonoBehaviour:
   - {fileID: 281037370}
   - {fileID: 915667194}
   _gridPos: {x: 6, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1260640443
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -63839,6 +64157,7 @@ MonoBehaviour:
   - {fileID: 385799856}
   - {fileID: 1857142375}
   _gridPos: {x: 14, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &1270472849
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -63951,6 +64270,7 @@ MonoBehaviour:
   - {fileID: 891085781}
   - {fileID: 1742476403}
   _gridPos: {x: 0, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &1271713590
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64143,6 +64463,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 254718225}
   _gridPos: {x: 20, y: 9}
+  _isCustomerWaiting: 0
 --- !u!135 &1274509142
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -64254,6 +64575,7 @@ MonoBehaviour:
   - {fileID: 207832200}
   - {fileID: 1203557303}
   _gridPos: {x: 20, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &1279570877
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64410,6 +64732,7 @@ MonoBehaviour:
   - {fileID: 111288475}
   - {fileID: 170611513}
   _gridPos: {x: 17, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &1279765804
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64567,6 +64890,7 @@ MonoBehaviour:
   - {fileID: 2026602482}
   - {fileID: 1716154250}
   _gridPos: {x: 1, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &1286876605
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64718,6 +65042,7 @@ MonoBehaviour:
   - {fileID: 878797345}
   - {fileID: 1741316345}
   _gridPos: {x: 22, y: 2}
+  _isCustomerWaiting: 0
 --- !u!54 &1287089268
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64949,6 +65274,7 @@ MonoBehaviour:
   - {fileID: 1814721013}
   - {fileID: 1403694556}
   _gridPos: {x: 16, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &1287704609
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -65106,6 +65432,7 @@ MonoBehaviour:
   - {fileID: 253346647}
   - {fileID: 575013071}
   _gridPos: {x: 6, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &1288362888
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -65492,6 +65819,7 @@ MonoBehaviour:
   - {fileID: 1377553090}
   - {fileID: 1615012253}
   _gridPos: {x: 6, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &1295806045
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -65647,6 +65975,7 @@ MonoBehaviour:
   - {fileID: 878797345}
   - {fileID: 1287089267}
   _gridPos: {x: 21, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &1296190751
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -65762,6 +66091,7 @@ MonoBehaviour:
   - {fileID: 810325654}
   - {fileID: 138199937}
   _gridPos: {x: 2, y: 2}
+  _isCustomerWaiting: 0
 --- !u!54 &1301146329
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -66143,6 +66473,7 @@ MonoBehaviour:
   - {fileID: 1287089267}
   - {fileID: 1741316345}
   _gridPos: {x: 21, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &1320560744
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -66334,6 +66665,7 @@ MonoBehaviour:
   - {fileID: 2037078132}
   - {fileID: 1002872838}
   _gridPos: {x: 10, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &1324665140
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -66525,6 +66857,7 @@ MonoBehaviour:
   _isWalkale: 1
   _connectionNodes: []
   _gridPos: {x: 22, y: 6}
+  _isCustomerWaiting: 0
 --- !u!135 &1327233346
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -66678,6 +67011,7 @@ MonoBehaviour:
   - {fileID: 415519255}
   - {fileID: 770520453}
   _gridPos: {x: 21, y: 14}
+  _isCustomerWaiting: 0
 --- !u!135 &1330266375
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -66790,6 +67124,7 @@ MonoBehaviour:
   - {fileID: 281037370}
   - {fileID: 915667194}
   _gridPos: {x: 6, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &1334738312
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67071,6 +67406,7 @@ MonoBehaviour:
   - {fileID: 1755528522}
   - {fileID: 1867460953}
   _gridPos: {x: 10, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &1339935506
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -67227,6 +67563,7 @@ MonoBehaviour:
   - {fileID: 808340940}
   - {fileID: 612081910}
   _gridPos: {x: 12, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &1340202790
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -67336,6 +67673,7 @@ MonoBehaviour:
   - {fileID: 702780739}
   - {fileID: 385799856}
   _gridPos: {x: 14, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &1342793836
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67556,6 +67894,7 @@ MonoBehaviour:
   - {fileID: 145978604}
   - {fileID: 489515019}
   _gridPos: {x: 9, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &1347481406
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67781,7 +68120,6 @@ MonoBehaviour:
   _keyName: "\uCE74\uC6B4\uD1302"
   _isActive: 0
   _level: 0
-  _nodeGridNum: {x: 0, y: 0}
   _meatPool: {fileID: 0}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatSpawnLocation: {fileID: 1349180473}
@@ -67890,6 +68228,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 254718225}
   _gridPos: {x: 20, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &1349360151
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -68002,6 +68341,7 @@ MonoBehaviour:
   - {fileID: 565632759}
   - {fileID: 1910095167}
   _gridPos: {x: 0, y: 11}
+  _isCustomerWaiting: 0
 --- !u!54 &1362942553
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -68199,6 +68539,7 @@ MonoBehaviour:
   - {fileID: 411722702}
   - {fileID: 1889035454}
   _gridPos: {x: 18, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &1363035976
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -68439,6 +68780,7 @@ MonoBehaviour:
   - {fileID: 1643567989}
   - {fileID: 261694728}
   _gridPos: {x: 17, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &1375018207
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -68590,6 +68932,7 @@ MonoBehaviour:
   - {fileID: 58016735}
   - {fileID: 1615012253}
   _gridPos: {x: 6, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &1377553091
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -68745,6 +69088,7 @@ MonoBehaviour:
   - {fileID: 1147947468}
   - {fileID: 1721876108}
   _gridPos: {x: 5, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &1378177407
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -68903,8 +69247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyName: "\uADF8\uB9B42"
   _isActive: 0
-  _nodeGridNum: {x: 19, y: 12}
-  _myNodeY: 12
+  _myNode: {fileID: 0}
   _level: 0
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
@@ -68954,6 +69297,7 @@ MonoBehaviour:
   - {fileID: 1147947468}
   - {fileID: 1942776312}
   _gridPos: {x: 6, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &1378853914
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -69106,6 +69450,7 @@ MonoBehaviour:
   - {fileID: 2126779166}
   - {fileID: 1925508064}
   _gridPos: {x: 5, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &1383776219
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -69330,6 +69675,7 @@ MonoBehaviour:
   - {fileID: 1205013154}
   - {fileID: 2123476020}
   _gridPos: {x: 13, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &1384988180
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -69521,6 +69867,7 @@ MonoBehaviour:
   - {fileID: 1722221236}
   - {fileID: 878797345}
   _gridPos: {x: 22, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &1390306738
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -69685,7 +70032,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 10, y: 2}
 --- !u!65 &1390874452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69852,6 +70198,7 @@ MonoBehaviour:
   - {fileID: 629423540}
   - {fileID: 1981050739}
   _gridPos: {x: 8, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &1398531371
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -69967,6 +70314,7 @@ MonoBehaviour:
   - {fileID: 295736719}
   - {fileID: 822881608}
   _gridPos: {x: 12, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &1399158918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -70121,6 +70469,7 @@ MonoBehaviour:
   - {fileID: 1645008219}
   - {fileID: 1756239249}
   _gridPos: {x: 3, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &1402013053
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -70277,6 +70626,7 @@ MonoBehaviour:
   - {fileID: 170611513}
   - {fileID: 286700893}
   _gridPos: {x: 17, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &1403694557
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -70504,6 +70854,7 @@ MonoBehaviour:
   - {fileID: 357233}
   - {fileID: 807371085}
   _gridPos: {x: 8, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &1414075934
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -70916,6 +71267,7 @@ MonoBehaviour:
   - {fileID: 1756239249}
   - {fileID: 639344231}
   _gridPos: {x: 4, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &1420007196
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -71107,6 +71459,7 @@ MonoBehaviour:
   - {fileID: 1627715032}
   - {fileID: 111288475}
   _gridPos: {x: 17, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &1428799970
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -71264,6 +71617,7 @@ MonoBehaviour:
   - {fileID: 1652408844}
   - {fileID: 1743503891}
   _gridPos: {x: 11, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1432822007
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -71456,6 +71810,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 2119025578}
   _gridPos: {x: 17, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &1434905879
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -71568,6 +71923,7 @@ MonoBehaviour:
   - {fileID: 333743157}
   - {fileID: 1803182684}
   _gridPos: {x: 0, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &1435675006
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -71846,6 +72202,7 @@ MonoBehaviour:
   - {fileID: 1463784678}
   - {fileID: 852237752}
   _gridPos: {x: 12, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &1442576329
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -72000,6 +72357,7 @@ MonoBehaviour:
   - {fileID: 807503317}
   - {fileID: 340708635}
   _gridPos: {x: 22, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1443420035
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -72154,6 +72512,7 @@ MonoBehaviour:
   - {fileID: 2107601618}
   - {fileID: 1125568449}
   _gridPos: {x: 17, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &1447454403
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -72439,6 +72798,7 @@ MonoBehaviour:
   - {fileID: 1113598153}
   - {fileID: 594686726}
   _gridPos: {x: 14, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &1457936396
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -72552,6 +72912,7 @@ MonoBehaviour:
   - {fileID: 2024829050}
   - {fileID: 9312038}
   _gridPos: {x: 9, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &1460670953
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -72745,6 +73106,7 @@ MonoBehaviour:
   - {fileID: 1215686140}
   - {fileID: 958130261}
   _gridPos: {x: 21, y: 5}
+  _isCustomerWaiting: 0
 --- !u!135 &1462406070
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -72898,6 +73260,7 @@ MonoBehaviour:
   - {fileID: 851158368}
   - {fileID: 868517711}
   _gridPos: {x: 20, y: 4}
+  _isCustomerWaiting: 0
 --- !u!135 &1462777119
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -73011,6 +73374,7 @@ MonoBehaviour:
   - {fileID: 357760854}
   - {fileID: 530413231}
   _gridPos: {x: 13, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &1463784679
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73168,6 +73532,7 @@ MonoBehaviour:
   - {fileID: 1882879538}
   - {fileID: 1767170585}
   _gridPos: {x: 17, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &1464599780
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73322,6 +73687,7 @@ MonoBehaviour:
   - {fileID: 1621796887}
   - {fileID: 1194557731}
   _gridPos: {x: 12, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1467661715
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73476,6 +73842,7 @@ MonoBehaviour:
   - {fileID: 322650506}
   - {fileID: 281037370}
   _gridPos: {x: 6, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1467761773
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73675,6 +74042,7 @@ MonoBehaviour:
   - {fileID: 1897147424}
   - {fileID: 1182897388}
   _gridPos: {x: 7, y: 4}
+  _isCustomerWaiting: 0
 --- !u!135 &1471328107
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -73829,6 +74197,7 @@ MonoBehaviour:
   - {fileID: 2037078132}
   - {fileID: 237028291}
   _gridPos: {x: 11, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &1473396256
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -73941,6 +74310,7 @@ MonoBehaviour:
   - {fileID: 1697447508}
   - {fileID: 1983142974}
   _gridPos: {x: 3, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &1476342654
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74095,6 +74465,7 @@ MonoBehaviour:
   - {fileID: 1520729236}
   - {fileID: 1199730518}
   _gridPos: {x: 15, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1479595059
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74288,6 +74659,7 @@ MonoBehaviour:
   - {fileID: 58016735}
   - {fileID: 1377553090}
   _gridPos: {x: 5, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &1479662498
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -74403,6 +74775,7 @@ MonoBehaviour:
   - {fileID: 1260640442}
   - {fileID: 1334738311}
   _gridPos: {x: 5, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1480579413
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74560,6 +74933,7 @@ MonoBehaviour:
   - {fileID: 507727196}
   - {fileID: 1974227292}
   _gridPos: {x: 3, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1481924443
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74911,6 +75285,7 @@ MonoBehaviour:
   - {fileID: 1447454402}
   - {fileID: 1878754762}
   _gridPos: {x: 16, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &1501551754
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -75023,6 +75398,7 @@ MonoBehaviour:
   - {fileID: 1442576328}
   - {fileID: 863990447}
   _gridPos: {x: 11, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &1503119617
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75310,6 +75686,7 @@ MonoBehaviour:
   - {fileID: 1878754762}
   - {fileID: 1464599779}
   _gridPos: {x: 16, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1520729237
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75462,6 +75839,7 @@ MonoBehaviour:
   - {fileID: 791290981}
   - {fileID: 174975956}
   _gridPos: {x: 0, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &1529541147
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75657,6 +76035,7 @@ MonoBehaviour:
   - {fileID: 1697447508}
   - {fileID: 1383776218}
   _gridPos: {x: 4, y: 14}
+  _isCustomerWaiting: 0
 --- !u!135 &1531189317
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -75838,6 +76217,7 @@ MonoBehaviour:
   - {fileID: 926673250}
   - {fileID: 152765529}
   _gridPos: {x: 16, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1540586558
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75993,6 +76373,7 @@ MonoBehaviour:
   - {fileID: 649484136}
   - {fileID: 995139154}
   _gridPos: {x: 1, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &1542690931
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76226,6 +76607,7 @@ MonoBehaviour:
   - {fileID: 2007301868}
   - {fileID: 273182287}
   _gridPos: {x: 5, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &1544657132
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76463,6 +76845,7 @@ MonoBehaviour:
   - {fileID: 1772961914}
   - {fileID: 1428799969}
   _gridPos: {x: 16, y: 6}
+  _isCustomerWaiting: 0
 --- !u!135 &1563259175
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -76578,6 +76961,7 @@ MonoBehaviour:
   - {fileID: 1592926069}
   - {fileID: 1940366020}
   _gridPos: {x: 1, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &1563732897
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76853,6 +77237,7 @@ MonoBehaviour:
   - {fileID: 1122054918}
   - {fileID: 1964508509}
   _gridPos: {x: 14, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &1575872574
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -76975,7 +77360,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 7, y: 16}
 --- !u!65 &1578919568
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77034,6 +77418,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1043148222}
   _gridPos: {x: 22, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &1579851428
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77267,6 +77652,7 @@ MonoBehaviour:
   - {fileID: 2011893332}
   - {fileID: 1201018884}
   _gridPos: {x: 14, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &1585355755
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77418,6 +77804,7 @@ MonoBehaviour:
   - {fileID: 911638929}
   - {fileID: 1378853913}
   _gridPos: {x: 5, y: 2}
+  _isCustomerWaiting: 0
 --- !u!54 &1588587969
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77615,6 +78002,7 @@ MonoBehaviour:
   - {fileID: 1619349077}
   - {fileID: 1772961914}
   _gridPos: {x: 16, y: 5}
+  _isCustomerWaiting: 0
 --- !u!135 &1589733098
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -77730,6 +78118,7 @@ MonoBehaviour:
   - {fileID: 1845357709}
   - {fileID: 175338788}
   _gridPos: {x: 2, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &1592926070
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77885,6 +78274,7 @@ MonoBehaviour:
   - {fileID: 1029522038}
   - {fileID: 621007279}
   _gridPos: {x: 12, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &1595187939
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78097,6 +78487,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1682857773}
   _gridPos: {x: 7, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &1603095486
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78248,6 +78639,7 @@ MonoBehaviour:
   - {fileID: 1043148222}
   - {fileID: 1784408307}
   _gridPos: {x: 22, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &1605241748
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78402,6 +78794,7 @@ MonoBehaviour:
   - {fileID: 1743503891}
   - {fileID: 1961681993}
   _gridPos: {x: 11, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &1607287760
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78556,6 +78949,7 @@ MonoBehaviour:
   - {fileID: 1563732896}
   - {fileID: 1198609901}
   _gridPos: {x: 0, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &1607899838
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78893,6 +79287,7 @@ MonoBehaviour:
   - {fileID: 1377553090}
   - {fileID: 452614899}
   _gridPos: {x: 7, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &1615012254
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79050,6 +79445,7 @@ MonoBehaviour:
   - {fileID: 985986368}
   - {fileID: 1481924442}
   _gridPos: {x: 2, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1615839063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79204,6 +79600,7 @@ MonoBehaviour:
   - {fileID: 937290888}
   - {fileID: 1766282221}
   _gridPos: {x: 17, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &1619349078
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79355,6 +79752,7 @@ MonoBehaviour:
   - {fileID: 1784408307}
   - {fileID: 924401149}
   _gridPos: {x: 22, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &1619960983
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79509,6 +79907,7 @@ MonoBehaviour:
   - {fileID: 1192954040}
   - {fileID: 318795657}
   _gridPos: {x: 13, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1621796888
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79705,6 +80104,7 @@ MonoBehaviour:
   - {fileID: 836409731}
   - {fileID: 1442576328}
   _gridPos: {x: 11, y: 16}
+  _isCustomerWaiting: 0
 --- !u!135 &1626823088
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -79819,6 +80219,7 @@ MonoBehaviour:
   - {fileID: 278167975}
   - {fileID: 112825031}
   _gridPos: {x: 18, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &1627715033
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79976,6 +80377,7 @@ MonoBehaviour:
   - {fileID: 1759057765}
   - {fileID: 2031918304}
   _gridPos: {x: 2, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &1627789308
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -80191,6 +80593,7 @@ MonoBehaviour:
   - {fileID: 1857142375}
   - {fileID: 2011893332}
   _gridPos: {x: 14, y: 2}
+  _isCustomerWaiting: 0
 --- !u!54 &1631069919
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -80447,6 +80850,7 @@ MonoBehaviour:
   - {fileID: 618020975}
   - {fileID: 867712536}
   _gridPos: {x: 8, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &1638687036
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -80556,6 +80960,7 @@ MonoBehaviour:
   - {fileID: 385799856}
   - {fileID: 1375018206}
   _gridPos: {x: 16, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &1643567990
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -80712,6 +81117,7 @@ MonoBehaviour:
   - {fileID: 1217319889}
   - {fileID: 363131577}
   _gridPos: {x: 14, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &1644542205
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -80866,6 +81272,7 @@ MonoBehaviour:
   - {fileID: 1131207100}
   - {fileID: 1402013052}
   _gridPos: {x: 3, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &1645008220
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -81060,6 +81467,7 @@ MonoBehaviour:
   - {fileID: 1603095485}
   - {fileID: 1979926423}
   _gridPos: {x: 7, y: 8}
+  _isCustomerWaiting: 0
 --- !u!135 &1646457458
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -81211,6 +81619,7 @@ MonoBehaviour:
   - {fileID: 1179619607}
   - {fileID: 237666024}
   _gridPos: {x: 9, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &1652258024
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -81404,6 +81813,7 @@ MonoBehaviour:
   - {fileID: 557896247}
   - {fileID: 1842142055}
   _gridPos: {x: 12, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1652408845
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -81694,6 +82104,7 @@ MonoBehaviour:
   - {fileID: 452614899}
   - {fileID: 859345345}
   _gridPos: {x: 8, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &1656436845
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -81844,6 +82255,7 @@ MonoBehaviour:
   - {fileID: 1018522016}
   - {fileID: 1399158917}
   _gridPos: {x: 11, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &1662185099
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -82059,6 +82471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc24a128d7d6be4db9a4b00fff5e863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _keyName: 
+  _isActive: 0
 --- !u!1 &1667550654
 GameObject:
   m_ObjectHideFlags: 0
@@ -82143,6 +82557,7 @@ MonoBehaviour:
   - {fileID: 1125568449}
   - {fileID: 681830529}
   _gridPos: {x: 17, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &1667550658
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -82294,6 +82709,7 @@ MonoBehaviour:
   - {fileID: 575013071}
   - {fileID: 2004365848}
   _gridPos: {x: 8, y: 20}
+  _isCustomerWaiting: 0
 --- !u!135 &1670176693
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -82406,6 +82822,7 @@ MonoBehaviour:
   - {fileID: 838882367}
   - {fileID: 1696140662}
   _gridPos: {x: 5, y: 19}
+  _isCustomerWaiting: 0
 --- !u!54 &1671542883
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -82560,6 +82977,7 @@ MonoBehaviour:
   - {fileID: 1286876604}
   - {fileID: 891085781}
   _gridPos: {x: 0, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &1671758701
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -82876,6 +83294,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 254718225}
   _gridPos: {x: 20, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &1675316298
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -82988,6 +83407,7 @@ MonoBehaviour:
   - {fileID: 952675982}
   - {fileID: 1818114129}
   _gridPos: {x: 1, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &1676141877
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83142,6 +83562,7 @@ MonoBehaviour:
   - {fileID: 2001882560}
   - {fileID: 220613867}
   _gridPos: {x: 3, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &1676190678
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83297,6 +83718,7 @@ MonoBehaviour:
   - {fileID: 1595187938}
   - {fileID: 1018522016}
   _gridPos: {x: 11, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &1679922702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83448,6 +83870,7 @@ MonoBehaviour:
   - {fileID: 639344231}
   - {fileID: 1603095485}
   _gridPos: {x: 6, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &1682857774
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83603,6 +84026,7 @@ MonoBehaviour:
   - {fileID: 1287704608}
   - {fileID: 1935325778}
   _gridPos: {x: 15, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &1682936124
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83760,6 +84184,7 @@ MonoBehaviour:
   - {fileID: 146963981}
   - {fileID: 1209403013}
   _gridPos: {x: 19, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &1683740357
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83915,6 +84340,7 @@ MonoBehaviour:
   - {fileID: 105140557}
   - {fileID: 1979926423}
   _gridPos: {x: 7, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &1685355445
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -84069,6 +84495,7 @@ MonoBehaviour:
   - {fileID: 1813973277}
   - {fileID: 1975056051}
   _gridPos: {x: 18, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &1688382850
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -84226,6 +84653,7 @@ MonoBehaviour:
   - {fileID: 779466076}
   - {fileID: 926673250}
   _gridPos: {x: 16, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1688864273
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -84380,6 +84808,7 @@ MonoBehaviour:
   - {fileID: 575013071}
   - {fileID: 2004365848}
   _gridPos: {x: 6, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1696140663
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -84534,6 +84963,7 @@ MonoBehaviour:
   - {fileID: 698549497}
   - {fileID: 1476342653}
   _gridPos: {x: 3, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &1697447509
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -84729,6 +85159,7 @@ MonoBehaviour:
   - {fileID: 350923881}
   - {fileID: 1279570876}
   _gridPos: {x: 20, y: 14}
+  _isCustomerWaiting: 0
 --- !u!135 &1698351077
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -84840,6 +85271,7 @@ MonoBehaviour:
   - {fileID: 1585355754}
   - {fileID: 1740165347}
   _gridPos: {x: 13, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &1698662862
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -84997,6 +85429,7 @@ MonoBehaviour:
   - {fileID: 1697447508}
   - {fileID: 1476342653}
   _gridPos: {x: 2, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &1716154251
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85164,7 +85597,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 10, y: 9}
 --- !u!65 &1720150018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85229,6 +85661,7 @@ MonoBehaviour:
   - {fileID: 145211229}
   - {fileID: 1685355444}
   _gridPos: {x: 6, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &1721876109
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85381,6 +85814,7 @@ MonoBehaviour:
   - {fileID: 1390306737}
   - {fileID: 878797345}
   _gridPos: {x: 21, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &1722221237
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85533,6 +85967,7 @@ MonoBehaviour:
   - {fileID: 1676141876}
   - {fileID: 411263346}
   _gridPos: {x: 0, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &1723215747
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85687,6 +86122,7 @@ MonoBehaviour:
   - {fileID: 2102037809}
   - {fileID: 581171801}
   _gridPos: {x: 0, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &1723846598
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -86052,6 +86488,7 @@ MonoBehaviour:
   - {fileID: 458233628}
   - {fileID: 524378138}
   _gridPos: {x: 13, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &1738470056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -86208,6 +86645,7 @@ MonoBehaviour:
   - {fileID: 1201018884}
   - {fileID: 1217319889}
   _gridPos: {x: 14, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &1740165348
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -86359,6 +86797,7 @@ MonoBehaviour:
   - {fileID: 1287089267}
   - {fileID: 958130261}
   _gridPos: {x: 22, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &1741316346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -86640,6 +87079,7 @@ MonoBehaviour:
   - {fileID: 1953032838}
   - {fileID: 1136087894}
   _gridPos: {x: 1, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &1742476404
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -86797,6 +87237,7 @@ MonoBehaviour:
   - {fileID: 1842142055}
   - {fileID: 1384988179}
   _gridPos: {x: 12, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1743503892
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -86994,6 +87435,7 @@ MonoBehaviour:
   - {fileID: 111665429}
   - {fileID: 972587171}
   _gridPos: {x: 19, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &1753493338
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -87104,6 +87546,7 @@ MonoBehaviour:
   - {fileID: 1867460953}
   - {fileID: 940019863}
   _gridPos: {x: 10, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &1755528523
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87295,6 +87738,7 @@ MonoBehaviour:
   - {fileID: 526404066}
   - {fileID: 674423204}
   _gridPos: {x: 16, y: 11}
+  _isCustomerWaiting: 0
 --- !u!54 &1756002027
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87449,6 +87893,7 @@ MonoBehaviour:
   - {fileID: 1402013052}
   - {fileID: 1759057765}
   _gridPos: {x: 3, y: 11}
+  _isCustomerWaiting: 0
 --- !u!54 &1756239250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87603,6 +88048,7 @@ MonoBehaviour:
   - {fileID: 1756239249}
   - {fileID: 2031918304}
   _gridPos: {x: 3, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &1759057766
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87760,6 +88206,7 @@ MonoBehaviour:
   - {fileID: 278167975}
   - {fileID: 112825031}
   _gridPos: {x: 18, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &1766282222
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -88032,6 +88479,7 @@ MonoBehaviour:
   - {fileID: 1942776312}
   - {fileID: 618020975}
   _gridPos: {x: 7, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &1766500254
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -88147,6 +88595,7 @@ MonoBehaviour:
   - {fileID: 2057925715}
   - {fileID: 1813973277}
   _gridPos: {x: 18, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1767170586
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -88300,6 +88749,7 @@ MonoBehaviour:
   - {fileID: 886907954}
   - {fileID: 1247206548}
   _gridPos: {x: 13, y: 11}
+  _isCustomerWaiting: 0
 --- !u!54 &1767749901
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -88497,6 +88947,7 @@ MonoBehaviour:
   - {fileID: 1544657131}
   - {fileID: 1588587968}
   _gridPos: {x: 4, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &1769340562
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -88612,6 +89063,7 @@ MonoBehaviour:
   - {fileID: 188947221}
   - {fileID: 896199713}
   _gridPos: {x: 17, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &1772809650
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -88766,6 +89218,7 @@ MonoBehaviour:
   - {fileID: 1766282221}
   - {fileID: 1627715032}
   _gridPos: {x: 17, y: 6}
+  _isCustomerWaiting: 0
 --- !u!54 &1772961915
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -88962,6 +89415,7 @@ MonoBehaviour:
   - {fileID: 1542690930}
   - {fileID: 649484136}
   _gridPos: {x: 1, y: 6}
+  _isCustomerWaiting: 0
 --- !u!135 &1778956421
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -89105,6 +89559,7 @@ MonoBehaviour:
   - {fileID: 1605241747}
   - {fileID: 1619960982}
   _gridPos: {x: 22, y: 11}
+  _isCustomerWaiting: 0
 --- !u!54 &1784408308
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -89262,6 +89717,7 @@ MonoBehaviour:
   - {fileID: 340708635}
   - {fileID: 1061240896}
   _gridPos: {x: 21, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1785918204
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -89535,6 +89991,7 @@ MonoBehaviour:
   - {fileID: 516571610}
   - {fileID: 318229696}
   _gridPos: {x: 8, y: 15}
+  _isCustomerWaiting: 0
 --- !u!135 &1798414799
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -89648,6 +90105,7 @@ MonoBehaviour:
   - {fileID: 1091641972}
   - {fileID: 364766832}
   _gridPos: {x: 1, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &1803182685
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -89805,6 +90263,7 @@ MonoBehaviour:
   - {fileID: 1402013052}
   - {fileID: 1756239249}
   _gridPos: {x: 2, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &1812773712
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -89962,6 +90421,7 @@ MonoBehaviour:
   - {fileID: 497052038}
   - {fileID: 132597734}
   _gridPos: {x: 19, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1813973278
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -90119,6 +90579,7 @@ MonoBehaviour:
   - {fileID: 170611513}
   - {fileID: 286700893}
   _gridPos: {x: 17, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &1814721014
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -90276,6 +90737,7 @@ MonoBehaviour:
   - {fileID: 1876247603}
   - {fileID: 810325654}
   _gridPos: {x: 2, y: 1}
+  _isCustomerWaiting: 0
 --- !u!54 &1818114130
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -90431,6 +90893,7 @@ MonoBehaviour:
   - {fileID: 822881608}
   - {fileID: 995138864}
   _gridPos: {x: 12, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &1818438084
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -90587,6 +91050,7 @@ MonoBehaviour:
   - {fileID: 451185266}
   - {fileID: 407795323}
   _gridPos: {x: 15, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &1821525314
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -90744,6 +91208,7 @@ MonoBehaviour:
   - {fileID: 1812773711}
   - {fileID: 867727030}
   _gridPos: {x: 1, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &1831906565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -91041,6 +91506,7 @@ MonoBehaviour:
   - {fileID: 1301146328}
   - {fileID: 1091641972}
   _gridPos: {x: 1, y: 2}
+  _isCustomerWaiting: 0
 --- !u!54 &1841459505
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -91198,6 +91664,7 @@ MonoBehaviour:
   - {fileID: 1205013154}
   - {fileID: 2123476020}
   _gridPos: {x: 13, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1842142056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -91352,6 +91819,7 @@ MonoBehaviour:
   - {fileID: 1983142974}
   - {fileID: 175338788}
   _gridPos: {x: 3, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &1845357710
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -91504,6 +91972,7 @@ MonoBehaviour:
   - {fileID: 1585355754}
   - {fileID: 2011893332}
   _gridPos: {x: 15, y: 2}
+  _isCustomerWaiting: 0
 --- !u!54 &1857142376
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -91700,6 +92169,7 @@ MonoBehaviour:
   - {fileID: 859345345}
   - {fileID: 318229696}
   _gridPos: {x: 8, y: 13}
+  _isCustomerWaiting: 0
 --- !u!135 &1858443855
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -91823,7 +92293,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 16, y: 9}
 --- !u!65 &1859480517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -92147,6 +92616,7 @@ MonoBehaviour:
   - {fileID: 940019863}
   - {fileID: 336050033}
   _gridPos: {x: 11, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &1867460954
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -92304,6 +92774,7 @@ MonoBehaviour:
   - {fileID: 214596436}
   - {fileID: 974397069}
   _gridPos: {x: 16, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &1868476278
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -92498,6 +92969,7 @@ MonoBehaviour:
   - {fileID: 2124007026}
   - {fileID: 702780739}
   _gridPos: {x: 12, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &1868554346
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -92735,6 +93207,7 @@ MonoBehaviour:
   - {fileID: 810325654}
   - {fileID: 2007301868}
   _gridPos: {x: 3, y: 1}
+  _isCustomerWaiting: 0
 --- !u!54 &1876247604
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -92955,6 +93428,7 @@ MonoBehaviour:
   - {fileID: 681830529}
   - {fileID: 1882879538}
   _gridPos: {x: 17, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1878754763
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -93215,6 +93689,7 @@ MonoBehaviour:
   - {fileID: 1683740356}
   - {fileID: 2057925715}
   _gridPos: {x: 18, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &1882879539
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -93403,6 +93878,7 @@ MonoBehaviour:
   - {fileID: 972587171}
   - {fileID: 146963981}
   _gridPos: {x: 19, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1889035455
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -93599,6 +94075,7 @@ MonoBehaviour:
   - {fileID: 1767749900}
   - {fileID: 886907954}
   _gridPos: {x: 12, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &1893595750
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -93818,6 +94295,7 @@ MonoBehaviour:
   - {fileID: 867712536}
   - {fileID: 1460670952}
   _gridPos: {x: 8, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &1897147425
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94063,6 +94541,7 @@ MonoBehaviour:
   _connectionNodes:
   - {fileID: 1179619607}
   _gridPos: {x: 9, y: 9}
+  _isCustomerWaiting: 0
 --- !u!135 &1900518754
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -94175,6 +94654,7 @@ MonoBehaviour:
   - {fileID: 175338788}
   - {fileID: 774943211}
   _gridPos: {x: 3, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &1908189625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94332,6 +94812,7 @@ MonoBehaviour:
   - {fileID: 1627789307}
   - {fileID: 165761176}
   _gridPos: {x: 1, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &1910095168
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94526,6 +95007,7 @@ MonoBehaviour:
   - {fileID: 2126779166}
   - {fileID: 976178424}
   _gridPos: {x: 6, y: 14}
+  _isCustomerWaiting: 0
 --- !u!135 &1911976334
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -94641,6 +95123,7 @@ MonoBehaviour:
   - {fileID: 1194557731}
   - {fileID: 557896247}
   _gridPos: {x: 12, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &1913757157
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94921,6 +95404,7 @@ MonoBehaviour:
   - {fileID: 843862422}
   - {fileID: 1065932592}
   _gridPos: {x: 6, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &1925508065
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -95117,6 +95601,7 @@ MonoBehaviour:
   - {fileID: 1111741313}
   - {fileID: 204294648}
   _gridPos: {x: 9, y: 16}
+  _isCustomerWaiting: 0
 --- !u!135 &1927962424
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -95230,6 +95715,7 @@ MonoBehaviour:
   - {fileID: 402888096}
   - {fileID: 1480579412}
   _gridPos: {x: 4, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &1933235674
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -95387,6 +95873,7 @@ MonoBehaviour:
   - {fileID: 1403694556}
   - {fileID: 526404066}
   _gridPos: {x: 16, y: 10}
+  _isCustomerWaiting: 0
 --- !u!54 &1935325779
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -95668,6 +96155,7 @@ MonoBehaviour:
   - {fileID: 1199730518}
   - {fileID: 1688864272}
   _gridPos: {x: 15, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &1937941232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -95825,6 +96313,7 @@ MonoBehaviour:
   - {fileID: 175338788}
   - {fileID: 1908189624}
   _gridPos: {x: 2, y: 19}
+  _isCustomerWaiting: 0
 --- !u!54 &1940366021
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96101,6 +96590,7 @@ MonoBehaviour:
   - {fileID: 618020975}
   - {fileID: 1897147424}
   _gridPos: {x: 7, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &1942776313
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96258,6 +96748,7 @@ MonoBehaviour:
   - {fileID: 774943211}
   - {fileID: 985986368}
   _gridPos: {x: 2, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &1948926972
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96555,6 +97046,7 @@ MonoBehaviour:
   - {fileID: 1476342653}
   - {fileID: 1983142974}
   _gridPos: {x: 2, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &1953032839
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96819,6 +97311,7 @@ MonoBehaviour:
   - {fileID: 170611513}
   - {fileID: 112825031}
   _gridPos: {x: 19, y: 8}
+  _isCustomerWaiting: 0
 --- !u!135 &1960427765
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -96931,6 +97424,7 @@ MonoBehaviour:
   - {fileID: 1842142055}
   - {fileID: 1384988179}
   _gridPos: {x: 12, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &1961681994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97086,6 +97580,7 @@ MonoBehaviour:
   - {fileID: 1756002026}
   - {fileID: 32554647}
   _gridPos: {x: 15, y: 11}
+  _isCustomerWaiting: 0
 --- !u!54 &1964508510
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97243,6 +97738,7 @@ MonoBehaviour:
   - {fileID: 1772809649}
   - {fileID: 214596436}
   _gridPos: {x: 16, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &1965309039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97527,6 +98023,7 @@ MonoBehaviour:
   - {fileID: 286700893}
   - {fileID: 254718225}
   _gridPos: {x: 19, y: 11}
+  _isCustomerWaiting: 0
 --- !u!135 &1968596995
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -97650,7 +98147,6 @@ MonoBehaviour:
   _isActive: 0
   _level: 0
   _currentTrashCount: 0
-  _nodeGridNum: {x: 16, y: 13}
 --- !u!65 &1972163538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -97713,6 +98209,7 @@ MonoBehaviour:
   - {fileID: 1480579412}
   - {fileID: 585884865}
   _gridPos: {x: 4, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &1974227293
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97867,6 +98364,7 @@ MonoBehaviour:
   - {fileID: 497052038}
   - {fileID: 132597734}
   _gridPos: {x: 19, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &1975056052
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98021,6 +98519,7 @@ MonoBehaviour:
   - {fileID: 1925508064}
   - {fileID: 734375800}
   _gridPos: {x: 5, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &1975977515
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98174,6 +98673,7 @@ MonoBehaviour:
   - {fileID: 894628025}
   - {fileID: 1094723776}
   _gridPos: {x: 8, y: 7}
+  _isCustomerWaiting: 0
 --- !u!54 &1979926424
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98328,6 +98828,7 @@ MonoBehaviour:
   - {fileID: 204294648}
   - {fileID: 187769566}
   _gridPos: {x: 9, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &1981050740
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98672,6 +99173,7 @@ MonoBehaviour:
   - {fileID: 1476342653}
   - {fileID: 1845357709}
   _gridPos: {x: 3, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &1983142975
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98829,6 +99331,7 @@ MonoBehaviour:
   - {fileID: 1645008219}
   - {fileID: 1402013052}
   _gridPos: {x: 2, y: 9}
+  _isCustomerWaiting: 0
 --- !u!54 &1989524245
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99147,6 +99650,7 @@ MonoBehaviour:
   - {fileID: 1540586557}
   - {fileID: 67823647}
   _gridPos: {x: 15, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &1997087482
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99300,6 +99804,7 @@ MonoBehaviour:
   - {fileID: 1066990493}
   - {fileID: 220613867}
   _gridPos: {x: 3, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &2001882561
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99455,6 +99960,7 @@ MonoBehaviour:
   - {fileID: 32554647}
   - {fileID: 382421416}
   _gridPos: {x: 15, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &2002887764
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99611,6 +100117,7 @@ MonoBehaviour:
   - {fileID: 1279765803}
   - {fileID: 1814721013}
   _gridPos: {x: 16, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &2003233362
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99764,6 +100271,7 @@ MonoBehaviour:
   - {fileID: 586902051}
   - {fileID: 937290888}
   _gridPos: {x: 17, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &2003586047
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99918,6 +100426,7 @@ MonoBehaviour:
   - {fileID: 791290981}
   - {fileID: 174975956}
   _gridPos: {x: 0, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &2003874975
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100070,6 +100579,7 @@ MonoBehaviour:
   - {fileID: 1696140662}
   - {fileID: 575013071}
   _gridPos: {x: 7, y: 20}
+  _isCustomerWaiting: 0
 --- !u!54 &2004365849
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100264,6 +100774,7 @@ MonoBehaviour:
   - {fileID: 1979926423}
   - {fileID: 1094723776}
   _gridPos: {x: 8, y: 8}
+  _isCustomerWaiting: 0
 --- !u!135 &2005792734
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -100378,6 +100889,7 @@ MonoBehaviour:
   - {fileID: 784721285}
   - {fileID: 1682936123}
   _gridPos: {x: 14, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &2006639324
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100530,6 +101042,7 @@ MonoBehaviour:
   - {fileID: 1876247603}
   - {fileID: 1544657131}
   _gridPos: {x: 4, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &2007301869
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100746,6 +101259,7 @@ MonoBehaviour:
   - {fileID: 1857142375}
   - {fileID: 1201018884}
   _gridPos: {x: 15, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &2011893333
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100939,6 +101453,7 @@ MonoBehaviour:
   - {fileID: 567277584}
   - {fileID: 751653174}
   _gridPos: {x: 5, y: 7}
+  _isCustomerWaiting: 0
 --- !u!135 &2014004037
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -101153,6 +101668,7 @@ MonoBehaviour:
   - {fileID: 1094723776}
   - {fileID: 457902904}
   _gridPos: {x: 9, y: 8}
+  _isCustomerWaiting: 0
 --- !u!135 &2017890973
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -101266,6 +101782,7 @@ MonoBehaviour:
   - {fileID: 1679922701}
   - {fileID: 1662185098}
   _gridPos: {x: 10, y: 5}
+  _isCustomerWaiting: 0
 --- !u!54 &2024829051
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -101423,6 +101940,7 @@ MonoBehaviour:
   - {fileID: 698549497}
   - {fileID: 1697447508}
   _gridPos: {x: 2, y: 14}
+  _isCustomerWaiting: 0
 --- !u!54 &2026602483
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -101701,6 +102219,7 @@ MonoBehaviour:
   - {fileID: 1759057765}
   - {fileID: 698549497}
   _gridPos: {x: 3, y: 13}
+  _isCustomerWaiting: 0
 --- !u!54 &2031918305
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -101887,6 +102406,7 @@ MonoBehaviour:
   - {fileID: 1324665139}
   - {fileID: 237028291}
   _gridPos: {x: 11, y: 12}
+  _isCustomerWaiting: 0
 --- !u!54 &2037078133
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102083,6 +102603,7 @@ MonoBehaviour:
   - {fileID: 2003586046}
   - {fileID: 1619349077}
   _gridPos: {x: 16, y: 4}
+  _isCustomerWaiting: 0
 --- !u!135 &2038237784
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -102198,6 +102719,7 @@ MonoBehaviour:
   - {fileID: 1112794766}
   - {fileID: 1347481405}
   _gridPos: {x: 8, y: 23}
+  _isCustomerWaiting: 0
 --- !u!54 &2041414850
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102392,6 +102914,7 @@ MonoBehaviour:
   - {fileID: 1867460953}
   - {fileID: 336050033}
   _gridPos: {x: 11, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &2044248634
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -102628,6 +103151,7 @@ MonoBehaviour:
   - {fileID: 340708635}
   - {fileID: 1061240896}
   _gridPos: {x: 21, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &2052495088
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102785,6 +103309,7 @@ MonoBehaviour:
   - {fileID: 1209403013}
   - {fileID: 497052038}
   _gridPos: {x: 19, y: 22}
+  _isCustomerWaiting: 0
 --- !u!54 &2057925716
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102980,6 +103505,7 @@ MonoBehaviour:
   - {fileID: 374007996}
   - {fileID: 55775675}
   _gridPos: {x: 10, y: 8}
+  _isCustomerWaiting: 0
 --- !u!135 &2062853397
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -103134,6 +103660,7 @@ MonoBehaviour:
   - {fileID: 972587171}
   - {fileID: 61846673}
   _gridPos: {x: 20, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &2064365182
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -103249,6 +103776,7 @@ MonoBehaviour:
   - {fileID: 974397069}
   - {fileID: 679514381}
   _gridPos: {x: 16, y: 16}
+  _isCustomerWaiting: 0
 --- !u!54 &2068651790
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -103403,6 +103931,7 @@ MonoBehaviour:
   - {fileID: 734375800}
   - {fileID: 1288362887}
   _gridPos: {x: 5, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &2069205861
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -103920,6 +104449,7 @@ MonoBehaviour:
   - {fileID: 243700203}
   - {fileID: 1432822006}
   _gridPos: {x: 10, y: 21}
+  _isCustomerWaiting: 0
 --- !u!54 &2087128195
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -104113,6 +104643,7 @@ MonoBehaviour:
   - {fileID: 1215686140}
   - {fileID: 1579851427}
   _gridPos: {x: 21, y: 7}
+  _isCustomerWaiting: 0
 --- !u!135 &2087302508
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -104225,6 +104756,7 @@ MonoBehaviour:
   - {fileID: 1540586557}
   - {fileID: 67823647}
   _gridPos: {x: 15, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &2090189289
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -104422,6 +104954,7 @@ MonoBehaviour:
   - {fileID: 951144372}
   - {fileID: 351975828}
   _gridPos: {x: 21, y: 19}
+  _isCustomerWaiting: 0
 --- !u!135 &2091655215
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -104531,6 +105064,7 @@ MonoBehaviour:
   - {fileID: 1188735644}
   - {fileID: 951144372}
   _gridPos: {x: 22, y: 18}
+  _isCustomerWaiting: 0
 --- !u!54 &2092176566
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -104762,6 +105296,7 @@ MonoBehaviour:
   - {fileID: 995139154}
   - {fileID: 1989524244}
   _gridPos: {x: 1, y: 8}
+  _isCustomerWaiting: 0
 --- !u!54 &2102037810
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -104917,6 +105452,7 @@ MonoBehaviour:
   - {fileID: 851158368}
   - {fileID: 868517711}
   _gridPos: {x: 19, y: 4}
+  _isCustomerWaiting: 0
 --- !u!54 &2103503507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -105110,6 +105646,7 @@ MonoBehaviour:
   - {fileID: 639344231}
   - {fileID: 1682857773}
   _gridPos: {x: 5, y: 8}
+  _isCustomerWaiting: 0
 --- !u!135 &2106190794
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -105266,6 +105803,7 @@ MonoBehaviour:
   - {fileID: 1378177406}
   - {fileID: 338161206}
   _gridPos: {x: 4, y: 4}
+  _isCustomerWaiting: 0
 --- !u!135 &2107451463
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -105381,6 +105919,7 @@ MonoBehaviour:
   - {fileID: 1093875900}
   - {fileID: 411722702}
   _gridPos: {x: 18, y: 17}
+  _isCustomerWaiting: 0
 --- !u!54 &2107601619
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -105577,6 +106116,7 @@ MonoBehaviour:
   - {fileID: 1066990493}
   - {fileID: 424155577}
   _gridPos: {x: 2, y: 6}
+  _isCustomerWaiting: 0
 --- !u!135 &2109611223
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -105739,6 +106279,7 @@ MonoBehaviour:
   - {fileID: 1234703896}
   - {fileID: 2103503506}
   _gridPos: {x: 18, y: 3}
+  _isCustomerWaiting: 0
 --- !u!54 &2119025579
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -105937,6 +106478,7 @@ MonoBehaviour:
   - {fileID: 1755528522}
   - {fileID: 2024829050}
   _gridPos: {x: 9, y: 4}
+  _isCustomerWaiting: 0
 --- !u!135 &2123069003
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -106049,6 +106591,7 @@ MonoBehaviour:
   - {fileID: 1997087481}
   - {fileID: 2090189288}
   _gridPos: {x: 14, y: 24}
+  _isCustomerWaiting: 0
 --- !u!54 &2123476021
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -106200,6 +106743,7 @@ MonoBehaviour:
   - {fileID: 514993316}
   - {fileID: 702780739}
   _gridPos: {x: 12, y: 0}
+  _isCustomerWaiting: 0
 --- !u!54 &2124007027
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -106398,6 +106942,7 @@ MonoBehaviour:
   - {fileID: 969739848}
   - {fileID: 711709050}
   _gridPos: {x: 14, y: 15}
+  _isCustomerWaiting: 0
 --- !u!135 &2126615741
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -106510,6 +107055,7 @@ MonoBehaviour:
   - {fileID: 976178424}
   - {fileID: 843862422}
   _gridPos: {x: 6, y: 15}
+  _isCustomerWaiting: 0
 --- !u!54 &2126779167
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -106703,6 +107249,7 @@ MonoBehaviour:
   - {fileID: 1857142375}
   - {fileID: 2011893332}
   _gridPos: {x: 16, y: 2}
+  _isCustomerWaiting: 0
 --- !u!135 &2131978329
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -106857,6 +107404,7 @@ MonoBehaviour:
   - {fileID: 1857142375}
   - {fileID: 1643567989}
   _gridPos: {x: 15, y: 1}
+  _isCustomerWaiting: 0
 --- !u!135 &2133517481
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -107071,6 +107619,7 @@ MonoBehaviour:
   - {fileID: 1682857773}
   - {fileID: 1603095485}
   _gridPos: {x: 6, y: 10}
+  _isCustomerWaiting: 0
 --- !u!135 &2139058810
 SphereCollider:
   m_ObjectHideFlags: 0

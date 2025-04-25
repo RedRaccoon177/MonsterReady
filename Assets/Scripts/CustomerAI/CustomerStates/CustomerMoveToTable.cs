@@ -13,6 +13,8 @@ public class CustomerMoveToTable : ICustomerState
 
     //각 테이블안의 의자 노드 그리드
     List<Vector2Int>[] _chairPositions = new List<Vector2Int>[12];
+
+    GameManager _gameManager;
     #endregion
 
 
@@ -22,6 +24,9 @@ public class CustomerMoveToTable : ICustomerState
         InitChairGridPos();
         RegisterChairNodes();
 
+        //이게 테이블(의자포함)이 활성화 된건지 안된건지 확인 가능함.
+        _gameManager._baseObjectDict
+
         //해금된 의자 리스트 노드들 앉을 수 있는지 확인하기
         //1. 앉을 수 있으면 거기로 이동하게 할거임
         //2. 앉을 수 있는 자리 없으면 대기하기
@@ -30,6 +35,8 @@ public class CustomerMoveToTable : ICustomerState
         Node _startNode = GetClosestNode(customer.transform.position);
 
         //의자 좌표들 쫙 확인 후 앉을 수 있는 지 확인
+
+
 
 
         // 도착지 노드 설정 (예: 카운터 위치의 특정 좌표)

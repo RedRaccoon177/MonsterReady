@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Table : BaseObject, ILevelable , IStackChecker
+public class Table : BaseObject, ILevelable,INpcDestination
 {
     [SerializeField] public int _level;
-    [SerializeField] int _currentTrashCount;
+    [SerializeField] public int _currentTrashCount;
+    [SerializeField] public Vector2 _nodeGridNum;
 
     private void Start()
     {
         _currentTrashCount = 0;
+        SettingNode();
+        SettingGMBaseDict();
     }
     public string GetKey()
     {
@@ -32,9 +35,22 @@ public class Table : BaseObject, ILevelable , IStackChecker
     {
         return _level;
     }
-
-    public bool CheckStack()
+    public bool HasStack()
     {
-        return _currentTrashCount > 0  ;
+        return _currentTrashCount > 0;
+    }
+    public int GetStackCount()
+    {
+        return _currentTrashCount;
+    }
+
+    public void SettingNode() 
+    {
+        Node _tempNode = NodeManager._instance._nodeList[(int)_nodeGridNum.x, (int)_nodeGridNum.y];
+        GameManager._instance._npcObjectNodeDict.TryAdd(_keyName, _tempNode);
+    }
+    public void SettingGMBaseDict()
+    {
+        GameManager._instance._baseObjectDict.TryAdd(_keyName, this);
     }
 }

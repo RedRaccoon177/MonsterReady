@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class NpcMoveToPickUp : INpcState
 {
+    int _currentIndex;
     public void Enter(NpcAi npcAi)
     {
-        MoveToPickUp();
+        _currentIndex = 0;
+        Debug.Log("여기야");
         //도착하면 movePutDown으로 변경
     }
 
@@ -16,18 +19,17 @@ public class NpcMoveToPickUp : INpcState
 
     public void Update(NpcAi npcAi)
     {
-    }
-    public void MoveToPickUp()
-    {
-        var tempList = GameManager._instance._stackableObjectList;
-        for (int i = 0; i < tempList.Count; i++)
+        // 경로가 없거나 이미 도착했다면 다음 상태로 전환
+        if (npcAi._path == null || _currentIndex >= npcAi._path.Count)
         {
-            // 해당 오브젝트에 들것이 있다면? 
-            if (tempList[i].CheckStack() == true)
-            {
-                // 해당 오브젝트와 연결된 노드를 목적지로 추가
-                break;
-            }
+            npcAi.ChangeState(npcAi._npcMoveToPutDown); // 다음 행동 상태로 전환 (주문 대기 등)
+            return;
+        }
+        npcAi.transform.position = Vector3.MoveTowards(npcAi.transform.position, npcAi._path[_currentIndex].transform.position, 4*Time.deltaTime);
+        if (Vector3.Distance(npcAi.transform.position, npcAi._path[_currentIndex].transform.position) < 0.1f)
+        {
+            _currentIndex++;
         }
     }
+    
 }

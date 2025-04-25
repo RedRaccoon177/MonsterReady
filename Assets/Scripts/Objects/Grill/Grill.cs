@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
-public class Grill : BaseObject, ILevelable,IStackChecker
+public class Grill : BaseObject, ILevelable, INpcDestination
 {
-    [Header("NPCAI 그릴 목적지")] public Node _myNode;
+    [Header("npcAi 목적지 노드 x,y")]
+    [SerializeField] public Vector2 _nodeGridNum;
+    public int _myNodeY;    
     #region 키값 및 레벨
     [SerializeField] public int _level;
 
@@ -60,6 +63,7 @@ public class Grill : BaseObject, ILevelable,IStackChecker
 
     //플레이어 정보
     PlayerController _player;
+
     #endregion
 
     #region Start, OnTriggerEnter
@@ -68,13 +72,15 @@ public class Grill : BaseObject, ILevelable,IStackChecker
         _player = PlayerController._instance;
         // 게임 시작 시 고기 자동 생성 시작
         StartGrill();
+        SettingNode();
+        SettingGMBaseDict();
     }
 
     // 플레이어가 범위에 들어왔을 때 고기 자동 제공
     private void OnTriggerEnter(Collider other)
     {
         // 태그가 Player가 아닐 경우 무시
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player")&& !other.CompareTag("Npc")) return;
 
 
         //플레이어의 정보를 바탕으로 빼야할 고기 값
@@ -86,8 +92,15 @@ public class Grill : BaseObject, ILevelable,IStackChecker
                 _player.AddMeat(MinusMeat(_minusMeat));
             }
         }
-        else if (other.CompareTag("NPC"))
+        else if (other.CompareTag("Npc"))
         {
+            Debug.Log(123123);
+            NpcAi npcScript = other.GetComponent<NpcAi>();
+            if (npcScript._MaxMeat != npcScript._CurrentMeat)
+            {
+                int _minusMeat = npcScript._MaxMeat - npcScript._CurrentMeat;
+                npcScript.AddMeat(MinusMeat(_minusMeat));
+            }
             //TODO: NPC 캐릭터들 고기 획득
         }
     }
@@ -196,9 +209,23 @@ public class Grill : BaseObject, ILevelable,IStackChecker
         );
     }
 
-    public bool CheckStack()
+
+    #endregion
+    public bool HasStack()
     {
         return _currentMeatCount > 0;
     }
-    #endregion
+    public int GetStackCount()
+    {
+        return _currentMeatCount;
+    }
+    public void SettingNode()
+    {
+        Node _tempNode = NodeManager._instance._nodeList[(int)_nodeGridNum.x, (int)_nodeGridNum.y];
+        GameManager._instance._npcObjectNodeDict.TryAdd(_keyName, _tempNode);
+    }
+    public void SettingGMBaseDict()
+    {
+        GameManager._instance._baseObjectDict.TryAdd(_keyName,this);
+    }
 } 

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Counter : BaseObject, ILevelable, IStackChecker
+public class Counter : BaseObject, ILevelable, INpcDestination
 {
     #region 키값 및 레벨
     [SerializeField] public int _level;
-
+    [SerializeField] public Vector2 _nodeGridNum;
     public string GetKey()
     {
         return _keyName;
@@ -52,18 +52,23 @@ public class Counter : BaseObject, ILevelable, IStackChecker
     //고기 굽는거 담는 코루틴
     Coroutine _grillRoutine;
 
-    [Header("카운터 옆에 달린 현금")] public Node _myNode; //npc 목적지로 설정할 카운터 노드 
+    [Header("NPCAI 카운터 목적지")] public Node _myNode; //npc 목적지로 설정할 카운터 노드 
 
     //플레이어 정보
     PlayerController _player;
 
     [Header("카운터 옆에 달린 현금")]
     [SerializeField] GoldObject _goldObject;
+
+    public Vector2 NodePosition => throw new System.NotImplementedException();
+
     #endregion
 
     void Start()
     {
         _player = PlayerController._instance;
+        SettingNode();
+        SettingGMBaseDict();
     }
 
     #region 고기 증가 및 감소
@@ -158,8 +163,22 @@ public class Counter : BaseObject, ILevelable, IStackChecker
         }
     }
 
-    public bool CheckStack()
+    public bool HasStack()
     {
         return _currentMeatCount > 0;
+    }
+
+    public int GetStackCount()
+    {
+        return _currentMeatCount;
+    }
+    public void SettingNode()
+    {
+        Node _tempNode = NodeManager._instance._nodeList[(int)_nodeGridNum.x, (int)_nodeGridNum.y];
+        GameManager._instance._npcObjectNodeDict.TryAdd(_keyName, _tempNode);
+    }
+    public void SettingGMBaseDict()
+    {
+        GameManager._instance._baseObjectDict.TryAdd(_keyName, this);
     }
 }

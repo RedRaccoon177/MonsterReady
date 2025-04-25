@@ -44,7 +44,7 @@ public class BaseObject : MonoBehaviour
         Gizmos.DrawWireCube(center, halfExtents * 2);
     }
 }
-
+// 레벨을 가지고 있는 테이블 , 카운터 ,그릴에 상속
 public interface ILevelable 
 {
     int GetLevel();
@@ -52,8 +52,13 @@ public interface ILevelable
     void LevelUp();
 }
 
-public interface IStackChecker
+// NPC가 목적지로 설정 가능한 오브젝트
+public interface INpcDestination
 {
-    public bool CheckStack();
+    string GetKey();
+    void SettingNode(); // 노드 세팅
+    bool HasStack();
+    int GetStackCount();
 }
+
 

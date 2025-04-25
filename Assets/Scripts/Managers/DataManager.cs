@@ -56,10 +56,14 @@ public class DataManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SaveObjectData(GameManager._instance._tables,ObjectType.Table);
-            SaveObjectData(GameManager._instance._counters,ObjectType.Counter);
-            SaveObjectData(GameManager._instance._tables,ObjectType.Grill);
-            SavePlayerAllData();
+            foreach (var a in GameManager._instance._baseObjectDict)
+            {
+                Debug.Log("Key : " + a.Key + "Val :" + a.Value.isActive());
+            }
+            // SaveObjectData(GameManager._instance._tables,ObjectType.Table);
+            // SaveObjectData(GameManager._instance._counters,ObjectType.Counter);
+            // SaveObjectData(GameManager._instance._tables,ObjectType.Grill);
+            // SavePlayerAllData();
         }
         if (Input.GetKeyDown(KeyCode.P))
         {

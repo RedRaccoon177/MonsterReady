@@ -34,12 +34,12 @@ public class NodeManager : MonoBehaviour
         }
 
         _nodeList = new Node[_XWidth, _YLength];
+        CreateNodeMap();
     }
 
     void Start()
     {
         // 게임 시작 시 맵 생성
-        CreateNodeMap();
     }
 
     /// <summary>

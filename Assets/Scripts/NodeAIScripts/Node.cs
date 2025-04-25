@@ -42,7 +42,8 @@ public class Node : MonoBehaviour
                 hit.CompareTag("ExpandWall") ||
                 hit.CompareTag("Grill") ||
                 hit.CompareTag("Counter") ||
-                hit.CompareTag("Table") 
+                hit.CompareTag("Table") ||
+                hit.CompareTag("Npc")
                 )
                 continue;
 
@@ -110,5 +111,6 @@ public class Node : MonoBehaviour
                 }
             }
         }
+
     }
 }

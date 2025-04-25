@@ -15,6 +15,7 @@ TagManager:
   - Grill
   - Counter
   - Table
+  - Npc
   layers:
   - Default
   - TransparentFX

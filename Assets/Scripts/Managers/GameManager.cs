@@ -9,11 +9,14 @@ public class GameManager : MonoBehaviour
     [Header("땅에 떨어진 돈 오브젝트 배열")] public GoldObject[] _groundMoneyArr;      // 땅에 떨어진 돈 오브젝트
     [Header("해금 오브젝트")] public ObjectsActivator[] _activator; // 해금 오브젝트 관리 배열
 
-    public Table[] _tables;
-    public Counter[] _counters;
-    public Grill[] _grills;
-    // 테이블,카운터,그릴에 쌓인게 있는지 
-    public List<IStackChecker> _stackableObjectList = new List<IStackChecker>();
+    [Header("테이블 오브젝트")] public Table[] _tables;
+    [Header("카운터 오브젝트")] public Counter[] _counters;
+    [Header("그릴 오브젝트")] public Grill[] _grills;
+
+    public List<INpcDestination> _warkableObjectList = new List<INpcDestination>();// npc가 목적지로 설정 가능한 오브젝트 리스트
+    // 테이블,카운터3,그릴1,2에 쌓인게 있는지 
+    public Dictionary<string,Node> _npcObjectNodeDict = new Dictionary<string  , Node>();
+    public Dictionary<string,BaseObject> _baseObjectDict = new Dictionary<string  , BaseObject>();
     public Expen[] _expens;
     
 
@@ -35,21 +38,26 @@ public class GameManager : MonoBehaviour
         //DataManager._Instance.LoadObjectData(ObjectType.Counter);
         //DataManager._Instance.LoadObjectData(ObjectType.Expand);
         //DataManager._Instance.LoadGroundMoney();
-        SettingStackableObjectList();
+        SettingWarableList();
+        // 테이블 , 카운터 1, 카운터 2 ,카운터 3 ,쓰레기통 , 그릴 1,2
+     
     }
-    public void SettingStackableObjectList()
+    /// <summary>
+    /// npc가 할일이 있는지 조회 해야하는 리스트 초기화
+    /// </summary>
+    public void SettingWarableList()
     {
-        for (int i= 0; i< _tables.Length; i++)
+        for (int i = 0; i < _tables.Length; i++)
         {
-            _stackableObjectList.Add(_tables[i]);
+            _warkableObjectList.Add(_tables[i]);
         }
         for (int i = 0; i < _counters.Length; i++)
         {
-            _stackableObjectList.Add(_counters[i]);
+            _warkableObjectList.Add(_counters[i]);
         }
         for (int i = 0; i < _grills.Length; i++)
         {
-            _stackableObjectList.Add(_grills[i]);
+            _warkableObjectList.Add(_grills[i]);
         }
     }
     /// <summary>

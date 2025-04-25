@@ -33,7 +33,6 @@ public class Counter : BaseObject, ILevelable, IStackChecker
     [Header("오브젝트 풀링 연결")]
     [SerializeField] ObjectPooling _meatPool; // 고기를 관리하는 오브젝트 풀
 
-
     [Header("고기 프리펩")]
     [SerializeField] GameObject _meatPrefab;
 
@@ -41,7 +40,7 @@ public class Counter : BaseObject, ILevelable, IStackChecker
     [SerializeField] Transform _meatSpawnLocation;
 
     [Header("현재 고기 갯수")]
-    [SerializeField] int _currentMeatCount = 0;
+    [SerializeField] public int _currentMeatCount = 0;
 
     [Header("고기 쌓일 높이 간격")]
     [SerializeField] float _stackHeight = 0.11f;
@@ -82,23 +81,23 @@ public class Counter : BaseObject, ILevelable, IStackChecker
     /// 카운터 고기 감소
     /// </summary>
     /// <param name="_minusMeat"></param>
-    int MinusMeat(int _minusMeat)
+    public int MinusMeat(int _minusMeat)
     {
-        int _playerGetMeat;
+        int _someoneGetMeat;
 
         if (_currentMeatCount < _minusMeat)
         {
-            _playerGetMeat = _currentMeatCount;
+            _someoneGetMeat = _currentMeatCount;
             _currentMeatCount = 0;
         }
         else
         {
-            _playerGetMeat = _minusMeat;
+            _someoneGetMeat = _minusMeat;
             _currentMeatCount -= _minusMeat;
         }
 
         UpdateMeatDisplay(_currentMeatCount);
-        return _playerGetMeat;
+        return _someoneGetMeat;
     }
     #endregion
 

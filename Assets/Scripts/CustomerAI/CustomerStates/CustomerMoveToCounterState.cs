@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class CustomerMoveToCounterState : ICustomerState
 {
+    #region 변수들
     List<Node> _path;           // A*로 계산된 경로를 저장할 리스트
     int _currentIndex;          // 현재 따라가고 있는 경로 인덱스
+    
+    //최종 목적지인 카운터 위치
+    Vector2Int _counterNodeGridPos = new Vector2Int(15, 5);
+    #endregion
 
-    /// <summary>
-    /// 상태에 진입할 때 호출됨. 시작 노드와 도착 노드를 기준으로 A* 경로를 계산함
-    /// </summary>
+    #region  Enter, Update, Exit문
     public void Enter(CustomerAI customer)
     {
         // 현재 위치에서 가장 가까운 시작 노드 찾기
         Node _startNode = GetClosestNode(customer.transform.position);
 
         // 도착지 노드 설정 (예: 카운터 위치의 특정 좌표)
-        Node _goalNode = NodeManager._instance._nodeList[15, 5];
+        Node _goalNode = NodeManager._instance._nodeList[_counterNodeGridPos.x, _counterNodeGridPos.y];
 
         if (_startNode == null || _goalNode == null)
             return;
@@ -47,27 +50,35 @@ public class CustomerMoveToCounterState : ICustomerState
         // 다음 이동 목표 노드 설정
         Node _targetNode = _path[_currentIndex];
         Vector3 _targetPos = _targetNode.transform.position;
-        float _step = 3f * Time.deltaTime; // 프레임 기반 이동 거리 계산
+        float _step = 5f * Time.deltaTime; // 프레임 기반 이동 거리 계산
 
         //앞에 노드에 손님이 줄서고 있다면?
-        if (_targetNode._isCustomerWaiting)
+        if(_targetNode._isCustomerWaiting)
         {
-            //손님이 잠시 대기
-            customer.SetState(new CustomerWaitState());
+            if (_currentIndex != 0)
+            {
+                Node _currentNode = _path[_currentIndex - 1];
+
+                // 현재 위치한 노드에 아무도 못오게 막기
+                _currentNode._isCustomerWaiting = true;
+            }
         }
-
-        // 손님을 다음 노드 위치로 이동시킴
-        customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
-
-        // 목표 위치에 거의 도착했다면 다음 노드로 전환
-        if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
+        else
         {
-            _currentIndex++;
+            // 손님을 다음 노드 위치로 이동시킴
+            customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
+            // 목표 위치에 거의 도착했다면 다음 노드로 전환
+            if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
+            {
+                _currentIndex++;
+            }
         }
     }   
 
     public void Exit(CustomerAI customer) { }
+    #endregion
 
+    #region 가장 가까운 노드 찾기
     /// <summary>
     /// 주어진 위치에서 가장 가까운 유효한 Node를 찾아 반환
     /// </summary>
@@ -105,5 +116,5 @@ public class CustomerMoveToCounterState : ICustomerState
 
         return _closestNode;
     }
-
+    #endregion
 }

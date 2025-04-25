@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1909744818002174, guid: c7cebe2178705794aa9a9911f182d8c1, type: 3}
       propertyPath: m_Name
-      value: Customer Variant
+      value: CustomeAI_Anubis
       objectReference: {fileID: 0}
     - target: {fileID: 4585453369738264, guid: c7cebe2178705794aa9a9911f182d8c1, type: 3}
       propertyPath: m_LocalScale.x
@@ -102,3 +102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3330af9601ba8cf4dbcbce8b79a8b1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minMeat: 1
+  _maxMeat: 4
+  _currentMeat: 0

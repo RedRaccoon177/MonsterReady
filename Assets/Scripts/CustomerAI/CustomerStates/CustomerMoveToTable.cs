@@ -23,80 +23,99 @@ public class CustomerMoveToTable : ICustomerState
     {
         InitChairGridPos();
         RegisterChairNodes();
-
-        //이게 테이블(의자포함)이 활성화 된건지 안된건지 확인 가능함.
-        _gameManager._baseObjectDict
-
-        //해금된 의자 리스트 노드들 앉을 수 있는지 확인하기
-        //1. 앉을 수 있으면 거기로 이동하게 할거임
-        //2. 앉을 수 있는 자리 없으면 대기하기
-
-        // 현재 위치에서 가장 가까운 시작 노드 찾기
-        Node _startNode = GetClosestNode(customer.transform.position);
-
-        //의자 좌표들 쫙 확인 후 앉을 수 있는 지 확인
-
-
-
-
-        // 도착지 노드 설정 (예: 카운터 위치의 특정 좌표)
-        //Node _goalNode = NodeManager._instance._nodeList[_counterNodeGridPos.x, _counterNodeGridPos.y];
-
-
-
-        // A* 알고리즘으로 경로 계산
-        _path = AStarPathfinder.FindPath(_startNode, _goalNode);
-        _currentIndex = 0; // 경로 시작 인덱스 초기화
+        MoveCustomerToChair(customer);
     }
-
-    /// <summary>
-    /// 상태 업데이트. 손님이 A* 경로를 따라 한 칸씩 이동함
-    /// </summary>
     public void Update(CustomerAI customer)
     {
         // 경로가 없거나 이미 도착했다면 다음 상태로 전환
         if (_path == null || _currentIndex >= _path.Count)
         {
-            //손님이 줄에 도착했는것
-            if (_path != null)
-            {
-                _path[_currentIndex - 1]._isCustomerWaiting = true;
-            }
-
-            customer.SetState(new CustomerOrderAndWait()); // 다음 행동 상태로 전환 (주문 대기 등)
+            customer.SetState(new CustomerEating());
             return;
         }
 
-        // 다음 이동 목표 노드 설정
         Node _targetNode = _path[_currentIndex];
         Vector3 _targetPos = _targetNode.transform.position;
-        float _step = 5f * Time.deltaTime; // 프레임 기반 이동 거리 계산
+        float _step = 5f * Time.deltaTime;
 
-        //앞에 노드에 손님이 줄서고 있다면?
-        if (_targetNode._isCustomerWaiting)
-        {
-            if (_currentIndex != 0)
-            {
-                Node _currentNode = _path[_currentIndex - 1];
+        customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
 
-                // 현재 위치한 노드에 아무도 못오게 막기
-                _currentNode._isCustomerWaiting = true;
-            }
-        }
-        else
+        if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
         {
-            // 손님을 다음 노드 위치로 이동시킴
-            customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
-            // 목표 위치에 거의 도착했다면 다음 노드로 전환
-            if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
-            {
-                _currentIndex++;
-            }
+            _currentIndex++;
         }
     }
 
     public void Exit(CustomerAI customer) { }
     #endregion
+
+    /// <summary>
+    /// 테이블이 해금되어 있는지 체크하는 함수
+    /// </summary>
+    bool IsTableUnlocked(int tableIndex)
+    {
+        string tableKey = $"테이블{tableIndex + 1}"; // "테이블1", "테이블2"처럼 맞춰줌
+
+        if (GameManager._instance._baseObjectDict.TryGetValue(tableKey, out BaseObject tableObj))
+        {
+            return tableObj._isActive;
+        }
+        else
+        {
+            Debug.LogWarning($"테이블 {tableKey}이(가) _baseObjectDict에 없음");
+            return false;
+        }
+    }
+
+
+    /// <summary>
+    /// 해금된 테이블 안의 의자만 모아 반환하는 함수
+    /// </summary>
+    List<Node> GetAvailableChairNodes()
+    {
+        List<Node> availableChairs = new List<Node>();
+
+        for (int i = 0; i < _chairPositions.Length; i++)
+        {
+            if (IsTableUnlocked(i)) // 테이블이 해금된 경우만
+            {
+                foreach (Vector2Int chairPos in _chairPositions[i])
+                {
+                    if (_emptyChairsCheck.TryGetValue(chairPos, out Node chairNode))
+                    {
+                        availableChairs.Add(chairNode);
+                    }
+                }
+            }
+        }
+
+        return availableChairs;
+    }
+
+    /// <summary>
+    /// 손님이 이동할 목표 의자 노드를 선택해서 A* 경로를 만드는 함수
+    /// </summary>
+    void MoveCustomerToChair(CustomerAI customer)
+    {
+        List<Node> availableChairs = GetAvailableChairNodes();
+
+        if (availableChairs.Count == 0)
+        {
+            Debug.LogWarning("이동 가능한 의자가 없음");
+            return;
+        }
+
+        // 랜덤으로 한 개 선택 (가까운 거 찾고 싶으면 추후 개선)
+        Node targetChairNode = availableChairs[Random.Range(0, availableChairs.Count)];
+
+        // 현재 손님 위치에서 가장 가까운 시작 노드 찾기
+        Node startNode = GetClosestNode(customer.transform.position);
+
+        // A*로 경로 계산
+        _path = AStarPathfinder.FindPath(startNode, targetChairNode);
+
+        _currentIndex = 0; // 시작 인덱스 초기화
+    }
 
     #region 가장 가까운 노드 찾기
     /// <summary>

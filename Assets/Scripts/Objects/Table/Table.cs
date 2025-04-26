@@ -9,12 +9,99 @@ public class Table : BaseObject, ILevelable,INpcDestination
     [SerializeField] public int _currentTrashCount;
     [SerializeField] public Vector2 _nodeGridNum;
 
+    #region 고기, 뼈 시각화 변수
+    [Header("오브젝트 풀링 연결")]
+    [SerializeField] ObjectPooling _meatPool;  // 고기 풀
+    [SerializeField] ObjectPooling _bonePool;  // 뼈 풀
+
+    [Header("고기, 뼈 프리팹")]
+    [SerializeField] GameObject _meatPrefab;
+    [SerializeField] GameObject _bonePrefab;
+
+    [Header("고기, 뼈 배치하는 위치")]
+    [SerializeField] Transform _meatSpawnLocation; // 기준 위치 (고기, 뼈 공용)
+
+    [Header("쌓을 높이 간격")]
+    [SerializeField] float _stackHeight = 0.11f;
+
+    List<GameObject> _meatList = new List<GameObject>(); // 고기 리스트
+    List<GameObject> _boneList = new List<GameObject>(); // 뼈 리스트
+    #endregion
+
+
     private void Start()
     {
         _currentTrashCount = 0;
         SettingNode();
         SettingGMBaseDict();
     }
+
+    /// <summary>
+    /// 테이블에 고기 추가
+    /// </summary>
+    public void AddMeat(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject meat = _meatPool.GetMeat(); // 풀에서 꺼냄
+            meat.transform.SetParent(_meatSpawnLocation);
+            meat.transform.localPosition = GetStackPosition(_meatList.Count);
+            meat.transform.localRotation = Quaternion.identity;
+            meat.transform.localScale = _meatPrefab.transform.localScale;
+
+            _meatList.Add(meat);
+        }
+    }
+
+    /// <summary>
+    /// 테이블에서 고기 제거
+    /// </summary>
+    public void RemoveMeat()
+    {
+        if (_meatList.Count == 0) return;
+
+        GameObject lastMeat = _meatList[_meatList.Count - 1];
+        _meatList.RemoveAt(_meatList.Count - 1);
+        _meatPool.ReturnToPool(lastMeat);
+    }
+
+    /// <summary>
+    /// 고기를 다 먹은 후 뼈를 생성해서 테이블에 쌓는다
+    /// </summary>
+    public void AddBones(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject bone = _bonePool.GetBone();
+            bone.transform.SetParent(_meatSpawnLocation);
+            bone.transform.localPosition = GetStackPosition(_meatList.Count + _boneList.Count); // 현재 고기+뼈 개수 기준으로
+            bone.transform.localRotation = Quaternion.identity;
+            bone.transform.localScale = _bonePrefab.transform.localScale;
+
+            _boneList.Add(bone);
+        }
+    }
+
+    public void RemoveBones()
+    {
+        while (_boneList.Count > 0)
+        {
+            GameObject bone = _boneList[_boneList.Count - 1];
+            _boneList.RemoveAt(_boneList.Count - 1);
+            _bonePool.ReturnToPool(bone);
+        }
+    }
+
+    Vector3 GetStackPosition(int index)
+    {
+        return new Vector3
+        (
+            0f,
+            index * _stackHeight,
+            0f
+        );
+    }
+
     public string GetKey()
     {
         return _keyName;

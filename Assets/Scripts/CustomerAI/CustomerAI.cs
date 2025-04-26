@@ -15,7 +15,8 @@ public class CustomerAI : MonoBehaviour
     ICustomerState _currentState;
 
     #region 손님 변수 및 프로퍼티
-    //손님이 카운터로 가는데 필요한 좌표
+    public Table _table;         // 내가 앉아있는 테이블
+    public int _AteMeatCount = 0; // 먹은 고기 총 개수
 
     //손님이 요구하는 최소치 고기
     [SerializeField] int _minMeat;
@@ -46,5 +47,17 @@ public class CustomerAI : MonoBehaviour
     void Update()
     {
         _currentState?.Update(this);
+    }
+
+    /// <summary>
+    /// 고기 하나 먹기
+    /// </summary>
+    public void EatOneMeat()
+    {
+        if (_currentMeat > 0)
+        {
+            _currentMeat--;
+            _AteMeatCount++;
+        }
     }
 }

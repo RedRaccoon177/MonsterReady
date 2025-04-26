@@ -49,9 +49,6 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     // 생성된 고기 오브젝트들을 담는 리스트
     List<GameObject> _meatList = new List<GameObject>();
 
-    //고기 굽는거 담는 코루틴
-    Coroutine _grillRoutine;
-
     [Header("NPCAI 카운터 목적지")] public Node _myNode; //npc 목적지로 설정할 카운터 노드 
 
     //플레이어 정보

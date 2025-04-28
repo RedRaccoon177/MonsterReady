@@ -26,8 +26,11 @@ public class Table : BaseObject, ILevelable,INpcDestination
 
     List<GameObject> _meatList = new List<GameObject>(); // 고기 리스트
     List<GameObject> _boneList = new List<GameObject>(); // 뼈 리스트
-    #endregion
 
+    [Header("고기와 뼈 숫자")]
+    [SerializeField] int _meatNum;
+    [SerializeField] int _boneNum;
+    #endregion
 
     private void Start()
     {
@@ -41,11 +44,13 @@ public class Table : BaseObject, ILevelable,INpcDestination
     /// </summary>
     public void AddMeat(int amount)
     {
+        _meatNum += amount;
+
         for (int i = 0; i < amount; i++)
         {
             GameObject meat = _meatPool.GetMeat(); // 풀에서 꺼냄
             meat.transform.SetParent(_meatSpawnLocation);
-            meat.transform.localPosition = GetStackPosition(_meatList.Count);
+            meat.transform.localPosition = GetStackAndBonePosition(_meatList.Count);
             meat.transform.localRotation = Quaternion.identity;
             meat.transform.localScale = _meatPrefab.transform.localScale;
 
@@ -60,6 +65,7 @@ public class Table : BaseObject, ILevelable,INpcDestination
     {
         if (_meatList.Count == 0) return;
 
+        _meatNum -= 1;
         GameObject lastMeat = _meatList[_meatList.Count - 1];
         _meatList.RemoveAt(_meatList.Count - 1);
         _meatPool.ReturnToPool(lastMeat);
@@ -70,11 +76,13 @@ public class Table : BaseObject, ILevelable,INpcDestination
     /// </summary>
     public void AddBones(int amount)
     {
+        _boneNum += amount;
+
         for (int i = 0; i < amount; i++)
         {
             GameObject bone = _bonePool.GetBone();
             bone.transform.SetParent(_meatSpawnLocation);
-            bone.transform.localPosition = GetStackPosition(_meatList.Count + _boneList.Count); // 현재 고기+뼈 개수 기준으로
+            bone.transform.localPosition = GetStackAndBonePosition(_meatList.Count + _boneList.Count); // 현재 고기+뼈 개수 기준으로
             bone.transform.localRotation = Quaternion.identity;
             bone.transform.localScale = _bonePrefab.transform.localScale;
 
@@ -84,6 +92,7 @@ public class Table : BaseObject, ILevelable,INpcDestination
 
     public void RemoveBones()
     {
+        _boneNum -=1 ;
         while (_boneList.Count > 0)
         {
             GameObject bone = _boneList[_boneList.Count - 1];
@@ -92,15 +101,17 @@ public class Table : BaseObject, ILevelable,INpcDestination
         }
     }
 
-    Vector3 GetStackPosition(int index)
+    Vector3 GetStackAndBonePosition(int index)
     {
+        float baseHeight = 0.94f; // 시작 y위치
         return new Vector3
         (
             0f,
-            index * _stackHeight,
+            baseHeight + index * _stackHeight,
             0f
         );
     }
+
 
     public string GetKey()
     {

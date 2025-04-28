@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CustomerMoveToTable : ICustomerState
@@ -8,23 +9,30 @@ public class CustomerMoveToTable : ICustomerState
     List<Node> _path;           // A*로 계산된 경로를 저장할 리스트
     int _currentIndex;          // 현재 따라가고 있는 경로 인덱스
 
+    Node _startNode;             //시작 노드
+
     //해금된 의자 리스트
     Dictionary<Vector2Int, Node> _emptyChairsCheck = new Dictionary<Vector2Int, Node>();
 
     //각 테이블안의 의자 노드 그리드
     List<Vector2Int>[] _chairPositions = new List<Vector2Int>[12];
 
+    //테이블 관련 변수
+    Dictionary<Vector2Int, int> _chairToTableIndex = new Dictionary<Vector2Int, int>();
+    Table[] _tables = new Table[12];
+
     GameManager _gameManager;
     #endregion
-
 
     #region  Enter, Update, Exit문
     public void Enter(CustomerAI customer)
     {
         InitChairGridPos();
         RegisterChairNodes();
+        InitTables();
         MoveCustomerToChair(customer);
     }
+
     public void Update(CustomerAI customer)
     {
         // 경로가 없거나 이미 도착했다면 다음 상태로 전환
@@ -42,6 +50,11 @@ public class CustomerMoveToTable : ICustomerState
 
         if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
         {
+            if (_currentIndex == 0)
+            {
+                _startNode._isCustomerWaiting = false;   
+            }
+
             _currentIndex++;
         }
     }
@@ -54,10 +67,12 @@ public class CustomerMoveToTable : ICustomerState
     /// </summary>
     bool IsTableUnlocked(int tableIndex)
     {
-        string tableKey = $"테이블{tableIndex + 1}"; // "테이블1", "테이블2"처럼 맞춰줌
+        string tableKey = $"테이블{tableIndex + 1}";
 
-        if (GameManager._instance._baseObjectDict.TryGetValue(tableKey, out BaseObject tableObj))
+        if (GameManager._instance._baseObjectDict[tableKey])
         {
+            BaseObject tableObj = GameManager._instance._baseObjectDict[tableKey];
+            Debug.Log($"테이블 {tableKey} 해금 상태: {tableObj._isActive}");
             return tableObj._isActive;
         }
         else
@@ -67,6 +82,25 @@ public class CustomerMoveToTable : ICustomerState
         }
     }
 
+    /*
+    bool IsTableUnlocked(int tableIndex)
+    {
+        string tableKey = $"테이블_{tableIndex + 1}";
+
+        if (GameManager._instance._baseObjectDict[tableKey])
+        {
+            GameObject tableobj = GameManager._instance._baseObjectDict[tableKey].gameObject;
+
+            Debug.Log($"테이블 {tableKey} 해금 상태: {tableobj._isActive}");
+            return tableobj._isActive;
+        }
+        else
+        {   
+            Debug.LogWarning($"테이블 {tableKey}이(가) _baseObjectDict에 없음");
+            return false;
+        }
+    }
+    */
 
     /// <summary>
     /// 해금된 테이블 안의 의자만 모아 반환하는 함수
@@ -77,7 +111,7 @@ public class CustomerMoveToTable : ICustomerState
 
         for (int i = 0; i < _chairPositions.Length; i++)
         {
-            if (IsTableUnlocked(i)) // 테이블이 해금된 경우만
+            if (IsTableUnlocked(i))
             {
                 foreach (Vector2Int chairPos in _chairPositions[i])
                 {
@@ -85,12 +119,19 @@ public class CustomerMoveToTable : ICustomerState
                     {
                         availableChairs.Add(chairNode);
                     }
+                    else
+                    {
+                        Debug.LogWarning($"GetAvailableChairNodes(): 빈 의자 체크 실패 - 위치 {chairPos}");
+                    }
                 }
             }
         }
 
+        Debug.Log($"GetAvailableChairNodes 완료: 이동 가능한 의자 수 = {availableChairs.Count}");
+
         return availableChairs;
     }
+
 
     /// <summary>
     /// 손님이 이동할 목표 의자 노드를 선택해서 A* 경로를 만드는 함수
@@ -101,21 +142,63 @@ public class CustomerMoveToTable : ICustomerState
 
         if (availableChairs.Count == 0)
         {
-            Debug.LogWarning("이동 가능한 의자가 없음");
+            Debug.LogWarning("MoveCustomerToChair: 이동 가능한 의자가 없음");
             return;
         }
 
-        // 랜덤으로 한 개 선택 (가까운 거 찾고 싶으면 추후 개선)
         Node targetChairNode = availableChairs[Random.Range(0, availableChairs.Count)];
+        _startNode = GetClosestNode(customer.transform.position);
 
-        // 현재 손님 위치에서 가장 가까운 시작 노드 찾기
-        Node startNode = GetClosestNode(customer.transform.position);
+        if (_startNode == null)
+        {
+            Debug.LogError("MoveCustomerToChair: 시작 노드가 없음!");
+            return;
+        }
 
-        // A*로 경로 계산
-        _path = AStarPathfinder.FindPath(startNode, targetChairNode);
+        _path = AStarPathfinder.FindPath(_startNode, targetChairNode);
 
-        _currentIndex = 0; // 시작 인덱스 초기화
+        if (_path == null || _path.Count == 0)
+        {
+            Debug.LogError("MoveCustomerToChair: 경로 계산 실패!");
+            return;
+        }
+
+        _currentIndex = 0;
+        Debug.Log($"MoveCustomerToChair: 경로 생성 성공! 총 경로 길이 = {_path.Count}");
+
+        // 손님의 _table 할당
+        if (_chairToTableIndex.TryGetValue(targetChairNode._gridPos, out int tableIndex))
+        {
+            customer._table = _tables[tableIndex];
+            Debug.Log($"손님이 이동할 테이블: {tableIndex + 1}번 테이블");
+        }
+        else
+        {
+            Debug.LogWarning("MoveCustomerToChair: 의자에 해당하는 테이블을 찾을 수 없음");
+        }
     }
+
+    void InitTables()
+    {
+        for (int i = 0; i < _tables.Length; i++)
+        {
+            string tableName = $"테이블{i + 1}"; // "테이블1", "테이블2" 이런 식
+            if (GameManager._instance._baseObjectDict.TryGetValue(tableName, out BaseObject tableObj))
+            {
+                _tables[i] = tableObj.GetComponent<Table>();
+
+                if (_tables[i] == null)
+                {
+                    Debug.LogError($"{tableName}에 Table 스크립트가 없음!");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"{tableName} 오브젝트를 찾을 수 없음.");
+            }
+        }
+    }
+
 
     #region 가장 가까운 노드 찾기
     /// <summary>
@@ -199,12 +282,27 @@ public class CustomerMoveToTable : ICustomerState
             {
                 Node _chairNode = NodeManager._instance._nodeList[pos.x, pos.y];
 
+                if (_chairNode == null)
+                {
+                    Debug.LogError($"RegisterChairNodes(): Node가 null임! 위치: {pos}");
+                    continue;
+                }
+
                 if (!_emptyChairsCheck.ContainsKey(pos))
                 {
                     _emptyChairsCheck.Add(pos, _chairNode);
                 }
+
+                // 좌표 -> 테이블 번호 매핑
+                if (!_chairToTableIndex.ContainsKey(pos))
+                {
+                    _chairToTableIndex.Add(pos, i);
+                }
             }
         }
+        Debug.Log($"RegisterChairNodes 완료: 총 등록된 의자 수 = {_emptyChairsCheck.Count}");
     }
+
+
     #endregion
 }

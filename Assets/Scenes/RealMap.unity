@@ -955,6 +955,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 15381739}
+    - targetCorrespondingSourceObject: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 15381742}
   m_SourcePrefab: {fileID: 100100000, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
 --- !u!4 &15381737 stripped
 Transform:
@@ -981,14 +984,36 @@ MonoBehaviour:
   _keyName: "\uCE74\uC6B4\uD1301"
   _isActive: 1
   _level: 0
+  _nodeGridNum: {x: 0, y: 0}
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatSpawnLocation: {fileID: 15381737}
-  _currentMeatCount: 0
+  _currentMeatCount: 10
   _stackHeight: 0.11
   _counterY: 1.65
   _myNode: {fileID: 0}
   _goldObject: {fileID: 0}
+--- !u!65 &15381742
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15381738}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1, z: 2}
+  m_Center: {x: 0, y: 0.41165298, z: 0}
 --- !u!1 &19239023
 GameObject:
   m_ObjectHideFlags: 0
@@ -4870,7 +4895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customerPrefab: {fileID: 8269424388737075522, guid: bab016c0133cc5a4d9042967a2778a17, type: 3}
   _spawnNodeGridPos: {x: 1, y: 24}
-  _spawnDelay: 2
+  _spawnDelay: 10000
 --- !u!4 &80716891
 Transform:
   m_ObjectHideFlags: 0
@@ -9028,7 +9053,7 @@ GameObject:
   - component: {fileID: 195587709}
   m_Layer: 6
   m_Name: Table3
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9064,9 +9089,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE143"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 195587707}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &195587709
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9200,6 +9234,7 @@ MonoBehaviour:
   _keyName: "\uCE74\uC6B4\uD1303"
   _isActive: 0
   _level: 0
+  _nodeGridNum: {x: 0, y: 0}
   _meatPool: {fileID: 0}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatSpawnLocation: {fileID: 202999175}
@@ -17470,7 +17505,7 @@ Transform:
   m_GameObject: {fileID: 351446080}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -1.68, y: 0, z: 0.01999855}
+  m_LocalPosition: {x: -1.81, y: 0, z: 0.01999855}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20260,7 +20295,7 @@ GameObject:
   - component: {fileID: 414288477}
   m_Layer: 0
   m_Name: Table8
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20295,9 +20330,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE148"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 414288475}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &414288477
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30822,7 +30866,7 @@ GameObject:
   - component: {fileID: 616625220}
   m_Layer: 0
   m_Name: Table5
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30860,9 +30904,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE145"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 616625218}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &616625220
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32065,7 +32118,7 @@ GameObject:
   - component: {fileID: 633785924}
   m_Layer: 0
   m_Name: Table12
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32100,9 +32153,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE1412"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 633785922}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &633785924
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34653,7 +34715,7 @@ GameObject:
   - component: {fileID: 686416309}
   m_Layer: 6
   m_Name: Table4
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34689,9 +34751,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE144"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 686416307}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &686416309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34726,7 +34797,7 @@ GameObject:
   - component: {fileID: 697027518}
   m_Layer: 0
   m_Name: Table9
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34761,9 +34832,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE149"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 697027516}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &697027518
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44876,7 +44956,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyName: "\uADF8\uB9B41"
   _isActive: 0
-  _myNode: {fileID: 0}
+  _nodeGridNum: {x: 0, y: 0}
+  _myNodeY: 0
   _level: 0
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
@@ -50704,6 +50785,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyName: 
   _pickUpObject: 0
+  _maxMeat: 0
+  _currentMeat: 0
+  _meatPrefab: {fileID: 0}
+  _meatPool: {fileID: 0}
+  _stackHeight: 0.11
+  _meatSpawnLocation: {fileID: 0}
 --- !u!65 &1011018661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59287,7 +59374,7 @@ GameObject:
   - component: {fileID: 1175497744}
   m_Layer: 0
   m_Name: Table10
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59322,9 +59409,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE1410"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1175497742}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &1175497744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68120,6 +68216,7 @@ MonoBehaviour:
   _keyName: "\uCE74\uC6B4\uD1302"
   _isActive: 0
   _level: 0
+  _nodeGridNum: {x: 0, y: 0}
   _meatPool: {fileID: 0}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatSpawnLocation: {fileID: 1349180473}
@@ -69247,7 +69344,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyName: "\uADF8\uB9B42"
   _isActive: 0
-  _myNode: {fileID: 0}
+  _nodeGridNum: {x: 0, y: 0}
+  _myNodeY: 0
   _level: 0
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
@@ -69994,7 +70092,7 @@ GameObject:
   - component: {fileID: 1390874452}
   m_Layer: 0
   m_Name: Table11
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70029,9 +70127,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE1411"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1390874450}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &1390874452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77322,7 +77429,7 @@ GameObject:
   - component: {fileID: 1578919568}
   m_Layer: 0
   m_Name: Table7
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77357,9 +77464,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE147"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1578919566}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &1578919568
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85556,7 +85672,7 @@ GameObject:
   - component: {fileID: 1720150018}
   m_Layer: 0
   m_Name: Table6
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85594,9 +85710,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE146"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1720150016}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &1720150018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -92290,9 +92415,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE141"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1859480515}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &1859480517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -98144,9 +98278,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: "\uD14C\uC774\uBE142"
-  _isActive: 0
+  _isActive: 1
   _level: 0
   _currentTrashCount: 0
+  _nodeGridNum: {x: 0, y: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1972163536}
+  _stackHeight: 0.11
+  _meatNum: 0
+  _boneNum: 0
 --- !u!65 &1972163538
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -5,13 +5,14 @@ using UnityEngine;
 public class CustomerEating : ICustomerState
 {
     float _eatTimer = 0f;       // 시간 누적용
-    float _eatDelay = 0.5f;     // 고기 하나 먹는 간격
+    float _eatDelay = 5f;     // 고기 하나 먹는 간격
     Table _table;               // 손님이 앉아있는 테이블 참조
 
     public void Enter(CustomerAI customer)
     {
         _eatTimer = 0f;
         _table = customer._table;  // 손님이 어느 테이블에 앉아 있는지 가져오기 (CustomerAI에 _table 변수 추가 필요)
+        _table.AddMeat(customer._CurrentMeat);
     }
 
     public void Update(CustomerAI customer)

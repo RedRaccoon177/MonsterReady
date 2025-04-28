@@ -29,7 +29,11 @@ public class CustomerAI : MonoBehaviour
 
     public int _MaxMeat => _maxMeat;
     public int _MinMeat => _minMeat;
-    public int _CurrentMeat => _currentMeat;
+    public int _CurrentMeat 
+    {
+        get => _currentMeat;
+        set => _currentMeat = value;
+    } 
     #endregion
 
     public void Start()

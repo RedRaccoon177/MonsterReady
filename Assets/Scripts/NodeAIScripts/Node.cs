@@ -16,7 +16,7 @@ public class Node : MonoBehaviour
     public List<Node> _connectionNodes = new List<Node>();
 
     // 노드의 그리드 상 좌표 (A*에서 거리 계산용으로 사용)
-    [SerializeField] Vector2Int _gridPos;
+    [SerializeField] public Vector2Int _gridPos;
 
     // 손님의 대기 유무
     public bool _isCustomerWaiting;

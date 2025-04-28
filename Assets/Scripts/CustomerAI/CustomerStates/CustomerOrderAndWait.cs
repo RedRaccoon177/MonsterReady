@@ -5,11 +5,10 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 
 public class CustomerOrderAndWait : ICustomerState
 {
-    int _customerCurrentMeat;
-
     //카운터의 정보
     Counter _counter = GameManager._instance._counters[0];
 
+    // 요구할 고기 수
     int _requestedMeat;
 
     public void Enter(CustomerAI customer)
@@ -17,14 +16,17 @@ public class CustomerOrderAndWait : ICustomerState
         // 손님이 원하는 고기 갯수
         _requestedMeat = Random.Range(customer._MinMeat, customer._MaxMeat);
 
-        _customerCurrentMeat = _counter.MinusMeat(_requestedMeat);
+        customer._CurrentMeat = _counter.MinusMeat(_requestedMeat);
+        
+        Debug.Log("고기 요구");
     }
 
     public void Update(CustomerAI customer)
     {
-        if (_customerCurrentMeat != _requestedMeat)
+        if (customer._CurrentMeat != _requestedMeat)
         {
-            _customerCurrentMeat = _counter.MinusMeat(_requestedMeat);
+            customer._CurrentMeat = _counter.MinusMeat(_requestedMeat);
+            Debug.Log("고기 요구");
         }
         else
         {
@@ -32,8 +34,5 @@ public class CustomerOrderAndWait : ICustomerState
         }
     }
 
-    public void Exit(CustomerAI customer)
-    {
-
-    }
+    public void Exit(CustomerAI customer) { }
 }

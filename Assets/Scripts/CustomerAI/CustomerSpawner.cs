@@ -24,7 +24,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(1f);
 
             Node node = NodeManager._instance._nodeList[gridPos.x, gridPos.y];
 
@@ -36,6 +36,8 @@ public class CustomerSpawner : MonoBehaviour
 
             // TODO: 손님 오브젝트 풀링으로 바꾸기
             Instantiate(_customerPrefab, node.transform.position, Quaternion.identity);
+
+            yield return new WaitForSeconds(delay);
         }
     }
 }

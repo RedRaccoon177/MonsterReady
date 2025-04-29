@@ -3,39 +3,43 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// 손님이 음식을 수령받고 의자까지 이동하는 상태 클래스
+/// </summary>
 public class CustomerMoveToTable : ICustomerState
 {
     #region 변수들
-    List<Node> _path;           // A*로 계산된 경로를 저장할 리스트
-    int _currentIndex;          // 현재 따라가고 있는 경로 인덱스
+    List<Node> _path;       // A*로 계산된 경로를 저장할 리스트
+    int _currentIndex;      // 현재 따라가고 있는 경로 인덱스
 
-    Node _startNode;             //시작 노드
+    // 이동 시작 지점 노드
+    Node _startNode;                   
 
-    //해금된 의자 리스트
+    // 해금된 의자 체크용
     Dictionary<Vector2Int, Node> _emptyChairsCheck = new Dictionary<Vector2Int, Node>();
 
-    //각 테이블안의 의자 노드 그리드
+    // 테이블 별 의자 위치 목록
     List<Vector2Int>[] _chairPositions = new List<Vector2Int>[12];
 
-    //테이블 관련 변수
+    // 의자 위치 -> 테이블 번호 매핑
     Dictionary<Vector2Int, int> _chairToTableIndex = new Dictionary<Vector2Int, int>();
-    Table[] _tables = new Table[12];
 
-    GameManager _gameManager;
+    // 테이블 오브젝트 배열
+    Table[] _tables = new Table[12];
     #endregion
 
     #region  Enter, Update, Exit문
     public void Enter(CustomerAI customer)
     {
-        InitChairGridPos();
-        RegisterChairNodes();
-        InitTables();
-        MoveCustomerToChair(customer);
+        InitChairGridPos();             // 의자 위치 초기화
+        RegisterChairNodes();           // 의자 노드 등록
+        InitTables();                   // 테이블 객체 초기화
+        MoveCustomerToChair(customer);  // 손님 이동 시작
     }
 
     public void Update(CustomerAI customer)
     {
-        // 경로가 없거나 이미 도착했다면 다음 상태로 전환
+        // 경로가 없거나 이미 도착했다면 음식 먹는 상태로 전환
         if (_path == null || _currentIndex >= _path.Count)
         {
             customer.SetState(new CustomerEating());
@@ -44,7 +48,7 @@ public class CustomerMoveToTable : ICustomerState
 
         Node _targetNode = _path[_currentIndex];
         Vector3 _targetPos = _targetNode.transform.position;
-        float _step = 5f * Time.deltaTime;
+        float _step = 5f * Time.deltaTime; // 이동 속도
 
         customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
 
@@ -52,18 +56,18 @@ public class CustomerMoveToTable : ICustomerState
         {
             if (_currentIndex == 0)
             {
-                _startNode._isCustomerWaiting = false;   
+                _startNode._isCustomerWaiting = false;   // 출발 노드에 대기중 손님 없음
             }
-
-            _currentIndex++;
+            _currentIndex++; // 다음 경로로 이동
         }
     }
 
     public void Exit(CustomerAI customer) { }
     #endregion
 
+    #region 의자 관련 초기화 및 설정 함수들
     /// <summary>
-    /// 테이블이 해금되어 있는지 체크하는 함수
+    /// 테이블이 해금되어 있는지 확인
     /// </summary>
     bool IsTableUnlocked(int tableIndex)
     {
@@ -82,28 +86,8 @@ public class CustomerMoveToTable : ICustomerState
         }
     }
 
-    /*
-    bool IsTableUnlocked(int tableIndex)
-    {
-        string tableKey = $"테이블_{tableIndex + 1}";
-
-        if (GameManager._instance._baseObjectDict[tableKey])
-        {
-            GameObject tableobj = GameManager._instance._baseObjectDict[tableKey].gameObject;
-
-            Debug.Log($"테이블 {tableKey} 해금 상태: {tableobj._isActive}");
-            return tableobj._isActive;
-        }
-        else
-        {   
-            Debug.LogWarning($"테이블 {tableKey}이(가) _baseObjectDict에 없음");
-            return false;
-        }
-    }
-    */
-
     /// <summary>
-    /// 해금된 테이블 안의 의자만 모아 반환하는 함수
+    /// 해금된 테이블 내 사용 가능한 의자 노드 리스트를 가져옴
     /// </summary>
     List<Node> GetAvailableChairNodes()
     {
@@ -132,9 +116,8 @@ public class CustomerMoveToTable : ICustomerState
         return availableChairs;
     }
 
-
     /// <summary>
-    /// 손님이 이동할 목표 의자 노드를 선택해서 A* 경로를 만드는 함수
+    /// 손님의 이동 시작 (목표 의자 선택 + 경로 찾기)
     /// </summary>
     void MoveCustomerToChair(CustomerAI customer)
     {
@@ -146,8 +129,8 @@ public class CustomerMoveToTable : ICustomerState
             return;
         }
 
-        Node targetChairNode = availableChairs[Random.Range(0, availableChairs.Count)];
-        _startNode = GetClosestNode(customer.transform.position);
+        Node targetChairNode = availableChairs[Random.Range(0, availableChairs.Count)]; // 랜덤 의자 선택
+        _startNode = GetClosestNode(customer.transform.position);                       // 현재 위치 기준 가장 가까운 노드 찾기
 
         if (_startNode == null)
         {
@@ -155,7 +138,7 @@ public class CustomerMoveToTable : ICustomerState
             return;
         }
 
-        _path = AStarPathfinder.FindPath(_startNode, targetChairNode);
+        _path = AStarPathfinder.FindPath(_startNode, targetChairNode); // A* 경로 찾기
 
         if (_path == null || _path.Count == 0)
         {
@@ -166,7 +149,7 @@ public class CustomerMoveToTable : ICustomerState
         _currentIndex = 0;
         Debug.Log($"MoveCustomerToChair: 경로 생성 성공! 총 경로 길이 = {_path.Count}");
 
-        // 손님의 _table 할당
+        // 이동하는 테이블 저장
         if (_chairToTableIndex.TryGetValue(targetChairNode._gridPos, out int tableIndex))
         {
             customer._table = _tables[tableIndex];
@@ -178,11 +161,15 @@ public class CustomerMoveToTable : ICustomerState
         }
     }
 
+    /// <summary>
+    /// 테이블 오브젝트 초기화
+    /// </summary>
     void InitTables()
     {
         for (int i = 0; i < _tables.Length; i++)
         {
-            string tableName = $"테이블{i + 1}"; // "테이블1", "테이블2" 이런 식
+            string tableName = $"테이블{i + 1}";
+
             if (GameManager._instance._baseObjectDict.TryGetValue(tableName, out BaseObject tableObj))
             {
                 _tables[i] = tableObj.GetComponent<Table>();
@@ -198,17 +185,14 @@ public class CustomerMoveToTable : ICustomerState
             }
         }
     }
-
+    #endregion
 
     #region 가장 가까운 노드 찾기
     /// <summary>
-    /// 주어진 위치에서 가장 가까운 유효한 Node를 찾아 반환
+    /// 현재 위치에서 가장 가까운 이동 가능한 Node를 반환
     /// </summary>
-    /// <param name="pos">현재 손님의 위치</param>
-    /// <returns>가장 가까운 Node</returns>
     Node GetClosestNode(Vector3 pos)
     {
-        //초기값 최대로
         float _minDist = float.MaxValue;
         Node _closestNode = null;
 
@@ -222,10 +206,11 @@ public class CustomerMoveToTable : ICustomerState
 
             if (!_node._isWalkale)
             {
-                continue;
+                continue; // 이동 불가능한 노드는 스킵
             }
 
             float _dist = Vector3.Distance(pos, _node.transform.position);
+
             if (_dist < _minDist)
             {
                 _minDist = _dist;
@@ -240,39 +225,28 @@ public class CustomerMoveToTable : ICustomerState
     }
     #endregion
 
-    #region 의자 노드 좌표 등록 함수들
+    #region 의자 좌표 설정 및 등록
     /// <summary>
-    /// 의자 노드의 각 좌표
+    /// 각 테이블별 의자들의 그리드 위치 설정
     /// </summary>
     void InitChairGridPos()
     {
         _chairPositions[0] = new List<Vector2Int> { new Vector2Int(15, 8), new Vector2Int(15, 10) };
-
         _chairPositions[1] = new List<Vector2Int> { new Vector2Int(15, 12), new Vector2Int(15, 14) };
-
         _chairPositions[2] = new List<Vector2Int> { new Vector2Int(12, 12), new Vector2Int(12, 14) };
-
         _chairPositions[3] = new List<Vector2Int> { new Vector2Int(12, 8), new Vector2Int(12, 10) };
-
         _chairPositions[4] = new List<Vector2Int> { new Vector2Int(9, 13), new Vector2Int(8, 13), new Vector2Int(9, 15), new Vector2Int(8, 15) };
-
         _chairPositions[5] = new List<Vector2Int> { new Vector2Int(9, 8), new Vector2Int(8, 8), new Vector2Int(9, 10), new Vector2Int(8, 10) };
-
         _chairPositions[6] = new List<Vector2Int> { new Vector2Int(5, 16) };
-
         _chairPositions[7] = new List<Vector2Int> { new Vector2Int(5, 12) };
-
         _chairPositions[8] = new List<Vector2Int> { new Vector2Int(5, 8) };
-
         _chairPositions[9] = new List<Vector2Int> { new Vector2Int(6, 3) };
-
         _chairPositions[10] = new List<Vector2Int> { new Vector2Int(9, 3) };
-
         _chairPositions[11] = new List<Vector2Int> { new Vector2Int(12, 3) };
     }
 
     /// <summary>
-    /// 의자 노드 그리드 좌표랑 등록시키기
+    /// 의자 노드들을 등록하고, 의자 위치와 테이블 매핑
     /// </summary>
     void RegisterChairNodes()
     {
@@ -293,16 +267,14 @@ public class CustomerMoveToTable : ICustomerState
                     _emptyChairsCheck.Add(pos, _chairNode);
                 }
 
-                // 좌표 -> 테이블 번호 매핑
                 if (!_chairToTableIndex.ContainsKey(pos))
                 {
                     _chairToTableIndex.Add(pos, i);
                 }
             }
         }
+
         Debug.Log($"RegisterChairNodes 완료: 총 등록된 의자 수 = {_emptyChairsCheck.Count}");
     }
-
-
     #endregion
 }

@@ -50787,10 +50787,10 @@ MonoBehaviour:
   _pickUpObject: 0
   _maxMeat: 0
   _currentMeat: 0
-  _meatPrefab: {fileID: 0}
-  _meatPool: {fileID: 0}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _meatPool: {fileID: 2111446580}
   _stackHeight: 0.11
-  _meatSpawnLocation: {fileID: 0}
+  _meatSpawnLocation: {fileID: 1011018664}
 --- !u!65 &1011018661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50839,6 +50839,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &1011018664 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4238322018291216, guid: 05ecb317a3ea6a147ac4b2eb6ced4dc4, type: 3}
+  m_PrefabInstance: {fileID: 1011018656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1015561843
 GameObject:
   m_ObjectHideFlags: 0

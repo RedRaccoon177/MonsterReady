@@ -11,9 +11,15 @@ public class CustomerEating : ICustomerState
     public void Enter(CustomerAI customer)
     {
         _eatTimer = 0f;
-        _table = customer._table;  // 손님이 어느 테이블에 앉아 있는지 가져오기 (CustomerAI에 _table 변수 추가 필요)
+        _table = customer._table;
+
+        // 1. 손님 정면 고기 제거
+        customer.ClearAllMeatVisuals();
+
+        // 2. 테이블 위에 고기 생성
         _table.AddMeat(customer._CurrentMeat);
     }
+
 
     public void Update(CustomerAI customer)
     {
@@ -39,8 +45,5 @@ public class CustomerEating : ICustomerState
         }
     }
 
-    public void Exit(CustomerAI customer)
-    {
-
-    }
+    public void Exit(CustomerAI customer) { }
 }

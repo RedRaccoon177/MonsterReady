@@ -102,6 +102,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3330af9601ba8cf4dbcbce8b79a8b1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _table: {fileID: 0}
+  _AteMeatCount: 0
+  _meatPool: {fileID: 0}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _meatSpawnLocation: {fileID: 8274351931403654564}
+  _stackHeight: 0.11
   _minMeat: 1
   _maxMeat: 4
   _currentMeat: 0
+--- !u!4 &8274351931403654564 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4585453369738264, guid: c7cebe2178705794aa9a9911f182d8c1, type: 3}
+  m_PrefabInstance: {fileID: 8269784620449206716}
+  m_PrefabAsset: {fileID: 0}

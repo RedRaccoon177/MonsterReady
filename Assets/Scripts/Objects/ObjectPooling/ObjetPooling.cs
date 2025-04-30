@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Purchasing;
 using UnityEngine;
 
 
@@ -14,13 +13,18 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] int _meatInitialSize = 100;    // 미리 생성할 고기 프리팹
 
     [Header("뼈")]
-    [SerializeField] GameObject _bonePrefab;        // 고기 프리팹
-    [SerializeField] int _boneInitialSize = 100;    // 미리 생성할 고기 프리팹
+    [SerializeField] GameObject _bonePrefab;        // 뼈 프리팹
+    [SerializeField] int _boneInitialSize = 100;    // 미리 생성할 뼈 프리팹
+
+    [Header("박스")]
+    [SerializeField] GameObject _boxPrefab;        // 박스 프리팹
+    [SerializeField] int _boxInitialSize = 100;    // 미리 생성할 박스 프리팹
 
     // 풀 내부 큐 (재사용 대기 오브젝트)
-    private Queue<GameObject> _goldPool = new Queue<GameObject>();
-    private Queue<GameObject> _meatPool = new Queue<GameObject>(); 
-    private Queue<GameObject> _bonePool = new Queue<GameObject>(); 
+    Queue<GameObject> _goldPool = new Queue<GameObject>();
+    Queue<GameObject> _meatPool = new Queue<GameObject>(); 
+    Queue<GameObject> _bonePool = new Queue<GameObject>(); 
+    Queue<GameObject> _boxPool = new Queue<GameObject>();
 
     /// <summary>
     /// 게임 시작 시 풀을 초기화하고 오브젝트들을 미리 생성해 둔다.
@@ -51,6 +55,13 @@ public class ObjectPooling : MonoBehaviour
             _bonePool.Enqueue(obj);                      
         }
 
+        //박스
+        for(int i = 0; i < _boxInitialSize; i++)
+        {
+            GameObject obj = Instantiate(_boxPrefab);
+            obj.SetActive(false);
+            _boxPool.Enqueue(obj);
+        }
     }
 
     /// <summary>
@@ -109,6 +120,20 @@ public class ObjectPooling : MonoBehaviour
         return pooledObj;
     }
 
+    public GameObject GetBox()
+    {
+        if (_boxPool.Count == 0)
+        {
+            GameObject obj = Instantiate(_boxPrefab);
+            obj.SetActive(false);
+            _boxPool.Enqueue(obj);
+        }
+
+        GameObject pooledObj = _boxPool.Dequeue();
+        pooledObj.SetActive(true);
+        return pooledObj;
+    }
+
     /// <summary>
     /// 오브젝트를 다시 풀에 반환하여 재사용 가능하도록 만든다.
     /// </summary>
@@ -129,6 +154,10 @@ public class ObjectPooling : MonoBehaviour
 
             case "Bone":
                 _bonePool.Enqueue(obj);
+                break;
+
+            case "Box":
+                _boxPool.Enqueue(obj);
                 break;
 
             default:

@@ -24,7 +24,7 @@ public class GoldObject : MonoBehaviour
     List<GameObject> _goldInstances = new List<GameObject>();
 
     // 현재 골드 수치 (화면에 표시되는 수가 아님, 논리적 수치)
-    [SerializeField] public int _currentGold = 0;
+    [SerializeField] public int _currentGold;
 
     // 최대 시각적으로 표현 가능한 골드바 수 (가로 x 세로 x 높이)
     int _maxVisualGold => _maxX * _maxZ * _maxY;

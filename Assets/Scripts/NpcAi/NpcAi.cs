@@ -18,21 +18,26 @@ public interface INpcState
 public class NpcAi : MonoBehaviour
 {
     public string _keyName;
-    int _currentLevel;
-    int _currentMaxLevel;
-    float _moveSpeed;
+    public int _currentLevel { get; set; } // 현재 레벨
+    public int _maxLevel { get; set; }  // 최대 레벨
+    public int _amountLevel { get; set; }  // 최대 레벨
+    public int _speedLevel { get; set; }  // 최대 레벨
+    public int _startLevel { get; set; }  //시작 레벨
+    public int _price { get; set; }  //가격
+    float _moveSpeed; // 스피드
+    public Sprite _npcIcon; // 스피드
     int _holdMaxAmount;
-    bool _isUnlockNpc;
+    public bool _isUnlockNpc; // 보유중인지
     public NpcPickUpObject _pickUpObject; // npc가 들고 잇는거
-    public INpcDestination _destination { get; set; } // npc 목적지
+    public INpcDestination _destination { get; set; } // npc 목적지 오브젝트
+    public Node _targetNode{ get; set; } // npc 목적지 노드
     public List<Node> _path{ get; set; } // npc 목적지까지의 길
 
     public Coroutine _questCor { get; set; }
     // npc 상태
-    INpcState _currentState;
+    public INpcState _currentState;
     public NpcIdle _npcIdle;
-    public NpcAiMoveToPutDown _npcMoveToPutDown;
-    public NpcMoveToPickUp _npcMoveToPickUp;
+    public NpcMove _npcMove;
 
     [Header("npc의 고기")]
     [SerializeField] int _maxMeat;              //현재 들수 있는 고기 최대 수
@@ -40,16 +45,16 @@ public class NpcAi : MonoBehaviour
 
     List<GameObject> _meatList = new List<GameObject>();
     [Header("고기 프리펩")]
-    [SerializeField] GameObject _meatPrefab;
+    [SerializeField] public GameObject _meatPrefab;
 
     [Header("오브젝트 풀링 연결")]
-    [SerializeField] ObjectPooling _meatPool; // 고기를 관리하는 오브젝트 풀
+    [SerializeField] public ObjectPooling _meatPool; // 고기를 관리하는 오브젝트 풀
 
     [Header("고기 쌓일 높이 간격")]
     [SerializeField] float _stackHeight = 0.11f;
 
     [Header("고기 배치하는 곳")]
-    [SerializeField] Transform _meatSpawnLocation;
+    [SerializeField] public Transform _meatSpawnLocation;
     public int _MaxMeat
     {
         get => _maxMeat;
@@ -74,19 +79,31 @@ public class NpcAi : MonoBehaviour
         _currentState = nextState;
         _currentState?.Enter(this);
     }
-    private void Start()
+    private void Awake()
     {
+        Debug.Log(1);
+        _isUnlockNpc = false;
+        SettingActive(_isUnlockNpc);
         _MaxMeat = 4;
         _CurrentMeat = 0;
         _npcIdle = new NpcIdle();
-        _npcMoveToPutDown = new NpcAiMoveToPutDown();
-        _npcMoveToPickUp = new NpcMoveToPickUp();
+        _npcMove = new NpcMove();
         _path = new List<Node>();
+    }
+    private void OnEnable()
+    {
         ChangeState(_npcIdle);
     }
     private void Update()
     {
         _currentState.Update(this);
+    }
+    private void OnDisable()
+    {
+        if (_questCor != null)
+        {
+            StopCoroutine(_questCor);
+        }
     }
     public void currentPickUpType()
     {
@@ -94,18 +111,11 @@ public class NpcAi : MonoBehaviour
         {
             _pickUpObject = NpcPickUpObject.Meat;
         }
-        //else if (_CurrentMeat > 0)
-        //{
-        //    _pickUpObject = NpcPickUpObject.Meat;
-        //}
-        //else if(_CurrentMeat > 0)
-        //{
-        //    _pickUpObject = NpcPickUpObject.Meat;
-        //}
-        //else if(_CurrentMeat > 0)
-        //{
-        //    _pickUpObject = NpcPickUpObject.Meat;
-        //}
+        else
+        {
+            _pickUpObject = NpcPickUpObject.None;
+
+        }
     }
 
     /// <summary>
@@ -165,5 +175,41 @@ public class NpcAi : MonoBehaviour
     {
         return new Vector3(0, index * _stackHeight, 0);
     }
+    public void SettingActive(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+        _isUnlockNpc = isActive;
+    }
 
+    public void test()
+    {
+
+    }
+    public void SettingAbility(int speedLevel, int amountLevel)
+    {
+        _moveSpeed = 1 + 0.5f * (speedLevel - 1);
+        _maxMeat = 1 + 1 * (amountLevel - 1);
+    }
+    public void LevelUp()
+    {
+        _currentLevel += 1;
+        DevideLevel();
+        SettingAbility(_speedLevel, _amountLevel);
+    }
+    public void DevideLevel()
+    {
+        var temp1 = _currentLevel / 2;
+        var temp2 = _currentLevel % 2;
+        if (temp2 == 0)
+        {
+            _speedLevel = temp1;
+            _amountLevel = temp1;
+        }
+        else
+        {
+            _speedLevel = temp1 + 1;
+            _amountLevel = temp1;
+        }
+
+    }
 }

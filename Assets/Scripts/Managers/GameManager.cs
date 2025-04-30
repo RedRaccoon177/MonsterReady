@@ -30,7 +30,34 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
+        SettingWarableList();
+        SettingGame();
+
+
+    }
+
+    /// <summary>
+    /// 게임 처음 시작할때 초기화 , 처음이 아니라면 데이터 로딩
+    /// </summary>
+    public void SettingGame()
+    {
         //OnUnlockObject(0); // 처음 부터 시작
+        //foreach (var a in _tables)
+        //{
+        //    a.DeActive();
+        //}
+        //foreach (var a in _grills)
+        //{
+        //    a.DeActive();
+        //}
+        //foreach (var a in _counters)
+        //{
+        //    a.DeActive();
+        //}
+        //foreach (var a in _expens)
+        //{
+        //    a.OnActive();
+        //}
 
         //DataManager._Instance.LoadActivatorData();
         //DataManager._Instance.LoadObjectData(ObjectType.Table);
@@ -38,9 +65,6 @@ public class GameManager : MonoBehaviour
         //DataManager._Instance.LoadObjectData(ObjectType.Counter);
         //DataManager._Instance.LoadObjectData(ObjectType.Expand);
         //DataManager._Instance.LoadGroundMoney();
-        SettingWarableList();
-        // 테이블 , 카운터 1, 카운터 2 ,카운터 3 ,쓰레기통 , 그릴 1,2
-     
     }
     /// <summary>
     /// npc가 할일이 있는지 조회 해야하는 리스트 초기화

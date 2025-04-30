@@ -39,11 +39,11 @@ public class Node : MonoBehaviour
                 hit.CompareTag("Player") || 
                 hit.CompareTag("Door") ||
                 hit.CompareTag("Plane") ||
-                hit.CompareTag("ExpandWall") ||
                 hit.CompareTag("Grill") ||
                 hit.CompareTag("Counter") ||
                 hit.CompareTag("Table") ||
-                hit.CompareTag("Npc")
+                hit.CompareTag("Npc") || 
+                hit.CompareTag("Activator")
                 )
                 continue;
 

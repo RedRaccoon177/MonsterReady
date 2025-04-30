@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -10,10 +11,11 @@ public class DataManager : MonoBehaviour
     public static DataManager _Instance { get; private set; }
     [Header("플레이어 스크립트")] [SerializeField] PlayerController _playerController;
     PlayerData playerData;
-
+    List<NpcAi> npcList;
     GameObjectDataList objectDataList;
     ActivatorList activatorList;
     GroundMoneyDataList groundMoneyDataList;
+    NpcDataList npcDataList;
 
     string filePathPlayer; // 플레이어 데이터 저장 경로
     string filePathGroundGold; // 땅에 떨어져 있는 돈 데이터 저장 경로
@@ -23,6 +25,7 @@ public class DataManager : MonoBehaviour
     string filePathCounter;
     string filePathExpand;
     string filePathGrill;
+    string filePathNpc;
 
 
     private void Awake()
@@ -34,9 +37,12 @@ public class DataManager : MonoBehaviour
         filePathExpand = Path.Combine(Application.persistentDataPath, "ecpandData.json");
         filePathGroundGold = Path.Combine(Application.persistentDataPath, "groundGold.json");
         filePathPlayer = Path.Combine(Application.persistentDataPath, "playerData.json");
+        filePathNpc = Path.Combine(Application.persistentDataPath, "npc.json");
         filePathActivatorObject = Path.Combine(Application.persistentDataPath, "unlockObject.json");
         Debug.Log(Application.persistentDataPath); // 경로 디버그 출력
 
+        npcDataList = new NpcDataList();
+        npcDataList.npcDatas = new List<NpcData>();
         objectDataList = new GameObjectDataList();
         objectDataList.objectDatas = new List<ObjectData>();
         // 해금 오브젝트 정보 저장 주머니
@@ -45,6 +51,7 @@ public class DataManager : MonoBehaviour
         // List<int>를 가지고 있는 직렬화 클래스
         groundMoneyDataList = new GroundMoneyDataList();
         groundMoneyDataList.groundMoneys = new List<GroundMoneyData>();
+        npcList = new List<NpcAi>();
         if (_Instance == null)
         {
             _Instance = this;
@@ -60,10 +67,6 @@ public class DataManager : MonoBehaviour
             {
                 Debug.Log("Key : " + a.Key + "Val :" + a.Value.isActive());
             }
-            // SaveObjectData(GameManager._instance._tables,ObjectType.Table);
-            // SaveObjectData(GameManager._instance._counters,ObjectType.Counter);
-            // SaveObjectData(GameManager._instance._tables,ObjectType.Grill);
-            // SavePlayerAllData();
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -72,6 +75,44 @@ public class DataManager : MonoBehaviour
             LoadObjectData(ObjectType.Table);
             LoadObjectData(ObjectType.Counter);
             LoadObjectData(ObjectType.Grill);
+        }
+    }
+    public void SaveNpcData()
+    {
+        npcDataList.npcDatas.Clear();
+        List<NpcAi> npcList = new List<NpcAi>(NpcSpawner._npcAiDic.Values);
+        foreach (var a in npcList)
+        {
+            Debug.Log("aaa : " + a._keyName);
+            Debug.Log("aaa : " + a._currentLevel);
+            Debug.Log("aaa : " + a._isUnlockNpc);
+        }
+        for (int i=0; i< npcList.Count; i++)
+        {
+            NpcData npcData = new NpcData();
+            npcData.keyName = npcList[i]._keyName;
+            npcData.currentLevel = npcList[i]._currentLevel;
+            npcData.isUnlock = npcList[i]._isUnlockNpc;
+            npcDataList.npcDatas.Add(npcData);
+        }
+        string npcJson = JsonUtility.ToJson(npcDataList,true);
+        File.WriteAllText(filePathNpc, npcJson);
+    }
+    public void LoadNpcData()
+    {
+        if (File.Exists(filePathNpc))
+        {
+            var json = File.ReadAllText(filePathNpc);
+            NpcDataList npcDataList = JsonUtility.FromJson<NpcDataList>(json);
+            for (int i = 0; i < npcDataList.npcDatas.Count; i++)
+            {
+                if (NpcSpawner._npcAiDic.TryGetValue(npcDataList.npcDatas[i].keyName, out var target))
+                {
+                    target.SettingActive(npcDataList.npcDatas[i].isUnlock);
+                    target._isUnlockNpc = npcDataList.npcDatas[i].isUnlock;
+                    target._currentLevel = npcDataList.npcDatas[i].currentLevel;
+                }
+            }
         }
     }
     public void SaveGroundMoney(GoldObject[] groundMoneyArr)
@@ -89,18 +130,21 @@ public class DataManager : MonoBehaviour
     }
     public void LoadGroundMoney()
     {
-        var json = File.ReadAllText(filePathGroundGold);
-        GroundMoneyDataList objectList = JsonUtility.FromJson<GroundMoneyDataList>(json); //
-        Dictionary<string,GoldObject> goldObjectDict = new Dictionary<string,GoldObject>();
-        foreach (var item in GameManager._instance._groundMoneyArr)
+        if (File.Exists(filePathGroundGold))
         {
-            goldObjectDict.Add(item._key, item);
-        }
-        for (int i=0; i< goldObjectDict.Count; i++)
-        {
-            if (goldObjectDict.TryGetValue(objectList.groundMoneys[i].key, out var target))
+            var json = File.ReadAllText(filePathGroundGold);
+            GroundMoneyDataList objectList = JsonUtility.FromJson<GroundMoneyDataList>(json); //
+            Dictionary<string, GoldObject> goldObjectDict = new Dictionary<string, GoldObject>();
+            foreach (var item in GameManager._instance._groundMoneyArr)
             {
-                target.AddGold(objectList.groundMoneys[i].currentGold);
+                goldObjectDict.Add(item._key, item);
+            }
+            for (int i = 0; i < goldObjectDict.Count; i++)
+            {
+                if (goldObjectDict.TryGetValue(objectList.groundMoneys[i].key, out var target))
+                {
+                    target.AddGold(objectList.groundMoneys[i].currentGold);
+                }
             }
         }
     }
@@ -124,8 +168,8 @@ public class DataManager : MonoBehaviour
             }
             objectDataList.objectDatas.Add(tableData);
         }
-        string objectJsonData = JsonUtility.ToJson(objectDataList, true); // json으로 저장
-        WriteAllText(type, objectJsonData);
+        string objectJsonData = JsonUtility.ToJson(objectDataList, true); // json으로 변수에 저장
+        WriteAllText(type, objectJsonData); //해당 경로에 json 기입
     }
 
     /// <summary>
@@ -199,24 +243,27 @@ public class DataManager : MonoBehaviour
     }
     public void LoadObjectData(ObjectType type)
     {
-        Dictionary<string, BaseObject> objectDictGM = GetobjectDictGM(type);
-        var json = File.ReadAllText(GetJsonJsonRoute(type));
-        GameObjectDataList objectList = JsonUtility.FromJson<GameObjectDataList>(json); // JSON을 객체로 변환
-        for (int i = 0; i < objectList.objectDatas.Count; i++)
+        if (File.Exists(filePathPlayer))
         {
-            // 딕셔너리 안에 있는 키와 내 저장 데이터 키가 일치하다면
-            if (objectDictGM.TryGetValue(objectList.objectDatas[i].key, out var target))
+            Dictionary<string, BaseObject> objectDictGM = GetobjectDictGM(type);
+            var json = File.ReadAllText(GetJsonJsonRoute(type));
+            GameObjectDataList objectList = JsonUtility.FromJson<GameObjectDataList>(json); // JSON을 객체로 변환
+            for (int i = 0; i < objectList.objectDatas.Count; i++)
             {
-                target._isActive = objectList.objectDatas[i].isActive;
-                target.gameObject.SetActive(target._isActive);
-                if (type != ObjectType.Expand)
+                // 딕셔너리 안에 있는 키와 내 저장 데이터 키가 일치하다면
+                if (objectDictGM.TryGetValue(objectList.objectDatas[i].key, out var target))
                 {
-                    ((ILevelable)target).SetLevel(objectList.objectDatas[i].level);
+                    target._isActive = objectList.objectDatas[i].isActive;
+                    target.gameObject.SetActive(target._isActive);
+                    if (type != ObjectType.Expand)
+                    {
+                        ((ILevelable)target).SetLevel(objectList.objectDatas[i].level);
+                    }
                 }
-            }
-            else
-            {
-                Debug.Log("일치하는 항목 없음");
+                else
+                {
+                    Debug.Log("일치하는 항목 없음");
+                }
             }
         }
     }

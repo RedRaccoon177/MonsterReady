@@ -994,6 +994,7 @@ MonoBehaviour:
   _currentMeatCount: 0
   _stackHeight: 0.11
   _counterY: 1.65
+  _myNode: {fileID: 0}
   _goldObject: {fileID: 0}
 --- !u!65 &15381742
 BoxCollider:
@@ -10728,6 +10729,7 @@ MonoBehaviour:
   _currentMeatCount: 0
   _stackHeight: 0.11
   _counterY: 1.65
+  _myNode: {fileID: 0}
   _goldObject: {fileID: 0}
 --- !u!65 &202999181
 BoxCollider:
@@ -28635,7 +28637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <_step>k__BackingField: 17
-  _ActivateObj: {fileID: 414288474}
+  _ActivateObj: {fileID: 0}
   _DeactivateObj: {fileID: 0}
   _maxPayGold: 10
   _currentPayGold: 0
@@ -49742,7 +49744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <_step>k__BackingField: 8
-  _ActivateObj: {fileID: 195587706}
+  _ActivateObj: {fileID: 0}
   _DeactivateObj: {fileID: 0}
   _maxPayGold: 10
   _currentPayGold: 0
@@ -77206,6 +77208,7 @@ MonoBehaviour:
   _currentMeatCount: 0
   _stackHeight: 0.11
   _counterY: 1.65
+  _myNode: {fileID: 0}
   _goldObject: {fileID: 0}
 --- !u!65 &1349180479
 BoxCollider:

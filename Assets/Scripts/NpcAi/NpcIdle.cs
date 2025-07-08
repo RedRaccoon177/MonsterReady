@@ -44,7 +44,6 @@ public class NpcIdle : INpcState
             var maxHasStackIdx = 0;
             for (int i = 0; i < tempList.Count; i++)
             {
-                Debug.Log("탐색... " + tempList[i].GetKey());
                 // 해당 오브젝트에 들것이 있다면? 
                 if (tempList[i].HasStack() == true)
                 {

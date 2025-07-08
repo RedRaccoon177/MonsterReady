@@ -37,36 +37,42 @@ public class NpcIdle : INpcState
     public IEnumerator MoveToPickUpPath(NpcAi npcAi)
     {
         yield return new WaitForSeconds(4f); // 딕셔너리가 만들어지기 전에 실행되어서 넣음
-        //npcAi._questCor = null;
+        npcAi._questCor = null;
         while (npcAi._path == null)
         {
             var tempList = GameManager._instance._warkableObjectList;
+            var maxHasStackIdx = 0;
             for (int i = 0; i < tempList.Count; i++)
             {
                 Debug.Log("탐색... " + tempList[i].GetKey());
                 // 해당 오브젝트에 들것이 있다면? 
                 if (tempList[i].HasStack() == true)
                 {
-                    npcAi._destination = tempList[i];
-                    //npcAi._path = AStarPathfinder.FindPath
-                    //    (
-                    //        NodeManager._instance.GetNearestNodeOptimized(npcAi.transform.position), // 현재 내 위치 근방 노드 찾기
-                    //        GameManager._instance._npcObjectNodeDict[npcAi._destination.GetKey()] // 키값으로 목적지 노드 찾기
-                    //    );
-                    break;
+                    if (tempList[maxHasStackIdx].GetStackCount() < tempList[i].GetStackCount())
+                    {
+                        maxHasStackIdx = i;
+                    }
                 }
             }
-            yield return new WaitForSeconds(2);
+            npcAi._destination = tempList[maxHasStackIdx];
+            npcAi._path = AStarPathfinder.FindPath
+            (
+                NodeManager._instance.GetNearestNodeOptimized(npcAi.transform.position), // 현재 내 위치 근방 노드 찾기
+                GameManager._instance._npcObjectNodeDict[npcAi._destination.GetKey()] // 키값으로 목적지 노드 찾기
+            );
         }
         if (npcAi._path != null)
         {
             npcAi.ChangeState(npcAi._npcMove);
         }
+        else
+        {
+            npcAi.ChangeState(npcAi._npcIdle);
+        }
     }
 
     public void MoveToPutdownPath(NpcAi npcAi)
     {
-        Debug.Log(npcAi._currentState);
         var baseObject = GameManager._instance._baseObjectDict;
         var nodeObject = GameManager._instance._npcObjectNodeDict;
         npcAi.currentPickUpType();

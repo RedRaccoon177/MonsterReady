@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -987,14 +987,13 @@ MonoBehaviour:
   _keyName: "\uCE74\uC6B4\uD1301"
   _isActive: 0
   _level: 0
-  _nodeGridNum: {x: 0, y: 0}
+  _nodeGridNum: {x: 17, y: 6}
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatSpawnLocation: {fileID: 15381737}
   _currentMeatCount: 0
   _stackHeight: 0.11
   _counterY: 1.65
-  _myNode: {fileID: 0}
   _goldObject: {fileID: 0}
 --- !u!65 &15381742
 BoxCollider:
@@ -1015,7 +1014,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 0.82330596, z: 2}
+  m_Size: {x: 3, y: 0.82330596, z: 3}
   m_Center: {x: 0, y: 0.41165298, z: 0}
 --- !u!1 &16918369
 GameObject:
@@ -10729,7 +10728,6 @@ MonoBehaviour:
   _currentMeatCount: 0
   _stackHeight: 0.11
   _counterY: 1.65
-  _myNode: {fileID: 0}
   _goldObject: {fileID: 0}
 --- !u!65 &202999181
 BoxCollider:
@@ -77208,7 +77206,6 @@ MonoBehaviour:
   _currentMeatCount: 0
   _stackHeight: 0.11
   _counterY: 1.65
-  _myNode: {fileID: 0}
   _goldObject: {fileID: 0}
 --- !u!65 &1349180479
 BoxCollider:
@@ -111677,7 +111674,7 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE142"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 6
+  _currentTrashCount: 0
   _nodeGridNum: {x: 16, y: 13}
   _meatPool: {fileID: 0}
   _bonePool: {fileID: 0}

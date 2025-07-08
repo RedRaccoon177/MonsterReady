@@ -19,7 +19,13 @@ public class GameManager : MonoBehaviour
     public Dictionary<string,Node> _npcObjectNodeDict = new Dictionary<string,Node>();
     public Dictionary<string,BaseObject> _baseObjectDict = new Dictionary<string  , BaseObject>();
     
-
+    void Print()
+    {
+        foreach (var temp in _baseObjectDict)
+        {
+            Debug.Log("키값 : " + temp.Key + "값 : " + temp.Value);
+        }
+    }
     private void Awake()
     {
         if (_instance == null)
@@ -27,11 +33,21 @@ public class GameManager : MonoBehaviour
             _instance = this;
         } 
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            foreach (var temp in _baseObjectDict)
+            {
+                Debug.Log("키값 : " + temp.Key + "값 : "+  temp.Value);
+            }
+        }
+    }
     private void Start()
     {
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
         SettingWarableList();
-        FristStartGame();
+        LoadGame();
     }
     void FristStartGame()
     {

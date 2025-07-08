@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     Vector3 _moveVec;
 
     Vector3 _playerPos;              // 플레이어 위치
-    int _playerGold = 0;             // 플레이어 골드
+    public int _playerGold = 0;             // 플레이어 골드
     int _playerGem = 0;              // 플레이어 보석
     int _playerPassLevel = 1;        // 배틀 패스 레벨
     int _playerSpeedLevel = 1;       // 이동 속도 레벨

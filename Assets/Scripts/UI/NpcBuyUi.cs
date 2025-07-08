@@ -15,7 +15,6 @@ public class NpcBuyUi : MonoBehaviour
 
     public void SetUi(NpcSpawner npcSpawner)
     {
-        Debug.Log(00);
         _npcSpawner = npcSpawner;
 
         if (_contentList.Count == 0)
@@ -28,7 +27,6 @@ public class NpcBuyUi : MonoBehaviour
 
     private void CreateContent()
     {
-        Debug.Log(11);
         for (int i = 0; i < _npcSpawner._npcdData.Length; i++)
         {
             var content = Instantiate(_contentPrefab, _contentParent).GetComponent<NpcBuyUiContent>();
@@ -39,7 +37,6 @@ public class NpcBuyUi : MonoBehaviour
 
     private void UpdateContent()
     {
-        Debug.Log(22);
         for (int i = 0; i < _contentList.Count; i++)
         {
             if (_contentList[i]._npcName == _npcSpawner._npcScriptList[i]._keyName)

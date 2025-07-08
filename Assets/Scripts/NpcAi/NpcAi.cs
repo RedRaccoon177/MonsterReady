@@ -18,12 +18,12 @@ public interface INpcState
 public class NpcAi : MonoBehaviour
 {
     public string _keyName;
-    public int _currentLevel { get; set; } // 현재 레벨
+    public int _currentLevel;// 현재 레벨
     public int _maxLevel { get; set; }  // 최대 레벨
     public int _amountLevel { get; set; }  // 최대 레벨
     public int _speedLevel { get; set; }  // 최대 레벨
     public int _startLevel { get; set; }  //시작 레벨
-    public int _price { get; set; }  //가격
+    public int _price;  //가격
     float _moveSpeed; // 스피드
     public Sprite _npcIcon; // 스피드
     int _holdMaxAmount;
@@ -89,6 +89,10 @@ public class NpcAi : MonoBehaviour
         _npcIdle = new NpcIdle();
         _npcMove = new NpcMove();
         _path = new List<Node>();
+    }
+    private void Start()
+    {
+        SetPrice();
     }
     private void OnEnable()
     {
@@ -180,11 +184,11 @@ public class NpcAi : MonoBehaviour
         gameObject.SetActive(isActive);
         _isUnlockNpc = isActive;
     }
-
-    public void test()
+    public void SetPrice()
     {
-
+        _price = _currentLevel+10;
     }
+
     public void SettingAbility(int speedLevel, int amountLevel)
     {
         _moveSpeed = 1 + 0.5f * (speedLevel - 1);

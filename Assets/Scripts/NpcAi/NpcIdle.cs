@@ -48,15 +48,11 @@ public class NpcIdle : INpcState
                 if (tempList[i].HasStack() == true)
                 {
                     npcAi._destination = tempList[i];
-                    Debug.Log("11 : " + NodeManager._instance.GetNearestNodeOptimized(npcAi.transform.position).transform.position);
-                    Debug.Log("22 : " + GameManager._instance._npcObjectNodeDict[npcAi._destination.GetKey()].transform.position);
-                    Debug.Log("33 : " + npcAi._destination.GetKey());
-
-                    npcAi._path = AStarPathfinder.FindPath
-                        (
-                            NodeManager._instance.GetNearestNodeOptimized(npcAi.transform.position), // 현재 내 위치 근방 노드 찾기
-                            GameManager._instance._npcObjectNodeDict[npcAi._destination.GetKey()] // 키값으로 목적지 노드 찾기
-                        );
+                    //npcAi._path = AStarPathfinder.FindPath
+                    //    (
+                    //        NodeManager._instance.GetNearestNodeOptimized(npcAi.transform.position), // 현재 내 위치 근방 노드 찾기
+                    //        GameManager._instance._npcObjectNodeDict[npcAi._destination.GetKey()] // 키값으로 목적지 노드 찾기
+                    //    );
                     break;
                 }
             }

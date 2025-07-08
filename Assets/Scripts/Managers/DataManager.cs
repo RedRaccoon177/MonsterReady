@@ -9,7 +9,8 @@ using UnityEngine.Playables;
 public class DataManager : MonoBehaviour
 {
     public static DataManager _Instance { get; private set; }
-    [Header("플레이어 스크립트")] [SerializeField] PlayerController _playerController;
+    [Header("플레이어 스크립트")] 
+    [SerializeField] PlayerController _playerController;
     PlayerData playerData;
     List<NpcAi> npcList;
     GameObjectDataList objectDataList;

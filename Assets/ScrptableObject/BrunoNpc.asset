@@ -16,5 +16,5 @@ MonoBehaviour:
   iconImage: {fileID: 21300000, guid: 65d3f351e10449d408836fcb0bb712b1, type: 3}
   maxLevel: 10
   startLevel: 1
-  price: 0
+  price: 10
   npcPrefab: {fileID: 1825674451428294, guid: 5e0e2eede99162942be359c7281e338f, type: 3}

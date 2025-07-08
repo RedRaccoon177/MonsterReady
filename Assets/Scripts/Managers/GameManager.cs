@@ -12,12 +12,12 @@ public class GameManager : MonoBehaviour
     [Header("테이블 오브젝트")] public Table[] _tables;
     [Header("카운터 오브젝트")] public Counter[] _counters;
     [Header("그릴 오브젝트")] public Grill[] _grills;
+    public Expen[] _expens;
 
     public List<INpcDestination> _warkableObjectList = new List<INpcDestination>();// npc가 목적지로 설정 가능한 오브젝트 리스트
     // 테이블,카운터3,그릴1,2에 쌓인게 있는지 
-    public Dictionary<string,Node> _npcObjectNodeDict = new Dictionary<string  , Node>();
+    public Dictionary<string,Node> _npcObjectNodeDict = new Dictionary<string,Node>();
     public Dictionary<string,BaseObject> _baseObjectDict = new Dictionary<string  , BaseObject>();
-    public Expen[] _expens;
     
 
     private void Awake()
@@ -31,40 +31,38 @@ public class GameManager : MonoBehaviour
     {
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
         SettingWarableList();
-        SettingGame();
-
-
+        FristStartGame();
+    }
+    void FristStartGame()
+    {
+        OnUnlockObject(0); // 처음 부터 시작
+        foreach (var a in _tables)
+        {
+            a.DeActive();
+        }
+        foreach (var a in _grills)
+        {
+            a.DeActive();
+        }
+        foreach (var a in _counters)
+        {
+            a.DeActive();
+        }
     }
 
     /// <summary>
     /// 게임 처음 시작할때 초기화 , 처음이 아니라면 데이터 로딩
     /// </summary>
-    public void SettingGame()
+    public void LoadGame()
     {
-        //OnUnlockObject(0); // 처음 부터 시작
-        //foreach (var a in _tables)
-        //{
-        //    a.DeActive();
-        //}
-        //foreach (var a in _grills)
-        //{
-        //    a.DeActive();
-        //}
-        //foreach (var a in _counters)
-        //{
-        //    a.DeActive();
-        //}
-        //foreach (var a in _expens)
-        //{
-        //    a.OnActive();
-        //}
 
-        //DataManager._Instance.LoadActivatorData();
-        //DataManager._Instance.LoadObjectData(ObjectType.Table);
-        //DataManager._Instance.LoadObjectData(ObjectType.Grill);
-        //DataManager._Instance.LoadObjectData(ObjectType.Counter);
-        //DataManager._Instance.LoadObjectData(ObjectType.Expand);
-        //DataManager._Instance.LoadGroundMoney();
+        DataManager._Instance.LoadNpcData();
+        DataManager._Instance.LoadActivatorData();
+        DataManager._Instance.LoadObjectData(ObjectType.Table);
+        DataManager._Instance.LoadObjectData(ObjectType.Grill);
+        DataManager._Instance.LoadObjectData(ObjectType.Counter);
+        DataManager._Instance.LoadObjectData(ObjectType.Expand);
+        DataManager._Instance.LoadGroundMoney();
     }
     /// <summary>
     /// npc가 할일이 있는지 조회 해야하는 리스트 초기화
@@ -95,12 +93,12 @@ public class GameManager : MonoBehaviour
         _activator[_step]._isActive = true;
         Debug.Log(_activator[_step].name);
         Debug.Log(_activator[_step]._isActive);
-        //DataManager._Instance.SaveGroundMoney(_groundMoneyArr);
-        //DataManager._Instance.SaveObjectData(_tables,ObjectType.Table);
-        //DataManager._Instance.SaveObjectData(_grills, ObjectType.Grill);
-        //DataManager._Instance.SaveObjectData(_counters, ObjectType.Counter);
-        //DataManager._Instance.SaveObjectData(_expens, ObjectType.Expand);
-        //DataManager._Instance.SaveActivatorData(_activator);
+        DataManager._Instance.SaveGroundMoney(_groundMoneyArr);
+        DataManager._Instance.SaveObjectData(_tables,ObjectType.Table);
+        DataManager._Instance.SaveObjectData(_grills, ObjectType.Grill);
+        DataManager._Instance.SaveObjectData(_counters, ObjectType.Counter);
+        DataManager._Instance.SaveObjectData(_expens, ObjectType.Expand);
+        DataManager._Instance.SaveActivatorData(_activator);
     }
     
     /// <summary>

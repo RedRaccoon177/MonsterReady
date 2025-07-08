@@ -12,7 +12,7 @@ public class NpcSpawner : MonoBehaviour
     static public Dictionary<string, NpcAi> _npcAiDic;
 
 
-    private void Start()
+    private void Awake()
     {
         _npcAiDic = new Dictionary<string, NpcAi>();
         CreateNpcAi();
@@ -21,7 +21,7 @@ public class NpcSpawner : MonoBehaviour
     {
         for (int i=0; i< _npcdData.Length; i++)
         {
-            var temp = Instantiate(_npcdData[i].npcPrefab,new Vector3(i,0,i),Quaternion.identity).GetComponent<NpcAi>();
+            var temp = Instantiate(_npcdData[i].npcPrefab,gameObject.transform).GetComponent<NpcAi>();
             temp._keyName = _npcdData[i].keyName;
             temp._maxLevel = _npcdData[i].maxLevel;
             temp._startLevel = _npcdData[i].startLevel;
@@ -33,6 +33,5 @@ public class NpcSpawner : MonoBehaviour
             _npcAiDic.Add(temp._keyName, temp);
             _npcScriptList.Add(temp);
         }
-        //DataManager._Instance.LoadNpcData();
     }
 }

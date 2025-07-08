@@ -16,19 +16,19 @@ public class NpcBuyUiContent : MonoBehaviour
     [SerializeField] GameObject deActiveUi;
     [SerializeField] GameObject[] _speedAbilityArray;
     [SerializeField] GameObject[] _amountAbilityArray;
+    [SerializeField] TextMeshProUGUI buyButtonText;
+    [SerializeField] TextMeshProUGUI upgradeButtonText;
     public string _npcName { get;private set; }
     int _speedLevel;
     int _amountLevel;
 
     private void Awake()
     {
-        Debug.Log("content생성");
         _icon = _icon.GetComponent<Image>();
         buyButton = buyButton.GetComponent<Button>();
         buyButton.onClick.AddListener(OnBuyButtonClicked);
         upgradeButton.onClick.AddListener(UpgradeButtonClicked);
     }
-
     // 받은 능력치 배열 만큼 회색 네모칸 생성
     public void CreateMaxSquare(GameObject[] array , int max)
     {
@@ -83,24 +83,39 @@ public class NpcBuyUiContent : MonoBehaviour
     }
     private void OnBuyButtonClicked()
     {
+        NpcAi npcAi = NpcSpawner._npcAiDic[_npcName];
         // 돈이 된다면?
+        if (PlayerController._instance._playerGold < npcAi._price)
+        {
+            return;
+        }
+        buyButton.gameObject.SetActive(false);
+        upgradeButton.gameObject.SetActive(true);
+        upgradeButtonText.text = npcAi._price.ToString();
         deActiveUi.SetActive(false);
-        NpcSpawner._npcAiDic[_npcName].SettingActive(true);
+        PlayerController._instance.MinusGold(npcAi._price);
+        npcAi.SettingActive(true);
+        npcAi.SetPrice();
         DataManager._Instance.SaveNpcData();
     }
     public void UpgradeButtonClicked()
     {
         NpcAi npcAi = NpcSpawner._npcAiDic[_npcName];
+        if (PlayerController._instance._playerGold < npcAi._price)
+        {
+            return;
+        }
+        PlayerController._instance.MinusGold(npcAi._price);
         npcAi.LevelUp();
         _level.text = npcAi._currentLevel.ToString();
+        npcAi.SetPrice();
         OnActiveAllGreenSqaure(npcAi);
         CheckUpgradePossavble(npcAi);
+        upgradeButtonText.text = npcAi._price.ToString();
         DataManager._Instance.SaveNpcData();
     }
     public void CheckUpgradePossavble(NpcAi npcAi)
     {
-        Debug.Log("npcAi._currentLevel" + npcAi._currentLevel);
-        Debug.Log("npcAi._maxLevel" + npcAi._maxLevel);
         if (npcAi._currentLevel == npcAi._maxLevel)
         {
             upgradeButton.gameObject.SetActive(false);

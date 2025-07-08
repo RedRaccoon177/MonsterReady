@@ -17,15 +17,12 @@ public class UiManager : MonoBehaviour
 
     private void Start()
     {
-        _npcBuyUi = Instantiate(_npcBuyUi, _canvas);
         OffNpcBuyUi();
     }
 
     public NpcBuyUi OnNpcBuyUi()
     {
-        
         _npcBuyUi.SetActive(true);
-        Debug.Log(22);
         return _npcBuyUi.GetComponent<NpcBuyUi>();
     }
     public void OffNpcBuyUi()

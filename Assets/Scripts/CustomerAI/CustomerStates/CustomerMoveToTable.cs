@@ -240,9 +240,9 @@ public class CustomerMoveToTable : ICustomerState
         _chairPositions[6] = new List<Vector2Int> { new Vector2Int(5, 16) };
         _chairPositions[7] = new List<Vector2Int> { new Vector2Int(5, 12) };
         _chairPositions[8] = new List<Vector2Int> { new Vector2Int(5, 8) };
-        _chairPositions[9] = new List<Vector2Int> { new Vector2Int(6, 3) };
+        _chairPositions[9] = new List<Vector2Int> { new Vector2Int(12, 3) };
         _chairPositions[10] = new List<Vector2Int> { new Vector2Int(9, 3) };
-        _chairPositions[11] = new List<Vector2Int> { new Vector2Int(12, 3) };
+        _chairPositions[11] = new List<Vector2Int> { new Vector2Int(6, 3) };
     }
 
     /// <summary>

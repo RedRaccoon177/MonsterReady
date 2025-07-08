@@ -24,7 +24,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(10000f);
+            yield return new WaitForSeconds(_spawnDelay);
 
             Node node = NodeManager._instance._nodeList[gridPos.x, gridPos.y];
 

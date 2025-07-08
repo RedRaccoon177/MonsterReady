@@ -54,7 +54,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
         {
             GameObject meat = _meatPool.GetMeat();                      // 고기 풀에서 꺼내기
             meat.transform.SetParent(_meatSpawnLocation);
-            meat.transform.localPosition = GetStackAndBonePosition(_meatList.Count); // 현재 고기 수만큼 높이 조정
+            meat.transform.localPosition = GetStackPosition(_meatList.Count); // 현재 고기 수만큼 높이 조정
             meat.transform.localRotation = Quaternion.identity;
             meat.transform.localScale = _meatPrefab.transform.localScale;
 
@@ -89,7 +89,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
         {
             GameObject bone = _bonePool.GetBone();                     // 뼈 풀에서 꺼내기
             bone.transform.SetParent(_meatSpawnLocation);
-            bone.transform.localPosition = GetStackAndBonePosition(_meatList.Count + _boneList.Count); // 고기+뼈 기준 높이
+            bone.transform.localPosition = GetBonePosition(_boneList.Count); // 고기+뼈 기준 높이
             bone.transform.localRotation = Quaternion.identity;
             bone.transform.localScale = _bonePrefab.transform.localScale;
 
@@ -116,14 +116,25 @@ public class Table : BaseObject, ILevelable, INpcDestination
     /// <summary>
     /// 고기/뼈가 쌓이는 위치를 계산
     /// </summary>
-    Vector3 GetStackAndBonePosition(int index)
+    Vector3 GetStackPosition(int index)
     {
-        float baseHeight = 0.94f; // 최초 스폰 위치
+        float baseHeight = 1f; // 최초 스폰 위치
         return new Vector3
         (
             0f,
             baseHeight + index * _stackHeight,
-            0f
+            -0.5f
+        );
+    }
+
+    Vector3 GetBonePosition(int index)
+    {
+        float baseHeight = 1f; // 최초 스폰 위치
+        return new Vector3
+        (
+            0f,
+            baseHeight + index * _stackHeight,
+            0.5f
         );
     }
     #endregion

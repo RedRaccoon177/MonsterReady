@@ -66,7 +66,6 @@ public class CustomerAI : MonoBehaviour
         }
     }
 
-
     #region Start, Update
     public void Start()
     {

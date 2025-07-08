@@ -66,10 +66,13 @@ public class NpcBuyUiContent : MonoBehaviour
     }
     public void Setting(NpcAi npcAi)
     {
+        Debug.Log("!!!!!!!!!!!!");
         _icon.sprite = npcAi._npcIcon;
         _npcName = npcAi._keyName;
         _name.text = npcAi._keyName;
         _level.text = npcAi._currentLevel.ToString();
+        buyButtonText.text = npcAi._price.ToString();
+        upgradeButtonText.text = npcAi._price.ToString();
         if (npcAi._isUnlockNpc == false)
         {
             deActiveUi.SetActive(true);
@@ -89,13 +92,13 @@ public class NpcBuyUiContent : MonoBehaviour
         {
             return;
         }
-        buyButton.gameObject.SetActive(false);
-        upgradeButton.gameObject.SetActive(true);
-        upgradeButtonText.text = npcAi._price.ToString();
         deActiveUi.SetActive(false);
         PlayerController._instance.MinusGold(npcAi._price);
         npcAi.SettingActive(true);
         npcAi.SetPrice();
+        buyButton.gameObject.SetActive(false);
+        upgradeButton.gameObject.SetActive(true);
+        upgradeButtonText.text = npcAi._price.ToString();
         DataManager._Instance.SaveNpcData();
     }
     public void UpgradeButtonClicked()

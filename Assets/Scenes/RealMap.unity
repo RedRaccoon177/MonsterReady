@@ -58337,7 +58337,7 @@ GameObject:
   - component: {fileID: 1038592945}
   m_Layer: 5
   m_Name: DoorCreateRisonUI
-  m_TagString: Untagged
+  m_TagString: Activator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

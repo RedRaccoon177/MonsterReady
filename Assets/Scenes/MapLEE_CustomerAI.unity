@@ -910,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1015,7 +1015,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 0.82330596, z: 2}
+  m_Size: {x: 2, y: 0.82330596, z: 1}
   m_Center: {x: 0, y: 0.41165298, z: 0}
 --- !u!1 &16918369
 GameObject:
@@ -10328,7 +10328,7 @@ GameObject:
   - component: {fileID: 195587709}
   m_Layer: 6
   m_Name: Table3
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23113,7 +23113,7 @@ GameObject:
   - component: {fileID: 414288477}
   m_Layer: 0
   m_Name: Table8
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -94,8 +94,11 @@ public class Grill : BaseObject, ILevelable, INpcDestination
         }
         else if (other.CompareTag("Npc"))
         {
-            Debug.Log(123123);
             NpcAi npcScript = other.GetComponent<NpcAi>();
+            if (npcScript._destination.GetKey() != this._keyName)
+            {
+                return;
+            }
             if (npcScript._MaxMeat != npcScript._CurrentMeat)
             {
                 int _minusMeat = npcScript._MaxMeat - npcScript._CurrentMeat;
@@ -151,7 +154,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
 
     /// <summary>
     /// 고기 감소
-    /// </summary>
+    /// </summary> 
     /// <param name="_minusMeat"></param>
     int MinusMeat(int _minusMeat)
     {

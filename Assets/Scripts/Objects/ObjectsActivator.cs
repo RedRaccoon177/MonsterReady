@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectsActivator : MonoBehaviour
 {
@@ -8,6 +11,7 @@ public class ObjectsActivator : MonoBehaviour
     [SerializeField, Header("활성화 하고자 하는 오브젝트")]
     GameObject _ActivateObj;
     BaseObject _activeObjBaseScript;
+    Coroutine _gageCor;
 
     [SerializeField, Header("비활성화 하고자 하는 오브젝트")]
     GameObject _DeactivateObj;
@@ -19,8 +23,11 @@ public class ObjectsActivator : MonoBehaviour
     [SerializeField] int _currentPayGold;
     bool _isUnlock = false; // 해금 오브젝트 Unlock 여부
     public bool _isActive = false; // 해금 오브젝트 활성화 여부
-
     bool _playerInTrigger = false;
+
+    [Header("Ui")] 
+    [SerializeField] TextMeshProUGUI _payGoldText;
+    [SerializeField] Image _payGoldProgress;
 
     private void OnEnable()
     {
@@ -30,6 +37,10 @@ public class ObjectsActivator : MonoBehaviour
     private void OnDisable()
     {
         PlayerController.OnJoystickReleased -= OnJoystickReleased;
+        if (_gageCor != null)
+        {
+            StopCoroutine(_gageCor);
+        }
     }
 
     void Start()
@@ -42,40 +53,76 @@ public class ObjectsActivator : MonoBehaviour
         {
             _deactivateObjScript = _DeactivateObj.GetComponent<BaseObject>();
         }
-        _currentPayGold = _maxPayGold;
     }
     
     private void OnJoystickReleased()
     {
         if (_isUnlock) return;
-        if (!_playerInTrigger) return;
-
+        if (!_playerInTrigger)
+        {
+            if (_gageCor != null)
+            {
+                StopCoroutine(_gageCor);
+            }
+            return;
+        }
         PlayerController player = PlayerController._instance;
         if (player == null) return;
 
         // 골드 지불
-        if (_currentPayGold > 0)
+        if (_currentPayGold >= 0)
         {
-            _currentPayGold = player.MinusGold(_currentPayGold);
-
-            if (_currentPayGold <= 0)
-            {
-                UnlockObject();
-                _isUnlock = true;
-            }
+            _gageCor = StartCoroutine(BuyGauge());
         }
     }
+
+    IEnumerator BuyGauge()
+    {
+        int count = 0;
+        while (_currentPayGold < _maxPayGold)
+        {
+            if (PlayerController._instance._playerGold <= 0)
+                yield break;
+
+            count++;
+            PlayerController._instance.MinusGold(1);
+            _currentPayGold += 1;
+            _payGoldText.text = (_maxPayGold-_currentPayGold).ToString();
+            float from = _payGoldProgress.fillAmount;
+            float to = (float)_currentPayGold / _maxPayGold;
+            yield return StartCoroutine(AnimateGauge(from, to, 0.1f));
+        }
+        UnlockObject();
+        _isUnlock = true;
+    }
+    IEnumerator AnimateGauge(float from, float to, float duration)
+    {
+        float time = 0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+            _payGoldProgress.fillAmount = Mathf.Lerp(from, to, t);
+            yield return null;
+        }
+        _payGoldProgress.fillAmount = to; // 정확하게 도달 보정
+    }
+
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             _playerInTrigger = true;
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             _playerInTrigger = false;
+        }
     }
 
 

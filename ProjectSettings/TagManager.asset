@@ -16,7 +16,7 @@ TagManager:
   - Counter
   - Table
   - Npc
-  - Box
+  - Activator
   layers:
   - Default
   - TransparentFX

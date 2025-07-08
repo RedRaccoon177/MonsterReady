@@ -73,18 +73,18 @@ public class CustomerMoveToTable : ICustomerState
     {
         string tableKey = $"테이블{tableIndex + 1}";
 
-        if (GameManager._instance._baseObjectDict[tableKey])
+        if (GameManager._instance._baseObjectDict.TryGetValue(tableKey, out BaseObject tableObj))
         {
-            BaseObject tableObj = GameManager._instance._baseObjectDict[tableKey];
             Debug.Log($"테이블 {tableKey} 해금 상태: {tableObj._isActive}");
             return tableObj._isActive;
         }
         else
         {
-            Debug.LogWarning($"테이블 {tableKey}이(가) _baseObjectDict에 없음");
+            Debug.LogWarning($"[IsTableUnlocked] {tableKey} 키가 _baseObjectDict에 없음");
             return false;
         }
     }
+
 
     /// <summary>
     /// 해금된 테이블 내 사용 가능한 의자 노드 리스트를 가져옴

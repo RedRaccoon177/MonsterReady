@@ -119,6 +119,10 @@ public class CustomerAI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 손님 손 앞에 고기 시각화
+    /// </summary>
+    /// <param name="currentMeat"></param>
     public void UpdateMeatDisplay(int currentMeat)
     {
         // 1. 고기 개수가 부족하면 채워줌

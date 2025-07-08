@@ -19,7 +19,7 @@ public class CustomerAI : MonoBehaviour
     public int _AteMeatCount = 0; // 먹은 고기 총 개수
 
     [Header("오브젝트 풀링 연결")]
-    [SerializeField] ObjectPooling _meatPool;
+    [SerializeField] ObjectPooling _objectPool;
 
     [Header("고기, 뼈 프리팹")]
     [SerializeField] GameObject _meatPrefab;              // 고기 프리팹
@@ -55,11 +55,11 @@ public class CustomerAI : MonoBehaviour
     void Awake()
     {
         // ObjectPooling 자동 연결
-        if (_meatPool == null)
+        if (_objectPool == null)
         {
-            _meatPool = FindObjectOfType<ObjectPooling>();
+            _objectPool = FindObjectOfType<ObjectPooling>();
 
-            if (_meatPool == null)
+            if (_objectPool == null)
             {
                 Debug.LogError("[CustomerAI] 씬에 ObjectPooling 오브젝트가 없습니다!");
             }
@@ -109,7 +109,7 @@ public class CustomerAI : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         {
-            GameObject meat = _meatPool.GetMeat();                      // 고기 풀에서 꺼내기
+            GameObject meat = _objectPool.GetMeat();                      // 고기 풀에서 꺼내기
             meat.transform.SetParent(_meatSpawnLocation);
             meat.transform.localPosition = GetStackMeatAndBonePosition(_meatList.Count); // 현재 고기 수만큼 높이 조정
             meat.transform.localRotation = Quaternion.identity;
@@ -124,7 +124,7 @@ public class CustomerAI : MonoBehaviour
         // 1. 고기 개수가 부족하면 채워줌
         while (_meatList.Count < currentMeat)
         {
-            GameObject meat = _meatPool.GetMeat();
+            GameObject meat = _objectPool.GetMeat();
 
             // 부모 설정
             meat.transform.SetParent(transform);  // 손님 오브젝트에 따라다니게
@@ -140,7 +140,7 @@ public class CustomerAI : MonoBehaviour
         {
             GameObject lastMeat = _meatList[_meatList.Count - 1];
             _meatList.RemoveAt(_meatList.Count - 1);
-            _meatPool.ReturnToPool(lastMeat);
+            _objectPool.ReturnToPool(lastMeat);
         }
     }
 
@@ -165,7 +165,7 @@ public class CustomerAI : MonoBehaviour
     {
         foreach (var meat in _meatList)
         {
-            _meatPool.ReturnToPool(meat);
+            _objectPool.ReturnToPool(meat);
         }
         _meatList.Clear();
     }

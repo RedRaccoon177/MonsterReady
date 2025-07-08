@@ -18,7 +18,8 @@ public class Node : MonoBehaviour
     // 노드의 그리드 상 좌표 (A*에서 거리 계산용으로 사용)
     [SerializeField] public Vector2Int _gridPos;
 
-    // 손님의 대기 유무
+    // 손님이 줄에서 대기할 때 대기 유무
+    // true: 손님 존재함 / false: 손님 없음
     public bool _isCustomerWaiting;
     #endregion
 
@@ -92,7 +93,7 @@ public class Node : MonoBehaviour
         Vector2Int[] _offsets = new Vector2Int[]
         {
         new Vector2Int(-1, -1), new Vector2Int(-1, 0), new Vector2Int(-1, 1),
-        new Vector2Int(0, -1),                     new Vector2Int(0, 1),
+        new Vector2Int(0, -1),                         new Vector2Int(0, 1),
         new Vector2Int(1, -1),  new Vector2Int(1, 0),  new Vector2Int(1, 1)
         };
 
@@ -114,6 +115,5 @@ public class Node : MonoBehaviour
                 }
             }
         }
-
     }
 }

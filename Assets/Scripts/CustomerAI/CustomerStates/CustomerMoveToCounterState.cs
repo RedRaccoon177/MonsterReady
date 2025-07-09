@@ -72,6 +72,13 @@ public class CustomerMoveToCounterState : ICustomerState
             {
                 _currentIndex++;
             }
+
+            // 현재 위치한 노드에 다음 손님 올 수 있게 하기
+            if (_currentIndex  > 0 )
+            {
+                Node _currentNode = _path[_currentIndex - 1];
+                _currentNode._isCustomerWaiting = false;
+            }
         }
     }   
 

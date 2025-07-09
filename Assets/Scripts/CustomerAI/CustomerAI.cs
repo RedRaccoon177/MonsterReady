@@ -15,6 +15,9 @@ public class CustomerAI : MonoBehaviour
     ICustomerState _currentState;
 
     #region 손님 필드
+    [Header("현재 상태 확인용")]
+    [SerializeField] private string currentStateName;
+
     public Table _table;         // 내가 앉아있는 테이블
     public int _AteMeatCount = 0; // 먹은 고기 총 개수
 
@@ -84,6 +87,9 @@ public class CustomerAI : MonoBehaviour
         _currentState?.Exit(this);
         _currentState = newState;
         _currentState.Enter(this);
+
+        // 인스펙터에서 상태 확인할 수 있도록 이름 저장
+        currentStateName = _currentState.GetType().Name;
     }
     #endregion
 

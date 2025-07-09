@@ -6,6 +6,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 {
     #region 키값 및 레벨
     [SerializeField] public int _level;
+    [SerializeField] bool isDestination = false;
     [SerializeField] public Vector2 _nodeGridNum;
     public string GetKey()
     {
@@ -143,7 +144,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     private void OnTriggerEnter(Collider other)
     {
         // 태그가 Player가 아닐 경우 무시
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player") && !other.CompareTag("Npc")) return;
 
         //플레이어의 정보를 바탕으로 더해야 할 고기
         if (other.CompareTag("Player"))
@@ -154,9 +155,14 @@ public class Counter : BaseObject, ILevelable, INpcDestination
                 _player.MinusMeat(_currentMeatCount);
             }
         }
-        else if (other.CompareTag("NPC"))
+        else if (other.CompareTag("Npc"))
         {
-            //TODO: NPC 캐릭터들 고기 획득
+            var npc = other.gameObject.GetComponent<NpcAi>();
+            if (0 != npc._CurrentMeat)
+            {
+                AddMeat(npc._CurrentMeat);
+                npc.MinusMeat(_currentMeatCount);
+            }
         }
     }
 
@@ -177,5 +183,20 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     public void SettingGMBaseDict()
     {
         GameManager._instance._baseObjectDict.TryAdd(_keyName, this);
+    }
+
+    public void OnDestination()
+    {
+        isDestination = true;
+    }
+
+    public void OffDestination()
+    {
+        isDestination = false;  
+    }
+
+    public bool IsDestination()
+    {
+        return isDestination;
     }
 }

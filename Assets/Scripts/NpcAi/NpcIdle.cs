@@ -7,7 +7,6 @@ public class NpcIdle : INpcState
     public void Enter(NpcAi npcAi)
     {
         npcAi._path = null;
-        npcAi._destination = null;
         npcAi.currentPickUpType(); // 현재 내가 무엇을 들고 있는지
         if (npcAi._pickUpObject == NpcPickUpObject.None)
         {
@@ -44,8 +43,8 @@ public class NpcIdle : INpcState
             var maxHasStackIdx = 0;
             for (int i = 0; i < tempList.Count; i++)
             {
-                // 해당 오브젝트에 들것이 있다면? 
-                if (tempList[i].HasStack() == true)
+                // 해당 오브젝트에 들것이 있다면? , 다른 npc가 목적지로 설정 안했다면
+                if (tempList[i].HasStack() == true && tempList[i].IsDestination() == false)
                 {
                     if (tempList[maxHasStackIdx].GetStackCount() < tempList[i].GetStackCount())
                     {
@@ -53,6 +52,7 @@ public class NpcIdle : INpcState
                     }
                 }
             }
+            tempList[maxHasStackIdx].OnDestination();
             npcAi._destination = tempList[maxHasStackIdx];
             npcAi._path = AStarPathfinder.FindPath
             (

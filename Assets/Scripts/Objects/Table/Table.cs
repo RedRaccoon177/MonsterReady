@@ -12,6 +12,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
     [SerializeField] public int _level;                   // 테이블 레벨
     [SerializeField] public int _currentTrashCount;       // 현재 쌓인 쓰레기(뼈) 수
     [SerializeField] public Vector2 _nodeGridNum;         // 해당 테이블의 그리드 좌표
+    bool isDestination;
 
     [Header("오브젝트 풀링 연결")]
     [SerializeField] ObjectPooling _meatPool;             // 고기 풀
@@ -36,11 +37,11 @@ public class Table : BaseObject, ILevelable, INpcDestination
     #region Unity 이벤트 함수
     IEnumerator Start()
     {
-        yield return new WaitForSeconds(2);
+        yield return null;
         Debug.Log("나는 테이블 : " + _keyName);
         _currentTrashCount = 0;
         SettingNode();        // 테이블 위치를 노드에 등록
-        SettingGMBaseDict();  // 테이블을 GameManager에 등록
+        //SettingGMBaseDict();  // 테이블을 GameManager에 등록
     }
     #endregion
 
@@ -192,6 +193,21 @@ public class Table : BaseObject, ILevelable, INpcDestination
     public void SettingGMBaseDict()
     {
         GameManager._instance._baseObjectDict.TryAdd(_keyName, this);
+    }
+
+    public void OnDestination()
+    {
+        isDestination = true;
+    }
+
+    public void OffDestination()
+    {
+        isDestination = false;
+    }
+
+    public bool IsDestination()
+    {
+        return isDestination;
     }
     #endregion
 }

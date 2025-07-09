@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     public List<INpcDestination> _warkableObjectList = new List<INpcDestination>();// npc가 목적지로 설정 가능한 오브젝트 리스트
     // 테이블,카운터3,그릴1,2에 쌓인게 있는지 
     public Dictionary<string,Node> _npcObjectNodeDict = new Dictionary<string,Node>();
-    public Dictionary<string,BaseObject> _baseObjectDict = new Dictionary<string  , BaseObject>();
+    public Dictionary<string,BaseObject> _baseObjectDict = new Dictionary<string,BaseObject>();
     
     void Print()
     {
@@ -48,6 +49,10 @@ public class GameManager : MonoBehaviour
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
         SettingWarableList();
         LoadGame();
+        foreach (var temp in _tables)
+        {
+            _baseObjectDict.Add(temp._keyName, temp);
+        }
     }
     void FristStartGame()
     {
@@ -89,10 +94,7 @@ public class GameManager : MonoBehaviour
         {
             _warkableObjectList.Add(_tables[i]);
         }
-        for (int i = 0; i < _counters.Length; i++)
-        {
-            _warkableObjectList.Add(_counters[i]);
-        }
+        _warkableObjectList.Add(_counters[2]);
         for (int i = 0; i < _grills.Length; i++)
         {
             _warkableObjectList.Add(_grills[i]);

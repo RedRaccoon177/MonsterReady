@@ -7,7 +7,8 @@ public class Grill : BaseObject, ILevelable, INpcDestination
 {
     [Header("npcAi 목적지 노드 x,y")]
     [SerializeField] public Vector2 _nodeGridNum;
-    public int _myNodeY;    
+    public int _myNodeY;
+    bool isDestination;
     #region 키값 및 레벨
     [SerializeField] public int _level;
 
@@ -94,7 +95,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
         }
         else if (other.CompareTag("Npc"))
         {
-            NpcAi npcScript = other.GetComponent<NpcAi>();
+            NpcAi npcScript = other.gameObject.GetComponent<NpcAi>();
             if (npcScript._destination.GetKey() != this._keyName)
             {
                 return;
@@ -230,5 +231,21 @@ public class Grill : BaseObject, ILevelable, INpcDestination
     public void SettingGMBaseDict()
     {
         GameManager._instance._baseObjectDict.TryAdd(_keyName,this);
+    }
+
+
+    public void OnDestination()
+    {
+        isDestination = true;
+    }
+
+    public void OffDestination()
+    {
+        isDestination =false;
+    }
+
+    public bool IsDestination()
+    {
+        return isDestination;
     }
 } 

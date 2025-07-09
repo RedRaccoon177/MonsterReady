@@ -244,8 +244,8 @@ public class DataManager : MonoBehaviour
     }
     public void LoadObjectData(ObjectType type)
     {
-        if (File.Exists(filePathPlayer))
-        {
+        //if (File.Exists(filePathTable))
+        //{
             Dictionary<string, BaseObject> objectDictGM = GetobjectDictGM(type);
             var json = File.ReadAllText(GetJsonJsonRoute(type));
             GameObjectDataList objectList = JsonUtility.FromJson<GameObjectDataList>(json); // JSON을 객체로 변환
@@ -265,7 +265,7 @@ public class DataManager : MonoBehaviour
                 {
                     Debug.Log("일치하는 항목 없음");
                 }
-            }
+            //}
         }
     }
     public void SaveActivatorData(ObjectsActivator[] activator)

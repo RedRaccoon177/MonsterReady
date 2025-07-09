@@ -35,9 +35,8 @@ public class Table : BaseObject, ILevelable, INpcDestination
     #endregion
 
     #region Unity 이벤트 함수
-    IEnumerator Start()
+    void Start()
     {
-        yield return null;
         Debug.Log("나는 테이블 : " + _keyName);
         _currentTrashCount = 0;
         SettingNode();        // 테이블 위치를 노드에 등록

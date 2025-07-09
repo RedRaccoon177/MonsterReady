@@ -49,10 +49,6 @@ public class GameManager : MonoBehaviour
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
         SettingWarableList();
         LoadGame();
-        foreach (var temp in _tables)
-        {
-            _baseObjectDict.Add(temp._keyName, temp);
-        }
     }
     void FristStartGame()
     {

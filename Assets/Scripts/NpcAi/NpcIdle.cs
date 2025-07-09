@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,8 +53,15 @@ public class NpcIdle : INpcState
                     }
                 }
             }
-            tempList[maxHasStackIdx].OnDestination();
-            npcAi._destination = tempList[maxHasStackIdx];
+            if (maxHasStackIdx == 0 && tempList[0].HasStack() == false)
+            {
+                npcAi._destination = (INpcDestination)GameManager._instance._baseObjectDict["카운터1"];
+            }
+            else
+            {
+                tempList[maxHasStackIdx].OnDestination();
+                npcAi._destination = tempList[maxHasStackIdx];
+            }
             npcAi._path = AStarPathfinder.FindPath
             (
                 NodeManager._instance.GetNearestNodeOptimized(npcAi.transform.position), // 현재 내 위치 근방 노드 찾기
@@ -74,12 +82,12 @@ public class NpcIdle : INpcState
     {
         var baseObject = GameManager._instance._baseObjectDict;
         var nodeObject = GameManager._instance._npcObjectNodeDict;
-        npcAi.currentPickUpType();
         switch (npcAi._pickUpObject)
         {
             case NpcPickUpObject.Meat:
                 if (baseObject["카운터1"].isActive() == true)
                 {
+                    Debug.Log(1111111111111111111);
                     npcAi._targetNode = nodeObject["카운터1"];
                 }
                 else if (baseObject["카운터2"].isActive() == true)
@@ -87,11 +95,8 @@ public class NpcIdle : INpcState
                     npcAi._targetNode = nodeObject["카운터2"];
                 }
                 break;
-            case NpcPickUpObject.Trash:
-                if (baseObject["쓰레기통"].isActive() == true)
-                {
-                    npcAi._targetNode = nodeObject["쓰레기통"];
-                }
+            case NpcPickUpObject.Bone:
+                npcAi._targetNode = nodeObject["쓰레기통"];
                 break;
             case NpcPickUpObject.MeatSat:
                 break;
@@ -99,6 +104,7 @@ public class NpcIdle : INpcState
                 npcAi.ChangeState(npcAi._npcIdle);
                 break;
         }
+        Debug.Log("목표 : " + npcAi._targetNode._gridPos);
         npcAi._path = AStarPathfinder.FindPath(NodeManager._instance.GetNearestNodeOptimized(npcAi.transform.position), npcAi._targetNode);
         npcAi.ChangeState(npcAi._npcMove);
     }

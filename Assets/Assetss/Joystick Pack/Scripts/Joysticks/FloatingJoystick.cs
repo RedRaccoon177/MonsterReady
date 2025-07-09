@@ -37,6 +37,6 @@ public class FloatingJoystick : Joystick
         base.OnPointerUp(eventData);
 
         // 손 뗐을 때 이벤트 발생
-        PlayerController.InvokeJoystickReleased();
+        PlayerController._instance.InvokeJoystickReleased();
     }
 }

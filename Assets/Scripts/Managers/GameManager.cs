@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void LoadGame()
     {
-
         DataManager._Instance.LoadNpcData();
         DataManager._Instance.LoadActivatorData();
         DataManager._Instance.LoadObjectData(ObjectType.Table);

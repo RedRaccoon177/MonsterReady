@@ -87,10 +87,12 @@ public class Grill : BaseObject, ILevelable, INpcDestination
         //플레이어의 정보를 바탕으로 빼야할 고기 값
         if (other.CompareTag("Player"))
         {
+            if (_player.CheckPickUpObject() != PlayerPickUpObject.None) { return; }
             if (_player._MaxMeat != _player._CurrentMeat)
             {
                 int _minusMeat = _player._MaxMeat - _player._CurrentMeat;
                 _player.AddMeat(MinusMeat(_minusMeat));
+                _player.CheckPickUpObject();
             }
         }
         else if (other.CompareTag("Npc"))

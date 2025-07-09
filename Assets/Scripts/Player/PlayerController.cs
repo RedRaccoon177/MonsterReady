@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public enum PlayerPickUpObject
 {
-    None,Meat,Trash,MeatBox
+    None,Meat,Bone,MeatBox
 }
 
 public class PlayerController : MonoBehaviour
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("고기 배치하는 곳")]
     [SerializeField] Transform _meatSpawnLocation;
+    Animator _animationController;
     #endregion
 
     #region 변수들 프로퍼티
@@ -137,6 +139,20 @@ public class PlayerController : MonoBehaviour
             _currentMeat = Mathf.Clamp(0, value, _MaxMeat);
         }
     }
+    public int _MaxBone
+    {
+        get => _maxBone;
+        set => _maxBone = value;
+    }
+
+    public int _CurrentBone
+    {
+        get => _currentBone;
+        set
+        {
+            _currentBone = Mathf.Clamp(0, value, _MaxBone);
+        }
+    }
     #endregion
 
     #region Awake, FixedUpdata, LateUpdate
@@ -148,8 +164,9 @@ public class PlayerController : MonoBehaviour
         }
 
         _rg = GetComponent<Rigidbody>();
-
+        _animationController = GetComponent<Animator>();
         _MaxMeat = 4;
+        _MaxBone = 3;
         _CurrentMeat = 0;
     }
     void FixedUpdate()
@@ -164,16 +181,17 @@ public class PlayerController : MonoBehaviour
 
         // 플레이어 이동
         _rg.MovePosition(_rg.position + _moveVec);
-
+        _animationController.SetBool("IsWalk", true);
         // 회전 처리
         RotateToMoveDirection();
     }
-
     void LateUpdate()
     {
         //TODO : 애니메이션 추후 추가할 예정.
     }
     #endregion
+
+
 
     #region 플레이어 움직임 회전 함수
     void RotateToMoveDirection()
@@ -280,9 +298,18 @@ public class PlayerController : MonoBehaviour
     }
     public PlayerPickUpObject CheckPickUpObject()
     {
+        Debug.Log("고기 : " + _currentMeat);
         if (_currentMeat > 0)
         {
             playerPickUpObject = PlayerPickUpObject.Meat;
+        }
+        else if (_currentBone > 0)
+        {
+            playerPickUpObject = PlayerPickUpObject.Bone;
+        }
+        else
+        {
+            playerPickUpObject = PlayerPickUpObject.None;
         }
         return playerPickUpObject;
     }
@@ -292,10 +319,8 @@ public class PlayerController : MonoBehaviour
     {
         int spaceLeft = _maxBone - _currentMeat;
         int toAdd = Mathf.Min(spaceLeft, trash);
-
         _currentBone += toAdd;
-
-        UpdateMeatDisplay(_currentBone);
+        UpdateBoneDisplay(_currentBone);
         return trash - toAdd; // 넘친 양
     }
 
@@ -306,10 +331,10 @@ public class PlayerController : MonoBehaviour
     {
         int removed = Mathf.Min(_currentBone, amount);
         _currentBone -= removed;
-        UpdateMeatDisplay(_currentBone);
+        UpdateBoneDisplay(_currentBone);
         return removed;
     }
-    public void UpdateTrashDisplay(int currentBone)
+    public void UpdateBoneDisplay(int currentBone)
     {
         // 1. 고기 개수가 부족하면 채워줌
         while (_boneList.Count < currentBone)
@@ -335,9 +360,11 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region 조이스틱 이벤트 함수
-    public static void InvokeJoystickReleased()
+    public void InvokeJoystickReleased()
     {
+        _animationController.SetBool("IsWalk",false);
         OnJoystickReleased?.Invoke();
     }
     #endregion
+
 }

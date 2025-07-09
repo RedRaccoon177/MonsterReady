@@ -882,7 +882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_TagString
@@ -910,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1016,7 +1016,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 0.82330596, z: 3}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0.41165298, z: 0}
 --- !u!1 &16918369
 GameObject:
@@ -9264,7 +9264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482718109276594, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_TagString
-      value: Table
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4486850944539058, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10329,11 +10329,11 @@ GameObject:
   - component: {fileID: 195587709}
   m_Layer: 6
   m_Name: Table3
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &195587707
 Transform:
   m_ObjectHideFlags: 0
@@ -10367,13 +10367,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE143"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 13, y: 13}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 195587707}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -10392,7 +10391,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -10622,7 +10621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_TagString
@@ -12022,8 +12021,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 879111118}
   - {fileID: 195587707}
+  - {fileID: 879111118}
   - {fileID: 1914077469}
   m_Father: {fileID: 1494805274}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13755,6 +13754,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 10.28
       objectReference: {fileID: 0}
+    - target: {fileID: 95434717193263626, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: aa57cbb71e7c69345baf2f2d40e81cc5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1689906543416508, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
@@ -13801,14 +13804,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joy: {fileID: 1063323516}
   playerPickUpObject: 0
-  _moveSpeed: 10
+  _moveSpeed: 5
   _playerGold: 0
   _maxMeat: 0
   _currentMeat: 0
   _maxBone: 0
   _currentBone: 0
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
-  _bonePrefab: {fileID: 0}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
   _meatPool: {fileID: 2111446580}
   _stackHeight: 0.11
   _meatSpawnLocation: {fileID: 387949093}
@@ -16347,7 +16350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1931511158744844, guid: 9de16f9da50eb9040b28a03c68f8ea68, type: 3}
       propertyPath: m_TagString
-      value: Table
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4224838875767582, guid: 9de16f9da50eb9040b28a03c68f8ea68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22299,7 +22302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482718109276594, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_TagString
-      value: Table
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4486850944539058, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23119,11 +23122,11 @@ GameObject:
   - component: {fileID: 414288477}
   m_Layer: 0
   m_Name: Table8
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &414288475
 Transform:
   m_ObjectHideFlags: 0
@@ -23156,13 +23159,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE148"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 7, y: 12}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 414288475}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -23181,7 +23183,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -28643,7 +28645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <_step>k__BackingField: 17
-  _ActivateObj: {fileID: 0}
+  _ActivateObj: {fileID: 414288474}
   _DeactivateObj: {fileID: 0}
   _maxPayGold: 10
   _currentPayGold: 0
@@ -33267,7 +33269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482718109276594, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_TagString
-      value: Table
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4486850944539058, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34987,7 +34989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &616625218
 Transform:
   m_ObjectHideFlags: 0
@@ -35023,13 +35025,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE145"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 10, y: 14}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 616625218}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -35048,7 +35049,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -36239,7 +36240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &633785922
 Transform:
   m_ObjectHideFlags: 0
@@ -36272,13 +36273,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE1412"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 7, y: 2}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 633785922}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -36297,7 +36297,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -38933,7 +38933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1440769224180704, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1440769224180704, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
       propertyPath: m_TagString
@@ -39061,7 +39061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &686416307
 Transform:
   m_ObjectHideFlags: 0
@@ -39095,13 +39095,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE144"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 13, y: 9}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 686416307}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -39120,7 +39119,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -39293,7 +39292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &697027516
 Transform:
   m_ObjectHideFlags: 0
@@ -39326,13 +39325,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE149"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 7, y: 8}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 697027516}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -39351,7 +39349,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -46653,6 +46651,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c952a818fb862a469200c2e35785645, type: 2}
   - {fileID: 11400000, guid: d0d731bcec7ff42409a15f102dd0b156, type: 2}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
   _meatPool: {fileID: 2111446580}
   _npcScriptList: []
 --- !u!4 &836150215
@@ -55049,6 +55048,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 499096506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &972646788
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1384911294671644, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_Name
+      value: SM_Prop_Tech_Furnace_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384911294671644, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_TagString
+      value: Activator
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869941293439204, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869941293439204, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869941293439204, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 28.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869941293439204, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70422006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869941293439204, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869941293439204, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7099818
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869941293439204, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869941293439204, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869941293439204, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.467
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869941293439204, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64765968592945570, guid: 795621127f8a17b44a7523a891544005, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1384911294671644, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1380464025}
+    - targetCorrespondingSourceObject: {fileID: 1384911294671644, guid: 795621127f8a17b44a7523a891544005, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1380464024}
+  m_SourcePrefab: {fileID: 100100000, guid: 795621127f8a17b44a7523a891544005, type: 3}
 --- !u!1 &974397068
 GameObject:
   m_ObjectHideFlags: 0
@@ -55221,7 +55288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482718109276594, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_TagString
-      value: Table
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4486850944539058, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56288,7 +56355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482718109276594, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_TagString
-      value: Table
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4486850944539058, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59121,7 +59188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1931511158744844, guid: 9de16f9da50eb9040b28a03c68f8ea68, type: 3}
       propertyPath: m_TagString
-      value: Table
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4224838875767582, guid: 9de16f9da50eb9040b28a03c68f8ea68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66368,7 +66435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482718109276594, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_TagString
-      value: Table
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4486850944539058, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66955,7 +67022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1175497742
 Transform:
   m_ObjectHideFlags: 0
@@ -66988,13 +67055,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE1410"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 13, y: 2}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1175497742}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -67013,7 +67079,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -77052,7 +77118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1431129522676226, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_TagString
@@ -78921,6 +78987,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380228955}
   m_CullTransparentMesh: 1
+--- !u!1 &1380464019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1384911294671644, guid: 795621127f8a17b44a7523a891544005, type: 3}
+  m_PrefabInstance: {fileID: 972646788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1380464024
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380464019}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 4, z: 4}
+  m_Center: {x: 0, y: 1.774716, z: 0}
+--- !u!114 &1380464025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380464019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5088d07e3d2ddd14ea792a46b540e1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _keyName: "\uC4F0\uB808\uAE30\uD1B5"
+  _isActive: 0
 --- !u!1 &1383776217
 GameObject:
   m_ObjectHideFlags: 0
@@ -79583,7 +79689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1390874450
 Transform:
   m_ObjectHideFlags: 0
@@ -79616,13 +79722,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE1411"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 10, y: 2}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1390874450}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -79641,7 +79746,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -86609,7 +86714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482718109276594, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_TagString
-      value: Table
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4486850944539058, guid: a3f016ab6ac8f3744a47bd65371be04a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88115,7 +88220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1578919566
 Transform:
   m_ObjectHideFlags: 0
@@ -88148,13 +88253,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE147"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 7, y: 16}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1578919566}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -88173,7 +88277,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -97807,7 +97911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1720150016
 Transform:
   m_ObjectHideFlags: 0
@@ -97843,13 +97947,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE146"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 10, y: 9}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1720150016}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -97868,7 +97971,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -105301,7 +105404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1859480515
 Transform:
   m_ObjectHideFlags: 0
@@ -105335,13 +105438,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE141"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 16, y: 9}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1859480515}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -105360,7 +105462,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -111347,7 +111449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1440769224180704, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1440769224180704, guid: cfc9573ae38fc79419a8512559402ff4, type: 3}
       propertyPath: m_TagString
@@ -111593,7 +111695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1972163536
 Transform:
   m_ObjectHideFlags: 0
@@ -111627,13 +111729,12 @@ MonoBehaviour:
   _keyName: "\uD14C\uC774\uBE142"
   _isActive: 0
   _level: 0
-  _currentTrashCount: 0
   _nodeGridNum: {x: 16, y: 13}
-  _meatPool: {fileID: 0}
-  _bonePool: {fileID: 0}
-  _meatPrefab: {fileID: 0}
-  _bonePrefab: {fileID: 0}
-  _meatSpawnLocation: {fileID: 0}
+  _meatPool: {fileID: 2111446580}
+  _bonePool: {fileID: 2111446580}
+  _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
+  _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _meatSpawnLocation: {fileID: 1972163536}
   _stackHeight: 0.11
   _meatNum: 0
   _boneNum: 0
@@ -111652,7 +111753,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -122357,111 +122458,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145170584}
   m_CullTransparentMesh: 1
---- !u!1 &1384911940010648
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4869941700735328}
-  - component: {fileID: 33395092962148072}
-  - component: {fileID: 23207003304172392}
-  - component: {fileID: 33395092962148073}
-  m_Layer: 0
-  m_Name: SM_Prop_Tech_Furnace_01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4869941700735328
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384911940010648}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7099818, z: -0, w: 0.70422006}
-  m_LocalPosition: {x: 24.29, y: 0, z: 28.85}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90.467, z: 0}
---- !u!23 &23207003304172392
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384911940010648}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 2a12d3fc0532ba64e972160db18dfd99, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &33395092962148072
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384911940010648}
-  m_Mesh: {fileID: 4300000, guid: 472d0b4e93ea54047836b6283d759dd3, type: 3}
---- !u!65 &33395092962148073
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384911940010648}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 3, z: 3}
-  m_Center: {x: 0, y: 1.774716, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -122475,6 +122471,6 @@ SceneRoots:
   - {fileID: 1882618415}
   - {fileID: 80716891}
   - {fileID: 499096506}
-  - {fileID: 4869941700735328}
+  - {fileID: 972646788}
   - {fileID: 836150215}
   - {fileID: 1142258510}

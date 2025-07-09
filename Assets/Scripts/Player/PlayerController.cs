@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     #region 싱글톤 및 이벤트
     public static PlayerController _instance { get; private set; }  // 플레이어 싱글톤
     public static event Action OnJoystickReleased;                  //조이 스틱 이벤트
+    public static event Action OnJoystickRelePerformed;                  //조이 스틱 이벤트
     public static event Action<int> OnGoldChanged;                  // 골드 변화 이벤트
     #endregion
 
@@ -174,14 +175,11 @@ public class PlayerController : MonoBehaviour
         // 조이스틱 입력값 받아옴
         float x = _joy.Horizontal;
         float z = _joy.Vertical;
-
         // 이동 벡터 생성
         if (x == 0 && z == 0) return;
         _moveVec = new Vector3(x, 0, z) * _moveSpeed * Time.deltaTime;
-
         // 플레이어 이동
         _rg.MovePosition(_rg.position + _moveVec);
-        _animationController.SetBool("IsWalk", true);
         // 회전 처리
         RotateToMoveDirection();
     }
@@ -298,7 +296,6 @@ public class PlayerController : MonoBehaviour
     }
     public PlayerPickUpObject CheckPickUpObject()
     {
-        Debug.Log("고기 : " + _currentMeat);
         if (_currentMeat > 0)
         {
             playerPickUpObject = PlayerPickUpObject.Meat;
@@ -310,6 +307,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             playerPickUpObject = PlayerPickUpObject.None;
+        }
+        if (playerPickUpObject == PlayerPickUpObject.None)
+        {
+            _animationController.SetBool("IsCarry", false);
+        }
+        else
+        {
+            _animationController.SetBool("IsCarry", true);
         }
         return playerPickUpObject;
     }
@@ -362,8 +367,13 @@ public class PlayerController : MonoBehaviour
     #region 조이스틱 이벤트 함수
     public void InvokeJoystickReleased()
     {
-        _animationController.SetBool("IsWalk",false);
+         _animationController.SetBool("IsWalk", false);
         OnJoystickReleased?.Invoke();
+    }
+    public void InvokeJoystickPerformed()
+    {
+        _animationController.SetBool("IsWalk", true);
+        OnJoystickRelePerformed?.Invoke();
     }
     #endregion
 

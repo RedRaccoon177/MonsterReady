@@ -13758,6 +13758,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: aa57cbb71e7c69345baf2f2d40e81cc5, type: 2}
+    - target: {fileID: 95434717193263626, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1689906543416508, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
@@ -13804,7 +13808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joy: {fileID: 1063323516}
   playerPickUpObject: 0
-  _moveSpeed: 5
+  _moveSpeed: 10
   _playerGold: 0
   _maxMeat: 0
   _currentMeat: 0

@@ -25,6 +25,7 @@ public class FloatingJoystick : Joystick
 
         // 부모 클래스의 OnPointerDown 호출 → 조이스틱 조작 처리 시작
         base.OnPointerDown(eventData);
+        PlayerController._instance.InvokeJoystickPerformed();
     }
 
     // 터치에서 손을 뗐을 때 호출되는 함수

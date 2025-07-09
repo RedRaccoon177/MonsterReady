@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerPickUpObject
+{
+    None,Meat,Trash,MeatBox
+}
+
 public class PlayerController : MonoBehaviour
 {
     #region 싱글톤 및 이벤트
@@ -20,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     // 조이스틱 입력 참조용 (FloatingJoystick 연결)
     public FloatingJoystick _joy;
-
+    public PlayerPickUpObject playerPickUpObject;
     // 이동 속도 조절 변수
     public float _moveSpeed;
 
@@ -43,8 +48,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int _currentMeat;          //현재 들고 있는 고기 수
     List<GameObject> _meatList = new List<GameObject>();    //생성된 고기 오브젝트들 담는 리스트
 
+    [Header("플레이어의 뼈다귀")]
+    [SerializeField] int _maxBone;              //현재 들수 있는 고기 최대 수
+    [SerializeField] int _currentBone;          //현재 들고 있는 고기 수
+    List<GameObject> _boneList = new List<GameObject>();    //생성된 고기 오브젝트들 담는 리스트
+
     [Header("고기 프리펩")]
     [SerializeField] GameObject _meatPrefab;
+
+    [Header("뼈다귀 프리펩")]
+    [SerializeField] GameObject _bonePrefab;
 
     [Header("오브젝트 풀링 연결")]
     [SerializeField] ObjectPooling _meatPool; // 고기를 관리하는 오브젝트 풀
@@ -264,6 +277,60 @@ public class PlayerController : MonoBehaviour
     Vector3 GetStackPosition(int index)
     {
         return new Vector3(0, index * _stackHeight, 0);
+    }
+    public PlayerPickUpObject CheckPickUpObject()
+    {
+        if (_currentMeat > 0)
+        {
+            playerPickUpObject = PlayerPickUpObject.Meat;
+        }
+        return playerPickUpObject;
+    }
+    #endregion
+    #region
+    public int AddBone(int trash)
+    {
+        int spaceLeft = _maxBone - _currentMeat;
+        int toAdd = Mathf.Min(spaceLeft, trash);
+
+        _currentBone += toAdd;
+
+        UpdateMeatDisplay(_currentBone);
+        return trash - toAdd; // 넘친 양
+    }
+
+    /// <summary>
+    /// 고기 감소
+    /// </summary>
+    public int MinusBone(int amount)
+    {
+        int removed = Mathf.Min(_currentBone, amount);
+        _currentBone -= removed;
+        UpdateMeatDisplay(_currentBone);
+        return removed;
+    }
+    public void UpdateTrashDisplay(int currentBone)
+    {
+        // 1. 고기 개수가 부족하면 채워줌
+        while (_boneList.Count < currentBone)
+        {
+            GameObject meat = _meatPool.GetBone(); // 오브젝트 풀에서 꺼냄
+            meat.transform.SetParent(_meatSpawnLocation, false);
+            // 생성 위치값, 회전값, 크기값
+            meat.transform.localPosition = GetStackPosition(_boneList.Count);
+            meat.transform.localRotation = Quaternion.identity;
+            meat.transform.localScale = _bonePrefab.transform.localScale;
+
+            _boneList.Add(meat);
+        }
+
+        // 2. 고기 개수가 초과되면 제거 (위에서부터 하나씩)
+        while (_boneList.Count > currentBone)
+        {
+            GameObject lastMeat = _boneList[_boneList.Count - 1];
+            _boneList.RemoveAt(_boneList.Count - 1);
+            _meatPool.ReturnToPool(lastMeat);
+        }
     }
     #endregion
 

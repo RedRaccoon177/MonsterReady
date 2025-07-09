@@ -81,7 +81,6 @@ public class NpcAi : MonoBehaviour
     }
     private void Awake()
     {
-        Debug.Log(1);
         _isUnlockNpc = false;
         SettingActive(_isUnlockNpc);
         _MaxMeat = 4;

@@ -19,6 +19,7 @@ public class NpcMove : INpcState
         // 경로가 없거나 이미 도착했다면 다음 상태로 전환
         if (npcAi._path == null || _currentIndex >= npcAi._path.Count)
         {
+            npcAi._destination.OffDestination();
             npcAi.ChangeState(npcAi._npcIdle);
             return;
         }

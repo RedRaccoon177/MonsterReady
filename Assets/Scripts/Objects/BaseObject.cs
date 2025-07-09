@@ -59,6 +59,9 @@ public interface INpcDestination
     void SettingNode(); // 노드 세팅
     bool HasStack();
     int GetStackCount();
+    void OnDestination();
+    void OffDestination();
+    bool IsDestination();
 }
 
 

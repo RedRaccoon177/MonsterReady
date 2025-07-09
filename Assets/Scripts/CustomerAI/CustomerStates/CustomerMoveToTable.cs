@@ -73,7 +73,7 @@ public class CustomerMoveToTable : ICustomerState
     {
         string tableKey = $"테이블{tableIndex + 1}";
 
-        if (GameManager._instance._baseObjectDict[tableKey])
+        if (GameManager._instance._baseObjectDict[tableKey]!=null)
         {
             BaseObject tableObj = GameManager._instance._baseObjectDict[tableKey];
             Debug.Log($"테이블 {tableKey} 해금 상태: {tableObj._isActive}");

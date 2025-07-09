@@ -29,59 +29,11 @@ public class CustomerMoveToCounterState : ICustomerState
         _currentIndex = 0; // 경로 시작 인덱스 초기화
     }
 
-    /// <summary>
-    /// 상태 업데이트. 손님이 A* 경로를 따라 한 칸씩 이동함
-    /// </summary>
     public void Update(CustomerAI customer)
     {
-        // 경로가 없거나 이미 도착했다면 다음 상태로 전환
-        if (_path == null || _currentIndex >= _path.Count)
-        {
-            //손님이 줄에 도착했는것
-            if(_path != null)
-            {
-                _path[_currentIndex - 1]._isCustomerWaiting = true;
-            }
-
-            customer.SetState(new CustomerOrderAndWait()); // 다음 행동 상태로 전환 (주문 대기 등)
-            return;
-        }
-
-        // 다음 이동 목표 노드 설정
-        Node _targetNode = _path[_currentIndex];
-        Vector3 _targetPos = _targetNode.transform.position;
-        float _step = 5f * Time.deltaTime; // 프레임 기반 이동 거리 계산
-
-        //앞에 노드에 손님이 줄서고 있다면?
-        if(_targetNode._isCustomerWaiting)
-        {
-            if (_currentIndex != 0)
-            {
-                Node _currentNode = _path[_currentIndex - 1];
-
-                // 현재 위치한 노드에 아무도 못오게 막기
-                _currentNode._isCustomerWaiting = true;
-            }
-        }
-        else
-        {
-            // 손님을 다음 노드 위치로 이동시킴
-            customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
-            // 목표 위치에 거의 도착했다면 다음 노드로 전환
-            if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
-            {
-                _currentIndex++;
-            }
-
-            // 현재 위치한 노드에 다음 손님 올 수 있게 하기
-            if (_currentIndex  > 0 )
-            {
-                Node _currentNode = _path[_currentIndex - 1];
-                _currentNode._isCustomerWaiting = false;
-            }
-        }
+        MoveNode(customer);
     }   
-
+     
     public void Exit(CustomerAI customer) { }
     #endregion
 
@@ -122,6 +74,58 @@ public class CustomerMoveToCounterState : ICustomerState
             Debug.LogError("GetClosestNode(): 유효한 노드가 없음");
 
         return _closestNode;
+    }
+    #endregion
+
+    #region 손님AI 이동 함수 / 손님이 A* 경로를 따라 한 칸씩 이동함
+    public void MoveNode(CustomerAI customer)
+    {
+        // 경로가 없거나 이미 도착했다면 다음 상태로 전환
+        if (_path == null || _currentIndex >= _path.Count)
+        {
+            //손님이 줄에 도착했는것
+            if (_path != null)
+            {
+                _path[_currentIndex - 1]._isCustomerThere = true;
+            }
+
+            customer.SetState(new CustomerOrderAndWait()); // 다음 행동 상태로 전환 (주문 대기 등)
+            return;
+        }
+
+        // 다음 이동 목표 노드 설정
+        Node _targetNode = _path[_currentIndex];
+        Vector3 _targetPos = _targetNode.transform.position;
+        float _step = 5f * Time.deltaTime; // 프레임 기반 이동 거리 계산
+
+        //앞에 노드에 손님이 줄서고 있다면?
+        if (_targetNode._isCustomerThere)
+        {
+            if (_currentIndex != 0)
+            {
+                Node _currentNode = _path[_currentIndex - 1];
+
+                // 현재 위치한 노드에 아무도 못오게 막기
+                _currentNode._isCustomerThere = true;
+            }
+        }
+        else
+        {
+            // 손님을 다음 노드 위치로 이동시킴
+            customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
+            // 목표 위치에 거의 도착했다면 다음 노드로 전환
+            if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
+            {
+                _currentIndex++;
+            }
+
+            // 현재 위치한 노드에 다음 손님 올 수 있게 하기
+            if (_currentIndex > 0)
+            {
+                Node _currentNode = _path[_currentIndex - 1];
+                _currentNode._isCustomerThere = false;
+            }
+        }
     }
     #endregion
 }

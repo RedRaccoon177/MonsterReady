@@ -45,5 +45,12 @@ public class CustomerEating : ICustomerState
         }
     }
 
-    public void Exit(CustomerAI customer) { }
+    public void Exit(CustomerAI customer)
+    {
+        if (customer._currentChairNode != null)
+        {
+            customer._currentChairNode._isWalkale = true;  // 노드 되돌리기
+            customer._currentChairNode = null;              // 안전하게 초기화
+        }
+    }
 }

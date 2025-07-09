@@ -10,6 +10,7 @@ public class Node : MonoBehaviour
     Vector3[] _directions;
 
     // 해당 노드가 이동 가능한지 여부 (장애물 여부 판단)
+    // false: 이동 가능 / true: 이동 불가능
     [SerializeField] public bool _isWalkale;
 
     // 인접한 연결 가능한 노드 목록
@@ -20,7 +21,7 @@ public class Node : MonoBehaviour
 
     // 손님이 줄에서 대기할 때 대기 유무
     // true: 손님 존재함 / false: 손님 없음
-    public bool _isCustomerWaiting;
+    public bool _isCustomerThere;
     #endregion
 
     void Start()

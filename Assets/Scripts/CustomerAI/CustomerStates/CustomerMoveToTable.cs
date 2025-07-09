@@ -26,6 +26,11 @@ public class CustomerMoveToTable : ICustomerState
 
     // 테이블 오브젝트 배열
     Table[] _tables = new Table[12];
+
+    // 자리 대기 변수들
+    float _checkDelay = 1f;
+    float _checkTimer = 0f;
+    bool _waitingForSeat = false;
     #endregion
 
     #region  Enter, Update, Exit문
@@ -39,6 +44,27 @@ public class CustomerMoveToTable : ICustomerState
 
     public void Update(CustomerAI customer)
     {
+        // 자리 대기중
+        if (_waitingForSeat)
+        {
+            _checkTimer += Time.deltaTime;
+
+            if (_checkTimer >= _checkDelay)
+            {
+                _checkTimer = 0f;
+
+                List<Node> availableChairs = GetAvailableChairNodes();
+                if (availableChairs.Count > 0)
+                {
+                    Debug.Log("자리가 생겨서 이동 재시도!");
+                    _waitingForSeat = false;
+                    MoveCustomerToChair(customer); // 경로 재계산
+                }
+            }
+
+            return; // 자리 기다리는 중엔 이동하지 않음
+        }
+
         // 경로가 없거나 이미 도착했다면 음식 먹는 상태로 전환
         if (_path == null || _currentIndex >= _path.Count)
         {
@@ -56,7 +82,7 @@ public class CustomerMoveToTable : ICustomerState
         {
             if (_currentIndex == 0)
             {
-                _startNode._isCustomerWaiting = false;   // 출발 노드에 대기중 손님 없음
+                _startNode._isCustomerThere = false;   // 출발 노드에 대기중 손님 없음
             }
             _currentIndex++; // 다음 경로로 이동
         }
@@ -85,7 +111,6 @@ public class CustomerMoveToTable : ICustomerState
         }
     }
 
-
     /// <summary>
     /// 해금된 테이블 내 사용 가능한 의자 노드 리스트를 가져옴
     /// </summary>
@@ -101,7 +126,10 @@ public class CustomerMoveToTable : ICustomerState
                 {
                     if (_emptyChairsCheck.TryGetValue(chairPos, out Node chairNode))
                     {
-                        availableChairs.Add(chairNode);
+                        if (chairNode._isWalkale)
+                        {
+                            availableChairs.Add(chairNode);
+                        }
                     }
                     else
                     {
@@ -125,7 +153,9 @@ public class CustomerMoveToTable : ICustomerState
 
         if (availableChairs.Count == 0)
         {
-            Debug.LogWarning("MoveCustomerToChair: 이동 가능한 의자가 없음");
+            Debug.Log("자리가 없어서 기다리는 중...");
+            _waitingForSeat = true;
+            _checkTimer = 0f;
             return;
         }
 
@@ -148,6 +178,11 @@ public class CustomerMoveToTable : ICustomerState
 
         _currentIndex = 0;
         Debug.Log($"MoveCustomerToChair: 경로 생성 성공! 총 경로 길이 = {_path.Count}");
+
+        // 현재 앉고자 하는 의자 위치 노드 정보 삽입
+        customer._currentChairNode = targetChairNode;
+        // 노드 비활성호 다른 손님 막기
+        targetChairNode._isWalkale = false;
 
         // 이동하는 테이블 저장
         if (_chairToTableIndex.TryGetValue(targetChairNode._gridPos, out int tableIndex))

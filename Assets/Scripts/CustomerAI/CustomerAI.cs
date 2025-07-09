@@ -43,6 +43,9 @@ public class CustomerAI : MonoBehaviour
     
     //손님이 받은 현재 고기 양
     [SerializeField] int _currentMeat;
+
+    //손님이 현재 앉아 있는 노드 위치
+    [SerializeField] public Node _currentChairNode;
     #endregion
 
     #region 변수 프로퍼티

@@ -33,6 +33,9 @@ public class Table : BaseObject, ILevelable, INpcDestination
 
     List<GameObject> _meatList = new List<GameObject>();  // 쌓인 고기 오브젝트 리스트
     List<GameObject> _boneList = new List<GameObject>();  // 쌓인 뼈 오브젝트 리스트
+
+    [Header("골드 생성 오브젝트")]
+    [SerializeField] GoldObject GoldObject;
     #endregion
 
     #region Unity 이벤트 함수
@@ -122,6 +125,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
             bone.transform.localScale = _bonePrefab.transform.localScale;
 
             _boneList.Add(bone);
+            GoldObject.AddGold(1);
         }
     }
 

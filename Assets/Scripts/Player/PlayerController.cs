@@ -30,23 +30,25 @@ public class PlayerController : MonoBehaviour
     public PlayerPickUpObject playerPickUpObject;
     // 이동 속도 조절 변수
     public float _moveSpeed;
+    public float _baseMoveSpeed;
 
     // Rigidbody 컴포넌트 참조
     Rigidbody _rg;
 
     // 이동할 방향 벡터
-    Vector3 _moveVec;
+    public Vector3 _moveVec;
 
     Vector3 _playerPos;              // 플레이어 위치
     public int _playerGold = 0;             // 플레이어 골드
     int _playerGem = 0;              // 플레이어 보석
     int _playerPassLevel = 1;        // 배틀 패스 레벨
-    int _playerSpeedLevel = 1;       // 이동 속도 레벨
-    int _playerHoldMaxLevel = 1;     // 드는 용량 레벨
-    int _playerMakeMoneyLevel = 1;   // 수익률 레벨
+    public int _playerSpeedLevel = 1;       // 이동 속도 레벨
+    public int _playerHoldMaxLevel = 1;     // 드는 용량 레벨
+    public int _playerMakeMoneyLevel = 1;   // 수익률 레벨
 
     [Header("플레이어의 고기")]
     [SerializeField] int _maxMeat;              //현재 들수 있는 고기 최대 수
+    [SerializeField] int _baseMaxMeat;              //현재 들수 있는 고기 최대 수
     [SerializeField] int _currentMeat;          //현재 들고 있는 고기 수
     List<GameObject> _meatList = new List<GameObject>();    //생성된 고기 오브젝트들 담는 리스트
 
@@ -168,6 +170,8 @@ public class PlayerController : MonoBehaviour
         _animationController = GetComponent<Animator>();
         _MaxMeat = 4;
         _MaxBone = 3;
+        _baseMaxMeat = 4;
+        _baseMoveSpeed = 3;
         _CurrentMeat = 0;
     }
     void FixedUpdate()
@@ -188,8 +192,11 @@ public class PlayerController : MonoBehaviour
         //TODO : 애니메이션 추후 추가할 예정.
     }
     #endregion
-
-
+    IEnumerator Start()
+    {
+        yield return null;  
+        SetAbility();
+    }
 
     #region 플레이어 움직임 회전 함수
     void RotateToMoveDirection()
@@ -373,8 +380,23 @@ public class PlayerController : MonoBehaviour
     public void InvokeJoystickPerformed()
     {
         _animationController.SetBool("IsWalk", true);
-        OnJoystickRelePerformed?.Invoke();
     }
     #endregion
-
+    public void MaxAmountLevelUp()
+    {
+        _playerHoldMaxLevel += 1;
+    }
+    public void SpeedLevelUp()
+    {
+        _playerSpeedLevel += 1;
+    }
+    public void MakeMoneyLevelUp()
+    {
+        _playerMakeMoneyLevel += 1;
+    }
+    public void SetAbility()
+    {
+        _moveSpeed = _baseMoveSpeed + _playerSpeedLevel;
+        _maxMeat = _baseMaxMeat + _playerHoldMaxLevel + 1;
+    }
 }

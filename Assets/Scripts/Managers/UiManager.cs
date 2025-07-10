@@ -6,6 +6,7 @@ public class UiManager : MonoBehaviour
 {
     public static UiManager _instance;
     [SerializeField] GameObject _npcBuyUi;
+    [SerializeField] GameObject _playerUpgradeUi;
     [SerializeField] Transform _canvas;
     private void Awake()
     {
@@ -28,5 +29,13 @@ public class UiManager : MonoBehaviour
     public void OffNpcBuyUi()
     {
         _npcBuyUi.SetActive(false);
+    }
+    public void OnPlayerUpgradeUi()
+    {
+        _playerUpgradeUi.SetActive(true);
+    }
+    public void OffPlayerUpgradeUi()
+    {
+        _playerUpgradeUi.SetActive(false);
     }
 }

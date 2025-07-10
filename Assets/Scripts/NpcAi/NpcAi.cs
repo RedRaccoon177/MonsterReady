@@ -20,11 +20,11 @@ public class NpcAi : MonoBehaviour
     public string _keyName;
     public int _currentLevel;// 현재 레벨
     public int _maxLevel { get; set; }  // 최대 레벨
-    public int _amountLevel { get; set; }  // 최대 레벨
-    public int _speedLevel { get; set; }  // 최대 레벨
+    [Header("CarryLevel")][SerializeField] public int _amountLevel;// 최대 레벨
+    [Header("SpeedLevel")][SerializeField] public int _speedLevel;// 최대 레벨
     public int _startLevel { get; set; }  //시작 레벨
     public int _price;  //가격
-    float _moveSpeed; // 스피드
+    public float _moveSpeed { get; private set; } // 스피드
     public Sprite _npcIcon; // 스피드
     int _holdMaxAmount;
     public bool _isUnlockNpc; // 보유중인지
@@ -42,7 +42,7 @@ public class NpcAi : MonoBehaviour
     [Header("npc의 고기")]
     [SerializeField] int _maxMeat;              //현재 들수 있는 고기 최대 수
     [SerializeField] int _currentMeat;          //현재 들고 있는 고기 수
-    List<GameObject> _meatList = new List<GameObject>();
+    public List<GameObject> _meatList = new List<GameObject>();
 
     [Header("npc의 뼈다귀")]
     [SerializeField] int _maxBone;              //현재 들수 있는 고기 최대 수
@@ -62,6 +62,7 @@ public class NpcAi : MonoBehaviour
 
     [Header("고기 배치하는 곳")]
     [SerializeField] public Transform _meatSpawnLocation;
+    public Animator _npcAnimator { get; set; }
     public int _MaxMeat
     {
         get => _maxMeat;
@@ -102,8 +103,10 @@ public class NpcAi : MonoBehaviour
     }
     private void Awake()
     {
+        _npcAnimator = GetComponent<Animator>();
         _isUnlockNpc = false;
         SettingActive(_isUnlockNpc);
+        _moveSpeed = 1;
         _MaxMeat = 4;
         _MaxBone = 3;
         _CurrentMeat = 0;
@@ -114,6 +117,7 @@ public class NpcAi : MonoBehaviour
     private void Start()
     {
         SetPrice();
+        DevideLevel();
     }
     private void OnEnable()
     {
@@ -144,6 +148,14 @@ public class NpcAi : MonoBehaviour
         {
             _pickUpObject = NpcPickUpObject.None;
 
+        }
+        if (_pickUpObject != NpcPickUpObject.None)
+        {
+            _npcAnimator.SetBool("IsCarry",true);
+        }
+        else
+        {
+            _npcAnimator.SetBool("IsCarry",false);
         }
     }
 
@@ -239,7 +251,8 @@ public class NpcAi : MonoBehaviour
             _speedLevel = temp1 + 1;
             _amountLevel = temp1;
         }
-
+        _moveSpeed = _speedLevel;
+        _MaxMeat = 3 + (_amountLevel +1);
     }
     public int AddBone(int trash)
     {

@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         DataManager._Instance.LoadObjectData(ObjectType.Counter);
         DataManager._Instance.LoadObjectData(ObjectType.Expand);
         DataManager._Instance.LoadGroundMoney();
+        DataManager._Instance.LoadPlayerAllData();
     }
     /// <summary>
     /// npc가 할일이 있는지 조회 해야하는 리스트 초기화

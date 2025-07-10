@@ -14,9 +14,19 @@ public class CustomerOrderAndWait : ICustomerState
         customer._CurrentMeat = 0; // 수령 초기화
 
         Debug.Log($"[CustomerOrderAndWait] 고기 {_requestedMeat}개 요구");
+
+        customer.SetExclusiveAnimation("IsIdle");
     }
 
     public void Update(CustomerAI customer)
+    {
+        WaitForGetMeat(customer);
+    }
+
+    public void Exit(CustomerAI customer) { }
+
+    #region 고기 받는 함수
+    public void WaitForGetMeat(CustomerAI customer)
     {
         int beforeMeat = customer._CurrentMeat;
         int neededMeat = _requestedMeat - beforeMeat;
@@ -30,6 +40,8 @@ public class CustomerOrderAndWait : ICustomerState
                 customer.AddMeat(receivedMeat);                         // 고기 오브젝트 생성
                 customer.UpdateMeatDisplay(customer._CurrentMeat);      // 시각 동기화
             }
+
+            customer.SetExclusiveAnimation("IsCarrying");
         }
 
         if (customer._CurrentMeat >= _requestedMeat)
@@ -37,7 +49,6 @@ public class CustomerOrderAndWait : ICustomerState
             customer.SetState(new CustomerMoveToTable());
         }
     }
-
-    public void Exit(CustomerAI customer) { }
+    #endregion
 }
 

@@ -27,6 +27,8 @@ public class CustomerMoveToCounterState : ICustomerState
         // A* 알고리즘으로 경로 계산
         _path = AStarPathfinder.FindPath(_startNode, _goalNode);
         _currentIndex = 0; // 경로 시작 인덱스 초기화
+
+        customer.SetExclusiveAnimation("IsWalking");
     }
 
     public void Update(CustomerAI customer)
@@ -107,12 +109,27 @@ public class CustomerMoveToCounterState : ICustomerState
 
                 // 현재 위치한 노드에 아무도 못오게 막기
                 _currentNode._isCustomerThere = true;
+
+                // 애니메이션 부분
+                customer.SetExclusiveAnimation("IsIdle");
             }
         }
+        //그게 아니면 이동해라
         else
         {
             // 손님을 다음 노드 위치로 이동시킴
             customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
+
+            // 현재 위치에서 목표 방향 벡터 계산
+            Vector3 direction = (_targetPos - customer.transform.position).normalized;
+
+            // y축 회전만 고려 (수평 회전)
+            if (direction != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                customer.transform.rotation = Quaternion.Slerp(customer.transform.rotation, lookRotation, Time.deltaTime * 10f);
+            }
+
             // 목표 위치에 거의 도착했다면 다음 노드로 전환
             if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
             {
@@ -125,6 +142,9 @@ public class CustomerMoveToCounterState : ICustomerState
                 Node _currentNode = _path[_currentIndex - 1];
                 _currentNode._isCustomerThere = false;
             }
+
+            // 애니메이션 부분
+            customer.SetExclusiveAnimation("IsWalking");
         }
     }
     #endregion

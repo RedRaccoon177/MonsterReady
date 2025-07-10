@@ -18,6 +18,8 @@ public class CustomerEating : ICustomerState
 
         // 2. 테이블 위에 고기 생성
         _table.AddMeat(customer._CurrentMeat);
+
+        customer.SetExclusiveAnimation("IsSittingAndEat");
     }
 
 

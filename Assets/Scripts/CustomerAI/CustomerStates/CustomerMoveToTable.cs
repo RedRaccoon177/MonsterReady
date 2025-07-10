@@ -40,55 +40,123 @@ public class CustomerMoveToTable : ICustomerState
         RegisterChairNodes();           // 의자 노드 등록
         InitTables();                   // 테이블 객체 초기화
         MoveCustomerToChair(customer);  // 손님 이동 시작
+
+        customer.SetExclusiveAnimation("IsCarryingAndWalking");
     }
 
     public void Update(CustomerAI customer)
     {
-        // 자리 대기중
+        // 1. 자리 대기 중이면 자리 체크 로직 실행
         if (_waitingForSeat)
         {
-            _checkTimer += Time.deltaTime;
-
-            if (_checkTimer >= _checkDelay)
-            {
-                _checkTimer = 0f;
-
-                List<Node> availableChairs = GetAvailableChairNodes();
-                if (availableChairs.Count > 0)
-                {
-                    Debug.Log("자리가 생겨서 이동 재시도!");
-                    _waitingForSeat = false;
-                    MoveCustomerToChair(customer); // 경로 재계산
-                }
-            }
-
-            return; // 자리 기다리는 중엔 이동하지 않음
+            HandleSeatWaiting(customer);
+            return;
         }
 
-        // 경로가 없거나 이미 도착했다면 음식 먹는 상태로 전환
+        // 2. 경로 따라 이동
+        MoveAlongPath(customer);
+    }
+
+    public void Exit(CustomerAI customer) { }
+    #endregion
+
+    #region 실질적인 움직임 함수들
+    /// <summary>
+    /// 자리 대기 상태 처리:
+    /// 일정 시간마다 빈 자리 있는지 확인, 있으면 이동 시작
+    /// </summary>
+    void HandleSeatWaiting(CustomerAI customer)
+    {
+        _checkTimer += Time.deltaTime;
+
+        if (_checkTimer >= _checkDelay)
+        {
+            _checkTimer = 0f;
+
+            List<Node> availableChairs = GetAvailableChairNodes();
+            if (availableChairs.Count > 0)
+            {
+                Debug.Log("자리가 생겨서 이동 재시도!");
+                _waitingForSeat = false;
+                MoveCustomerToChair(customer); // 경로 재계산
+            }
+        }
+    }
+
+    /// <summary>
+    /// A* 경로를 따라 이동하고, 회전 처리:
+    /// 목적지에 도달하면 상태 전환
+    /// </summary>
+    void MoveAlongPath(CustomerAI customer)
+    {
+        // 경로가 없거나 도착 완료 → 다음 상태로 전환
         if (_path == null || _currentIndex >= _path.Count)
         {
             customer.SetState(new CustomerEating());
             return;
         }
 
+        // 현재 목표 노드 정보
         Node _targetNode = _path[_currentIndex];
         Vector3 _targetPos = _targetNode.transform.position;
-        float _step = 5f * Time.deltaTime; // 이동 속도
+        float _step = 5f * Time.deltaTime; // 이동 속도 계산
 
+        // 1. 현재 위치에서 목표 위치로 이동
         customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
 
+        // 2. 이동 방향으로 부드럽게 회전
+        Vector3 direction = (_targetPos - customer.transform.position).normalized;
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            customer.transform.rotation = Quaternion.Slerp(customer.transform.rotation, lookRotation, Time.deltaTime * 10f);
+        }
+
+        // 3. 목표 위치에 거의 도착했으면 다음 노드로 진행
         if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
         {
             if (_currentIndex == 0)
             {
-                _startNode._isCustomerThere = false;   // 출발 노드에 대기중 손님 없음
+                // 출발 노드의 손님 상태 해제
+                _startNode._isCustomerThere = false;
             }
-            _currentIndex++; // 다음 경로로 이동
+
+            _currentIndex++;
+
+            // 목적이데 도착했는지 확인 (a* 알고리즘 활용)
+            if (_currentIndex >= _path.Count)
+            {
+                // 현재 앉아있는 의자의 Grid좌표 가져오기
+                Vector2Int chairPos = customer._currentChairNode._gridPos;
+
+                // 특정 의자들만 반대 방향으로 회전
+                if (
+                    chairPos == new Vector2Int(15, 10) || chairPos == new Vector2Int(12, 10) ||
+                    chairPos == new Vector2Int(9, 10) || chairPos == new Vector2Int(8, 10) ||
+                    chairPos == new Vector2Int(15, 14) || chairPos == new Vector2Int(12, 14) ||
+                    chairPos == new Vector2Int(9, 15) || chairPos == new Vector2Int(8, 15) ||
+                    chairPos == new Vector2Int(6, 3) || chairPos == new Vector2Int(9, 3) ||
+                    chairPos == new Vector2Int(12, 3)
+                )
+                {
+                    // 월드 좌표 기준 y축 -90도 (카운터에서 바라본 입구 기준 왼쪽)
+                    customer.transform.rotation = Quaternion.Euler(0, -90f, 0);
+                }
+                else if (chairPos == new Vector2Int(5, 16) || chairPos == new Vector2Int(5, 12) ||
+                    chairPos == new Vector2Int(5, 8))
+                {
+                    // 월드 좌표 기준 y축 0도 (동일 기준 정면)
+                    customer.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else
+                {
+                    // 월드 좌표 기준 y축 90도 (동일 기준 우측)
+                    customer.transform.rotation = Quaternion.Euler(0, 90f, 0);
+                }
+            }
         }
     }
-
-    public void Exit(CustomerAI customer) { }
     #endregion
 
     #region 의자 관련 초기화 및 설정 함수들

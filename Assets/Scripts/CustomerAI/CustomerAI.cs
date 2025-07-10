@@ -58,6 +58,10 @@ public class CustomerAI : MonoBehaviour
     }
     #endregion
 
+    #region 애니메이션 필드
+    [SerializeField] private Animator _animator;
+    #endregion
+
     void Awake()
     {
         // ObjectPooling 자동 연결
@@ -162,7 +166,7 @@ public class CustomerAI : MonoBehaviour
     /// </summary>
     Vector3 GetStackMeatAndBonePosition(int index)
     {
-        float baseHeight = 1f; // 손님 위치보다 위에
+        float baseHeight = 1.2f; // 손님 위치보다 위에
         float forwardOffset = 0.5f; // 손님 앞쪽
         return new Vector3(
             0f,
@@ -181,6 +185,18 @@ public class CustomerAI : MonoBehaviour
             _objectPool.ReturnToPool(meat);
         }
         _meatList.Clear();
+    }
+    #endregion
+
+    #region 애니메이션 전용 함수들
+    public void SetExclusiveAnimation(string activeParam)
+    {
+        string[] allParams = { "IsWalking", "IsIdle", "IsCarrying", "IsCarryingAndWalking", "IsSittingAndEat" };
+
+        foreach (string param in allParams)
+        {
+            _animator.SetBool(param, param == activeParam);
+        }
     }
     #endregion
 }

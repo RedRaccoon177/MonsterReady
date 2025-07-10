@@ -68,6 +68,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 95042069359887848, guid: c7cebe2178705794aa9a9911f182d8c1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 691b1d2f1a5f7834ab03c93975a3b824, type: 2}
+    - target: {fileID: 95042069359887848, guid: c7cebe2178705794aa9a9911f182d8c1, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1198942121283856, guid: c7cebe2178705794aa9a9911f182d8c1, type: 3}
@@ -102,17 +110,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3330af9601ba8cf4dbcbce8b79a8b1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStateName: 
   _table: {fileID: 0}
   _AteMeatCount: 0
-  _meatPool: {fileID: 0}
+  _objectPool: {fileID: 0}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _meatSpawnLocation: {fileID: 8274351931403654564}
   _stackHeight: 0.11
   _minMeat: 1
   _maxMeat: 4
   _currentMeat: 0
+  _currentChairNode: {fileID: 0}
+  _animator: {fileID: 8328709381608117332}
 --- !u!4 &8274351931403654564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4585453369738264, guid: c7cebe2178705794aa9a9911f182d8c1, type: 3}
+  m_PrefabInstance: {fileID: 8269784620449206716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8328709381608117332 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95042069359887848, guid: c7cebe2178705794aa9a9911f182d8c1, type: 3}
   m_PrefabInstance: {fileID: 8269784620449206716}
   m_PrefabAsset: {fileID: 0}

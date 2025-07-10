@@ -5119,6 +5119,7 @@ MonoBehaviour:
   _customerPrefab: {fileID: 8269424388737075522, guid: bab016c0133cc5a4d9042967a2778a17, type: 3}
   _spawnNodeGridPos: {x: 1, y: 24}
   _spawnDelay: 1
+  _maxCustomerCount: 10
 --- !u!4 &80716891
 Transform:
   m_ObjectHideFlags: 0

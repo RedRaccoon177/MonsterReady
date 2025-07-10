@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
@@ -12,32 +13,39 @@ public class CustomerSpawner : MonoBehaviour
     [Header("스폰 딜레이 (초)")]
     [SerializeField] float _spawnDelay = 2f;
 
+    [Header("최대 손님 수")]
+    [SerializeField] int _maxCustomerCount = 10;
+
+    // 현재 스폰된 손님들을 관리할 리스트
+    private List<GameObject> _spawnedCustomers = new List<GameObject>();
+
     void Start()
     {
         StartCoroutine(SpawnCustomerRepeatedly(_spawnNodeGridPos, _spawnDelay));
     }
 
-    /// <summary>
-    /// 지정된 딜레이마다 반복적으로 손님을 생성함
-    /// </summary>
     IEnumerator SpawnCustomerRepeatedly(Vector2Int gridPos, float delay)
     {
         while (true)
         {
-            yield return new WaitForSeconds(_spawnDelay);
+            yield return new WaitForSeconds(delay);
+
+            // 현재 손님 수 체크
+            _spawnedCustomers.RemoveAll(c => c == null); // 죽은 손님 정리
+            if (_spawnedCustomers.Count >= _maxCustomerCount)
+            {
+                continue; // 최대치면 스폰 건너뜀
+            }
 
             Node node = NodeManager._instance._nodeList[gridPos.x, gridPos.y];
-
             if (node == null || !node._isWalkale)
             {
                 Debug.LogError("스폰하려는 위치가 잘못되었거나, 장애물이 있음.");
-                yield break; // 또는 continue; 로 바꾸면 계속 반복 시도
+                yield break;
             }
 
-            // TODO: 손님 오브젝트 풀링으로 바꾸기
-            Instantiate(_customerPrefab, node.transform.position, Quaternion.identity);
-
-            yield return new WaitForSeconds(delay);
+            GameObject customer = Instantiate(_customerPrefab, node.transform.position, Quaternion.identity);
+            _spawnedCustomers.Add(customer);
         }
     }
 }

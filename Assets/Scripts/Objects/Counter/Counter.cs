@@ -153,6 +153,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             {
                 AddMeat( _player._CurrentMeat );
                 _player.MinusMeat(_currentMeatCount);
+                _player.CheckPickUpObject();
             }
         }
         else if (other.CompareTag("Npc"))

@@ -52,6 +52,10 @@ public class Table : BaseObject, ILevelable, INpcDestination
 
         if (other.CompareTag("Player"))
         {
+            if (_player == null)
+            {
+                return;
+            }
             if (_player.CheckPickUpObject() != PlayerPickUpObject.None) { return; }
             if (_boneNum <= 0) { return; }
             RemoveBones();

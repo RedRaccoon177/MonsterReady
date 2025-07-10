@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int _currentBone;          //현재 들고 있는 고기 수
     List<GameObject> _boneList = new List<GameObject>();    //생성된 고기 오브젝트들 담는 리스트
 
+    [SerializeField] GameObject board;
     [Header("고기 프리펩")]
     [SerializeField] GameObject _meatPrefab;
 
@@ -318,10 +319,12 @@ public class PlayerController : MonoBehaviour
         if (playerPickUpObject == PlayerPickUpObject.None)
         {
             _animationController.SetBool("IsCarry", false);
+            board.SetActive(false);
         }
         else
         {
             _animationController.SetBool("IsCarry", true);
+            board.SetActive(true);
         }
         return playerPickUpObject;
     }

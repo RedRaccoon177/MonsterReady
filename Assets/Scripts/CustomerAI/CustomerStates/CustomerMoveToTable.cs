@@ -40,8 +40,6 @@ public class CustomerMoveToTable : ICustomerState
         RegisterChairNodes();           // 의자 노드 등록
         InitTables();                   // 테이블 객체 초기화
         MoveCustomerToChair(customer);  // 손님 이동 시작
-
-        customer.SetExclusiveAnimation("IsCarryingAndWalking");
     }
 
     public void Update(CustomerAI customer)
@@ -224,7 +222,13 @@ public class CustomerMoveToTable : ICustomerState
             Debug.Log("자리가 없어서 기다리는 중...");
             _waitingForSeat = true;
             _checkTimer = 0f;
+
+            customer.SetExclusiveAnimation("IsCarrying");
             return;
+        }
+        else
+        {
+            customer.SetExclusiveAnimation("IsCarryingAndWalking");
         }
 
         Node targetChairNode = availableChairs[Random.Range(0, availableChairs.Count)]; // 랜덤 의자 선택

@@ -17,6 +17,8 @@ TagManager:
   - Table
   - Npc
   - Activator
+  - Box
+  - Chair
   layers:
   - Default
   - TransparentFX

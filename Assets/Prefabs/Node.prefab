@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035048398855612021}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -120,6 +120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isWalkale: 0
+  _connectionNodes: []
+  _gridPos: {x: 0, y: 0}
+  _isCustomerThere: 0
 --- !u!54 &719057316600498961
 Rigidbody:
   m_ObjectHideFlags: 0

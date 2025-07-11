@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -24,6 +25,9 @@ public class NodeManager : MonoBehaviour
     // 맵의 좌측 하단 기준 위치 오프셋
     int _minX = -12;
     int _minY = -1;
+
+    // 노드를 보관하는 게임 오브젝트
+    [SerializeField] private GameObject Nodes;
 
     void Awake()
     {
@@ -53,7 +57,7 @@ public class NodeManager : MonoBehaviour
             for (int j = 0; j < _nodeList.GetLength(1); j++)
             {
                 //TODO: 노드들 오브젝트 풀링으로 담기
-                Node node = Instantiate(_nodePrefab, new Vector3(_minX + j * 2, 0, _minY + i * 2), Quaternion.identity);
+                Node node = Instantiate(_nodePrefab, new Vector3(_minX + j * 2, 0, _minY + i * 2), Quaternion.identity, Nodes.transform);
 
                 node.Init(new Vector2Int(i, j)); // 좌표 설정
 

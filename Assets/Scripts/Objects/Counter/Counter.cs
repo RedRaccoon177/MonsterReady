@@ -9,8 +9,6 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     [SerializeField] bool isDestination = false;
     [SerializeField] public Vector2 _nodeGridNum;
     [SerializeField] public Vector3 _objectPos;
-
-
     #endregion
 
     #region 변수들
@@ -44,24 +42,23 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     public ObjectInteration _objectInteration;
 
     public Vector2 NodePosition => throw new System.NotImplementedException();
-
     #endregion
 
+    private void Awake()
+    {
+        _objectPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        _level = 1;
+    }
+    private void OnEnable()
+    {
+        ActiveNpc();
+    }
     IEnumerator Start()
     {
         yield return null;
         _player = PlayerController._instance;
         SettingNode();
         SettingGMBaseDict();
-        ActiveNpc();
-    }
-    private void Awake()
-    {
-        _objectPos = new Vector3(transform.position.x, transform.position.y+1, transform.position.z);
-        _level = 1;
-    }
-    private void OnEnable()
-    {
         ActiveNpc();
     }
 
@@ -136,6 +133,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     }
     #endregion
 
+    #region Trigger 부분
     // 플레이어가 범위에 들어왔을 때 고기 자동 제공
     private void OnTriggerEnter(Collider other)
     {
@@ -177,6 +175,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             UiManager._instance.SetActive(UiType.ObjectUpgrade, false);
         }
     }
+    #endregion
 
     public bool HasStack()
     {

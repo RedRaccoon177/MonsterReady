@@ -15,7 +15,8 @@ public class CustomerOrderAndWait : ICustomerState
 
         Debug.Log($"[CustomerOrderAndWait] 고기 {_requestedMeat}개 요구");
 
-        customer.SetExclusiveAnimation("IsIdle");
+        customer.SetExclusiveAnimation("IsCarrying");
+        Debug.Log("IsCarrying0");
     }
 
     public void Update(CustomerAI customer)
@@ -40,8 +41,6 @@ public class CustomerOrderAndWait : ICustomerState
                 customer.AddMeat(receivedMeat);                         // 고기 오브젝트 생성
                 customer.UpdateMeatDisplay(customer._CurrentMeat);      // 시각 동기화
             }
-
-            customer.SetExclusiveAnimation("IsCarrying");
         }
 
         if (customer._CurrentMeat >= _requestedMeat)

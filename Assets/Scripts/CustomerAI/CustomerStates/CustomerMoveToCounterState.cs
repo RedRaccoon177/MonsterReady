@@ -10,6 +10,8 @@ public class CustomerMoveToCounterState : ICustomerState
     
     //최종 목적지인 카운터 위치
     Vector2Int _counterNodeGridPos = new Vector2Int(15, 5);
+
+    bool _isIdle = false;  // 현재 Idle 상태인지 추적
     #endregion
 
     #region  Enter, Update, Exit문
@@ -28,7 +30,9 @@ public class CustomerMoveToCounterState : ICustomerState
         _path = AStarPathfinder.FindPath(_startNode, _goalNode);
         _currentIndex = 0; // 경로 시작 인덱스 초기화
 
+        _isIdle = false;  // 이동 시작이니까 Idle 아님
         customer.SetExclusiveAnimation("IsWalking");
+        Debug.Log("IsWalking0");
     }
 
     public void Update(CustomerAI customer)
@@ -53,16 +57,9 @@ public class CustomerMoveToCounterState : ICustomerState
 
         foreach (Node _node in NodeManager._instance._nodeList)
         {
-            if (_node == null)
-            {
-                Debug.Log("null node 발견됨");
-                continue;
-            }
+            if (_node == null) continue;
 
-            if (!_node._isWalkale)
-            {
-                continue;
-            }
+            if (!_node._isWalkale) continue;
 
             float _dist = Vector3.Distance(pos, _node.transform.position);
             if (_dist < _minDist)
@@ -111,7 +108,12 @@ public class CustomerMoveToCounterState : ICustomerState
                 _currentNode._isCustomerThere = true;
 
                 // 애니메이션 부분
-                customer.SetExclusiveAnimation("IsIdle");
+                if (!_isIdle)
+                {
+                    _isIdle = true;
+                    customer.SetExclusiveAnimation("IsIdle");
+                    Debug.Log("Switch to IsIdle");
+                }
             }
         }
         //그게 아니면 이동해라
@@ -144,7 +146,12 @@ public class CustomerMoveToCounterState : ICustomerState
             }
 
             // 애니메이션 부분
-            customer.SetExclusiveAnimation("IsWalking");
+            if (_isIdle)
+            {
+                _isIdle = false;
+                customer.SetExclusiveAnimation("IsWalking");
+                Debug.Log("Switch to IsWalking");
+            }
         }
     }
     #endregion

@@ -191,6 +191,9 @@ public class CustomerAI : MonoBehaviour
     #region 애니메이션 전용 함수들
     public void SetExclusiveAnimation(string activeParam)
     {
+        if (_animator.GetBool(activeParam))
+            return; // 이미 활성화된 상태면 중복 호출 방지
+
         string[] allParams = { "IsWalking", "IsIdle", "IsCarrying", "IsCarryingAndWalking", "IsSittingAndEat" };
 
         foreach (string param in allParams)
@@ -198,5 +201,6 @@ public class CustomerAI : MonoBehaviour
             _animator.SetBool(param, param == activeParam);
         }
     }
+
     #endregion
 }

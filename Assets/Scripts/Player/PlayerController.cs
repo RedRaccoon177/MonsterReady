@@ -298,6 +298,63 @@ public class PlayerController : MonoBehaviour
             _meatPool.ReturnToPool(lastMeat);
         }
     }
+    #endregion
+
+    #region 뼈 관련 함수들
+    /// <summary>
+    /// 뼈 더하는 함수
+    /// </summary>
+    /// <param name="trash"></param>
+    /// <returns></returns>
+    public int AddBone(int trash)
+    {
+        int spaceLeft = _maxBone - _currentMeat;
+        int toAdd = Mathf.Min(spaceLeft, trash);
+        _currentBone += toAdd;
+        UpdateBoneDisplay(_currentBone);
+        return trash - toAdd; // 넘친 양
+    }
+
+    /// <summary>
+    /// 뼈 감소
+    /// </summary>
+    public int MinusBone(int amount)
+    {
+        int removed = Mathf.Min(_currentBone, amount);
+        _currentBone -= removed;
+        UpdateBoneDisplay(_currentBone);
+        return removed;
+    }
+    public void UpdateBoneDisplay(int currentBone)
+    {
+        // 1. 뼈 개수가 부족하면 채워줌
+        while (_boneList.Count < currentBone)
+        {
+            GameObject meat = _meatPool.GetBone(); // 오브젝트 풀에서 꺼냄
+            meat.transform.SetParent(_meatSpawnLocation, false);
+            // 생성 위치값, 회전값, 크기값
+            meat.transform.localPosition = GetStackPosition(_boneList.Count);
+            meat.transform.localRotation = Quaternion.identity;
+            meat.transform.localScale = _bonePrefab.transform.localScale;
+
+            _boneList.Add(meat);
+        }
+
+        // 2. 뼈 개수가 초과되면 제거 (위에서부터 하나씩)
+        while (_boneList.Count > currentBone)
+        {
+            GameObject lastMeat = _boneList[_boneList.Count - 1];
+            _boneList.RemoveAt(_boneList.Count - 1);
+            _meatPool.ReturnToPool(lastMeat);
+        }
+    }
+    #endregion
+
+    #region 박스 관련 함수들
+
+    #endregion
+
+    #region 움직일 때 애니메이션 부분
     Vector3 GetStackPosition(int index)
     {
         return new Vector3(0, index * _stackHeight, 0);
@@ -327,50 +384,6 @@ public class PlayerController : MonoBehaviour
             board.SetActive(true);
         }
         return playerPickUpObject;
-    }
-    #endregion
-    #region
-    public int AddBone(int trash)
-    {
-        int spaceLeft = _maxBone - _currentMeat;
-        int toAdd = Mathf.Min(spaceLeft, trash);
-        _currentBone += toAdd;
-        UpdateBoneDisplay(_currentBone);
-        return trash - toAdd; // 넘친 양
-    }
-
-    /// <summary>
-    /// 고기 감소
-    /// </summary>
-    public int MinusBone(int amount)
-    {
-        int removed = Mathf.Min(_currentBone, amount);
-        _currentBone -= removed;
-        UpdateBoneDisplay(_currentBone);
-        return removed;
-    }
-    public void UpdateBoneDisplay(int currentBone)
-    {
-        // 1. 고기 개수가 부족하면 채워줌
-        while (_boneList.Count < currentBone)
-        {
-            GameObject meat = _meatPool.GetBone(); // 오브젝트 풀에서 꺼냄
-            meat.transform.SetParent(_meatSpawnLocation, false);
-            // 생성 위치값, 회전값, 크기값
-            meat.transform.localPosition = GetStackPosition(_boneList.Count);
-            meat.transform.localRotation = Quaternion.identity;
-            meat.transform.localScale = _bonePrefab.transform.localScale;
-
-            _boneList.Add(meat);
-        }
-
-        // 2. 고기 개수가 초과되면 제거 (위에서부터 하나씩)
-        while (_boneList.Count > currentBone)
-        {
-            GameObject lastMeat = _boneList[_boneList.Count - 1];
-            _boneList.RemoveAt(_boneList.Count - 1);
-            _meatPool.ReturnToPool(lastMeat);
-        }
     }
     #endregion
 

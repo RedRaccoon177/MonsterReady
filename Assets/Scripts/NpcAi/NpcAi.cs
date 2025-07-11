@@ -95,6 +95,7 @@ public class NpcAi : MonoBehaviour
     public void SatAbility(int currentLevel)
     {
     }
+   
     public void ChangeState(INpcState nextState)
     {
         _currentState?.Exiter(this);
@@ -103,6 +104,7 @@ public class NpcAi : MonoBehaviour
     }
     private void Awake()
     {
+        _pickUpObject = NpcPickUpObject.None;
         _npcAnimator = GetComponent<Animator>();
         _isUnlockNpc = false;
         SettingActive(_isUnlockNpc);
@@ -134,7 +136,7 @@ public class NpcAi : MonoBehaviour
             StopCoroutine(_questCor);
         }
     }
-    public void currentPickUpType()
+    public void CurrentPickUpType()
     {
         if (_CurrentMeat > 0)
         {
@@ -149,6 +151,10 @@ public class NpcAi : MonoBehaviour
             _pickUpObject = NpcPickUpObject.None;
 
         }
+        PlayeCarryAnimation();
+    }
+    public void PlayeCarryAnimation()
+    {
         if (_pickUpObject != NpcPickUpObject.None)
         {
             _npcAnimator.SetBool("IsCarry",true);

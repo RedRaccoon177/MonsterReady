@@ -7,6 +7,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
 {
     [Header("npcAi 목적지 노드 x,y")]
     [SerializeField] public Vector2 _nodeGridNum;
+    [SerializeField] public Vector3 _objectPos;
     public int _myNodeY;
     bool isDestination;
     #region 키값 및 레벨
@@ -81,6 +82,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
     }
     void Awake()
     {
+        _objectPos = transform.position;
         _level = 1;
     }
 
@@ -99,7 +101,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
                 return;
             }
             UiManager._instance.SetInteractionObjectKey(_keyName);
-            UiManager._instance.OnUpgradeNavUi();
+            UiManager._instance.OnUpgradeNavUi(_objectPos);
             if (_player.CheckPickUpObject() == PlayerPickUpObject.None || _player.CheckPickUpObject() == PlayerPickUpObject.Meat) 
             {
                 if (_player._MaxMeat != _player._CurrentMeat)
@@ -121,6 +123,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
             {
                 int _minusMeat = npcScript._MaxMeat - npcScript._CurrentMeat;
                 npcScript.AddMeat(MinusMeat(_minusMeat));
+                npcScript.CurrentPickUpType();
             }
             //TODO: NPC 캐릭터들 고기 획득
         }

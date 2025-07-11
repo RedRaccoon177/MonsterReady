@@ -11,6 +11,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
     [Header("테이블 기본 변수")]
     [SerializeField] public int _level;                   // 테이블 레벨
     [SerializeField] public Vector2 _nodeGridNum;         // 해당 테이블의 그리드 좌표
+    [SerializeField] public Vector3 _objectPos;
     bool isDestination;
 
     [Header("오브젝트 풀링 연결")]
@@ -48,6 +49,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
     }
     private void Awake()
     {
+        _objectPos = transform.position;
         _level = 1;
     }
     #endregion
@@ -61,7 +63,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
             {
                 return;
             }
-            UiManager._instance.OnUpgradeNavUi();
+            UiManager._instance.OnUpgradeNavUi(_objectPos);
             UiManager._instance.SetInteractionObjectKey(_keyName);
             if (_player.CheckPickUpObject() != PlayerPickUpObject.None) { return; }
             if (_boneNum <= 0) { return; }
@@ -78,6 +80,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
             }
             RemoveBones();
             npcScript.AddBone(3);
+            npcScript.CurrentPickUpType();
         }
     }
 

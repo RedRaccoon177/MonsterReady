@@ -14,10 +14,12 @@ public class UiManager : MonoBehaviour
 {
     private Dictionary<UiType, GameObject> _uiDict;
     public static UiManager _instance;
+    [SerializeField] Camera _camera;
     [SerializeField] GameObject _npcBuyUi;
     [SerializeField] GameObject _playerUpgradeUi;
     [SerializeField] GameObject _objectUpgradeUi;
     [SerializeField] GameObject _upGradeNav;
+    [SerializeField] ObjectNavUi _upGradeNavScrit;
     [SerializeField] public string _interactionObjectKey { get; private set; }
     [SerializeField] Transform _canvas;
     private void Awake()
@@ -48,8 +50,9 @@ public class UiManager : MonoBehaviour
     {
         return _uiDict[type].GetComponent<T>();
     }
-    public void OnUpgradeNavUi()
+    public void OnUpgradeNavUi(Vector3 objectPos)
     {
+        _upGradeNavScrit.targetPos = objectPos;
         _upGradeNav.SetActive(true);
     }
     public void OffUpgradeNavUi()

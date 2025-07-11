@@ -8,7 +8,9 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     [SerializeField] public int _level;
     [SerializeField] bool isDestination = false;
     [SerializeField] public Vector2 _nodeGridNum;
-    
+    [SerializeField] public Vector3 _objectPos;
+
+
     #endregion
 
     #region 변수들
@@ -32,13 +34,14 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     // 생성된 고기 오브젝트들을 담는 리스트
     List<GameObject> _meatList = new List<GameObject>();
 
-    [Header("NPCAI 카운터 목적지")] public Node _myNode; //npc 목적지로 설정할 카운터 노드 
-
     //플레이어 정보
     PlayerController _player;
 
     [Header("카운터 옆에 달린 현금")]
     [SerializeField] GoldObject _goldObject;
+
+    [Header("카운터 상호작용 지역")]
+    public ObjectInteration _objectInteration;
 
     public Vector2 NodePosition => throw new System.NotImplementedException();
 
@@ -48,14 +51,13 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     {
         yield return null;
         _player = PlayerController._instance;
-        Debug.Log($"{_keyName} 카운터끝");
         SettingNode();
         SettingGMBaseDict();
         ActiveNpc();
     }
     private void Awake()
     {
-        Debug.Log($"{_keyName} Awake");
+        _objectPos = new Vector3(transform.position.x, transform.position.y+1, transform.position.z);
         _level = 1;
     }
     private void OnEnable()
@@ -147,7 +149,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             {
                 return;
             }
-            UiManager._instance.OnUpgradeNavUi();
+            UiManager._instance.OnUpgradeNavUi(_objectPos);
             UiManager._instance.SetInteractionObjectKey(_keyName);
             if (0 != _player._CurrentMeat)
             {
@@ -163,6 +165,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             {
                 AddMeat(npc._CurrentMeat);
                 npc.MinusMeat(_currentMeatCount);
+                npc.CurrentPickUpType();
             }
         }
     }
@@ -229,6 +232,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
         if (_level == 2)
         {
             _npc.SetActive(true);
+            _objectInteration.OnNpc();
         }
     }
 

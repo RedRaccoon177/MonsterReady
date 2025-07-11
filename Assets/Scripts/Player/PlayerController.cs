@@ -165,7 +165,6 @@ public class PlayerController : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            Debug.Log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
         }
 
         _rg = GetComponent<Rigidbody>();
@@ -173,7 +172,7 @@ public class PlayerController : MonoBehaviour
         _MaxMeat = 4;
         _MaxBone = 3;
         _baseMaxMeat = 4;
-        _baseMoveSpeed = 13;
+        _baseMoveSpeed = 5;
         _CurrentMeat = 0;
     }
     void FixedUpdate()
@@ -384,6 +383,7 @@ public class PlayerController : MonoBehaviour
     public void InvokeJoystickPerformed()
     {
         _animationController.SetBool("IsWalk", true);
+        OnJoystickRelePerformed?.Invoke();
     }
     #endregion
     public void MaxAmountLevelUp()

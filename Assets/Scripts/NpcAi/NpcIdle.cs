@@ -8,7 +8,7 @@ public class NpcIdle : INpcState
     public void Enter(NpcAi npcAi)
     {
         npcAi._path = null;
-        npcAi.currentPickUpType(); // 현재 내가 무엇을 들고 있는지
+        //npcAi.CurrentPickUpType(); // 현재 내가 무엇을 들고 있는지
         if (npcAi._pickUpObject == NpcPickUpObject.None)
         {
             if (npcAi._questCor == null)

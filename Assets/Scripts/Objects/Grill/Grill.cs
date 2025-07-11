@@ -7,6 +7,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
 {
     [Header("npcAi 목적지 노드 x,y")]
     [SerializeField] public Vector2 _nodeGridNum;
+    [SerializeField] public Vector3 _objectPos;
     public int _myNodeY;
     bool isDestination;
     #region 키값 및 레벨
@@ -68,13 +69,21 @@ public class Grill : BaseObject, ILevelable, INpcDestination
     #endregion
 
     #region Start, OnTriggerEnter
-    void Start()
+    IEnumerator Start()
     {
+        _level = 1;
         _player = PlayerController._instance;
+        yield return null;
+        Debug.Log("그릴");
         // 게임 시작 시 고기 자동 생성 시작
         StartGrill();
         SettingNode();
         SettingGMBaseDict();
+    }
+    void Awake()
+    {
+        _objectPos = transform.position;
+        _level = 1;
     }
 
     // 플레이어가 범위에 들어왔을 때 고기 자동 제공
@@ -87,12 +96,20 @@ public class Grill : BaseObject, ILevelable, INpcDestination
         //플레이어의 정보를 바탕으로 빼야할 고기 값
         if (other.CompareTag("Player"))
         {
-            if (_player.CheckPickUpObject() != PlayerPickUpObject.None) { return; }
-            if (_player._MaxMeat != _player._CurrentMeat)
+            if (_player == null)
             {
-                int _minusMeat = _player._MaxMeat - _player._CurrentMeat;
-                _player.AddMeat(MinusMeat(_minusMeat));
-                _player.CheckPickUpObject();
+                return;
+            }
+            UiManager._instance.SetInteractionObjectKey(_keyName);
+            UiManager._instance.OnUpgradeNavUi(_objectPos);
+            if (_player.CheckPickUpObject() == PlayerPickUpObject.None || _player.CheckPickUpObject() == PlayerPickUpObject.Meat) 
+            {
+                if (_player._MaxMeat != _player._CurrentMeat)
+                {
+                    int _minusMeat = _player._MaxMeat - _player._CurrentMeat;
+                    _player.AddMeat(MinusMeat(_minusMeat));
+                    _player.CheckPickUpObject();
+                }
             }
         }
         else if (other.CompareTag("Npc"))
@@ -106,8 +123,17 @@ public class Grill : BaseObject, ILevelable, INpcDestination
             {
                 int _minusMeat = npcScript._MaxMeat - npcScript._CurrentMeat;
                 npcScript.AddMeat(MinusMeat(_minusMeat));
+                npcScript.CurrentPickUpType();
             }
             //TODO: NPC 캐릭터들 고기 획득
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            UiManager._instance.OffUpgradeNavUi();
+            UiManager._instance.SetActive(UiType.ObjectUpgrade, false);
         }
     }
     #endregion

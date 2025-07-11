@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// 테이블 오브젝트 (고기 쌓기, 뼈 쌓기, 레벨 관리 등)
@@ -12,6 +11,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
     [Header("테이블 기본 변수")]
     [SerializeField] public int _level;                   // 테이블 레벨
     [SerializeField] public Vector2 _nodeGridNum;         // 해당 테이블의 그리드 좌표
+    [SerializeField] public Vector3 _objectPos;
     bool isDestination;
 
     [Header("오브젝트 풀링 연결")]
@@ -38,23 +38,36 @@ public class Table : BaseObject, ILevelable, INpcDestination
     [SerializeField] GoldObject GoldObject;
     #endregion
 
+    
     #region Unity 이벤트 함수
     IEnumerator Start()
     {
         yield return null;
+        Debug.Log("테이블");
         _player = PlayerController._instance;
         _boneNum = 0;
         SettingNode();        // 테이블 위치를 노드에 등록
         SettingGMBaseDict();  // 테이블을 GameManager에 등록
+        
+    }
+    private void Awake()
+    {
+        _objectPos = transform.position;
+        _level = 1;
     }
     #endregion
-
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player") && !other.CompareTag("Npc")) return;
 
         if (other.CompareTag("Player"))
         {
+            if (_player == null)
+            {
+                return;
+            }
+            UiManager._instance.OnUpgradeNavUi(_objectPos);
+            UiManager._instance.SetInteractionObjectKey(_keyName);
             if (_player.CheckPickUpObject() != PlayerPickUpObject.None) { return; }
             if (_boneNum <= 0) { return; }
             RemoveBones();
@@ -70,6 +83,16 @@ public class Table : BaseObject, ILevelable, INpcDestination
             }
             RemoveBones();
             npcScript.AddBone(3);
+            npcScript.CurrentPickUpType();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            UiManager._instance.OffUpgradeNavUi();
+            UiManager._instance.SetActive(UiType.ObjectUpgrade,false);
         }
     }
 

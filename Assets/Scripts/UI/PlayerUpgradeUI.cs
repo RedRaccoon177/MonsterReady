@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerUpgradeUI : MonoBehaviour
 {
@@ -21,9 +18,6 @@ public class PlayerUpgradeUI : MonoBehaviour
     int _speedPrice;
     int _amountPrice;
     int _makeMoneyPrice;
-    int _nextSpeedPrice;
-    int _nextAmountPrice;
-    int _nextMakeMoneyPrice;
     [SerializeField] TextMeshProUGUI _speedPriceTxt;
     [SerializeField] TextMeshProUGUI _amountPriceText;
     [SerializeField] TextMeshProUGUI _makeMoneyPriceText;

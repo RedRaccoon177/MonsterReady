@@ -8,7 +8,7 @@ public class PlayerRoom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            UiManager._instance.OnPlayerUpgradeUi();
+            UiManager._instance.SetActive(UiType.PlayerUpgrade,true);
         }
     }
 
@@ -16,7 +16,7 @@ public class PlayerRoom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            UiManager._instance.OffPlayerUpgradeUi();
+            UiManager._instance.SetActive(UiType.PlayerUpgrade,false);
         }
     }
 }

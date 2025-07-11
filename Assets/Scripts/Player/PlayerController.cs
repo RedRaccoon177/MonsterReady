@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int _currentBone;          //현재 들고 있는 고기 수
     List<GameObject> _boneList = new List<GameObject>();    //생성된 고기 오브젝트들 담는 리스트
 
+    [SerializeField] GameObject board;
     [Header("고기 프리펩")]
     [SerializeField] GameObject _meatPrefab;
 
@@ -171,7 +172,7 @@ public class PlayerController : MonoBehaviour
         _MaxMeat = 4;
         _MaxBone = 3;
         _baseMaxMeat = 4;
-        _baseMoveSpeed = 3;
+        _baseMoveSpeed = 5;
         _CurrentMeat = 0;
     }
     void FixedUpdate()
@@ -318,10 +319,12 @@ public class PlayerController : MonoBehaviour
         if (playerPickUpObject == PlayerPickUpObject.None)
         {
             _animationController.SetBool("IsCarry", false);
+            board.SetActive(false);
         }
         else
         {
             _animationController.SetBool("IsCarry", true);
+            board.SetActive(true);
         }
         return playerPickUpObject;
     }
@@ -380,6 +383,7 @@ public class PlayerController : MonoBehaviour
     public void InvokeJoystickPerformed()
     {
         _animationController.SetBool("IsWalk", true);
+        OnJoystickRelePerformed?.Invoke();
     }
     #endregion
     public void MaxAmountLevelUp()

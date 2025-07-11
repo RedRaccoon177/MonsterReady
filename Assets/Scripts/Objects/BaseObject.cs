@@ -12,6 +12,7 @@ public class BaseObject : MonoBehaviour
 {
     public string _keyName;
     public bool _isActive;
+    public ObjectType _objectType;
     
 
     public bool isActive() 
@@ -47,6 +48,7 @@ public class BaseObject : MonoBehaviour
 // 레벨을 가지고 있는 테이블 , 카운터 ,그릴에 상속
 public interface ILevelable 
 {
+    string GetKey();
     int GetLevel();
     int SetLevel(int level);
     void LevelUp();

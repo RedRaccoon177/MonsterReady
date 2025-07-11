@@ -21,9 +21,6 @@ public class PlayerUpgradeUI : MonoBehaviour
     int _speedPrice;
     int _amountPrice;
     int _makeMoneyPrice;
-    int _nextSpeedPrice;
-    int _nextAmountPrice;
-    int _nextMakeMoneyPrice;
     [SerializeField] TextMeshProUGUI _speedPriceTxt;
     [SerializeField] TextMeshProUGUI _amountPriceText;
     [SerializeField] TextMeshProUGUI _makeMoneyPriceText;

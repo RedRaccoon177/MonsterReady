@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+public enum UiType
+{
+    NpcBuy,
+    PlayerUpgrade,
+    ObjectUpgrade,
+    ObjectUpgrdeNav
+}
 
 public class UiManager : MonoBehaviour
 {
+    private Dictionary<UiType, GameObject> _uiDict;
     public static UiManager _instance;
     [SerializeField] GameObject _npcBuyUi;
     [SerializeField] GameObject _playerUpgradeUi;
-    [SerializeField] GameObject _counterUpgradeUi;
-    [SerializeField] GameObject _grillUpgradeUi;
-    [SerializeField] GameObject _tableUpgradeUi;
+    [SerializeField] GameObject _objectUpgradeUi;
+    [SerializeField] GameObject _upGradeNav;
+    [SerializeField] public string _interactionObjectKey { get; private set; }
     [SerializeField] Transform _canvas;
     private void Awake()
     {
@@ -18,53 +27,43 @@ public class UiManager : MonoBehaviour
             _instance = this;
         }
     }
-
     private void Start()
     {
-        OffNpcBuyUi();
+        _upGradeNav.GetComponent<Button>().onClick.AddListener(() => 
+        OnObjectActiveUi(GameManager._instance._baseObjectDict[_interactionObjectKey])
+        );
+        _uiDict = new Dictionary<UiType, GameObject>
+        {
+            { UiType.NpcBuy, _npcBuyUi },
+            { UiType.PlayerUpgrade, _playerUpgradeUi },
+            { UiType.ObjectUpgrade, _objectUpgradeUi },
+            { UiType.ObjectUpgrdeNav, _upGradeNav },
+        };
     }
-
-    public NpcBuyUi OnNpcBuyUi()
+    public void SetActive(UiType type, bool isActive)
     {
-        _npcBuyUi.SetActive(true);
-        return _npcBuyUi.GetComponent<NpcBuyUi>();
+        _uiDict[type].SetActive(isActive);
     }
-    public void OffNpcBuyUi()
+    public T GetUiComponent<T>(UiType type) where T : Component
     {
-        _npcBuyUi.SetActive(false);
+        return _uiDict[type].GetComponent<T>();
     }
-    public void OnPlayerUpgradeUi()
+    public void OnUpgradeNavUi()
     {
-        _playerUpgradeUi.SetActive(true);
+        _upGradeNav.SetActive(true);
     }
-    public void OffPlayerUpgradeUi()
+    public void OffUpgradeNavUi()
     {
-        _playerUpgradeUi.SetActive(false);
+        _upGradeNav.SetActive(false);
     }
-    public void OnCounterUpgradeUi()
+    public void SetInteractionObjectKey(string key)
     {
-        _counterUpgradeUi.SetActive(true);
+        _interactionObjectKey = key;
     }
-    public void OffCounterUpgradeUi()
+    void OnObjectActiveUi(BaseObject test)
     {
-        _counterUpgradeUi.SetActive(false);
-    }
-
-    public void OnGrillUpgradeUi()
-    {
-        _grillUpgradeUi.SetActive(true);
-    }
-    public void OffGrillUpgradeUi()
-    {
-        _grillUpgradeUi.SetActive(false);
-    }
-
-    public void OnTableUpgradeUi()
-    {
-        _tableUpgradeUi.SetActive(true);
-    }
-    public void OffTableUpgradeUi()
-    {
-        _tableUpgradeUi.SetActive(false);
+        SetActive(UiType.ObjectUpgrade, true);
+        var temp =GetUiComponent<ObjectUpgradeUi>(UiType.ObjectUpgrade);
+        temp.SetTarget((ILevelable)test,test._objectType);
     }
 }

@@ -165,6 +165,7 @@ public class PlayerController : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
+            Debug.Log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
         }
 
         _rg = GetComponent<Rigidbody>();
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour
         _MaxMeat = 4;
         _MaxBone = 3;
         _baseMaxMeat = 4;
-        _baseMoveSpeed = 3;
+        _baseMoveSpeed = 13;
         _CurrentMeat = 0;
     }
     void FixedUpdate()

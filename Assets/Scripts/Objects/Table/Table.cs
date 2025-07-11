@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// 테이블 오브젝트 (고기 쌓기, 뼈 쌓기, 레벨 관리 등)
@@ -35,17 +34,23 @@ public class Table : BaseObject, ILevelable, INpcDestination
     List<GameObject> _boneList = new List<GameObject>();  // 쌓인 뼈 오브젝트 리스트
     #endregion
 
+    
     #region Unity 이벤트 함수
     IEnumerator Start()
     {
         yield return null;
+        Debug.Log("테이블");
         _player = PlayerController._instance;
         _boneNum = 0;
         SettingNode();        // 테이블 위치를 노드에 등록
         SettingGMBaseDict();  // 테이블을 GameManager에 등록
+        
+    }
+    private void Awake()
+    {
+        _level = 1;
     }
     #endregion
-
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player") && !other.CompareTag("Npc")) return;
@@ -56,6 +61,8 @@ public class Table : BaseObject, ILevelable, INpcDestination
             {
                 return;
             }
+            UiManager._instance.OnUpgradeNavUi();
+            UiManager._instance.SetInteractionObjectKey(_keyName);
             if (_player.CheckPickUpObject() != PlayerPickUpObject.None) { return; }
             if (_boneNum <= 0) { return; }
             RemoveBones();
@@ -71,6 +78,15 @@ public class Table : BaseObject, ILevelable, INpcDestination
             }
             RemoveBones();
             npcScript.AddBone(3);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            UiManager._instance.OffUpgradeNavUi();
+            UiManager._instance.SetActive(UiType.ObjectUpgrade,false);
         }
     }
 

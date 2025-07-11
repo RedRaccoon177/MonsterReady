@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     {
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
         SettingWarableList();
-        FristStartGame();
+        LoadGame();
     }
     void FristStartGame()
     {

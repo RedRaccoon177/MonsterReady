@@ -8,26 +8,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     [SerializeField] public int _level;
     [SerializeField] bool isDestination = false;
     [SerializeField] public Vector2 _nodeGridNum;
-    public string GetKey()
-    {
-        return _keyName;
-    }
-
-    public int SetLevel(int level)
-    {
-        _level = level;
-        return level;
-    }
-
-    public void LevelUp()
-    {
-        _level++;
-    }
-
-    public int GetLevel()
-    {
-        return _level;
-    }
+    
     #endregion
 
     #region 변수들
@@ -36,6 +17,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     [Header("고기 프리펩")]
     [SerializeField] GameObject _meatPrefab;
+    [SerializeField] GameObject _npc;
 
     [Header("고기 배치하는 곳")]
     [SerializeField] Transform _meatSpawnLocation;
@@ -62,11 +44,23 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     #endregion
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return null;
         _player = PlayerController._instance;
+        Debug.Log($"{_keyName} 카운터끝");
         SettingNode();
         SettingGMBaseDict();
+        ActiveNpc();
+    }
+    private void Awake()
+    {
+        Debug.Log($"{_keyName} Awake");
+        _level = 1;
+    }
+    private void OnEnable()
+    {
+        ActiveNpc();
     }
 
     #region 고기 증가 및 감소
@@ -149,6 +143,12 @@ public class Counter : BaseObject, ILevelable, INpcDestination
         //플레이어의 정보를 바탕으로 더해야 할 고기
         if (other.CompareTag("Player"))
         {
+            if (_player == null)
+            {
+                return;
+            }
+            UiManager._instance.OnUpgradeNavUi();
+            UiManager._instance.SetInteractionObjectKey(_keyName);
             if (0 != _player._CurrentMeat)
             {
                 AddMeat( _player._CurrentMeat );
@@ -164,6 +164,14 @@ public class Counter : BaseObject, ILevelable, INpcDestination
                 AddMeat(npc._CurrentMeat);
                 npc.MinusMeat(_currentMeatCount);
             }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            UiManager._instance.OffUpgradeNavUi();
+            UiManager._instance.SetActive(UiType.ObjectUpgrade, false);
         }
     }
 
@@ -199,5 +207,33 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     public bool IsDestination()
     {
         return isDestination;
+    }
+    public string GetKey()
+    {
+        return _keyName;
+    }
+
+    public int SetLevel(int level)
+    {
+        _level = level;
+        return level;
+    }
+
+    public void LevelUp()
+    {
+        _level++;
+        ActiveNpc();
+    }
+    void ActiveNpc()
+    {
+        if (_level == 2)
+        {
+            _npc.SetActive(true);
+        }
+    }
+
+    public int GetLevel()
+    {
+        return _level;
     }
 }

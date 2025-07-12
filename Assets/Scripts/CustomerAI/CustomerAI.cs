@@ -15,6 +15,9 @@ public class CustomerAI : MonoBehaviour
     ICustomerState _currentState;
 
     #region 손님 필드
+    [Header("현재 상태 확인용")]
+    [SerializeField] private string currentStateName;
+
     public Table _table;         // 내가 앉아있는 테이블
     public int _AteMeatCount = 0; // 먹은 고기 총 개수
 
@@ -40,6 +43,9 @@ public class CustomerAI : MonoBehaviour
     
     //손님이 받은 현재 고기 양
     [SerializeField] int _currentMeat;
+
+    //손님이 현재 앉아 있는 노드 위치
+    [SerializeField] public Node _currentChairNode;
     #endregion
 
     #region 변수 프로퍼티
@@ -50,6 +56,10 @@ public class CustomerAI : MonoBehaviour
         get => _currentMeat;
         set => _currentMeat = value;
     }
+    #endregion
+
+    #region 애니메이션 필드
+    [SerializeField] private Animator _animator;
     #endregion
 
     void Awake()
@@ -84,6 +94,9 @@ public class CustomerAI : MonoBehaviour
         _currentState?.Exit(this);
         _currentState = newState;
         _currentState.Enter(this);
+
+        // 인스펙터에서 상태 확인할 수 있도록 이름 저장
+        currentStateName = _currentState.GetType().Name;
     }
     #endregion
 
@@ -153,7 +166,7 @@ public class CustomerAI : MonoBehaviour
     /// </summary>
     Vector3 GetStackMeatAndBonePosition(int index)
     {
-        float baseHeight = 1f; // 손님 위치보다 위에
+        float baseHeight = 1.2f; // 손님 위치보다 위에
         float forwardOffset = 0.5f; // 손님 앞쪽
         return new Vector3(
             0f,
@@ -173,5 +186,21 @@ public class CustomerAI : MonoBehaviour
         }
         _meatList.Clear();
     }
+    #endregion
+
+    #region 애니메이션 전용 함수들
+    public void SetExclusiveAnimation(string activeParam)
+    {
+        if (_animator.GetBool(activeParam))
+            return; // 이미 활성화된 상태면 중복 호출 방지
+
+        string[] allParams = { "IsWalking", "IsIdle", "IsCarrying", "IsCarryingAndWalking", "IsSittingAndEat" };
+
+        foreach (string param in allParams)
+        {
+            _animator.SetBool(param, param == activeParam);
+        }
+    }
+
     #endregion
 }

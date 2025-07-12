@@ -10,6 +10,8 @@ public class CustomerMoveToCounterState : ICustomerState
     
     //최종 목적지인 카운터 위치
     Vector2Int _counterNodeGridPos = new Vector2Int(15, 5);
+
+    bool _isIdle = false;  // 현재 Idle 상태인지 추적
     #endregion
 
     #region  Enter, Update, Exit문
@@ -27,54 +29,17 @@ public class CustomerMoveToCounterState : ICustomerState
         // A* 알고리즘으로 경로 계산
         _path = AStarPathfinder.FindPath(_startNode, _goalNode);
         _currentIndex = 0; // 경로 시작 인덱스 초기화
+
+        _isIdle = false;  // 이동 시작이니까 Idle 아님
+        customer.SetExclusiveAnimation("IsWalking");
+        Debug.Log("IsWalking0");
     }
 
-    /// <summary>
-    /// 상태 업데이트. 손님이 A* 경로를 따라 한 칸씩 이동함
-    /// </summary>
     public void Update(CustomerAI customer)
     {
-        // 경로가 없거나 이미 도착했다면 다음 상태로 전환
-        if (_path == null || _currentIndex >= _path.Count)
-        {
-            //손님이 줄에 도착했는것
-            if(_path != null)
-            {
-                _path[_currentIndex - 1]._isCustomerWaiting = true;
-            }
-
-            customer.SetState(new CustomerOrderAndWait()); // 다음 행동 상태로 전환 (주문 대기 등)
-            return;
-        }
-
-        // 다음 이동 목표 노드 설정
-        Node _targetNode = _path[_currentIndex];
-        Vector3 _targetPos = _targetNode.transform.position;
-        float _step = 5f * Time.deltaTime; // 프레임 기반 이동 거리 계산
-
-        //앞에 노드에 손님이 줄서고 있다면?
-        if(_targetNode._isCustomerWaiting)
-        {
-            if (_currentIndex != 0)
-            {
-                Node _currentNode = _path[_currentIndex - 1];
-
-                // 현재 위치한 노드에 아무도 못오게 막기
-                _currentNode._isCustomerWaiting = true;
-            }
-        }
-        else
-        {
-            // 손님을 다음 노드 위치로 이동시킴
-            customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
-            // 목표 위치에 거의 도착했다면 다음 노드로 전환
-            if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
-            {
-                _currentIndex++;
-            }
-        }
+        MoveNode(customer);
     }   
-
+     
     public void Exit(CustomerAI customer) { }
     #endregion
 
@@ -92,16 +57,9 @@ public class CustomerMoveToCounterState : ICustomerState
 
         foreach (Node _node in NodeManager._instance._nodeList)
         {
-            if (_node == null)
-            {
-                Debug.Log("null node 발견됨");
-                continue;
-            }
+            if (_node == null) continue;
 
-            if (!_node._isWalkale)
-            {
-                continue;
-            }
+            if (!_node._isWalkale) continue;
 
             float _dist = Vector3.Distance(pos, _node.transform.position);
             if (_dist < _minDist)
@@ -115,6 +73,86 @@ public class CustomerMoveToCounterState : ICustomerState
             Debug.LogError("GetClosestNode(): 유효한 노드가 없음");
 
         return _closestNode;
+    }
+    #endregion
+
+    #region 손님AI 이동 함수 / 손님이 A* 경로를 따라 한 칸씩 이동함
+    public void MoveNode(CustomerAI customer)
+    {
+        // 경로가 없거나 이미 도착했다면 다음 상태로 전환
+        if (_path == null || _currentIndex >= _path.Count)
+        {
+            //손님이 줄에 도착했는것
+            if (_path != null)
+            {
+                _path[_currentIndex - 1]._isCustomerThere = true;
+            }
+
+            customer.SetState(new CustomerOrderAndWait()); // 다음 행동 상태로 전환 (주문 대기 등)
+            return;
+        }
+
+        // 다음 이동 목표 노드 설정
+        Node _targetNode = _path[_currentIndex];
+        Vector3 _targetPos = _targetNode.transform.position;
+        float _step = 5f * Time.deltaTime; // 프레임 기반 이동 거리 계산
+
+        //앞에 노드에 손님이 줄서고 있다면?
+        if (_targetNode._isCustomerThere)
+        {
+            if (_currentIndex != 0)
+            {
+                Node _currentNode = _path[_currentIndex - 1];
+
+                // 현재 위치한 노드에 아무도 못오게 막기
+                _currentNode._isCustomerThere = true;
+
+                // 애니메이션 부분
+                if (!_isIdle)
+                {
+                    _isIdle = true;
+                    customer.SetExclusiveAnimation("IsIdle");
+                    Debug.Log("Switch to IsIdle");
+                }
+            }
+        }
+        //그게 아니면 이동해라
+        else
+        {
+            // 손님을 다음 노드 위치로 이동시킴
+            customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
+
+            // 현재 위치에서 목표 방향 벡터 계산
+            Vector3 direction = (_targetPos - customer.transform.position).normalized;
+
+            // y축 회전만 고려 (수평 회전)
+            if (direction != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                customer.transform.rotation = Quaternion.Slerp(customer.transform.rotation, lookRotation, Time.deltaTime * 10f);
+            }
+
+            // 목표 위치에 거의 도착했다면 다음 노드로 전환
+            if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
+            {
+                _currentIndex++;
+            }
+
+            // 현재 위치한 노드에 다음 손님 올 수 있게 하기
+            if (_currentIndex > 0)
+            {
+                Node _currentNode = _path[_currentIndex - 1];
+                _currentNode._isCustomerThere = false;
+            }
+
+            // 애니메이션 부분
+            if (_isIdle)
+            {
+                _isIdle = false;
+                customer.SetExclusiveAnimation("IsWalking");
+                Debug.Log("Switch to IsWalking");
+            }
+        }
     }
     #endregion
 }

@@ -25,13 +25,15 @@ public class CustomerGoingHome : ICustomerState
         // A*로 경로 계산
         _path = AStarPathfinder.FindPath(_startNode, _goalNode);
         _currentIndex = 0;
+
+        customer.SetExclusiveAnimation("IsWalking");
     }
 
     public void Update(CustomerAI customer)
     {
         if (_path == null || _currentIndex >= _path.Count)
         {
-            // 도착 완료 → 손님 제거
+            // 도착 완료 -> 손님 제거
             GameObject.Destroy(customer.gameObject);
             return;
         }
@@ -42,16 +44,24 @@ public class CustomerGoingHome : ICustomerState
 
         customer.transform.position = Vector3.MoveTowards(customer.transform.position, _targetPos, _step);
 
+        // 현재 위치에서 목표 방향 벡터 계산
+        Vector3 direction = (_targetPos - customer.transform.position).normalized;
+
+        // y축 회전만 고려 (수평 회전)
+        if (direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            customer.transform.rotation = Quaternion.Slerp(customer.transform.rotation, lookRotation, Time.deltaTime * 10f);
+        }
+
         if (Vector3.Distance(customer.transform.position, _targetPos) < 0.1f)
         {
             _currentIndex++;
         }
     }
 
-    public void Exit(CustomerAI customer)
-    {
+    public void Exit(CustomerAI customer) { }
 
-    }
 
     // 현재 위치에서 가장 가까운 노드를 찾는 함수
     Node GetClosestNode(Vector3 pos)

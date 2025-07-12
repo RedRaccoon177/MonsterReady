@@ -9,13 +9,16 @@ public class NpcRoom : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log(111);
-            var temp = UiManager._instance.OnNpcBuyUi();
+            UiManager._instance.SetActive(UiType.NpcBuy,true);
+            var temp = UiManager._instance.GetUiComponent<NpcBuyUi>(UiType.NpcBuy);
             temp.SetUi(_npcSpawner);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        UiManager._instance.OffNpcBuyUi();
+        if (other.gameObject.tag == "Player")
+        {
+            UiManager._instance.SetActive(UiType.NpcBuy, false);
+        }
     }
 }

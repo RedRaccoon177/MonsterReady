@@ -220,10 +220,10 @@ Animator:
   m_GameObject: {fileID: 1083182119031270}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 792e61d487156d94db0fd45793a62d76, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f0d769e28241f2488867ea440a76410, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -294,12 +294,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyName: 
+  _currentLevel: 0
+  _price: 0
   _npcIcon: {fileID: 0}
   _isUnlockNpc: 0
   _pickUpObject: 0
   _maxMeat: 0
   _currentMeat: 0
+  _maxBone: 0
+  _currentBone: 0
   _meatPrefab: {fileID: 0}
+  _bonePrefab: {fileID: 0}
   _meatPool: {fileID: 0}
   _stackHeight: 0.11
   _meatSpawnLocation: {fileID: 391889842236002022}

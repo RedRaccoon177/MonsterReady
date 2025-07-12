@@ -82,12 +82,6 @@ public class DataManager : MonoBehaviour
     {
         npcDataList.npcDatas.Clear();
         List<NpcAi> npcList = new List<NpcAi>(NpcSpawner._npcAiDic.Values);
-        foreach (var a in npcList)
-        {
-            Debug.Log("aaa : " + a._keyName);
-            Debug.Log("aaa : " + a._currentLevel);
-            Debug.Log("aaa : " + a._isUnlockNpc);
-        }
         for (int i=0; i< npcList.Count; i++)
         {
             NpcData npcData = new NpcData();

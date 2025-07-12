@@ -10,13 +10,14 @@ public class Table : BaseObject, ILevelable, INpcDestination
     #region 변수 모음
     [Header("테이블 기본 변수")]
     [SerializeField] public int _level;                   // 테이블 레벨
-    [SerializeField] public int _currentTrashCount;       // 현재 쌓인 쓰레기(뼈) 수
     [SerializeField] public Vector2 _nodeGridNum;         // 해당 테이블의 그리드 좌표
+    [SerializeField] public Vector3 _objectPos;
     bool isDestination;
 
     [Header("오브젝트 풀링 연결")]
     [SerializeField] ObjectPooling _meatPool;             // 고기 풀
     [SerializeField] ObjectPooling _bonePool;             // 뼈 풀
+    PlayerController _player;             // 뼈 풀
 
     [Header("고기, 뼈 프리팹")]
     [SerializeField] GameObject _meatPrefab;              // 고기 프리팹
@@ -32,17 +33,68 @@ public class Table : BaseObject, ILevelable, INpcDestination
 
     List<GameObject> _meatList = new List<GameObject>();  // 쌓인 고기 오브젝트 리스트
     List<GameObject> _boneList = new List<GameObject>();  // 쌓인 뼈 오브젝트 리스트
+
+    [Header("골드 생성 오브젝트")]
+    [SerializeField] GoldObject GoldObject;
     #endregion
 
+    
     #region Unity 이벤트 함수
     IEnumerator Start()
     {
-        yield return null; 
-        _currentTrashCount = 0;
+        yield return null;
+        Debug.Log("테이블");
+        _player = PlayerController._instance;
+        _boneNum = 0;
         SettingNode();        // 테이블 위치를 노드에 등록
         SettingGMBaseDict();  // 테이블을 GameManager에 등록
+        
+    }
+    private void Awake()
+    {
+        _objectPos = transform.position;
+        _level = 1;
     }
     #endregion
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player") && !other.CompareTag("Npc")) return;
+
+        if (other.CompareTag("Player"))
+        {
+            if (_player == null)
+            {
+                return;
+            }
+            UiManager._instance.OnUpgradeNavUi(_objectPos);
+            UiManager._instance.SetInteractionObjectKey(_keyName);
+            if (_player.CheckPickUpObject() != PlayerPickUpObject.None) { return; }
+            if (_boneNum <= 0) { return; }
+            RemoveBones();
+            _player.AddBone(3);
+            _player.CheckPickUpObject();
+        }
+        else if (other.CompareTag("Npc"))
+        {
+            NpcAi npcScript = other.gameObject.GetComponent<NpcAi>();
+            if (npcScript._destination.GetKey() != this._keyName)
+            {
+                return;
+            }
+            RemoveBones();
+            npcScript.AddBone(3);
+            npcScript.CurrentPickUpType();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            UiManager._instance.OffUpgradeNavUi();
+            UiManager._instance.SetActive(UiType.ObjectUpgrade,false);
+        }
+    }
 
     #region 고기 관련 기능 함수
     /// <summary>
@@ -96,6 +148,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
             bone.transform.localScale = _bonePrefab.transform.localScale;
 
             _boneList.Add(bone);
+            GoldObject.AddGold(1);
         }
     }
 
@@ -167,12 +220,12 @@ public class Table : BaseObject, ILevelable, INpcDestination
     #region INpcDestination 구현
     public bool HasStack()
     {
-        return _currentTrashCount > 0;
+        return _boneNum > 0;
     }
 
     public int GetStackCount()
     {
-        return _currentTrashCount;
+        return _boneNum;
     }
     #endregion
 

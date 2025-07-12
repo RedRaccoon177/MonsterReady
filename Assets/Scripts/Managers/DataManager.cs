@@ -244,7 +244,7 @@ public class DataManager : MonoBehaviour
     }
     public void LoadObjectData(ObjectType type)
     {
-        if (File.Exists(filePathPlayer))
+        if (File.Exists(GetJsonJsonRoute(type)))
         {
             Dictionary<string, BaseObject> objectDictGM = GetobjectDictGM(type);
             var json = File.ReadAllText(GetJsonJsonRoute(type));

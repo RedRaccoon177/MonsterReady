@@ -53,6 +53,7 @@ public class ObjectsActivator : MonoBehaviour
         {
             _deactivateObjScript = _DeactivateObj.GetComponent<BaseObject>();
         }
+        _payGoldText.text = (_maxPayGold - _currentPayGold).ToString();
     }
     
     private void OnJoystickReleased()

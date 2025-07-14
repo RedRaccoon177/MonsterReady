@@ -9,8 +9,6 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     [SerializeField] bool isDestination = false;
     [SerializeField] public Vector2 _nodeGridNum;
     [SerializeField] public Vector3 _objectPos;
-
-
     #endregion
 
     #region 변수들
@@ -19,6 +17,8 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     [Header("고기 프리펩")]
     [SerializeField] GameObject _meatPrefab;
+
+    [Header("카운터 npc")]
     [SerializeField] GameObject _npc;
 
     [Header("고기 배치하는 곳")]
@@ -42,26 +42,30 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     [Header("카운터 상호작용 지역")]
     public ObjectInteration _objectInteration;
-
-    public Vector2 NodePosition => throw new System.NotImplementedException();
-
     #endregion
 
+    #region 박스 관련 변수들
+    [Header("박스 관련 변수")]
+    [SerializeField] ObjectPooling _boxPool;          // 박스를 관리하는 오브젝트 풀
+    [SerializeField] GameObject _boxPrefab;          // 박스 프리팹
+    [SerializeField] Transform _boxSpawnLocation;    // 박스 쌓는 위치
+    [SerializeField] float _boxStackHeight = 0.15f; // 박스 쌓는 간격
+    [SerializeField] public int _currentBoxCount = 0; // 현재 박스 개수
+
+    List<GameObject> _boxList = new List<GameObject>(); // 박스 오브젝트 리스트
+    #endregion
+
+    private void Awake()
+    {
+        _objectPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        _level = 1;
+    }
     IEnumerator Start()
     {
         yield return null;
         _player = PlayerController._instance;
         SettingNode();
         SettingGMBaseDict();
-        ActiveNpc();
-    }
-    private void Awake()
-    {
-        _objectPos = new Vector3(transform.position.x, transform.position.y+1, transform.position.z);
-        _level = 1;
-    }
-    private void OnEnable()
-    {
         ActiveNpc();
     }
 
@@ -136,36 +140,165 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     }
     #endregion
 
+    #region 박스 증가 및 감소
+    /// <summary>
+    /// 카운터 박스 증가 함수
+    /// </summary>
+    /// <param name="_boxCount"></param>
+    void AddBox(int _boxCount)
+    {
+        _currentBoxCount = Mathf.Max(0, _currentBoxCount + _boxCount);
+        UpdateBoxDisplay(_currentBoxCount);
+    }
+
+    /// <summary>
+    /// 카운터 박스 감소 함수
+    /// </summary>
+    /// <param name="_minusBox"></param>
+    public int MinusBox(int _minusBox)
+    {
+        int _someoneGetBox;
+
+        if (_currentBoxCount < _minusBox)
+        {
+            _someoneGetBox = _currentBoxCount;
+            _currentBoxCount = 0;
+        }
+        else
+        {
+            _someoneGetBox = _minusBox;
+            _currentBoxCount -= _minusBox;
+        }
+
+        UpdateBoxDisplay(_currentBoxCount);
+        return _someoneGetBox;
+    }
+    #endregion
+
+    #region 박스 시각화 하는 코드 모음
+    // 박스 시각화 코드
+    public void UpdateBoxDisplay(int currentBox)
+    {
+        // 1. 박스 개수가 부족하면 채워줌
+        while (_boxList.Count < currentBox)
+        {
+            GameObject box = _boxPool.GetBox(); // 오브젝트 풀에서 꺼냄
+
+            // 생성 위치값, 회전값, 크기값
+            box.transform.localPosition = GetBoxStackPosition(_boxList.Count);
+            box.transform.localRotation = Quaternion.identity;
+            box.transform.localScale = _boxPrefab.transform.localScale;
+
+            _boxList.Add(box);
+        }
+
+        // 2. 박스 개수가 초과되면 제거 (위에서부터 하나씩)
+        while (_boxList.Count > currentBox)
+        {
+            GameObject lastBox = _boxList[_boxList.Count - 1];
+            _boxList.RemoveAt(_boxList.Count - 1);
+            _boxPool.ReturnToPool(lastBox);
+        }
+    }
+
+    Vector3 GetBoxStackPosition(int index)
+    {
+        return new Vector3
+        (
+            _boxSpawnLocation.position.x,
+            _boxSpawnLocation.position.y + index * _boxStackHeight + _counterY,
+            _boxSpawnLocation.position.z
+        );
+    }
+    #endregion
+
+    #region Trigger 부분
     // 플레이어가 범위에 들어왔을 때 고기 자동 제공
     private void OnTriggerEnter(Collider other)
     {
         // 태그가 Player가 아닐 경우 무시
         if (!other.CompareTag("Player") && !other.CompareTag("Npc")) return;
-
-        //플레이어의 정보를 바탕으로 더해야 할 고기
-        if (other.CompareTag("Player"))
+        if (_player == null)
         {
-            if (_player == null)
+            return;
+        }
+
+        if (this._keyName == "카운터1")
+        {
+            //플레이어의 정보를 바탕으로 더해야 할 무언가
+            if (other.CompareTag("Player"))
             {
-                return;
+                UiManager._instance.OnUpgradeNavUi(_objectPos);
+                UiManager._instance.SetInteractionObjectKey(_keyName);
+
+                if (0 != _player._CurrentMeat)
+                {
+                    AddMeat(_player._CurrentMeat);
+                    _player.MinusMeat(_currentMeatCount);
+                    _player.CheckPickUpObject();
+                }
             }
-            UiManager._instance.OnUpgradeNavUi(_objectPos);
-            UiManager._instance.SetInteractionObjectKey(_keyName);
-            if (0 != _player._CurrentMeat)
+            else if (other.CompareTag("Npc"))
             {
-                AddMeat( _player._CurrentMeat );
-                _player.MinusMeat(_currentMeatCount);
-                _player.CheckPickUpObject();
+                var npc = other.gameObject.GetComponent<NpcAi>();
+                if (0 != npc._CurrentMeat)
+                {
+                    AddMeat(npc._CurrentMeat);
+                    npc.MinusMeat(_currentMeatCount);
+                    npc.CurrentPickUpType();
+                }
             }
         }
-        else if (other.CompareTag("Npc"))
+        else if (this._keyName == "카운터2")
         {
-            var npc = other.gameObject.GetComponent<NpcAi>();
-            if (0 != npc._CurrentMeat)
+            // 박스를 가져오면 고기처럼 박스가 쌓이고 손님이 오면 가져가기
+            if (other.CompareTag("Player"))
             {
-                AddMeat(npc._CurrentMeat);
-                npc.MinusMeat(_currentMeatCount);
-                npc.CurrentPickUpType();
+                UiManager._instance.OnUpgradeNavUi(_objectPos);
+                UiManager._instance.SetInteractionObjectKey(_keyName);
+
+                if (0 != _player._CurrentBox)
+                {
+                    AddBox(_player._CurrentBox);
+                    _player.MinusBox(_currentBoxCount);
+                    _player.CheckPickUpObject();
+                }
+            }
+            else if (other.CompareTag("Npc"))
+            {
+                var npc = other.gameObject.GetComponent<NpcAi>();
+                if (0 != npc._CurrentBox)
+                {
+                    AddBox(npc._CurrentBox);
+                    npc.MinusBox(_currentBoxCount);
+                    npc.CurrentPickUpType();
+                }
+            }
+        }
+        else if (this._keyName == "카운터3")
+        {
+            // 고기를 가져오면 박스로 전환되게 하기
+            if (other.CompareTag("Player"))
+            {
+                UiManager._instance.OnUpgradeNavUi(_objectPos);
+                UiManager._instance.SetInteractionObjectKey(_keyName);
+
+                if (0 != _player._CurrentMeat)
+                {
+                    AddBox(_player._CurrentBox);
+                    _player.MinusBox(_currentBoxCount);
+                    _player.CheckPickUpObject();
+                }
+            }
+            else if (other.CompareTag("Npc"))
+            {
+                var npc = other.gameObject.GetComponent<NpcAi>();
+                if (0 != npc._CurrentMeat)
+                {
+                    AddBox(npc._CurrentMeat);
+                    npc.MinusBox(_currentMeatCount);
+                    npc.CurrentPickUpType();
+                }
             }
         }
     }
@@ -177,6 +310,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             UiManager._instance.SetActive(UiType.ObjectUpgrade, false);
         }
     }
+    #endregion
 
     public bool HasStack()
     {

@@ -12,9 +12,8 @@ public class CustomerOrderAndWait : ICustomerState
     {
         _requestedMeat = Random.Range(customer._MinMeat, customer._MaxMeat);
         customer._CurrentMeat = 0; // 수령 초기화
-
+        UiManager._instance.ActiveMeatOrdreUi(_requestedMeat,true);
         Debug.Log($"[CustomerOrderAndWait] 고기 {_requestedMeat}개 요구");
-
         customer.SetExclusiveAnimation("IsCarrying");
         Debug.Log("IsCarrying0");
     }
@@ -32,7 +31,7 @@ public class CustomerOrderAndWait : ICustomerState
         int beforeMeat = customer._CurrentMeat;
         int neededMeat = _requestedMeat - beforeMeat;
 
-        if (neededMeat > 0)
+        if (neededMeat > 0 && _counter._objectInteration._IsInteration)
         {
             int receivedMeat = _counter.MinusMeat(neededMeat);
 
@@ -45,6 +44,7 @@ public class CustomerOrderAndWait : ICustomerState
 
         if (customer._CurrentMeat >= _requestedMeat)
         {
+            UiManager._instance.ActiveMeatOrdreUi(_requestedMeat,false);
             customer.SetState(new CustomerMoveToTable());
         }
     }

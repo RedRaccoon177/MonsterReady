@@ -32,6 +32,7 @@ public class ObjectUpgradeUi : MonoBehaviour
             PrintObjectUpgradePriceText();
             ActiveBtn();
             SaveLevelUpData(_objectType);
+            DataManager._Instance.SaveObjectData(_objectType);
         });
         yield return null;
     }
@@ -92,16 +93,16 @@ public class ObjectUpgradeUi : MonoBehaviour
     {
         if (objectType == ObjectType.Table)
         {
-            DataManager._Instance.SaveObjectData(GameManager._instance._counters,ObjectType.Counter);
+            DataManager._Instance.SaveObjectData(ObjectType.Counter);
         }
         else if (objectType == ObjectType.Counter)
         {
 
-            DataManager._Instance.SaveObjectData(GameManager._instance._tables,ObjectType.Table);
+            DataManager._Instance.SaveObjectData(ObjectType.Table);
         }
         else if (objectType == ObjectType.Grill)
         {
-            DataManager._Instance.SaveObjectData(GameManager._instance._grills,ObjectType.Grill);
+            DataManager._Instance.SaveObjectData(ObjectType.Grill);
 
         }
     }

@@ -54,6 +54,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
         SettingNode();
         SettingGMBaseDict();
         ActiveNpc();
+        GameManager._instance._isBaseDictComplete = true;
     }
     private void Awake()
     {

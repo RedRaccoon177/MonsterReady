@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,14 +18,10 @@ public class GameManager : MonoBehaviour
     // 테이블,카운터3,그릴1,2에 쌓인게 있는지 
     public Dictionary<string,Node> _npcObjectNodeDict = new Dictionary<string,Node>();
     public Dictionary<string,BaseObject> _baseObjectDict = new Dictionary<string,BaseObject>();
-    
-    void Print()
-    {
-        foreach (var temp in _baseObjectDict)
-        {
-            Debug.Log("키값 : " + temp.Key + "값 : " + temp.Value);
-        }
-    }
+    public GameObject customerSpawner;
+    public bool _isBaseDictComplete = false;
+
+
     private void Awake()
     {
         if (_instance == null)
@@ -34,21 +29,13 @@ public class GameManager : MonoBehaviour
             _instance = this;
         } 
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            foreach (var temp in _baseObjectDict)
-            {
-                Debug.Log("키값 : " + temp.Key + "값 : "+  temp.Value);
-            }
-        }
-    }
-    private void Start()
+    IEnumerator Start()
     {
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
         SettingWarableList();
         LoadGame();
+        yield return new WaitUntil(() => _isBaseDictComplete == true);
+        ActiveCustomerSpawner();
     }
     void FristStartGame()
     {
@@ -108,10 +95,10 @@ public class GameManager : MonoBehaviour
         Debug.Log(_activator[_step].name);
         Debug.Log(_activator[_step]._isActive);
         DataManager._Instance.SaveGroundMoney(_groundMoneyArr);
-        DataManager._Instance.SaveObjectData(_tables,ObjectType.Table);
-        DataManager._Instance.SaveObjectData(_grills, ObjectType.Grill);
-        DataManager._Instance.SaveObjectData(_counters, ObjectType.Counter);
-        DataManager._Instance.SaveObjectData(_expens, ObjectType.Expand);
+        DataManager._Instance.SaveObjectData(ObjectType.Table);
+        DataManager._Instance.SaveObjectData(ObjectType.Grill);
+        DataManager._Instance.SaveObjectData(ObjectType.Counter);
+        DataManager._Instance.SaveObjectData(ObjectType.Expand);
         DataManager._Instance.SaveActivatorData(_activator);
     }
     
@@ -123,6 +110,13 @@ public class GameManager : MonoBehaviour
     public void SettingActivatorArray()
     {
         Array.Sort(_activator, (a, b) => a._step.CompareTo(b._step));    
+    }
+    public void ActiveCustomerSpawner()
+    {
+        if (_baseObjectDict["카운터1"]._isActive == true)
+        {
+            customerSpawner.SetActive(true);
+        }
     }
 
 }

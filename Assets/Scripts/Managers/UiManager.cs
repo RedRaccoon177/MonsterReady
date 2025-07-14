@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public enum UiType
@@ -7,7 +8,10 @@ public enum UiType
     NpcBuy,
     PlayerUpgrade,
     ObjectUpgrade,
-    ObjectUpgrdeNav
+    ObjectUpgrdeNav,
+    MeatOrderUi,
+    MeatBoxOrderUi
+
 }
 
 public class UiManager : MonoBehaviour
@@ -19,6 +23,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject _playerUpgradeUi;
     [SerializeField] GameObject _objectUpgradeUi;
     [SerializeField] GameObject _upGradeNav;
+    [SerializeField] GameObject _meatOrderUi;
+    [SerializeField] TextMeshProUGUI _meatOrderTxt;
+    [SerializeField] GameObject _meatBoxOrderUi;
     [SerializeField] ObjectNavUi _upGradeNavScrit;
     [SerializeField] public string _interactionObjectKey { get; private set; }
     [SerializeField] Transform _canvas;
@@ -36,10 +43,12 @@ public class UiManager : MonoBehaviour
         );
         _uiDict = new Dictionary<UiType, GameObject>
         {
-            { UiType.NpcBuy, _npcBuyUi },
+            { UiType.NpcBuy, _npcBuyUi },                                              
             { UiType.PlayerUpgrade, _playerUpgradeUi },
             { UiType.ObjectUpgrade, _objectUpgradeUi },
             { UiType.ObjectUpgrdeNav, _upGradeNav },
+            { UiType.MeatOrderUi, _meatOrderUi },
+            { UiType.MeatBoxOrderUi, _meatBoxOrderUi },
         };
     }
     public void SetActive(UiType type, bool isActive)
@@ -63,10 +72,16 @@ public class UiManager : MonoBehaviour
     {
         _interactionObjectKey = key;
     }
-    void OnObjectActiveUi(BaseObject test)
+    void OnObjectActiveUi(BaseObject baseObject)
     {
         SetActive(UiType.ObjectUpgrade, true);
         var temp =GetUiComponent<ObjectUpgradeUi>(UiType.ObjectUpgrade);
-        temp.SetTarget((ILevelable)test,test._objectType);
+        temp.SetTarget((ILevelable)baseObject,baseObject._objectType);
+    }
+
+    public void ActiveMeatOrdreUi(int orderMeatCount, bool active)
+    {
+        SetActive(UiType.MeatOrderUi, active);
+        _meatOrderTxt.text = orderMeatCount.ToString();
     }
 }

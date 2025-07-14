@@ -43,12 +43,11 @@ public class Table : BaseObject, ILevelable, INpcDestination
     IEnumerator Start()
     {
         yield return null;
-        Debug.Log("테이블");
         _player = PlayerController._instance;
         _boneNum = 0;
-        SettingNode();        // 테이블 위치를 노드에 등록
+        SettingNode();
         SettingGMBaseDict();  // 테이블을 GameManager에 등록
-        
+    
     }
     private void Awake()
     {

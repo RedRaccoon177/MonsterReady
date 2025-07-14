@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Boat : MonoBehaviour
 {
@@ -43,8 +45,9 @@ public class Boat : MonoBehaviour
     {
         counter = (Counter)GameManager._instance._baseObjectDict["카운터2"];
         maxOrderMeetBoxCount = 4;
+        maxMeetBoxCount = maxOrderMeetBoxCount;
         stackHeight = 1;
-        orderWaitTime = new WaitForSeconds(3);
+        orderWaitTime = new WaitForSeconds(2);
     }
 
     // 세팅
@@ -96,11 +99,30 @@ public class Boat : MonoBehaviour
     void LeavePointArr()
     {
         boatSpawaner.isVisited[currentPointIndex] = false;
-        transform.position = endPoint.transform.position;
+        StartCoroutine(MoveEndPoint());
+    }
+    IEnumerator MoveEndPoint()
+    {
+        Vector3 start = transform.position;
+        Vector3 end = endPoint.transform.position;
+        float duration = 3f;
+        float elapsed = 0f;
+        Vector3 dir = (end - start).normalized;
+        Quaternion targetRot = Quaternion.LookRotation(dir);
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            transform.position = Vector3.Lerp(start, end, t);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, t);
+            yield return null;
+        }
+        gameObject.SetActive(false);
     }
     IEnumerator Order()
     {
         orderMeetBoxCount = Random.Range(1, maxOrderMeetBoxCount);
+        UiManager._instance.ActiveMeatBoxOrdreUi(orderMeetBoxCount,true);
         // 피자를 모두 받앗을 시
         boxList = new List<GameObject> ();
         while (currentMeetBoxCount < orderMeetBoxCount)
@@ -108,6 +130,7 @@ public class Boat : MonoBehaviour
             yield return orderWaitTime;
             int beforeMeat = currentMeetBoxCount;
             int neededMeat = orderMeetBoxCount - beforeMeat;
+            UiManager._instance.ActiveMeatBoxOrdreUi(neededMeat,true);
             if (neededMeat > 0)
             {
                 int receivedMeat = counter.MinusBox(neededMeat);
@@ -117,6 +140,8 @@ public class Boat : MonoBehaviour
                 }
             }
         }
+        UiManager._instance.ActiveMeatBoxOrdreUi(0,false);
+        LeavePointArr();
     }
     int MinusMeatBox(int meatBox)
     {
@@ -133,9 +158,11 @@ public class Boat : MonoBehaviour
     {
         while (boxList.Count < boxCount)
         {
-            GameObject box = objectPool.GetBox(); 
+            GameObject box = objectPool.GetBox();
+            box.transform.SetParent(meatBoxPos, false);
             box.transform.localPosition = GetStackPosition(boxList.Count);
             box.transform.localRotation = Quaternion.identity;
+            box.transform.localScale = new Vector3(1,1,1);
             boxList.Add(box);
         }
         while (boxList.Count > boxCount)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Counter : BaseObject, ILevelable, INpcDestination
 {
@@ -54,6 +55,9 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     List<GameObject> _boxList = new List<GameObject>(); // 박스 오브젝트 리스트
     #endregion
+
+    [Header("고기 -> 박스")]
+    [SerializeField] MeatChangeToBoxCounter _meatTOBox;
 
     private void Awake()
     {
@@ -284,23 +288,22 @@ public class Counter : BaseObject, ILevelable, INpcDestination
                 UiManager._instance.OnUpgradeNavUi(_objectPos);
                 UiManager._instance.SetInteractionObjectKey(_keyName);
 
-                if (0 != _player._CurrentMeat)
+                if (0 != _meatTOBox._currentMeatCount)
                 {
-                    AddBox(_player._CurrentBox);
-                    _player.MinusBox(_currentBoxCount);
-                    _player.CheckPickUpObject();
+                    AddBox(_meatTOBox._currentMeatCount);
+                    _meatTOBox.MinusMeat(_meatTOBox._currentMeatCount);
                 }
             }
-            else if (other.CompareTag("Npc"))
-            {
-                var npc = other.gameObject.GetComponent<NpcAi>();
-                if (0 != npc._CurrentMeat)
-                {
-                    AddBox(npc._CurrentMeat);
-                    npc.MinusBox(_currentMeatCount);
-                    npc.CurrentPickUpType();
-                }
-            }
+            //else if (other.CompareTag("Npc"))
+            //{
+            //    var npc = other.gameObject.GetComponent<NpcAi>();
+            //    if (0 != npc._CurrentMeat)
+            //    {
+            //        AddBox(npc._CurrentMeat);
+            //        npc.MinusBox(_currentMeatCount);
+            //        npc.CurrentPickUpType();
+            //    }
+            //}
         }
     }
     private void OnTriggerExit(Collider other)

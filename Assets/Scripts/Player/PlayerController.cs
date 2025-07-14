@@ -81,6 +81,9 @@ public class PlayerController : MonoBehaviour
     [Header("고기 배치하는 곳")]
     [SerializeField] Transform _meatSpawnLocation;
     Animator _animationController;
+
+    [Header("박스 프리펩 높이 길이")]
+    [SerializeField] float _boxStackHeight = 0.325f;  // 박스 쌓일 높이 간격
     #endregion
 
     #region 변수들 프로퍼티
@@ -417,7 +420,7 @@ public class PlayerController : MonoBehaviour
         {
             GameObject box = _meatPool.GetBox(); // 오브젝트 풀에서 꺼냄 (박스용 메서드 필요)
             box.transform.SetParent(_meatSpawnLocation, false);
-            box.transform.localPosition = GetStackPosition(_boxList.Count);
+            box.transform.localPosition = GetStackPosition(_boxList.Count, true);
             box.transform.localRotation = Quaternion.identity;
             box.transform.localScale = _boxPrefab.transform.localScale;
 
@@ -436,10 +439,12 @@ public class PlayerController : MonoBehaviour
 
 
     #region 움직일 때 애니메이션 부분
-    Vector3 GetStackPosition(int index)
+    Vector3 GetStackPosition(int index, bool isBox = false)
     {
-        return new Vector3(0, index * _stackHeight, 0);
+        float height = isBox ? _boxStackHeight : _stackHeight;
+        return new Vector3(0, index * height, 0);
     }
+
     public PlayerPickUpObject CheckPickUpObject()
     {
         if (_currentMeat > 0)

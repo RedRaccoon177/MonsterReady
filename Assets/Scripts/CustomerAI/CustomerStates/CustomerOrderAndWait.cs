@@ -13,9 +13,9 @@ public class CustomerOrderAndWait : ICustomerState
         _requestedMeat = Random.Range(customer._MinMeat, customer._MaxMeat);
         customer._CurrentMeat = 0; // 수령 초기화
         UiManager._instance.ActiveMeatOrdreUi(_requestedMeat,true);
-        Debug.Log($"[CustomerOrderAndWait] 고기 {_requestedMeat}개 요구");
+        //Debug.Log($"[CustomerOrderAndWait] 고기 {_requestedMeat}개 요구");
         customer.SetExclusiveAnimation("IsCarrying");
-        Debug.Log("IsCarrying0");
+        //Debug.Log("IsCarrying0");
     }
 
     public void Update(CustomerAI customer)

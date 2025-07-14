@@ -15,6 +15,9 @@ public class BoatSpawaner : MonoBehaviour
     [SerializeField] GameObject[] customerPrefabs;
     private WaitForSeconds waitForSeconds;
     [SerializeField] float spawnTime;
+    [SerializeField] ObjectPooling objectPool;
+    [SerializeField] Counter counter;
+
 
 
     private void Start()
@@ -50,7 +53,7 @@ public class BoatSpawaner : MonoBehaviour
         int randBoat = Random.Range(0, boatPrefabs.Length);
         int randCustermer = Random.Range(0, customerPrefabs.Length);
         var boatScript = Instantiate(boatPrefabs[randBoat], boatParnat).GetComponent<Boat>();
-        boatScript.Init(this, customerPrefabs[randCustermer],endPoint);
+        boatScript.Init(this, customerPrefabs[randCustermer],endPoint, objectPool, counter);
         boatQueue.Enqueue(boatScript);
     }
 

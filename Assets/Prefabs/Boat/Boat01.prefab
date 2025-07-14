@@ -211,9 +211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6d59b4c28e0c6469124052889d9786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 90
-  meatBoxPos: {fileID: 0}
+  meatBoxPos: {fileID: 6484845372808468631}
   custormerPos: {fileID: 3690604931910354820}
+  endPoint: {fileID: 0}
+  rotationSpeed: 90
   boatSpawaner: {fileID: 0}
 --- !u!1001 &6480162745418896547
 PrefabInstance:

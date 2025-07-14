@@ -31,6 +31,7 @@ public class TrashCan : BaseObject
             if (npc._CurrentBone > 0)
             {
                 npc.MinusBone(3);
+                npc.CurrentPickUpType();
             }
         }
     }

@@ -67,6 +67,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
         SettingNode();
         SettingGMBaseDict();
         ActiveNpc();
+        GameManager._instance._isBaseDictComplete = true;
     }
 
     #region 고기 증가 및 감소

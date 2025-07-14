@@ -17,6 +17,7 @@ public class DataManager : MonoBehaviour
     ActivatorList activatorList;
     GroundMoneyDataList groundMoneyDataList;
     NpcDataList npcDataList;
+    BaseObject[] baseObject;
 
     string filePathPlayer; // 플레이어 데이터 저장 경로
     string filePathGroundGold; // 땅에 떨어져 있는 돈 데이터 저장 경로
@@ -149,8 +150,26 @@ public class DataManager : MonoBehaviour
     /// </summary>
     /// <param name="baseObject"></param>
     /// <param name="type"></param>
-    public void SaveObjectData(BaseObject[] baseObject, ObjectType type)
+    public void SaveObjectData(ObjectType type)
     {
+        switch (type)
+        {
+            case ObjectType.Table:
+                baseObject = GameManager._instance._tables;
+                break;
+            case ObjectType.Counter:
+
+                baseObject = GameManager._instance._counters;
+                break;
+            case ObjectType.Grill:
+                baseObject = GameManager._instance._grills;
+                break;
+
+            case ObjectType.Expand:
+                baseObject = GameManager._instance._expens;
+                break;
+
+        }
         objectDataList.objectDatas.Clear();
         for (int i = 0; i < baseObject.Length; i++)
         {

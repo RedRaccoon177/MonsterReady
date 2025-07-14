@@ -11,14 +11,17 @@ public class Boat : MonoBehaviour
     public float rotationSpeed = 90f; // 초당 회전 속도 (도/초)
     private Rigidbody rb;
     WaitForSeconds orderWaitTime;
+    List<GameObject> boxList;
 
     // 주문 변수
-    TestHam counter;
+    Counter counter;
+    ObjectPooling objectPool;
     List<GameObject> meatBoxList;
     private int orderMeetBoxCount;
     private int maxOrderMeetBoxCount;
-    private int currentMeetBoxCount;
+    public int currentMeetBoxCount;
     private int maxMeetBoxCount;
+    private float stackHeight;
     
     public int CurrentMeetBoxCount
     {
@@ -38,15 +41,20 @@ public class Boat : MonoBehaviour
 
     private void Start()
     {
+        counter = (Counter)GameManager._instance._baseObjectDict["카운터2"];
         maxOrderMeetBoxCount = 4;
+        stackHeight = 1;
+        orderWaitTime = new WaitForSeconds(3);
     }
 
     // 세팅
-    public void Init(BoatSpawaner spawner,GameObject customer,Transform endPoint)
+    public void Init(BoatSpawaner spawner,GameObject customer,Transform endPoint,ObjectPooling objectPool,Counter counter)
     {
+        this.counter = counter;
+        this.objectPool = objectPool;
         this.endPoint = endPoint;
-        Instantiate(customer, custormerPos);
         this.boatSpawaner = spawner;
+        Instantiate(customer, custormerPos);
         transform.position = boatSpawaner.pointList[0].position;
         boatSpawaner.isVisited[0] = true;
         StartCoroutine(MoveRoutine());
@@ -54,7 +62,7 @@ public class Boat : MonoBehaviour
     // 이동 (포인트 따라)
     IEnumerator MoveRoutine()
     {
-        while (currentPointIndex < boatSpawaner.pointList.Count - 1)
+        while (currentPointIndex < boatSpawaner.pointList.Count-1)
         {
             int nextIndex = currentPointIndex + 1;
             if (!boatSpawaner.isVisited[nextIndex])
@@ -84,6 +92,7 @@ public class Boat : MonoBehaviour
             }
         }
         StartCoroutine(Order());
+        Debug.Log(gameObject.name);
     }
     void LeavePointArr()
     {
@@ -92,18 +101,16 @@ public class Boat : MonoBehaviour
     }
     IEnumerator Order()
     {
-        Random.Range(1, maxOrderMeetBoxCount);
+        orderMeetBoxCount = Random.Range(1, maxOrderMeetBoxCount);
         // 피자를 모두 받앗을 시
-        while (currentMeetBoxCount >= orderMeetBoxCount)
+        while (currentMeetBoxCount < orderMeetBoxCount)
         {
-            //LeavePointArr();
             yield return orderWaitTime;
             int beforeMeat = currentMeetBoxCount;
             int neededMeat = orderMeetBoxCount - beforeMeat;
             if (neededMeat > 0)
             {
-                int receivedMeat = counter.MinusMeatBox(neededMeat);
-
+                int receivedMeat = counter.MinusBox(neededMeat);
                 if (receivedMeat > 0)
                 {
                     AddMeatBox(receivedMeat);                         // 고기 오브젝트 생성
@@ -114,37 +121,32 @@ public class Boat : MonoBehaviour
     int MinusMeatBox(int meatBox)
     {
         CurrentMeetBoxCount -= meatBox;
-        //UpdateMeatBoxDisplay(CurrentMeetBoxCount);
+        UpdateMeatBoxDisplay(CurrentMeetBoxCount);
         return CurrentMeetBoxCount;
     }
-    void AddMeatBox(int meatBox)
+    void AddMeatBox(int boxCount)
     {
-        CurrentMeetBoxCount += meatBox;
-        //UpdateMeatBoxDisplay(CurrentMeetBoxCount);
+        CurrentMeetBoxCount += boxCount;
+        UpdateMeatBoxDisplay(CurrentMeetBoxCount);
     }
-    //void UpdateMeatBoxDisplay(float meatBox)
-    //{
-    //
-    //    while (_boneList.Count < currentBone)
-    //    {
-    //        GameObject meat = _meatPool.GetBone();
-    //        meat.transform.SetParent(_meatSpawnLocation, false);
-    //        meat.transform.localPosition = GetStackPosition(_boneList.Count);
-    //        meat.transform.localRotation = Quaternion.identity;
-    //        meat.transform.localScale = _bonePrefab.transform.localScale;
-    //
-    //        _boneList.Add(meat);
-    //    }
-    //    while (_boneList.Count > currentBone)
-    //    {
-    //        GameObject lastMeat = _boneList[_boneList.Count - 1];
-    //        _boneList.RemoveAt(_boneList.Count - 1);
-    //        _meatPool.ReturnToPool(lastMeat);
-    //    }
-    //
-    //}
-    //Vector3 GetStackPosition(int index)
-    //{
-    //    return new Vector3(0, index * _stackHeight, 0);
-    //}
+    void UpdateMeatBoxDisplay(float boxCount)
+    {
+        while (boxList.Count < boxCount)
+        {
+            GameObject box = objectPool.GetBox(); 
+            box.transform.localPosition = GetStackPosition(boxList.Count);
+            box.transform.localRotation = Quaternion.identity;
+            boxList.Add(box);
+        }
+        while (boxList.Count > boxCount)
+        {
+            GameObject lastMeat = boxList[boxList.Count - 1];
+            boxList.RemoveAt(boxList.Count - 1);
+            objectPool.ReturnToPool(lastMeat);
+        }
+    }
+    Vector3 GetStackPosition(int index)
+    {
+        return new Vector3(0, index * stackHeight, 0);
+    }
 }

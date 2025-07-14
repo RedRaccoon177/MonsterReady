@@ -32,7 +32,7 @@ public class CustomerMoveToCounterState : ICustomerState
 
         _isIdle = false;  // 이동 시작이니까 Idle 아님
         customer.SetExclusiveAnimation("IsWalking");
-        Debug.Log("IsWalking0");
+        //Debug.Log("IsWalking0");
     }
 
     public void Update(CustomerAI customer)
@@ -112,7 +112,7 @@ public class CustomerMoveToCounterState : ICustomerState
                 {
                     _isIdle = true;
                     customer.SetExclusiveAnimation("IsIdle");
-                    Debug.Log("Switch to IsIdle");
+                    //Debug.Log("Switch to IsIdle");
                 }
             }
         }

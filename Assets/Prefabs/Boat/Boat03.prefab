@@ -128,9 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6d59b4c28e0c6469124052889d9786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 90
-  meatBoxPos: {fileID: 0}
+  meatBoxPos: {fileID: 7901239434233788084}
   custormerPos: {fileID: 2443359886848780711}
+  endPoint: {fileID: 0}
+  rotationSpeed: 90
   boatSpawaner: {fileID: 0}
 --- !u!1 &1313765385632160
 GameObject:

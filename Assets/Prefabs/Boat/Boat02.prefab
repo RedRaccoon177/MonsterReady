@@ -138,9 +138,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3113942424746188406}
   - {fileID: 4441412230489750}
   - {fileID: 4982358520469026}
-  - {fileID: 3113942424746188406}
   - {fileID: 4176800828122270029}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -233,9 +233,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6d59b4c28e0c6469124052889d9786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 90
-  meatBoxPos: {fileID: 0}
+  meatBoxPos: {fileID: 3113942424746188406}
   custormerPos: {fileID: 4176800828122270029}
+  endPoint: {fileID: 0}
+  rotationSpeed: 90
   boatSpawaner: {fileID: 0}
 --- !u!1 &1716201932377608
 GameObject:

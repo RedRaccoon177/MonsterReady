@@ -17,6 +17,8 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     [Header("고기 프리펩")]
     [SerializeField] GameObject _meatPrefab;
+
+    [Header("카운터 npc")]
     [SerializeField] GameObject _npc;
 
     [Header("고기 배치하는 곳")]
@@ -40,8 +42,6 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     [Header("카운터 상호작용 지역")]
     public ObjectInteration _objectInteration;
-
-    public Vector2 NodePosition => throw new System.NotImplementedException();
     #endregion
 
     #region 박스 관련 변수들
@@ -218,34 +218,87 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     {
         // 태그가 Player가 아닐 경우 무시
         if (!other.CompareTag("Player") && !other.CompareTag("Npc")) return;
-
-        //플레이어의 정보를 바탕으로 더해야 할 무언가
-        if (other.CompareTag("Player"))
+        if (_player == null)
         {
-            if (_player == null)
+            return;
+        }
+
+        if (this._keyName == "카운터1")
+        {
+            //플레이어의 정보를 바탕으로 더해야 할 무언가
+            if (other.CompareTag("Player"))
             {
-                return;
+                UiManager._instance.OnUpgradeNavUi(_objectPos);
+                UiManager._instance.SetInteractionObjectKey(_keyName);
+
+                if (0 != _player._CurrentMeat)
+                {
+                    AddMeat(_player._CurrentMeat);
+                    _player.MinusMeat(_currentMeatCount);
+                    _player.CheckPickUpObject();
+                }
             }
-            UiManager._instance.OnUpgradeNavUi(_objectPos);
-            UiManager._instance.SetInteractionObjectKey(_keyName);
-            if (0 != _player._CurrentMeat)
+            else if (other.CompareTag("Npc"))
             {
-                AddMeat(_player._CurrentMeat);
-                _player.MinusMeat(_currentMeatCount);
-                _player.CheckPickUpObject();
-            }
-            else if (0 != _player._CurrentMeat)
-            { 
+                var npc = other.gameObject.GetComponent<NpcAi>();
+                if (0 != npc._CurrentMeat)
+                {
+                    AddMeat(npc._CurrentMeat);
+                    npc.MinusMeat(_currentMeatCount);
+                    npc.CurrentPickUpType();
+                }
             }
         }
-        else if (other.CompareTag("Npc"))
+        else if (this._keyName == "카운터2")
         {
-            var npc = other.gameObject.GetComponent<NpcAi>();
-            if (0 != npc._CurrentMeat)
+            // 박스를 가져오면 고기처럼 박스가 쌓이고 손님이 오면 가져가기
+            if (other.CompareTag("Player"))
             {
-                AddMeat(npc._CurrentMeat);
-                npc.MinusMeat(_currentMeatCount);
-                npc.CurrentPickUpType();
+                UiManager._instance.OnUpgradeNavUi(_objectPos);
+                UiManager._instance.SetInteractionObjectKey(_keyName);
+
+                if (0 != _player._CurrentBox)
+                {
+                    AddBox(_player._CurrentBox);
+                    _player.MinusBox(_currentBoxCount);
+                    _player.CheckPickUpObject();
+                }
+            }
+            else if (other.CompareTag("Npc"))
+            {
+                var npc = other.gameObject.GetComponent<NpcAi>();
+                if (0 != npc._CurrentBox)
+                {
+                    AddBox(npc._CurrentBox);
+                    npc.MinusBox(_currentBoxCount);
+                    npc.CurrentPickUpType();
+                }
+            }
+        }
+        else if (this._keyName == "카운터3")
+        {
+            // 고기를 가져오면 박스로 전환되게 하기
+            if (other.CompareTag("Player"))
+            {
+                UiManager._instance.OnUpgradeNavUi(_objectPos);
+                UiManager._instance.SetInteractionObjectKey(_keyName);
+
+                if (0 != _player._CurrentMeat)
+                {
+                    AddBox(_player._CurrentBox);
+                    _player.MinusBox(_currentBoxCount);
+                    _player.CheckPickUpObject();
+                }
+            }
+            else if (other.CompareTag("Npc"))
+            {
+                var npc = other.gameObject.GetComponent<NpcAi>();
+                if (0 != npc._CurrentMeat)
+                {
+                    AddBox(npc._CurrentMeat);
+                    npc.MinusBox(_currentMeatCount);
+                    npc.CurrentPickUpType();
+                }
             }
         }
     }

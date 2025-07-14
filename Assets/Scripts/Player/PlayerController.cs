@@ -53,9 +53,14 @@ public class PlayerController : MonoBehaviour
     List<GameObject> _meatList = new List<GameObject>();    //생성된 고기 오브젝트들 담는 리스트
 
     [Header("플레이어의 뼈다귀")]
-    [SerializeField] int _maxBone;              //현재 들수 있는 고기 최대 수
-    [SerializeField] int _currentBone;          //현재 들고 있는 고기 수
-    List<GameObject> _boneList = new List<GameObject>();    //생성된 고기 오브젝트들 담는 리스트
+    [SerializeField] int _maxBone;              //현재 들수 있는 뼈 최대 수
+    [SerializeField] int _currentBone;          //현재 들고 있는 뼈 수
+    List<GameObject> _boneList = new List<GameObject>();    //생성된 뼈 오브젝트들 담는 리스트
+
+    [Header("플레이어의 박스")]
+    [SerializeField] int _maxBox;
+    [SerializeField] int _currentBox;
+    List<GameObject> _boxList = new List<GameObject>();    //생성된 뼈 오브젝트들 담는 리스트
 
     [SerializeField] GameObject board;
     [Header("고기 프리펩")]
@@ -63,6 +68,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("뼈다귀 프리펩")]
     [SerializeField] GameObject _bonePrefab;
+
+    [Header("박스 프리펩")]
+    [SerializeField] GameObject _boxPrefab;
 
     [Header("오브젝트 풀링 연결")]
     [SerializeField] ObjectPooling _meatPool; // 고기를 관리하는 오브젝트 풀
@@ -157,6 +165,21 @@ public class PlayerController : MonoBehaviour
             _currentBone = Mathf.Clamp(0, value, _MaxBone);
         }
     }
+
+    public int _MaxBox
+    {
+        get => _maxBox;
+        set => _maxBox = value;
+    }
+
+    public int _CurrentBox
+    {
+        get => _currentBox;
+        set
+        {
+            _currentBox = Mathf.Clamp(0, value, _MaxBox);
+        }
+    }
     #endregion
 
     #region Awake, FixedUpdata, LateUpdate
@@ -171,6 +194,7 @@ public class PlayerController : MonoBehaviour
         _animationController = GetComponent<Animator>();
         _MaxMeat = 4;
         _MaxBone = 3;
+        _MaxBox = 4;
         _baseMaxMeat = 4;
         _baseMoveSpeed = 5;
         _CurrentMeat = 0;
@@ -351,8 +375,65 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region 박스 관련 함수들
+    /// <summary>
+    /// 박스 추가. 넘칠 경우, 넘친 양 반환
+    /// </summary>
+    public int AddBox(int box)
+    {
+        int spaceLeft = _MaxBox - _currentBox;
+        int toAdd = Mathf.Min(spaceLeft, box);
+        _currentBox += toAdd;
 
+        UpdateBoxDisplay(_currentBox);
+        return box - toAdd; // 넘친 양
+    }
+
+    /// <summary>
+    /// 박스 감소
+    /// </summary>
+    public int MinusBox(int amount)
+    {
+        int removed = Mathf.Min(_currentBox, amount);
+        _currentBox -= removed;
+
+        UpdateBoxDisplay(_currentBox);
+        return removed;
+    }
+
+    /// <summary>
+    /// 박스 시각화 함수
+    /// </summary>
+    public void UpdateBoxDisplay(int currentBox)
+    {
+        // 프리팹 null 체크
+        if (_boxPrefab == null)
+        {
+            Debug.LogError("[PlayerController] _boxPrefab 프리팹이 할당되지 않았습니다!");
+            return;
+        }
+
+        // 1. 박스 개수가 부족하면 채워줌
+        while (_boxList.Count < currentBox)
+        {
+            GameObject box = _meatPool.GetBox(); // 오브젝트 풀에서 꺼냄 (박스용 메서드 필요)
+            box.transform.SetParent(_meatSpawnLocation, false);
+            box.transform.localPosition = GetStackPosition(_boxList.Count);
+            box.transform.localRotation = Quaternion.identity;
+            box.transform.localScale = _boxPrefab.transform.localScale;
+
+            _boxList.Add(box);
+        }
+
+        // 2. 박스 개수가 초과되면 제거 (위에서부터 하나씩)
+        while (_boxList.Count > currentBox)
+        {
+            GameObject lastBox = _boxList[_boxList.Count - 1];
+            _boxList.RemoveAt(_boxList.Count - 1);
+            _meatPool.ReturnToPool(lastBox); // 박스용 메서드 필요
+        }
+    }
     #endregion
+
 
     #region 움직일 때 애니메이션 부분
     Vector3 GetStackPosition(int index)
@@ -368,6 +449,10 @@ public class PlayerController : MonoBehaviour
         else if (_currentBone > 0)
         {
             playerPickUpObject = PlayerPickUpObject.Bone;
+        }
+        else if(_currentBox > 0)
+        {
+            playerPickUpObject = PlayerPickUpObject.MeatBox;
         }
         else
         {

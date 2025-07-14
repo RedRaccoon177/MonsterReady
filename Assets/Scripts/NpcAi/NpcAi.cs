@@ -6,6 +6,7 @@ public enum NpcPickUpObject
     Meat,          
     Bone,
     MeatSat,
+    Box,
     None
 }
 
@@ -45,14 +46,21 @@ public class NpcAi : MonoBehaviour
     public List<GameObject> _meatList = new List<GameObject>();
 
     [Header("npc의 뼈다귀")]
-    [SerializeField] int _maxBone;              //현재 들수 있는 고기 최대 수
-    [SerializeField] int _currentBone;          //현재 들고 있는 고기 수
-    List<GameObject> _boneList = new List<GameObject>();    //생성된 고기 오브젝트들 담는 리스트
+    [SerializeField] int _maxBone;              //현재 들수 있는 뼈 최대 수
+    [SerializeField] int _currentBone;          //현재 들고 있는 뼈 수
+    List<GameObject> _boneList = new List<GameObject>();    //생성된 뼈 오브젝트들 담는 리스트
+
+    [Header("npc의 박스")]
+    [SerializeField] int _maxBox;              //현재 들수 있는 박스 최대 수
+    [SerializeField] int _currentBox;          //현재 들고 있는 박스 수
+    List<GameObject> _boxList = new List<GameObject>();    //생성된 박스 오브젝트들 담는 리스트
 
     [Header("고기 프리펩")]
     [SerializeField] public GameObject _meatPrefab;
     [Header("뼈 프리펩")]
     [SerializeField] public GameObject _bonePrefab;
+    [Header("박스 프리펩")]
+    [SerializeField] public GameObject _boxPrefab;
 
     [Header("오브젝트 풀링 연결")]
     [SerializeField] public ObjectPooling _meatPool; // 고기를 관리하는 오브젝트 풀
@@ -89,6 +97,21 @@ public class NpcAi : MonoBehaviour
         set
         {
             _currentBone = Mathf.Clamp(0, value, _MaxBone);
+        }
+    }
+
+    public int _MaxBox
+    {
+        get => _maxBox;
+        set => _maxBox = value;
+    }
+
+    public int _CurrentBox
+    {
+        get => _currentBox;
+        set
+        {
+            _currentBox = Mathf.Clamp(0, value, _MaxBox);
         }
     }
 
@@ -146,10 +169,13 @@ public class NpcAi : MonoBehaviour
         {
             _pickUpObject = NpcPickUpObject.Bone;
         }
+        else if(_currentMeat > 0)
+        {
+            _pickUpObject = NpcPickUpObject.Box;
+        }
         else
         {
             _pickUpObject = NpcPickUpObject.None;
-
         }
         PlayeCarryAnimation();
     }
@@ -270,7 +296,7 @@ public class NpcAi : MonoBehaviour
     }
 
     /// <summary>
-    /// 고기 감소
+    /// 뼈 감소
     /// </summary>
     public int MinusBone(int amount)
     {
@@ -281,7 +307,7 @@ public class NpcAi : MonoBehaviour
     }
     public void UpdateBoneDisplay(int currentBone)
     {
-        // 1. 고기 개수가 부족하면 채워줌
+        // 1. 뼈 개수가 부족하면 채워줌
         while (_boneList.Count < currentBone)
         {
             GameObject meat = _meatPool.GetBone(); // 오브젝트 풀에서 꺼냄
@@ -294,7 +320,7 @@ public class NpcAi : MonoBehaviour
             _boneList.Add(meat);
         }
 
-        // 2. 고기 개수가 초과되면 제거 (위에서부터 하나씩)
+        // 2. 뼈 개수가 초과되면 제거 (위에서부터 하나씩)
         while (_boneList.Count > currentBone)
         {
             GameObject lastMeat = _boneList[_boneList.Count - 1];
@@ -302,4 +328,66 @@ public class NpcAi : MonoBehaviour
             _meatPool.ReturnToPool(lastMeat);
         }
     }
+
+    #region 박스 관련 함수들
+
+    /// <summary>
+    /// 박스 추가. 넘칠 경우, 넘친 양 반환
+    /// </summary>
+    public int AddBox(int box)
+    {
+        int spaceLeft = _MaxBox - _currentBox;
+        int toAdd = Mathf.Min(spaceLeft, box);
+
+        _currentBox += toAdd;
+
+        UpdateBoxDisplay(_currentBox);
+        return box - toAdd; // 넘친 양
+    }
+
+    /// <summary>
+    /// 박스 감소
+    /// </summary>
+    public int MinusBox(int amount)
+    {
+        int removed = Mathf.Min(_currentBox, amount);
+        _currentBox -= removed;
+
+        UpdateBoxDisplay(_currentBox);
+        return removed;
+    }
+
+    /// <summary>
+    /// 박스 시각화 함수
+    /// </summary>
+    public void UpdateBoxDisplay(int currentBox)
+    {
+        if (_boxPrefab == null)
+        {
+            Debug.LogError("[NpcAi] _boxPrefab 프리팹이 할당되지 않았습니다!");
+            return;
+        }
+
+        // 1. 박스 개수가 부족하면 채워줌
+        while (_boxList.Count < currentBox)
+        {
+            GameObject box = _meatPool.GetBox(); // 오브젝트 풀에서 꺼냄 (박스용 메서드 필요)
+            box.transform.SetParent(_meatSpawnLocation, false);
+            box.transform.localPosition = GetStackPosition(_boxList.Count);
+            box.transform.localRotation = Quaternion.identity;
+            box.transform.localScale = _boxPrefab.transform.localScale;
+
+            _boxList.Add(box);
+        }
+
+        // 2. 박스 개수가 초과되면 제거 (위에서부터 하나씩)
+        while (_boxList.Count > currentBox)
+        {
+            GameObject lastBox = _boxList[_boxList.Count - 1];
+            _boxList.RemoveAt(_boxList.Count - 1);
+            _meatPool.ReturnToPool(lastBox); // 박스용 풀 반환 메서드 필요
+        }
+    }
+
+    #endregion
 }

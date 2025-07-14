@@ -48,9 +48,8 @@ public class Boat : MonoBehaviour
     }
 
     // 세팅
-    public void Init(BoatSpawaner spawner,GameObject customer,Transform endPoint,ObjectPooling objectPool,Counter counter)
+    public void Init(BoatSpawaner spawner,GameObject customer,Transform endPoint,ObjectPooling objectPool)
     {
-        this.counter = counter;
         this.objectPool = objectPool;
         this.endPoint = endPoint;
         this.boatSpawaner = spawner;
@@ -103,6 +102,7 @@ public class Boat : MonoBehaviour
     {
         orderMeetBoxCount = Random.Range(1, maxOrderMeetBoxCount);
         // 피자를 모두 받앗을 시
+        boxList = new List<GameObject> ();
         while (currentMeetBoxCount < orderMeetBoxCount)
         {
             yield return orderWaitTime;

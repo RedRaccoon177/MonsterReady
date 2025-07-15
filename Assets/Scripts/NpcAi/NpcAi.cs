@@ -5,7 +5,6 @@ public enum NpcPickUpObject
 {
     Meat,          
     Bone,
-    MeatSat,
     Box,
     None
 }
@@ -66,7 +65,7 @@ public class NpcAi : MonoBehaviour
     [SerializeField] public ObjectPooling _meatPool; // 고기를 관리하는 오브젝트 풀
 
     [Header("고기 쌓일 높이 간격")]
-    [SerializeField] float _stackHeight = 0.11f;
+    [SerializeField] float _stackHeight = 0.3f;
 
     [Header("고기 배치하는 곳")]
     [SerializeField] public Transform _meatSpawnLocation;
@@ -133,6 +132,7 @@ public class NpcAi : MonoBehaviour
         SettingActive(_isUnlockNpc);
         _moveSpeed = 1;
         _MaxMeat = 4;
+        _MaxBox = 4;
         _MaxBone = 3;
         _CurrentMeat = 0;
         _npcIdle = new NpcIdle();
@@ -169,7 +169,7 @@ public class NpcAi : MonoBehaviour
         {
             _pickUpObject = NpcPickUpObject.Bone;
         }
-        else if(_currentMeat > 0)
+        else if(_CurrentBox > 0)
         {
             _pickUpObject = NpcPickUpObject.Box;
         }
@@ -177,6 +177,7 @@ public class NpcAi : MonoBehaviour
         {
             _pickUpObject = NpcPickUpObject.None;
         }
+        Debug.Log("들고 있는거 : " + _pickUpObject);
         PlayeCarryAnimation();
     }
     public void PlayeCarryAnimation()
@@ -285,6 +286,7 @@ public class NpcAi : MonoBehaviour
         }
         _moveSpeed = _speedLevel;
         _MaxMeat = 3 + (_amountLevel +1);
+        _MaxBox = 3 + (_amountLevel +1);
     }
     public int AddBone(int trash)
     {

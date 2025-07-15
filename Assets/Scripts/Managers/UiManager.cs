@@ -26,6 +26,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject _meatOrderUi;
     [SerializeField] TextMeshProUGUI _meatOrderTxt;
     [SerializeField] GameObject _meatBoxOrderUi;
+    [SerializeField] TextMeshProUGUI _meatBoxOrderTxt;
     [SerializeField] ObjectNavUi _upGradeNavScrit;
     [SerializeField] public string _interactionObjectKey { get; private set; }
     [SerializeField] Transform _canvas;
@@ -83,5 +84,11 @@ public class UiManager : MonoBehaviour
     {
         SetActive(UiType.MeatOrderUi, active);
         _meatOrderTxt.text = orderMeatCount.ToString();
+    }
+
+    public void ActiveMeatBoxOrdreUi(int orderMeatCount, bool active)
+    {
+        SetActive(UiType.MeatBoxOrderUi, active);
+        _meatBoxOrderTxt.text = orderMeatCount.ToString();
     }
 }

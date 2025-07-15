@@ -21,5 +21,18 @@ public class PlayerBoxHandler : MonoBehaviour
                 }
             }
         }
+        else if (other.CompareTag("Npc"))
+        {
+            NpcAi npc = other.GetComponent<NpcAi>();
+            if (counter3 != null)
+            {
+                if (npc._CurrentMeat == 0 && npc._CurrentBone == 0)
+                {
+                    npc.AddBox(counter3._currentBoxCount);
+                    npc.CurrentPickUpType();
+                    counter3.MinusBox(npc._CurrentBox);
+                }
+            }
+        }
     }
 }

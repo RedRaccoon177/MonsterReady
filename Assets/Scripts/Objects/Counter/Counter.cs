@@ -66,12 +66,21 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     }
     IEnumerator Start()
     {
+        
         yield return null;
         _player = PlayerController._instance;
         SettingNode();
         SettingGMBaseDict();
         ActiveNpc();
-        GameManager._instance._isBaseDictComplete = true;
+        if (_keyName == "카운터1")
+        {
+            GameManager._instance._isCounterOneActive = true;
+        }
+        if (_keyName == "카운터3")
+        {
+            GameManager._instance._isCounterSecondActive = true;
+
+        }
     }
 
     #region 고기 증가 및 감소
@@ -318,12 +327,28 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     public bool HasStack()
     {
-        return _currentMeatCount > 0;
+        if (_keyName =="카운터1")
+        {
+            return _currentMeatCount >0;
+        }
+        else if (_keyName == "카운터3")
+        {
+            return _currentBoxCount > 0;
+        }
+        return false;
     }
 
     public int GetStackCount()
     {
-        return _currentMeatCount;
+        if (_keyName == "카운터1")
+        {
+            return _currentMeatCount;
+        }
+        else if (_keyName == "카운터3")
+        {
+            return _currentBoxCount;
+        }
+        return 0;
     }
     public void SettingNode()
     {

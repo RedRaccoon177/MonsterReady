@@ -130,13 +130,13 @@ public class Boat : MonoBehaviour
             yield return orderWaitTime;
             int beforeMeat = currentMeetBoxCount;
             int neededMeat = orderMeetBoxCount - beforeMeat;
-            UiManager._instance.ActiveMeatBoxOrdreUi(neededMeat,true);
             if (neededMeat > 0)
             {
                 int receivedMeat = counter.MinusBox(neededMeat);
                 if (receivedMeat > 0)
                 {
                     AddMeatBox(receivedMeat);                         // 고기 오브젝트 생성
+                    UiManager._instance.ActiveMeatBoxOrdreUi(neededMeat,true);
                 }
             }
         }

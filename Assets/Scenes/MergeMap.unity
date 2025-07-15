@@ -4080,7 +4080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.282
+      value: -0.738
       objectReference: {fileID: 0}
     - target: {fileID: 4926008614873778, guid: a50d6a2e7ae795547a3620ad1e622cc9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4160,7 +4160,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 2}
+  m_Size: {x: 3, y: 1, z: 2}
   m_Center: {x: 0, y: 0.41165298, z: 0}
 --- !u!114 &65044798
 MonoBehaviour:
@@ -4179,7 +4179,7 @@ MonoBehaviour:
   _objectType: 1
   _level: 0
   isDestination: 0
-  _nodeGridNum: {x: 0, y: 0}
+  _nodeGridNum: {x: 18, y: 2}
   _objectPos: {x: 0, y: 0, z: 0}
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
@@ -32238,7 +32238,9 @@ MonoBehaviour:
   - {fileID: 634177049}
   - {fileID: 1452243728}
   customerSpawner: {fileID: 80716889}
-  _isBaseDictComplete: 0
+  boatSpawner: {fileID: 608383414}
+  _isCounterOneActive: 0
+  _isCounterSecondActive: 0
 --- !u!4 &540737832
 Transform:
   m_ObjectHideFlags: 0
@@ -35825,7 +35827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &608383415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47655,7 +47657,7 @@ GameObject:
   - component: {fileID: 829231675}
   m_Layer: 0
   m_Name: InteractionPos
-  m_TagString: Untagged
+  m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48139,6 +48141,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0d731bcec7ff42409a15f102dd0b156, type: 2}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
   _bonePrefab: {fileID: 3431011091141920802, guid: dc05f4a7e5d3ecd40afbae8df2f52173, type: 3}
+  _boxPrefab: {fileID: 570041174308063460, guid: 7fa4215f10e663248bd3d079874a0853, type: 3}
   _meatPool: {fileID: 2111446580}
   _npcScriptList: []
 --- !u!4 &836150215
@@ -52894,7 +52897,7 @@ MonoBehaviour:
   _objectType: 1
   _level: 0
   isDestination: 0
-  _nodeGridNum: {x: 0, y: 0}
+  _nodeGridNum: {x: 19, y: 3}
   _objectPos: {x: 0, y: 0, z: 0}
   _meatPool: {fileID: 2111446580}
   _meatPrefab: {fileID: 2231637552178242804, guid: b0f05b1404e9e2642a1fe5f905d45360, type: 3}
@@ -73712,7 +73715,7 @@ GameObject:
   - component: {fileID: 1230673900}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73764,8 +73767,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: -1.23, y: 0.06, z: -0.2}
+  m_Size: {x: 1.2, y: 1.2, z: 1.2}
+  m_Center: {x: -1.23, y: 0.06, z: -0.29}
 --- !u!1 &1231480834
 GameObject:
   m_ObjectHideFlags: 0
@@ -108920,7 +108923,7 @@ GameObject:
   - component: {fileID: 1875388316}
   m_Layer: 0
   m_Name: 'InteractionPos '
-  m_TagString: Untagged
+  m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111988,7 +111991,7 @@ GameObject:
   - component: {fileID: 1931820101}
   m_Layer: 0
   m_Name: InteractionPos
-  m_TagString: Untagged
+  m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125602,6 +125605,6 @@ SceneRoots:
   - {fileID: 80716891}
   - {fileID: 499096506}
   - {fileID: 836150215}
-  - {fileID: 1142258510}
   - {fileID: 608383416}
+  - {fileID: 1142258510}
   - {fileID: 783833446}

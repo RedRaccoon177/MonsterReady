@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour
     // 테이블,카운터3,그릴1,2에 쌓인게 있는지 
     public Dictionary<string,Node> _npcObjectNodeDict = new Dictionary<string,Node>();
     public Dictionary<string,BaseObject> _baseObjectDict = new Dictionary<string,BaseObject>();
-    public GameObject customerSpawner;
-    public bool _isBaseDictComplete = false;
+    [SerializeField] GameObject customerSpawner;
+    [SerializeField] GameObject boatSpawner;
+    public bool _isCounterOneActive = false;
+    public bool _isCounterSecondActive = false;
 
 
     private void Awake()
@@ -34,8 +36,20 @@ public class GameManager : MonoBehaviour
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
         SettingWarableList();
         LoadGame();
-        yield return new WaitUntil(() => _isBaseDictComplete == true);
+        yield return new WaitUntil(() => _isCounterOneActive == true);
         ActiveCustomerSpawner();
+        yield return new WaitUntil(() => _isCounterSecondActive == true);
+        ActiveBoatSpawner();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            foreach (var a in _warkableObjectList)
+            {
+                Debug.Log("키 : " + a.GetKey());
+            }
+        }
     }
     void FristStartGame()
     {
@@ -82,6 +96,13 @@ public class GameManager : MonoBehaviour
         {
             _warkableObjectList.Add(_grills[i]);
         }
+        for (int i = 0; i < _counters.Length; i++)
+        {
+            if (_counters[i]._keyName == "카운터3") 
+            {
+                _warkableObjectList.Add(_counters[i]);
+            }
+        }
     }
     /// <summary>
     /// 다음 해금 오브젝트 활성화
@@ -118,5 +139,15 @@ public class GameManager : MonoBehaviour
             customerSpawner.SetActive(true);
         }
     }
+
+    public void ActiveBoatSpawner()
+    {
+        if (_baseObjectDict["카운터3"]._isActive == true
+            )
+        {
+            boatSpawner.SetActive(true);
+        }
+    }
+
 
 }

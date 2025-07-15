@@ -7,6 +7,7 @@ public class NpcSpawner : MonoBehaviour
     [Header("npcµ•¿Ã≈Õ")] [SerializeField] public NpcScriptableObject[] _npcdData;
     [SerializeField] GameObject _meatPrefab;
     [SerializeField] GameObject _bonePrefab;
+    [SerializeField] GameObject _boxPrefab;
     [SerializeField] ObjectPooling _meatPool;
     Transform _meatSpawnLocation;
     public List<NpcAi> _npcScriptList;
@@ -29,6 +30,7 @@ public class NpcSpawner : MonoBehaviour
             temp._price = _npcdData[i].price;
             temp._meatPrefab = _meatPrefab;
             temp._bonePrefab = _bonePrefab;
+            temp._boxPrefab = _boxPrefab;
             temp._meatPool = _meatPool;
             temp._currentLevel = _npcdData[i].startLevel;
             temp._npcIcon = _npcdData[i].iconImage;

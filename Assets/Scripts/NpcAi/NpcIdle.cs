@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NpcIdle : INpcState
@@ -67,6 +65,7 @@ public class NpcIdle : INpcState
                 NodeManager._instance.GetNearestNodeOptimized(npcAi.transform.position), // 현재 내 위치 근방 노드 찾기
                 GameManager._instance._npcObjectNodeDict[npcAi._destination.GetKey()] // 키값으로 목적지 노드 찾기
             );
+
         }
         if (npcAi._path != null)
         {
@@ -85,26 +84,27 @@ public class NpcIdle : INpcState
         switch (npcAi._pickUpObject)
         {
             case NpcPickUpObject.Meat:
-                if (baseObject["카운터1"].isActive() == true)
+                var rand = Random.Range(0,2);
+                if (baseObject["카운터1"].isActive() == true && rand == 0)
                 {
-                    Debug.Log(1111111111111111111);
                     npcAi._targetNode = nodeObject["카운터1"];
                 }
-                else if (baseObject["카운터2"].isActive() == true)
+                else if (baseObject["카운터3"].isActive() == true && rand == 1)
                 {
-                    npcAi._targetNode = nodeObject["카운터2"];
+                    npcAi._targetNode = NodeManager._instance._nodeList[19,5];
                 }
                 break;
             case NpcPickUpObject.Bone:
                 npcAi._targetNode = nodeObject["쓰레기통"];
                 break;
-            case NpcPickUpObject.MeatSat:
+            case NpcPickUpObject.Box:
+                Debug.Log("목적지 노드 : " + nodeObject["카운터2"]._gridPos);
+                npcAi._targetNode = nodeObject["카운터2"];
                 break;
             case NpcPickUpObject.None:
                 npcAi.ChangeState(npcAi._npcIdle);
                 break;
         }
-        Debug.Log("목표 : " + npcAi._targetNode._gridPos);
         npcAi._path = AStarPathfinder.FindPath(NodeManager._instance.GetNearestNodeOptimized(npcAi.transform.position), npcAi._targetNode);
         npcAi.ChangeState(npcAi._npcMove);
     }

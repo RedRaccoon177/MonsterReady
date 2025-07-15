@@ -75,15 +75,15 @@ public class Node : MonoBehaviour
     /// 에디터에서 노드 시각화
     /// 겹치는 장애물이 있으면 빨간색, 이동 가능하면 연두색
     /// </summary>
-    //void OnDrawGizmos()
-    //{
-    //    if (!Application.isPlaying)
-    //        _isWalkale = true; // 편집 중에는 항상 초록으로 보기 위해 초기화
+    void OnDrawGizmos()
+    {
+        if (!Application.isPlaying)
+            _isWalkale = true; // 편집 중에는 항상 초록으로 보기 위해 초기화
 
-    //    Gizmos.color = _isWalkale ? new Color(0f, 1f, 0f, 0.3f) : new Color(1f, 0f, 0f, 0.3f);
-    //    Vector3 halfExtents = new Vector3(0.7f, 1f, 0.7f);
-    //    Gizmos.DrawCube(transform.position, halfExtents * 2); // 시각화 크기 = full size
-    //}
+        Gizmos.color = _isWalkale ? new Color(0f, 1f, 0f, 0.3f) : new Color(1f, 0f, 0f, 0.3f);
+        Vector3 halfExtents = new Vector3(0.7f, 1f, 0.7f);
+        Gizmos.DrawCube(transform.position, halfExtents * 2); // 시각화 크기 = full size
+    }
 
     /// <summary>
     /// 주변 갈 수 있는 노드 연결

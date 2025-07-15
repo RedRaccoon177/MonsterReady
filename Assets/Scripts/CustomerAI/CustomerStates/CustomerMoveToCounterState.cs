@@ -111,7 +111,7 @@ public class CustomerMoveToCounterState : ICustomerState
                 {
                     _isIdle = true;
                     customer.SetExclusiveAnimation("IsIdle");
-                    Debug.Log("Switch to IsIdle");
+                    //Debug.Log("Switch to IsIdle");
                 }
             }
         }

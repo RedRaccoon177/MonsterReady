@@ -29,6 +29,7 @@ public class GoldObject : MonoBehaviour
     // 최대 시각적으로 표현 가능한 골드바 수 (가로 x 세로 x 높이)
     int _maxVisualGold => _maxX * _maxZ * _maxY;
 
+    
     void Start()
     {
         // 초기 골드 상태 반영

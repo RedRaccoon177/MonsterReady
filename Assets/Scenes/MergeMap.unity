@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2030,7 +2030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE145"
+  _key: table5
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 27665699}
@@ -4617,7 +4617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34316b27786d11f40ae9599c512c4b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uCE74\uC6B4\uD1302"
+  _keyName: counter2
   _isActive: 0
   _objectType: 1
   _level: 0
@@ -12640,7 +12640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE143"
+  _keyName: table3
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -15634,7 +15634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE144"
+  _key: table4
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 246024880}
@@ -17833,7 +17833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE149"
+  _key: table9
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 273719855}
@@ -23238,7 +23238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE146"
+  _key: table6
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 351446081}
@@ -27444,7 +27444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE148"
+  _keyName: table8
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -30057,11 +30057,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uBB38"
+  _key: door
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 450985695}
-  _currentGold: 1000
+  _currentGold: 100
 --- !u!65 &450985692
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33913,7 +33913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE1412"
+  _key: table12
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 500816504}
@@ -36972,7 +36972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _groundMoneyArr:
-  - {fileID: 450985691}
   - {fileID: 1140346839}
   - {fileID: 1942485948}
   - {fileID: 1914077470}
@@ -36987,6 +36986,7 @@ MonoBehaviour:
   - {fileID: 500816505}
   - {fileID: 1436119508}
   - {fileID: 946122494}
+  - {fileID: 450985691}
   _activator:
   - {fileID: 1038592946}
   - {fileID: 1689014644}
@@ -41639,7 +41639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE145"
+  _keyName: table5
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -43168,7 +43168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE1412"
+  _keyName: table12
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -43254,7 +43254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3e1fbab65dac44ab71a3adcac69b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uC810\uD3EC\uD655\uC7A51"
+  _keyName: expand1
   _isActive: 1
   _objectType: 0
 --- !u!1 &634259749
@@ -46270,7 +46270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE144"
+  _keyName: table4
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -46788,7 +46788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE149"
+  _keyName: table9
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -60792,7 +60792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210a85291f485b54aac105cf764ddd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uADF8\uB9B41"
+  _keyName: grill1
   _isActive: 0
   _objectType: 2
   _nodeGridNum: {x: 19, y: 9}
@@ -61735,7 +61735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34316b27786d11f40ae9599c512c4b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uCE74\uC6B4\uD1303"
+  _keyName: counter3
   _isActive: 0
   _objectType: 1
   _level: 0
@@ -63042,7 +63042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE148"
+  _key: table8
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 933696646}
@@ -64244,7 +64244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uCE74\uC6B4\uD1302"
+  _key: counter2
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 946122493}
@@ -77689,7 +77689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE141"
+  _key: table1
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 1140346838}
@@ -79747,7 +79747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE1410"
+  _keyName: table10
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -88059,7 +88059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE1411"
+  _key: table11
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 1289081014}
@@ -93734,7 +93734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210a85291f485b54aac105cf764ddd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uADF8\uB9B42"
+  _keyName: grill2
   _isActive: 0
   _objectType: 2
   _nodeGridNum: {x: 19, y: 12}
@@ -94153,7 +94153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5088d07e3d2ddd14ea792a46b540e1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uC4F0\uB808\uAE30\uD1B5"
+  _keyName: trashCan
   _isActive: 0
   _objectType: 0
 --- !u!4 &1380464028 stripped
@@ -94935,7 +94935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE1411"
+  _keyName: table11
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -97668,7 +97668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE147"
+  _key: table7
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 1435843261}
@@ -97869,7 +97869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uCE74\uC6B4\uD1301"
+  _key: counter1
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 1436119507}
@@ -98627,7 +98627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3e1fbab65dac44ab71a3adcac69b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uC810\uD3EC\uD655\uC7A52"
+  _keyName: expand2
   _isActive: 1
   _objectType: 0
 --- !u!1 &1454943583
@@ -105066,7 +105066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE147"
+  _keyName: table7
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -111578,7 +111578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3e1fbab65dac44ab71a3adcac69b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uBB38"
+  _keyName: door
   _isActive: 0
   _objectType: 0
 --- !u!1 &1667550654
@@ -116231,7 +116231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE146"
+  _keyName: table6
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -125067,7 +125067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE141"
+  _keyName: table1
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -125290,7 +125290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE1410"
+  _key: table10
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 1865798269}
@@ -129219,7 +129219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE143"
+  _key: table3
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 1914077469}
@@ -130802,7 +130802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750caa799274f4eb98a556eb91ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: "\uD14C\uC774\uBE142"
+  _key: table2
   _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 1942485947}
@@ -132908,7 +132908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92096ff74f82fdd4eae294925e89d8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uD14C\uC774\uBE142"
+  _keyName: table2
   _isActive: 0
   _objectType: 0
   _level: 0
@@ -141834,7 +141834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34316b27786d11f40ae9599c512c4b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: "\uCE74\uC6B4\uD1301"
+  _keyName: counter1
   _isActive: 0
   _objectType: 1
   _level: 0

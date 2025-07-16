@@ -71,11 +71,11 @@ public class Counter : BaseObject, ILevelable, INpcDestination
         SettingNode();
         SettingGMBaseDict();
         ActiveNpc();
-        if (_keyName == "카운터1")
+        if (_keyName == "counter1")
         {
             GameManager._instance._isCounterOneActive = true;
         }
-        if (_keyName == "카운터3")
+        if (_keyName == "counter3")
         {
             GameManager._instance._isCounterSecondActive = true;
             StartCoroutine(ChangeMeatToBox());
@@ -247,7 +247,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             return;
         }
 
-        if (this._keyName == "카운터1")
+        if (this._keyName == "counter1")
         {
             //플레이어의 정보를 바탕으로 더해야 할 무언가
             if (other.CompareTag("Player"))
@@ -273,7 +273,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
                 }
             }
         }
-        else if (this._keyName == "카운터2")
+        else if (this._keyName == "counter2")
         {
             // 박스를 가져오면 고기처럼 박스가 쌓이고 손님이 오면 가져가기
             if (other.CompareTag("Player"))
@@ -299,7 +299,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
                 }
             }
         }
-        else if (this._keyName == "카운터3")
+        else if (this._keyName == "counter3")
         {
             if (_level >= 2)
             {
@@ -341,11 +341,11 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     public bool HasStack()
     {
-        if (_keyName =="카운터1")
+        if (_keyName =="counter1")
         {
             return _currentMeatCount >0;
         }
-        else if (_keyName == "카운터3")
+        else if (_keyName == "counter3")
         {
             return _currentBoxCount > 0;
         }
@@ -354,11 +354,11 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     public int GetStackCount()
     {
-        if (_keyName == "카운터1")
+        if (_keyName == "counter1")
         {
             return _currentMeatCount;
         }
-        else if (_keyName == "카운터3")
+        else if (_keyName == "counter3")
         {
             return _currentBoxCount;
         }

@@ -53,7 +53,7 @@ public class NpcIdle : INpcState
             }
             if (maxHasStackIdx == 0 && tempList[0].HasStack() == false)
             {
-                npcAi._destination = (INpcDestination)GameManager._instance._baseObjectDict["카운터1"];
+                npcAi._destination = (INpcDestination)GameManager._instance._baseObjectDict["counter1"];
             }
             else
             {
@@ -85,9 +85,9 @@ public class NpcIdle : INpcState
         {
             case NpcPickUpObject.Meat:
                 var rand = Random.Range(0,2);
-                if (baseObject["카운터1"].isActive() == true)
+                if (baseObject["counter1"].isActive() == true)
                 {
-                    npcAi._targetNode = nodeObject["카운터1"];
+                    npcAi._targetNode = nodeObject["counter1"];
                 }
                 if (GameManager._instance._isCounterSecondActive == true && rand == 1)
                 {
@@ -95,11 +95,11 @@ public class NpcIdle : INpcState
                 }
                 break;
             case NpcPickUpObject.Bone:
-                npcAi._targetNode = nodeObject["쓰레기통"];
+                npcAi._targetNode = nodeObject["trashCan"];
                 break;
             case NpcPickUpObject.Box:
-                Debug.Log("목적지 노드 : " + nodeObject["카운터2"]._gridPos);
-                npcAi._targetNode = nodeObject["카운터2"];
+                Debug.Log("목적지 노드 : " + nodeObject["counter2"]._gridPos);
+                npcAi._targetNode = nodeObject["counter2"];
                 break;
             case NpcPickUpObject.None:
                 npcAi.ChangeState(npcAi._npcIdle);

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     {
         SettingActivatorArray(); // 해금 오브젝트 순서대로 오름차순 정렬
         SettingWarableList();
-        LoadGame();
+        StartCoroutine(LoadGame());
         yield return new WaitUntil(() => _isCounterOneActive == true);
         ActiveCustomerSpawner();
         yield return new WaitUntil(() => _isCounterSecondActive == true);
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 게임 처음 시작할때 초기화 , 처음이 아니라면 데이터 로딩
     /// </summary>
-    public void LoadGame()
+    IEnumerator LoadGame()
     {
         DataManager._Instance.LoadNpcData();
         DataManager._Instance.LoadActivatorData();
@@ -62,8 +62,9 @@ public class GameManager : MonoBehaviour
         DataManager._Instance.LoadObjectData(ObjectType.Grill);
         DataManager._Instance.LoadObjectData(ObjectType.Counter);
         DataManager._Instance.LoadObjectData(ObjectType.Expand);
-        DataManager._Instance.LoadGroundMoney();
         DataManager._Instance.LoadPlayerAllData();
+        yield return null;
+        DataManager._Instance.LoadGroundMoney();
     }
     /// <summary>
     /// npc가 할일이 있는지 조회 해야하는 리스트 초기화
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
         }
         for (int i = 0; i < _counters.Length; i++)
         {
-            if (_counters[i]._keyName == "카운터3") 
+            if (_counters[i]._keyName == "counter3") 
             {
                 _warkableObjectList.Add(_counters[i]);
             }
@@ -104,6 +105,7 @@ public class GameManager : MonoBehaviour
         DataManager._Instance.SaveObjectData(ObjectType.Counter);
         DataManager._Instance.SaveObjectData(ObjectType.Expand);
         DataManager._Instance.SaveActivatorData(_activator);
+        DataManager._Instance.SavePlayerAllData();
     }
     
     /// <summary>
@@ -117,7 +119,7 @@ public class GameManager : MonoBehaviour
     }
     public void ActiveCustomerSpawner()
     {
-        if (_baseObjectDict["카운터1"]._isActive == true)
+        if (_baseObjectDict["counter1"]._isActive == true)
         {
             customerSpawner.SetActive(true);
         }
@@ -125,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void ActiveBoatSpawner()
     {
-        if (_baseObjectDict["카운터3"]._isActive == true
+        if (_baseObjectDict["counter3"]._isActive == true
             )
         {
             boatSpawner.SetActive(true);

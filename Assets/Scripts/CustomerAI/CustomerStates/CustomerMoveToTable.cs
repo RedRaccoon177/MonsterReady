@@ -163,11 +163,11 @@ public class CustomerMoveToTable : ICustomerState
     /// </summary>
     bool IsTableUnlocked(int tableIndex)
     {
-        string tableKey = $"테이블{tableIndex + 1}";
+        string tableKey = $"table{tableIndex + 1}";
 
         if (GameManager._instance._baseObjectDict.TryGetValue(tableKey, out BaseObject tableObj))
         {
-            Debug.Log($"테이블 {tableKey} 해금 상태: {tableObj._isActive}");
+            Debug.Log($"table {tableKey} 해금 상태: {tableObj._isActive}");
             return tableObj._isActive;
         }
         else
@@ -275,7 +275,7 @@ public class CustomerMoveToTable : ICustomerState
     {
         for (int i = 0; i < _tables.Length; i++)
         {
-            string tableName = $"테이블{i + 1}";
+            string tableName = $"table{i + 1}";
 
             if (GameManager._instance._baseObjectDict.TryGetValue(tableName, out BaseObject tableObj))
             {

@@ -6,10 +6,10 @@ public class Expen : BaseObject
 {
     private void OnDisable()
     {
-        if (_keyName =="점포확장1")
+        if (_keyName =="expand1")
         {
             NodeManager._instance.SettingFirstExpand();
-        } else if (_keyName == "점포확장2")
+        } else if (_keyName == "expand2")
         {
             NodeManager._instance.SettingSecondExpand();
         }

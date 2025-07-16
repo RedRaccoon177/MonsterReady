@@ -139,6 +139,7 @@ public class DataManager : MonoBehaviour
             {
                 if (goldObjectDict.TryGetValue(objectList.groundMoneys[i].key, out var target))
                 {
+                    target._currentGold=objectList.groundMoneys[i].currentGold;
                     target.AddGold(objectList.groundMoneys[i].currentGold);
                 }
             }

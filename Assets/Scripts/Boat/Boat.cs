@@ -43,7 +43,7 @@ public class Boat : MonoBehaviour
 
     private void Start()
     {
-        counter = (Counter)GameManager._instance._baseObjectDict["д╚©Нем2"];
+        counter = (Counter)GameManager._instance._baseObjectDict["counter2"];
         maxOrderMeetBoxCount = 4;
         maxMeetBoxCount = maxOrderMeetBoxCount;
         stackHeight = 1;

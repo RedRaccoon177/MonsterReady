@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -64226,7 +64226,7 @@ Transform:
   m_GameObject: {fileID: 946122492}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07999992, y: 0, z: -1.011}
+  m_LocalPosition: {x: 0.07999992, y: 0.079, z: -1.877}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64245,7 +64245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _key: "\uCE74\uC6B4\uD1302"
-  _goldPool: {fileID: 0}
+  _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 946122493}
   _currentGold: 0
@@ -97870,7 +97870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _key: "\uCE74\uC6B4\uD1301"
-  _goldPool: {fileID: 0}
+  _goldPool: {fileID: 2111446580}
   _goldPrefab: {fileID: 7845884036048481592, guid: 64679a77813420341b807b1b332d7bb8, type: 3}
   _goldSpawnLocation: {fileID: 1436119507}
   _currentGold: 0

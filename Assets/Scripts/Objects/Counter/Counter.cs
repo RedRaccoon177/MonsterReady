@@ -112,6 +112,11 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             _currentMeatCount -= _minusMeat;
         }
 
+        if (_goldObject != null)
+        {
+            _goldObject.AddGold(_someoneGetMeat);
+        }
+
         UpdateMeatDisplay(_currentMeatCount);
         return _someoneGetMeat;
     }
@@ -181,6 +186,11 @@ public class Counter : BaseObject, ILevelable, INpcDestination
         {
             _someoneGetBox = _minusBox;
             _currentBoxCount -= _minusBox;
+        }
+
+        if (_goldObject != null)
+        {
+            _goldObject.AddGold(_someoneGetBox);
         }
 
         UpdateBoxDisplay(_currentBoxCount);

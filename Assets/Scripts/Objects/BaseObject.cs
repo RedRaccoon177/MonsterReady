@@ -27,7 +27,7 @@ public class BaseObject : MonoBehaviour
 
     public void OnActive()
     {
-        Vector3 halfExtents = new Vector3(1.5f, 1f, 1.5f);
+        Vector3 halfExtents = new Vector3(0.6f, 0.6f, 0.6f);
         Collider[] hits = Physics.OverlapBox(gameObject.transform.position, halfExtents,Quaternion.identity,LayerMask.GetMask("Node"));
         foreach (var hit in hits)
         {

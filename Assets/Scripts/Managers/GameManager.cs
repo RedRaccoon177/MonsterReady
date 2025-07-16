@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject boatSpawner;
     public bool _isCounterOneActive = false;
     public bool _isCounterSecondActive = false;
-
+    List<Node> oneExpand = new List<Node>();
+    List<Node> twoExpand = new List<Node>();
 
     private void Awake()
     {
@@ -49,22 +50,6 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("키 : " + a.GetKey());
             }
-        }
-    }
-    void FristStartGame()
-    {
-        OnUnlockObject(0); // 처음 부터 시작
-        foreach (var a in _tables)
-        {
-            a.DeActive();
-        }
-        foreach (var a in _grills)
-        {
-            a.DeActive();
-        }
-        foreach (var a in _counters)
-        {
-            a.DeActive();
         }
     }
 

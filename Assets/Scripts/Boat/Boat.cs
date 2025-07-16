@@ -130,7 +130,7 @@ public class Boat : MonoBehaviour
             yield return orderWaitTime;
             int beforeMeat = currentMeetBoxCount;
             int neededMeat = orderMeetBoxCount - beforeMeat;
-            if (neededMeat > 0)
+            if (neededMeat > 0 && counter._objectInteration._IsInteration)
             {
                 int receivedMeat = counter.MinusBox(neededMeat);
                 if (receivedMeat > 0)

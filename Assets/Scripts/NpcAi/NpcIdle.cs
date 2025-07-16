@@ -85,11 +85,11 @@ public class NpcIdle : INpcState
         {
             case NpcPickUpObject.Meat:
                 var rand = Random.Range(0,2);
-                if (baseObject["카운터1"].isActive() == true && rand == 0)
+                if (baseObject["카운터1"].isActive() == true)
                 {
                     npcAi._targetNode = nodeObject["카운터1"];
                 }
-                else if (baseObject["카운터3"].isActive() == true && rand == 1)
+                if (GameManager._instance._isCounterSecondActive == true && rand == 1)
                 {
                     npcAi._targetNode = NodeManager._instance._nodeList[19,5];
                 }

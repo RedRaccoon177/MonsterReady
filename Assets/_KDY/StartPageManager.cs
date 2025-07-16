@@ -47,7 +47,7 @@ public class StartPageManager : MonoBehaviour
     {
         // 10초 동안 로딩 진행
         float timer = 0f;
-        while (timer < 10f)
+        while (timer < 5f)
         {
             timer += Time.deltaTime;
             yield return null;

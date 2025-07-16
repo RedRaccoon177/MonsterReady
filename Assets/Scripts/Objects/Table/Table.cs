@@ -156,9 +156,9 @@ public class Table : BaseObject, ILevelable, INpcDestination
     /// </summary>
     public void RemoveBones()
     {
-        _boneNum -= 1;
         while (_boneList.Count > 0)
         {
+            _boneNum -= 1;
             GameObject bone = _boneList[_boneList.Count - 1];
             _boneList.RemoveAt(_boneList.Count - 1);
             _bonePool.ReturnToPool(bone); // 제거된 뼈를 풀로 반환

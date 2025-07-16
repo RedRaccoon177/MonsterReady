@@ -92,4 +92,36 @@ public class NodeManager : MonoBehaviour
 
         return _nodeList[x, y];
     }
+
+    public void SettingFirstExpand()
+    {
+        _nodeList[11,9]._isWalkale = true;
+        _nodeList[11,10]._isWalkale = true;
+        _nodeList[11,11]._isWalkale = true;
+        _nodeList[11,12]._isWalkale = true;
+        _nodeList[11,13]._isWalkale = true;
+        _nodeList[11,14]._isWalkale = true;
+        _nodeList[11,15]._isWalkale = true;
+        _nodeList[11,16]._isWalkale = true;
+        _nodeList[11,17]._isWalkale = true;
+        _nodeList[11,18]._isWalkale = true;
+        _nodeList[10,9]._isWalkale = true;
+    }
+    public void SettingSecondExpand()
+    {
+        _nodeList[9, 9]._isWalkale = true;
+        _nodeList[9, 10]._isWalkale = true;
+        _nodeList[9, 11]._isWalkale = true;
+        _nodeList[9, 12]._isWalkale = true;
+        _nodeList[9, 13]._isWalkale = true;
+        _nodeList[9, 14]._isWalkale = true;
+        _nodeList[9, 15]._isWalkale = true;
+        _nodeList[9, 16]._isWalkale = true;
+        _nodeList[9, 17]._isWalkale = true;
+        _nodeList[9, 18]._isWalkale = true;
+        _nodeList[8,9]._isWalkale = true;
+        _nodeList[7,9]._isWalkale = true;
+        _nodeList[6,9]._isWalkale = true;
+        _nodeList[5,9]._isWalkale = true;
+    }
 }

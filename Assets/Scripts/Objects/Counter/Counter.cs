@@ -78,6 +78,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
         if (_keyName == "카운터3")
         {
             GameManager._instance._isCounterSecondActive = true;
+            StartCoroutine(ChangeMeatToBox());
 
         }
     }
@@ -300,6 +301,10 @@ public class Counter : BaseObject, ILevelable, INpcDestination
         }
         else if (this._keyName == "카운터3")
         {
+            if (_level >= 2)
+            {
+                return;
+            }
             // 고기를 가져오면 박스로 전환되게 하기
             if (other.CompareTag("Player"))
             {
@@ -407,7 +412,19 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             _objectInteration.OnNpc();
         }
     }
-
+    IEnumerator ChangeMeatToBox()
+    {
+        yield return new WaitUntil(() => _level >= 2);
+        while (true)
+        {
+            if (_meatTOBox._currentMeatCount > 0)
+            {
+                _meatTOBox.MinusMeat(1);
+                AddBox(1);
+            }
+            yield return new WaitForSeconds(2);
+        }
+    }
     public int GetLevel()
     {
         return _level;

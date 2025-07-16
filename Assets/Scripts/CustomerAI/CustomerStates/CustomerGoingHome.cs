@@ -6,7 +6,7 @@ public class CustomerGoingHome : ICustomerState
 {
     List<Node> _path;       // A* 경로 저장
     int _currentIndex;      // 현재 목표 노드 인덱스
-    Vector2Int _exitNodeGridPos = new Vector2Int(0, 0); // 출구 위치 (예: 0,0) ★출구 좌표 설정 필요
+    Vector2Int _exitNodeGridPos = new Vector2Int(0, 2); // 출구 위치 (예: 0,0) ★출구 좌표 설정 필요
 
     public void Enter(CustomerAI customer)
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoatSpawaner : MonoBehaviour
 {
-    Queue<Boat> boatQueue = new Queue<Boat>();
+    public Queue<Boat> boatQueue = new Queue<Boat>();
     [SerializeField] Transform pointParant;
     [SerializeField] Transform boatParnat;
     [SerializeField] Transform endPoint;
@@ -56,34 +56,34 @@ public class BoatSpawaner : MonoBehaviour
         boatQueue.Enqueue(boatScript);
     }
 
-    private void OnDrawGizmos()
-    {
-        if (pointList == null)
-        {
-            pointList = new List<Transform>();
-            foreach (Transform child in pointParant.GetComponentsInChildren<Transform>())
-            {
-                if (child != pointParant.transform)
-                {
-                    pointList.Add(child);
-                }
-            }
-        }
-        Gizmos.color = Color.blue;
-        for (int i = 0; i < pointList.Count - 1; i++)
-        {
-            if (pointList[i] != null && pointList[i + 1] != null)
-            {
-                Gizmos.DrawLine(pointList[i].position, pointList[i + 1].position);
-            }
-        }
-        foreach (Transform point in pointList)
-        {
-            if (point != null)
-            {
-                Gizmos.DrawWireSphere(point.position, 0.3f);
-            }
-        }
-
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    if (pointList == null)
+    //    {
+    //        pointList = new List<Transform>();
+    //        foreach (Transform child in pointParant.GetComponentsInChildren<Transform>())
+    //        {
+    //            if (child != pointParant.transform)
+    //            {
+    //                pointList.Add(child);
+    //            }
+    //        }
+    //    }
+    //    Gizmos.color = Color.blue;
+    //    for (int i = 0; i < pointList.Count - 1; i++)
+    //    {
+    //        if (pointList[i] != null && pointList[i + 1] != null)
+    //        {
+    //            Gizmos.DrawLine(pointList[i].position, pointList[i + 1].position);
+    //        }
+    //    }
+    //    foreach (Transform point in pointList)
+    //    {
+    //        if (point != null)
+    //        {
+    //            Gizmos.DrawWireSphere(point.position, 0.3f);
+    //        }
+    //    }
+    //
+    //}
 }

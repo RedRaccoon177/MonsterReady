@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject boatSpawner;
     public bool _isCounterOneActive = false;
     public bool _isCounterSecondActive = false;
-    List<Node> oneExpand = new List<Node>();
-    List<Node> twoExpand = new List<Node>();
 
     private void Awake()
     {

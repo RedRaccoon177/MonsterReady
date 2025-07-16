@@ -39,6 +39,7 @@ public class NpcAi : MonoBehaviour
     public NpcIdle _npcIdle;
     public NpcMove _npcMove;
 
+    float _boxStackHeight = 0.5f;
     [Header("npc의 고기")]
     [SerializeField] int _maxMeat;              //현재 들수 있는 고기 최대 수
     [SerializeField] int _currentMeat;          //현재 들고 있는 고기 수
@@ -245,9 +246,10 @@ public class NpcAi : MonoBehaviour
             _meatPool.ReturnToPool(lastMeat);
         }
     }
-    Vector3 GetStackPosition(int index)
+    Vector3 GetStackPosition(int index, bool isBox = false)
     {
-        return new Vector3(0, index * _stackHeight, 0);
+        float height = isBox ? _boxStackHeight : _stackHeight;
+        return new Vector3(0, index * height, 0);
     }
     public void SettingActive(bool isActive)
     {
@@ -375,7 +377,7 @@ public class NpcAi : MonoBehaviour
         {
             GameObject box = _meatPool.GetBox(); // 오브젝트 풀에서 꺼냄 (박스용 메서드 필요)
             box.transform.SetParent(_meatSpawnLocation, false);
-            box.transform.localPosition = GetStackPosition(_boxList.Count);
+            box.transform.localPosition = GetStackPosition(_boxList.Count,true);
             box.transform.localRotation = Quaternion.identity;
             box.transform.localScale = _boxPrefab.transform.localScale;
 

@@ -99,6 +99,7 @@ public class Boat : MonoBehaviour
     void LeavePointArr()
     {
         boatSpawaner.isVisited[currentPointIndex] = false;
+        boatSpawaner.boatQueue.Dequeue();
         StartCoroutine(MoveEndPoint());
     }
     IEnumerator MoveEndPoint()
@@ -136,7 +137,7 @@ public class Boat : MonoBehaviour
                 if (receivedMeat > 0)
                 {
                     AddMeatBox(receivedMeat);                         // 고기 오브젝트 생성
-                    UiManager._instance.ActiveMeatBoxOrdreUi(neededMeat,true);
+                    UiManager._instance.ActiveMeatBoxOrdreUi(neededMeat - receivedMeat, true);
                 }
             }
         }

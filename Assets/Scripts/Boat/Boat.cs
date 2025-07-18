@@ -99,7 +99,7 @@ public class Boat : MonoBehaviour
     void LeavePointArr()
     {
         boatSpawaner.isVisited[currentPointIndex] = false;
-        boatSpawaner.boatQueue.Dequeue();
+        boatSpawaner.boatCount--;
         StartCoroutine(MoveEndPoint());
     }
     IEnumerator MoveEndPoint()

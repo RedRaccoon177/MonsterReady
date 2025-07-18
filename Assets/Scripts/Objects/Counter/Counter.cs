@@ -71,11 +71,11 @@ public class Counter : BaseObject, ILevelable, INpcDestination
         SettingNode();
         SettingGMBaseDict();
         ActiveNpc();
-        if (_keyName == "counter1")
+        if (GetKeyName() == "counter1")
         {
             GameManager._instance._isCounterOneActive = true;
         }
-        if (_keyName == "counter3")
+        if (GetKeyName() == "counter3")
         {
             GameManager._instance._isCounterSecondActive = true;
             StartCoroutine(ChangeMeatToBox());
@@ -247,13 +247,13 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             return;
         }
 
-        if (this._keyName == "counter1")
+        if (this.GetKeyName() == "counter1")
         {
             //플레이어의 정보를 바탕으로 더해야 할 무언가
             if (other.CompareTag("Player"))
             {
                 UiManager._instance.OnUpgradeNavUi(_objectPos);
-                UiManager._instance.SetInteractionObjectKey(_keyName);
+                UiManager._instance.SetInteractionObjectKey(GetKeyName());
 
                 if (0 != _player._CurrentMeat)
                 {
@@ -273,13 +273,13 @@ public class Counter : BaseObject, ILevelable, INpcDestination
                 }
             }
         }
-        else if (this._keyName == "counter2")
+        else if (this.GetKeyName() == "counter2")
         {
             // 박스를 가져오면 고기처럼 박스가 쌓이고 손님이 오면 가져가기
             if (other.CompareTag("Player"))
             {
                 UiManager._instance.OnUpgradeNavUi(_objectPos);
-                UiManager._instance.SetInteractionObjectKey(_keyName);
+                UiManager._instance.SetInteractionObjectKey(GetKeyName());
 
                 if (0 != _player._CurrentBox)
                 {
@@ -299,7 +299,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
                 }
             }
         }
-        else if (this._keyName == "counter3")
+        else if (this.GetKeyName() == "counter3")
         {
             if (_level >= 2)
             {
@@ -309,7 +309,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             if (other.CompareTag("Player"))
             {
                 UiManager._instance.OnUpgradeNavUi(_objectPos);
-                UiManager._instance.SetInteractionObjectKey(_keyName);
+                UiManager._instance.SetInteractionObjectKey(GetKeyName());
 
                 if (0 != _meatTOBox._currentMeatCount)
                 {
@@ -341,11 +341,11 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     public bool HasStack()
     {
-        if (_keyName =="counter1")
+        if (GetKeyName() == "counter1")
         {
             return _currentMeatCount >0;
         }
-        else if (_keyName == "counter3")
+        else if (GetKeyName() == "counter3")
         {
             return _currentBoxCount > 0;
         }
@@ -354,11 +354,11 @@ public class Counter : BaseObject, ILevelable, INpcDestination
 
     public int GetStackCount()
     {
-        if (_keyName == "counter1")
+        if (GetKeyName() == "counter1")
         {
             return _currentMeatCount;
         }
-        else if (_keyName == "counter3")
+        else if (GetKeyName() == "counter3")
         {
             return _currentBoxCount;
         }
@@ -367,11 +367,11 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     public void SettingNode()
     {
         Node _tempNode = NodeManager._instance._nodeList[(int)_nodeGridNum.x, (int)_nodeGridNum.y];
-        GameManager._instance._npcObjectNodeDict.TryAdd(_keyName, _tempNode);
+        GameManager._instance._npcObjectNodeDict.TryAdd(GetKeyName(), _tempNode);
     }
     public void SettingGMBaseDict()
     {
-        GameManager._instance._baseObjectDict.TryAdd(_keyName, this);
+        GameManager._instance._baseObjectDict.TryAdd(GetKeyName(), this);
     }
 
     public void OnDestination()
@@ -390,7 +390,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     }
     public string GetKey()
     {
-        return _keyName;
+        return GetKeyName();
     }
 
     public int SetLevel(int level)

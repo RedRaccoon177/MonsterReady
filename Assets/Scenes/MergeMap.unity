@@ -41062,6 +41062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3e65b798f2fce43994f15a4ad8c1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boatCount: 0
   pointParant: {fileID: 1737501963}
   boatParnat: {fileID: 16608771}
   endPoint: {fileID: 1338840684}

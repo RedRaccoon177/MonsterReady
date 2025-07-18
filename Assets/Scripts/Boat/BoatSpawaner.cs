@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoatSpawaner : MonoBehaviour
 {
-    public Queue<Boat> boatQueue = new Queue<Boat>();
+    public int boatCount;
     [SerializeField] Transform pointParant;
     [SerializeField] Transform boatParnat;
     [SerializeField] Transform endPoint;
@@ -40,7 +40,7 @@ public class BoatSpawaner : MonoBehaviour
         while (true)
         {
             yield return waitForSeconds;  
-            if (boatQueue.Count < pointList.Count) 
+            if (boatCount < pointList.Count) 
             { 
                 CreateBoat();
             }
@@ -53,37 +53,37 @@ public class BoatSpawaner : MonoBehaviour
         int randCustermer = Random.Range(0, customerPrefabs.Length);
         var boatScript = Instantiate(boatPrefabs[randBoat], boatParnat).GetComponent<Boat>();
         boatScript.Init(this, customerPrefabs[randCustermer],endPoint, objectPool);
-        boatQueue.Enqueue(boatScript);
+        boatCount++;
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    if (pointList == null)
-    //    {
-    //        pointList = new List<Transform>();
-    //        foreach (Transform child in pointParant.GetComponentsInChildren<Transform>())
-    //        {
-    //            if (child != pointParant.transform)
-    //            {
-    //                pointList.Add(child);
-    //            }
-    //        }
-    //    }
-    //    Gizmos.color = Color.blue;
-    //    for (int i = 0; i < pointList.Count - 1; i++)
-    //    {
-    //        if (pointList[i] != null && pointList[i + 1] != null)
-    //        {
-    //            Gizmos.DrawLine(pointList[i].position, pointList[i + 1].position);
-    //        }
-    //    }
-    //    foreach (Transform point in pointList)
-    //    {
-    //        if (point != null)
-    //        {
-    //            Gizmos.DrawWireSphere(point.position, 0.3f);
-    //        }
-    //    }
-    //
-    //}
+    private void OnDrawGizmos()
+    {
+        if (pointList == null)
+        {
+            pointList = new List<Transform>();
+            foreach (Transform child in pointParant.GetComponentsInChildren<Transform>())
+            {
+                if (child != pointParant.transform)
+                {
+                    pointList.Add(child);
+                }
+            }
+        }
+        Gizmos.color = Color.blue;
+        for (int i = 0; i < pointList.Count - 1; i++)
+        {
+            if (pointList[i] != null && pointList[i + 1] != null)
+            {
+                Gizmos.DrawLine(pointList[i].position, pointList[i + 1].position);
+            }
+        }
+        foreach (Transform point in pointList)
+        {
+            if (point != null)
+            {
+                Gizmos.DrawWireSphere(point.position, 0.3f);
+            }
+        }
+
+    }
 }

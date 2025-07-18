@@ -66,7 +66,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
                 return;
             }
             UiManager._instance.OnUpgradeNavUi(_objectPos);
-            UiManager._instance.SetInteractionObjectKey(_keyName);
+            UiManager._instance.SetInteractionObjectKey(GetKeyName());
             if (_player.CheckPickUpObject() != PlayerPickUpObject.None) { return; }
             if (_boneNum <= 0) { return; }
             RemoveBones();
@@ -76,7 +76,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
         else if (other.CompareTag("Npc"))
         {
             NpcAi npcScript = other.gameObject.GetComponent<NpcAi>();
-            if (npcScript._destination.GetKey() != this._keyName)
+            if (npcScript._destination.GetKey() != this.GetKeyName())
             {
                 return;
             }
@@ -196,7 +196,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
     #region ILevelable ±¸Çö
     public string GetKey()
     {
-        return _keyName;
+        return GetKeyName();
     }
 
     public int SetLevel(int level)
@@ -235,7 +235,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
     public void SettingNode()
     {
         Node _tempNode = NodeManager._instance._nodeList[(int)_nodeGridNum.x, (int)_nodeGridNum.y];
-        GameManager._instance._npcObjectNodeDict.TryAdd(_keyName, _tempNode);
+        GameManager._instance._npcObjectNodeDict.TryAdd(GetKeyName(), _tempNode);
     }
 
     /// <summary>
@@ -243,7 +243,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
     /// </summary>
     public void SettingGMBaseDict()
     {
-        GameManager._instance._baseObjectDict.TryAdd(_keyName, this);
+        GameManager._instance._baseObjectDict.TryAdd(GetKeyName(), this);
     }
 
     public void OnDestination()

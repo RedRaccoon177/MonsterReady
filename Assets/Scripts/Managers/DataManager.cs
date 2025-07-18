@@ -175,7 +175,7 @@ public class DataManager : MonoBehaviour
         for (int i = 0; i < baseObject.Length; i++)
         {
             ObjectData tableData = new ObjectData();
-            tableData.key = baseObject[i]._keyName;
+            tableData.key = baseObject[i].GetKeyName();
             tableData.isActive = baseObject[i]._isActive;
             if (type != ObjectType.Expand) // 확장에는 레벨이 없음
             {
@@ -252,7 +252,7 @@ public class DataManager : MonoBehaviour
         Dictionary<string, BaseObject> tempDict = new Dictionary<string, BaseObject>();
         foreach (BaseObject obj in tempArr)
         {
-            tempDict.Add(obj._keyName, obj);
+            tempDict.Add(obj.GetKeyName(), obj);
         }
         return tempDict;
     }

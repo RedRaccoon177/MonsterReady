@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("테이블 오브젝트")] public Table[] _tables;
     [Header("카운터 오브젝트")] public Counter[] _counters;
     [Header("그릴 오브젝트")] public Grill[] _grills;
-    public Expen[] _expens;
+    public Expand[] _expens;
 
     public List<INpcDestination> _warkableObjectList = new List<INpcDestination>();// npc가 목적지로 설정 가능한 오브젝트 리스트
     // 테이블,카운터3,그릴1,2에 쌓인게 있는지 
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         }
         for (int i = 0; i < _counters.Length; i++)
         {
-            if (_counters[i]._keyName == "counter3") 
+            if (_counters[i].GetKeyName() == "counter3") 
             {
                 _warkableObjectList.Add(_counters[i]);
             }

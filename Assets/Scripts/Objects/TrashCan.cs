@@ -36,12 +36,12 @@ public class TrashCan : BaseObject
     }
     public void SettingGMBaseDict()
     {
-        GameManager._instance._baseObjectDict.TryAdd(_keyName, this);
+        GameManager._instance._baseObjectDict.TryAdd(GetKeyName(), this);
     }
     public void SettingNode()
     {
         Node _tempNode = NodeManager._instance._nodeList[15,18];
-        GameManager._instance._npcObjectNodeDict.TryAdd(_keyName, _tempNode);
-        Debug.Log("추가완료 : " + GameManager._instance._npcObjectNodeDict[_keyName]);
+        GameManager._instance._npcObjectNodeDict.TryAdd(GetKeyName(), _tempNode);
+        Debug.Log("추가완료 : " + GameManager._instance._npcObjectNodeDict[GetKeyName()]);
     }
 }

@@ -13,26 +13,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
     #region 키값 및 레벨
     [SerializeField] public int _level;
 
-    public string GetKey()
-    {
-        return _keyName;
-    }
-
-    public int SetLevel(int level)
-    {
-        _level = level;
-        return level;
-    }
-
-    public void LevelUp()
-    {
-        _level++;
-    }
-
-    public int GetLevel()
-    {
-        return _level;
-    }
+    
     #endregion
 
     #region 변수들
@@ -100,7 +81,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
             {
                 return;
             }
-            UiManager._instance.SetInteractionObjectKey(_keyName);
+            UiManager._instance.SetInteractionObjectKey(GetKeyName());
             UiManager._instance.OnUpgradeNavUi(_objectPos);
             if (_player.CheckPickUpObject() == PlayerPickUpObject.None || _player.CheckPickUpObject() == PlayerPickUpObject.Meat) 
             {
@@ -115,7 +96,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
         else if (other.CompareTag("Npc"))
         {
             NpcAi npcScript = other.gameObject.GetComponent<NpcAi>();
-            if (npcScript._destination.GetKey() != this._keyName)
+            if (npcScript._destination.GetKey() != this.GetKeyName())
             {
                 return;
             }
@@ -137,7 +118,26 @@ public class Grill : BaseObject, ILevelable, INpcDestination
         }
     }
     #endregion
+    public string GetKey()
+    {
+        return GetKeyName();
+    }
 
+    public int SetLevel(int level)
+    {
+        _level = level;
+        return level;
+    }
+
+    public void LevelUp()
+    {
+        _level++;
+    }
+
+    public int GetLevel()
+    {
+        return _level;
+    }
     #region 고기 생성 코루틴
     // 고기 굽기 시작
     public void StartGrill()
@@ -254,11 +254,11 @@ public class Grill : BaseObject, ILevelable, INpcDestination
     public void SettingNode()
     {
         Node _tempNode = NodeManager._instance._nodeList[(int)_nodeGridNum.x, (int)_nodeGridNum.y];
-        GameManager._instance._npcObjectNodeDict.TryAdd(_keyName, _tempNode);
+        GameManager._instance._npcObjectNodeDict.TryAdd(GetKeyName(), _tempNode);
     }
     public void SettingGMBaseDict()
     {
-        GameManager._instance._baseObjectDict.TryAdd(_keyName,this);
+        GameManager._instance._baseObjectDict.TryAdd(GetKeyName(), this);
     }
 
 

@@ -7,11 +7,15 @@ public enum ObjectType
 
 public class BaseObject : MonoBehaviour
 {
-    public string _keyName;
+    [SerializeField] string _keyName;
     public bool _isActive;
     public ObjectType _objectType;
     
 
+    public string GetKeyName()
+    {
+        return _keyName;
+    }
     public bool isActive() 
     {
         return _isActive;
@@ -32,14 +36,6 @@ public class BaseObject : MonoBehaviour
         }
         _isActive = true;
         gameObject.SetActive(true);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Vector3 center = transform.position;
-        Vector3 halfExtents = new Vector3(1f, 1f, 1f);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(center, halfExtents * 2);
     }
 }
 // 레벨을 가지고 있는 테이블 , 카운터 ,그릴에 상속

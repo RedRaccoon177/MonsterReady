@@ -1,9 +1,13 @@
 using TMPro;
 using UnityEngine;
 
-public class GoldTextUI : MonoBehaviour
+public class GoldTextUI : UiBase
 {
     public TMP_Text _goldText;
+
+    public override void Show()
+    {
+    }
 
     //추후 구독 해제해야 할 필요성이 느껴지면 추후 추가
     void OnEnable()

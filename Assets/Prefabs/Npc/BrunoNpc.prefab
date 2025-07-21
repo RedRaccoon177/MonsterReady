@@ -2631,16 +2631,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyName: 
   _currentLevel: 0
+  _amountLevel: 0
+  _speedLevel: 0
   _price: 0
   _npcIcon: {fileID: 0}
   _isUnlockNpc: 0
   _pickUpObject: 0
   _maxMeat: 0
   _currentMeat: 0
+  _meatList: []
   _maxBone: 0
   _currentBone: 0
+  _maxBox: 0
+  _currentBox: 0
   _meatPrefab: {fileID: 0}
   _bonePrefab: {fileID: 0}
+  _boxPrefab: {fileID: 0}
   _meatPool: {fileID: 0}
   _stackHeight: 0.11
   _meatSpawnLocation: {fileID: 7660389874704839187}
@@ -3240,7 +3246,7 @@ Transform:
   m_GameObject: {fileID: 551236271413789856}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.86}
+  m_LocalPosition: {x: 0, y: 1, z: 0.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

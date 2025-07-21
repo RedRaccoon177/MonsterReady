@@ -1,3 +1,4 @@
+using System.Buffers.Text;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,10 +14,19 @@ public enum UiType
     MeatBoxOrderUi
 
 }
+public abstract class UiBase:MonoBehaviour
+{
+    public virtual void Initialize() { }
+    public abstract void Show<T>(T test);
+    public virtual void Hide() 
+    {
+        gameObject.SetActive(false);
+    } 
+}
 
 public class UiManager : MonoBehaviour
 {
-    private Dictionary<UiType, GameObject> _uiDict;
+    private Dictionary<UiType, UiBase> _uiDict;
     public static UiManager _instance;
     [SerializeField] Camera _camera;
     [SerializeField] GameObject _npcBuyUi;
@@ -39,56 +49,79 @@ public class UiManager : MonoBehaviour
     }
     private void Start()
     {
-        _upGradeNav.GetComponent<Button>().onClick.AddListener(() => 
-        OnObjectActiveUi(GameManager._instance._baseObjectDict[_interactionObjectKey])
-        );
-        _uiDict = new Dictionary<UiType, GameObject>
+        _uiDict = new Dictionary<UiType, UiBase>
         {
-            { UiType.NpcBuy, _npcBuyUi },                                              
-            { UiType.PlayerUpgrade, _playerUpgradeUi },
-            { UiType.ObjectUpgrade, _objectUpgradeUi },
-            { UiType.ObjectUpgrdeNav, _upGradeNav },
-            { UiType.MeatOrderUi, _meatOrderUi },
-            { UiType.MeatBoxOrderUi, _meatBoxOrderUi },
+            { UiType.NpcBuy, _npcBuyUi.GetComponent<UiBase>() },
+            { UiType.PlayerUpgrade, _playerUpgradeUi.GetComponent<UiBase>() },
+            { UiType.ObjectUpgrade, _objectUpgradeUi.GetComponent<UiBase>() },
+            { UiType.ObjectUpgrdeNav, _upGradeNav.GetComponent<UiBase>() },
+            { UiType.MeatOrderUi, _meatOrderUi.GetComponent<UiBase>() },
+            { UiType.MeatBoxOrderUi, _meatBoxOrderUi.GetComponent<UiBase>() },
         };
     }
-    public void SetActive(UiType type, bool isActive)
+
+    public void RegisterUI(UiType type, UiBase ui)
     {
-        _uiDict[type].SetActive(isActive);
+        if (!_uiDict.ContainsKey(type))
+            _uiDict[type] = ui;
     }
-    public T GetUiComponent<T>(UiType type) where T : Component
+    public T GetUI<T>(UiType type) where T : UiBase
     {
-        return _uiDict[type].GetComponent<T>();
+        if (_uiDict.TryGetValue(type, out var ui))
+            return ui as T;
+        return null;
     }
-    public void OnUpgradeNavUi(Vector3 objectPos)
+    public void OnUi(UiType type)
     {
-        _upGradeNavScrit.targetPos = objectPos;
-        _upGradeNav.SetActive(true);
-    }
-    public void OffUpgradeNavUi()
-    {
-        _upGradeNav.SetActive(false);
-    }
-    public void SetInteractionObjectKey(string key)
-    {
-        _interactionObjectKey = key;
-    }
-    void OnObjectActiveUi(BaseObject baseObject)
-    {
-        SetActive(UiType.ObjectUpgrade, true);
-        var temp =GetUiComponent<ObjectUpgradeUi>(UiType.ObjectUpgrade);
-        temp.SetTarget((ILevelable)baseObject,baseObject._objectType);
+        if (_uiDict.TryGetValue(type, out var ui))
+            ui.Show();
     }
 
-    public void ActiveMeatOrdreUi(int orderMeatCount, bool active)
+    public void OffUi(UiType type)
     {
-        SetActive(UiType.MeatOrderUi, active);
-        _meatOrderTxt.text = orderMeatCount.ToString();
+        if (_uiDict.TryGetValue(type, out var ui))
+            ui.Hide();
     }
 
-    public void ActiveMeatBoxOrdreUi(int orderMeatCount, bool active)
-    {
-        SetActive(UiType.MeatBoxOrderUi, active);
-        _meatBoxOrderTxt.text = orderMeatCount.ToString();
-    }
+    //public void SetActive(UiType type, bool isActive)
+    //{
+    //    _uiDict[type].SetActive(isActive);
+    //}
+    //public T GetUiComponent<T>(UiType type) where T : Component
+    //{
+    //    return _uiDict[type].GetComponent<T>();
+    //}
+
+    //    public void OnUpgradeNavUi(Vector3 objectPos)
+    //    {
+    //        _upGradeNavScrit.targetPos = objectPos;
+    //        _upGradeNav.SetActive(true);
+    //    }
+    //    public void OffUpgradeNavUi()
+    //    {
+    //        _upGradeNav.SetActive(false);
+    //    }
+    //    public void SetInteractionObjectKey(string key)
+    //    {
+    //        _interactionObjectKey = key;
+    //    }
+    //    void OnObjectActiveUi(BaseObject baseObject)
+    //    {
+    //        SetActive(UiType.ObjectUpgrade, true);
+    //        var temp =GetUiComponent<ObjectUpgradeUi>(UiType.ObjectUpgrade);
+    //        temp.SetTarget((ILevelable)baseObject,baseObject._objectType);
+    //    }
+
+    //    public void ActiveMeatOrdreUi(int orderMeatCount, bool active)
+    //    {
+    //        SetActive(UiType.MeatOrderUi, active);
+    //        _meatOrderTxt.text = orderMeatCount.ToString();
+    //    }
+
+    //    public void ActiveMeatBoxOrdreUi(int orderMeatCount, bool active)
+    //    {
+    //        SetActive(UiType.MeatBoxOrderUi, active);
+    //        _meatBoxOrderTxt.text = orderMeatCount.ToString();
+    //    }
+    //}
 }

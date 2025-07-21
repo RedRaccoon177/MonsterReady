@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
     [Header("테이블 오브젝트")] public Table[] _tables;
     [Header("카운터 오브젝트")] public Counter[] _counters;
     [Header("그릴 오브젝트")] public Grill[] _grills;
+
     public Expand[] _expens;
 
+    public BaseObject[] _objects;
     public List<INpcDestination> _warkableObjectList = new List<INpcDestination>();// npc가 목적지로 설정 가능한 오브젝트 리스트
     // 테이블,카운터3,그릴1,2에 쌓인게 있는지 
     public Dictionary<string,Node> _npcObjectNodeDict = new Dictionary<string,Node>();
@@ -71,21 +73,18 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void SettingWarableList()
     {
-        for (int i = 0; i < _tables.Length; i++)
+        foreach (var obj in _objects)
         {
-            _warkableObjectList.Add(_tables[i]);
-        }
-        _warkableObjectList.Add(_counters[2]);
-        for (int i = 0; i < _grills.Length; i++)
-        {
-            _warkableObjectList.Add(_grills[i]);
-        }
-        for (int i = 0; i < _counters.Length; i++)
-        {
-            if (_counters[i].GetKeyName() == "counter3") 
+
+            var destination = obj as INpcDestination;
+            if (destination != null && destination.GetKey() != "counter2")
             {
-                _warkableObjectList.Add(_counters[i]);
+                _warkableObjectList.Add(destination);
             }
+        }
+        foreach (var obj in _objects)
+        {
+            Debug.Log("ㅎㅇ : " + obj);
         }
     }
     /// <summary>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class ObjectNavUi : MonoBehaviour
+public class ObjectNavUi : UiBase
 {
     [SerializeField] public Vector3 targetPos { get; set; }
     private void LateUpdate()

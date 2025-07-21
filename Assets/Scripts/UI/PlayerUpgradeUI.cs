@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUpgradeUI : MonoBehaviour
+public class PlayerUpgradeUI : UiBase
 {
 
     PlayerController _player;
@@ -66,14 +66,6 @@ public class PlayerUpgradeUI : MonoBehaviour
         });
     }
 
-    private void OnEnable()
-    {
-        SetUpgradePrive();
-        SetPlayerSpeed();
-        SetPlayerMakeMoney();
-        SetPlayerAmount();
-        CheckMoneyActiveBtn();
-    }
     void SetUpgradePrive()
     {
         _speedPrice = _player._SpeedLevel * 10;
@@ -137,5 +129,14 @@ public class PlayerUpgradeUI : MonoBehaviour
         {
             _amunt[i].color = Color.yellow;
         }
+    }
+
+    public override void Show()
+    {
+        SetUpgradePrive();
+        SetPlayerSpeed();
+        SetPlayerMakeMoney();
+        SetPlayerAmount();
+        CheckMoneyActiveBtn();
     }
 }

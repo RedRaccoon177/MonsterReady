@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NpcBuyUiContent : MonoBehaviour
+public class NpcBuyUiContent : UiBase
 {
     [SerializeField] Image _icon;
     [SerializeField] TextMeshProUGUI _name;

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRoom : MonoBehaviour
+public class PlayerRoom : UiBase
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            UiManager._instance.SetActive(UiType.PlayerUpgrade,true);
+            UiManager._instance.OnUi(UiType.PlayerUpgrade);
         }
     }
 
@@ -16,7 +16,7 @@ public class PlayerRoom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            UiManager._instance.SetActive(UiType.PlayerUpgrade,false);
+            UiManager._instance.OffUi(UiType.PlayerUpgrade);
         }
     }
 }

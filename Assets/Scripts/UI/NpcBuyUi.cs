@@ -1,28 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NpcBuyUi : MonoBehaviour
+public class NpcBuyUi : UiBase
 {
     [SerializeField] GameObject _contentPrefab;
     [SerializeField] Transform _contentParent;
     [SerializeField] List<NpcBuyUiContent> _contentList = new List<NpcBuyUiContent>();
-    private NpcSpawner _npcSpawner;
+    public NpcSpawner _npcSpawner;
 
     private void Awake()
     {
         Debug.Log("NpcBuyUi Awake 호출");
-    }
-
-    public void SetUi(NpcSpawner npcSpawner)
-    {
-        _npcSpawner = npcSpawner;
-
-        if (_contentList.Count == 0)
-        {
-            CreateContent(); // 처음 1회만 생성
-        }
-
-        UpdateContent(); // 매번 새 데이터로 갱신
     }
 
     private void CreateContent()
@@ -46,10 +34,15 @@ public class NpcBuyUi : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public override void Show()
     {
         if (_npcSpawner != null)
         {
+            if (_contentList.Count == 0)
+            {
+                CreateContent(); // 처음 1회만 생성
+            }
+
             UpdateContent();
         }
     }

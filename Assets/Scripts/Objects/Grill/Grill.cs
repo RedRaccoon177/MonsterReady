@@ -81,8 +81,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
             {
                 return;
             }
-            UiManager._instance.SetInteractionObjectKey(GetKeyName());
-            UiManager._instance.OnUpgradeNavUi(_objectPos);
+            UiManager._instance.OnUi(UiType.ObjectUpgrdeNav);
             if (_player.CheckPickUpObject() == PlayerPickUpObject.None || _player.CheckPickUpObject() == PlayerPickUpObject.Meat) 
             {
                 if (_player._MaxMeat != _player._CurrentMeat)
@@ -113,8 +112,7 @@ public class Grill : BaseObject, ILevelable, INpcDestination
     {
         if (other.CompareTag("Player"))
         {
-            UiManager._instance.OffUpgradeNavUi();
-            UiManager._instance.SetActive(UiType.ObjectUpgrade, false);
+            UiManager._instance.OffUi(UiType.ObjectUpgrdeNav);
         }
     }
     #endregion

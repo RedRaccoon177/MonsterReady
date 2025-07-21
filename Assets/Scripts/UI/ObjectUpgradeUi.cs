@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectUpgradeUi : MonoBehaviour
+public class ObjectUpgradeUi : UiBase
 {
     PlayerController _player;
     private ILevelable _levelable;
@@ -16,7 +16,7 @@ public class ObjectUpgradeUi : MonoBehaviour
     [SerializeField] TextMeshProUGUI _upgradePriceText;
     [SerializeField] int _upgradePrice;
 
-    IEnumerator SetField()
+    void SetField()
     {
         _player = PlayerController._instance;
         _closeButton.onClick.AddListener(() => gameObject.SetActive(false));
@@ -31,12 +31,11 @@ public class ObjectUpgradeUi : MonoBehaviour
             SaveLevelUpData(_objectType);
             DataManager._Instance.SaveObjectData(_objectType);
         });
-        yield return null;
     }
     private void Awake()
     {
         _levelImgArr = levelImgParant.GetComponentsInChildren<Image>();
-        StartCoroutine(SetField());
+        SetField();
     }
     void SetObjectLevel()
     {
@@ -65,9 +64,8 @@ public class ObjectUpgradeUi : MonoBehaviour
     {
         _levelable = levelable;
         _objectType = objectType;
-        UpdateUI();
     }
-    void UpdateUI()
+    public override void Show()
     {
         ActiveBtn();
         SetObjectUpgradePrice();
@@ -103,4 +101,5 @@ public class ObjectUpgradeUi : MonoBehaviour
 
         }
     }
+
 }

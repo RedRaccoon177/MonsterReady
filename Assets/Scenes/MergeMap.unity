@@ -2408,7 +2408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 260652121}
-  offset: {x: -8, y: 14, z: -12}
+  offset: {x: 0, y: 10, z: -10}
 --- !u!1 &40331179
 GameObject:
   m_ObjectHideFlags: 0
@@ -16643,7 +16643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1916933298521316, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1916933298521316, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
       propertyPath: m_TagString
@@ -37035,6 +37035,24 @@ MonoBehaviour:
   - {fileID: 1953462664}
   - {fileID: 634177049}
   - {fileID: 1452243728}
+  _objects:
+  - {fileID: 1859480516}
+  - {fileID: 1972163537}
+  - {fileID: 195587708}
+  - {fileID: 686416308}
+  - {fileID: 616625219}
+  - {fileID: 1720150017}
+  - {fileID: 1578919567}
+  - {fileID: 414288476}
+  - {fileID: 697027517}
+  - {fileID: 1175497743}
+  - {fileID: 1390874451}
+  - {fileID: 633785923}
+  - {fileID: 891632823}
+  - {fileID: 1378393875}
+  - {fileID: 2092175051}
+  - {fileID: 65044798}
+  - {fileID: 908162327}
   customerSpawner: {fileID: 80716889}
   boatSpawner: {fileID: 608383414}
   _isCounterOneActive: 0

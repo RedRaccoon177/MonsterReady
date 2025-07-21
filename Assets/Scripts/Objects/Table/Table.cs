@@ -65,8 +65,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
             {
                 return;
             }
-            UiManager._instance.OnUpgradeNavUi(_objectPos);
-            UiManager._instance.SetInteractionObjectKey(GetKeyName());
+            UiManager._instance.OnUi(UiType.ObjectUpgrdeNav);
             if (_player.CheckPickUpObject() != PlayerPickUpObject.None) { return; }
             if (_boneNum <= 0) { return; }
             RemoveBones();
@@ -90,8 +89,7 @@ public class Table : BaseObject, ILevelable, INpcDestination
     {
         if (other.CompareTag("Player"))
         {
-            UiManager._instance.OffUpgradeNavUi();
-            UiManager._instance.SetActive(UiType.ObjectUpgrade,false);
+            UiManager._instance.OffUi(UiType.ObjectUpgrdeNav);
         }
     }
 

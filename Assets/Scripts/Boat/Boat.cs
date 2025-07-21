@@ -123,7 +123,7 @@ public class Boat : MonoBehaviour
     IEnumerator Order()
     {
         orderMeetBoxCount = Random.Range(1, maxOrderMeetBoxCount);
-        UiManager._instance.ActiveMeatBoxOrdreUi(orderMeetBoxCount,true);
+        UiManager._instance.OnUi(UiType.MeatBoxOrderUi);
         // 피자를 모두 받앗을 시
         boxList = new List<GameObject> ();
         while (currentMeetBoxCount < orderMeetBoxCount)
@@ -137,11 +137,11 @@ public class Boat : MonoBehaviour
                 if (receivedMeat > 0)
                 {
                     AddMeatBox(receivedMeat);                         // 고기 오브젝트 생성
-                    UiManager._instance.ActiveMeatBoxOrdreUi(neededMeat - receivedMeat, true);
+                    UiManager._instance.OnUi(UiType.MeatBoxOrderUi);
                 }
             }
         }
-        UiManager._instance.ActiveMeatBoxOrdreUi(0,false);
+        UiManager._instance.OffUi(UiType.MeatBoxOrderUi);
         LeavePointArr();
     }
     int MinusMeatBox(int meatBox)

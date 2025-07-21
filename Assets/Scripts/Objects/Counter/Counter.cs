@@ -252,9 +252,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             //플레이어의 정보를 바탕으로 더해야 할 무언가
             if (other.CompareTag("Player"))
             {
-                UiManager._instance.OnUpgradeNavUi(_objectPos);
-                UiManager._instance.SetInteractionObjectKey(GetKeyName());
-
+                UiManager._instance.OnUi(UiType.ObjectUpgrdeNav);
                 if (0 != _player._CurrentMeat)
                 {
                     AddMeat(_player._CurrentMeat);
@@ -278,9 +276,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             // 박스를 가져오면 고기처럼 박스가 쌓이고 손님이 오면 가져가기
             if (other.CompareTag("Player"))
             {
-                UiManager._instance.OnUpgradeNavUi(_objectPos);
-                UiManager._instance.SetInteractionObjectKey(GetKeyName());
-
+                UiManager._instance.OnUi(UiType.ObjectUpgrdeNav);
                 if (0 != _player._CurrentBox)
                 {
                     AddBox(_player._CurrentBox);
@@ -308,8 +304,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
             // 고기를 가져오면 박스로 전환되게 하기
             if (other.CompareTag("Player"))
             {
-                UiManager._instance.OnUpgradeNavUi(_objectPos);
-                UiManager._instance.SetInteractionObjectKey(GetKeyName());
+                UiManager._instance.OnUi(UiType.ObjectUpgrdeNav);
 
                 if (0 != _meatTOBox._currentMeatCount)
                 {
@@ -333,8 +328,7 @@ public class Counter : BaseObject, ILevelable, INpcDestination
     {
         if (other.CompareTag("Player"))
         {
-            UiManager._instance.OffUpgradeNavUi();
-            UiManager._instance.SetActive(UiType.ObjectUpgrade, false);
+            UiManager._instance.OffUi(UiType.ObjectUpgrdeNav);
         }
     }
     #endregion

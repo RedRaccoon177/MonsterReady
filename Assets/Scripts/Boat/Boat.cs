@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Boat : MonoBehaviour
@@ -16,6 +17,7 @@ public class Boat : MonoBehaviour
     List<GameObject> boxList;
 
     // 주문 변수
+    BoatPool _originPool;
     Counter counter;
     ObjectPooling objectPool;
     List<GameObject> meatBoxList;
@@ -51,42 +53,45 @@ public class Boat : MonoBehaviour
     }
 
     // 세팅
-    public void Init(BoatSpawaner spawner,GameObject customer,Transform endPoint,ObjectPooling objectPool)
+    public void Init(BoatSpawaner spawner,Transform endPoint,ObjectPooling objectPool)
     {
         this.objectPool = objectPool;
         this.endPoint = endPoint;
         this.boatSpawaner = spawner;
-        Instantiate(customer, custormerPos);
-        transform.position = boatSpawaner.pointList[0].position;
-        boatSpawaner.isVisited[0] = true;
+        transform.position = boatSpawaner._pointList[0].position;
+        boatSpawaner._isVisited[0] = true;
         StartCoroutine(MoveRoutine());
+    }
+    IEnumerator MoveBoat(int nextIndex)
+    {
+        Vector3 start = transform.position;
+        Vector3 end = boatSpawaner._pointList[nextIndex].position;
+        Vector3 dir = (end - start).normalized;
+        Quaternion targetRot = Quaternion.LookRotation(dir);
+        float duration = 1.5f;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            transform.position = Vector3.Lerp(start, end, t);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, t);
+            yield return null;
+        }
+        transform.position = end;
+        currentPointIndex = nextIndex;
     }
     // 이동 (포인트 따라)
     IEnumerator MoveRoutine()
     {
-        while (currentPointIndex < boatSpawaner.pointList.Count-1)
+        while (currentPointIndex < boatSpawaner._pointList.Count-1)
         {
             int nextIndex = currentPointIndex + 1;
-            if (!boatSpawaner.isVisited[nextIndex])
+            if (boatSpawaner._isVisited[nextIndex] == false)
             {
-                boatSpawaner.isVisited[currentPointIndex] = false;
-                boatSpawaner.isVisited[nextIndex] = true;
-                Vector3 start = transform.position;
-                Vector3 end = boatSpawaner.pointList[nextIndex].position;
-                Vector3 dir = (end - start).normalized;
-                Quaternion targetRot = Quaternion.LookRotation(dir);
-                float duration = 1.5f;
-                float elapsed = 0f;
-                while (elapsed < duration)
-                {
-                    elapsed += Time.deltaTime;
-                    float t = Mathf.Clamp01(elapsed / duration);
-                    transform.position = Vector3.Lerp(start, end, t);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, t);
-                    yield return null;
-                }
-                transform.position = end;
-                currentPointIndex = nextIndex;
+                boatSpawaner._isVisited[currentPointIndex] = false;
+                boatSpawaner._isVisited[nextIndex] = true;
+                StartCoroutine(MoveBoat(nextIndex));
             }
             else
             {
@@ -98,8 +103,8 @@ public class Boat : MonoBehaviour
     }
     void LeavePointArr()
     {
-        boatSpawaner.isVisited[currentPointIndex] = false;
-        boatSpawaner.boatCount--;
+        boatSpawaner._isVisited[currentPointIndex] = false;
+        boatSpawaner._boatCount--;
         StartCoroutine(MoveEndPoint());
     }
     IEnumerator MoveEndPoint()
@@ -176,5 +181,15 @@ public class Boat : MonoBehaviour
     Vector3 GetStackPosition(int index)
     {
         return new Vector3(0, index * stackHeight, 0);
+    }
+    public void SetOriginPool(BoatPool pool)
+    {
+        _originPool = pool;
+    }
+
+    public void ReturnToPool()
+    {
+        gameObject.SetActive(false);
+        _originPool.ReturnObject(this);
     }
 }

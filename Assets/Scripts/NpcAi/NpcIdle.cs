@@ -42,7 +42,6 @@ public class NpcIdle : INpcState
             var maxHasStackIdx = 0;
             for (int i = 0; i < tempList.Count; i++)
             {
-                // 해당 오브젝트에 들것이 있다면? , 다른 npc가 목적지로 설정 안했다면
                 if (tempList[i].HasStack() == true && tempList[i].IsDestination() == false)
                 {
                     if (tempList[maxHasStackIdx].GetStackCount() < tempList[i].GetStackCount())
@@ -51,6 +50,7 @@ public class NpcIdle : INpcState
                     }
                 }
             }
+
             if (maxHasStackIdx == 0 && tempList[0].HasStack() == false)
             {
                 npcAi._destination = (INpcDestination)GameManager._instance._baseObjectDict["counter1"];

@@ -78,6 +78,11 @@ public class DataManager : MonoBehaviour
             LoadObjectData(ObjectType.Counter);
             LoadObjectData(ObjectType.Grill);
         }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Directory.Delete(Application.persistentDataPath, true);
+            Debug.Log("세이브 데이터 전체 삭제");
+        }
     }
     public void SaveNpcData()
     {

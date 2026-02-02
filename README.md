@@ -11,8 +11,11 @@
   <a href="https://www.youtube.com/shorts/4Ec7ibARAys">
     <img src="https://img.shields.io/badge/Portfolio%20Video-YouTube-red?logo=youtube&logoColor=white" />
   </a>
+    <a href="https://www.canva.com/design/DAGusJR6Rj8/oqtCCGhOprGTfJjlf6Ingw/edit?ui=eyJEIjp7IlQiOnsiQSI6IlBCemNjVHJNZE44d2xGRDkifX19">
+    <img src="https://img.shields.io/badge/Portfolio Canva-핵심 기술 Canva-blue" />
+  </a>
   <a href="https://www.notion.so/1d68c79bfc3f80059f14cd13f8e2000a?source=copy_link">
-    <img src="https://img.shields.io/badge/Dev%20Notes-Notion-black?logo=notion&logoColor=white" />
+    <img src="https://img.shields.io/badge/Dev%20Notes-Notion-darkgray?logo=notion&logoColor=white" />
   </a>
 </p>
 

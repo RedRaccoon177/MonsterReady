@@ -1,20 +1,18 @@
-
-
 <!-- ===== HEADER ===== -->
 <h1 align="center">MonsterReady</h1>
 <p align="center">
-  Pizza Ready 모작 하이퍼 캐주얼 3D 타이쿤 게임
+  Pizza Ready 모작 경영 시뮬레이션 / 하이퍼 캐주얼 모바일 게임
 </p>
 
 <br>
 
 <!-- 유튜브/링크 버튼 영역 -->
 <p align="center">
-  <a href="YOUR_VIDEO_LINK">
+  <a href="https://www.youtube.com/shorts/4Ec7ibARAys">
     <img src="https://img.shields.io/badge/Portfolio%20Video-YouTube-red?logo=youtube&logoColor=white" />
   </a>
-  <a href="YOUR_PPT_LINK">
-    <img src="https://img.shields.io/badge/PPT-GoogleDrive-blue" />
+  <a href="https://www.notion.so/1d68c79bfc3f80059f14cd13f8e2000a">
+    <img src="https://img.shields.io/badge/Dev%20Notes-Notion-black?logo=notion&logoColor=white" />
   </a>
 </p>
 
@@ -36,9 +34,9 @@
 <br>
 
 <!-- 핵심 포인트 (내 역할 중심) -->
-- ⭐ 모바일 게임 Pizza Ready 모작 프로젝트
-- ⭐ 손님 NPC 전반(이동-주문-좌석-식사-퇴장)과 오브젝트 상호작용 시스템 구현
-- ⭐ 그리드 기반 A* 길찾기(Node 맵, 탐색, 경로 추적)로 손님 이동 처리
+- ⭐ Pizza Ready 모작 모바일 프로젝트 (개발 2명)
+- ⭐ 담당: 손님 NPC, 고기, 골드, 박스, 카운터, 좌석, 화덕, 플레이어 캐릭터 등등
+- ⭐ 핵심 구현: 손님 NPC 흐름(이동-주문-좌석-식사-퇴장) + 오브젝트 상호작용 + A* 길찾기
 
 <br>
 
@@ -51,12 +49,14 @@
 - [🧾 프로젝트 정보](#project-info)
 - [👤 내 역할](#my-role)
 - [✅ 내가 구현한 핵심](#what-i-built)
-  - [손님 NPC AI 상태 전이](#customer-ai)
-  - [A* 길찾기 시스템](#astar)
+  - [손님 NPC 로직](#customer-ai)
+  - [A* 길찾기](#astar)
   - [좌석 할당 및 대기 재시도](#seat-wait)
-  - [오브젝트 상호작용(트리거 + 입력 이벤트)](#interaction)
-  - [오브젝트 풀링 및 스택 표현](#pooling)
+  - [오브젝트 상호작용](#interaction)
+  - [화덕/카운터 루프](#loop)
+  - [골드/박스/고기 오브젝트 처리](#objects)
 - [🧩 기술 스택](#tech-stack)
+- [🗂️ 개발 문서](#docs)
 - [👨‍💻 개발자 소개](#developer)
 
 <br>
@@ -67,10 +67,10 @@
 
 <a name="game-intro"></a>
 ## 🎯 게임 소개
-MonsterReady는 Pizza Ready를 참고해 제작한 하이퍼 캐주얼 3D 타이쿤 모작 게임입니다.  
+MonsterReady는 Pizza Ready를 참고해 제작한 **경영 시뮬레이션 / 하이퍼 캐주얼** 모바일 모작 게임입니다.  
 플레이어는 매장 내 오브젝트와 상호작용하며 생산/적재/포장 루프를 진행하고, 손님 주문을 처리해 재화를 획득합니다.
 
-본 README는 게임 홍보용 설명보다, 포트폴리오 용도로 “내가 구현한 시스템(코드)” 중심으로 정리했습니다.
+본 README는 포트폴리오 용도로 **제가 구현한 시스템 중심**으로 정리했습니다.
 
 <br>
 
@@ -80,10 +80,13 @@ MonsterReady는 Pizza Ready를 참고해 제작한 하이퍼 캐주얼 3D 타이
 
 <a name="project-info"></a>
 ## 🧾 프로젝트 정보
-- 개발 기간: 5일
-- 개발 인원: 3명
+- 장르: 경영 시뮬레이션, 하이퍼 캐주얼
+- 개발 인원: 개발 2명
+- 개발 엔진: Unity 3D
 - 플랫폼: 모바일
-- 엔진/언어: Unity, C#
+
+- 1차 제작 기간: 2025.04.16 ~ 2025.04.30 (11일)
+- 2차 제작 기간: 2025.07.04 ~ 2025.07.15 (8일)
 
 <br>
 
@@ -93,18 +96,13 @@ MonsterReady는 Pizza Ready를 참고해 제작한 하이퍼 캐주얼 3D 타이
 
 <a name="my-role"></a>
 ## 👤 내 역할
-제가 맡은 범위는 아래 제외 항목을 뺀 대부분입니다.
+✅ 담당(제가 구현한 범위)
+- 손님 NPC, 플레이어 캐릭터
+- 고기, 골드, 박스
+- 카운터, 좌석, 화덕
 
-✅ 제가 구현한 영역(핵심)
-- 손님 NPC 전반: 이동, 주문, 좌석, 식사, 퇴장 흐름
-- A* 길찾기: Node 그리드 기반 경로 탐색 및 이동 처리
-- 오브젝트 상호작용: 트리거 진입 + 입력 이벤트 기반 상호작용 제어
-- 오브젝트 풀링 및 스택 표현: 반복 생성/파괴 비용 최소화 + 시각적 스택 정리
-
-❌ 제가 하지 않은 영역(팀원이 담당)
-- 데이터 저장/불러오기 파트
-- 종업원 NPC 파트
-- 업그레이드(플레이어/종업원) UI 및 로직 일부
+(참고) 제가 담당하지 않은 영역이 있다면 여기서 명확히 분리해두는 것을 권장합니다.
+- 예: 데이터 저장/불러오기, 종업원 NPC, 업그레이드 시스템 등
 
 <br>
 
@@ -116,90 +114,61 @@ MonsterReady는 Pizza Ready를 참고해 제작한 하이퍼 캐주얼 3D 타이
 ## ✅ 내가 구현한 핵심
 
 <a name="customer-ai"></a>
-### 1) 손님 NPC AI 상태 전이
-손님은 상태 기반으로 동작하도록 구성했습니다. 전체 흐름은 아래와 같습니다.
+### 1) 손님 NPC 로직
+손님은 아래 흐름으로 동작하도록 구성했습니다.
 
-- 카운터로 이동: `CustomerMoveToCounterState`
-  - A* 경로를 따라 이동
-  - 도착하면 주문/대기 상태로 전이
-- 주문 및 대기: `CustomerOrderAndWait`
-  - 주문 수량을 생성하고 UI를 표시
-  - 상호작용 가능 상태일 때 주문 수량만큼 수령 처리
-  - 주문을 충족하면 좌석 이동으로 전이
-- 좌석으로 이동: `CustomerMoveToTable`
-  - 빈 좌석을 탐색하고 A*로 이동
-  - 좌석이 없으면 일정 주기로 재탐색(대기/재시도)
-- 식사 처리: `CustomerEating`
-  - 일정 시간 간격으로 소비 로직을 처리하고 종료 조건을 만족하면 퇴장으로 전이
-- 퇴장 처리: `CustomerGoingHome`
-  - 목표 지점까지 이동 후 제거
-
-🎯 의도
-- 주문-이동-좌석-식사-퇴장이 끊기지 않도록 “상태 전이”로 루프를 명확히 고정했습니다.
+- 이동 -> 주문 -> 좌석 이동 -> 식사 -> 퇴장
+- 주문 수량/상태에 따라 카운터 상호작용을 수행
+- 좌석이 없을 때는 즉시 종료하지 않고 대기 후 재시도
 
 <br>
 
 <a name="astar"></a>
-### 2) A* 길찾기 시스템
+### 2) A* 길찾기
 그리드 기반 노드 맵 위에서 A*로 경로를 탐색합니다.
 
-- 노드: `Node`
-  - 이동 가능/불가능 플래그
-  - 8방향 인접 노드 연결
-  - 점유 상태(손님이 서 있는 노드) 관리
-- 노드 관리: `NodeManager`
-  - 노드 맵 생성 및 인접 연결
-  - 월드 좌표에서 가장 가까운 노드를 빠르게 찾는 함수 제공
-- 경로 탐색: `AStarPathfinder`
-  - Open/Closed 리스트 기반 탐색
-  - F = G + H 기준으로 최적 후보 선택
-  - parent 역추적으로 최종 경로 리스트 구성
-
-🎯 의도
-- 손님 이동은 동일한 탐색 파이프라인으로 통일하고, 노드 점유로 겹침/끼임을 제어합니다.
+- 노드 맵 구성(이동 가능/불가능)
+- 탐색(Open/Closed)과 최종 경로 추적(parent 역추적)
+- 손님 이동 로직에서 동일한 경로 탐색 파이프라인을 재사용
 
 <br>
 
 <a name="seat-wait"></a>
 ### 3) 좌석 할당 및 대기 재시도
-좌석이 없을 때 즉시 실패시키지 않고, “대기 후 재시도”로 설계했습니다.
+좌석 부족 상황에서도 흐름이 끊기지 않도록 설계했습니다.
 
-- 빈 좌석이 없으면 대기 모드로 전환
-- 일정 주기(예: 1초)로 다시 좌석을 탐색
-- 좌석이 생기면 즉시 경로를 재계산하고 이동 재개
-
-🎯 의도
-- 손님이 많은 상황에서도 흐름이 끊기지 않고 자연스럽게 이어지도록 구성했습니다.
+- 빈 좌석 탐색
+- 없으면 대기 모드로 전환
+- 일정 주기로 다시 탐색 후 이동 재개
 
 <br>
 
 <a name="interaction"></a>
-### 4) 오브젝트 상호작용(트리거 + 입력 이벤트)
-상호작용은 트리거 기반으로 “플레이어가 범위 안에 있는지”를 판단하고, 입력 이벤트와 결합해 실행합니다.
+### 4) 오브젝트 상호작용
+트리거 진입 + 입력 이벤트 기반으로 상호작용을 제어합니다.
 
-- 트리거 진입/이탈로 상호작용 가능 여부를 전환
-- NPC가 해당 오브젝트를 사용하는 경우 플레이어 입력을 분리해 우선순위를 조정
-- 상호작용 가능 상태는 시각 요소(표시 색상 등)로 피드백
-
-✅ 관련 스크립트 예
-- `ObjectInteration`
-- 트리거 계열: `MeatInputTrigger`, `MeatToBoxTrigger`, `BoxDeliverTrigger` 등
+- 플레이어가 범위 안에 들어오면 상호작용 가능 상태 활성화
+- 상태에 따라 상호작용 실행/차단
+- 손님 주문 처리와 연결하여 카운터의 상호작용 흐름을 구성
 
 <br>
 
-<a name="pooling"></a>
-### 5) 오브젝트 풀링 및 스택 표현
-반복 생성/파괴가 많은 오브젝트는 풀링으로 관리했습니다.
+<a name="loop"></a>
+### 5) 화덕/카운터 루프
+매장 핵심 루프를 오브젝트 단위로 연결했습니다.
 
-- 풀링: `ObjectPooling`
-  - 고기/뼈/박스/재화 오브젝트를 큐로 관리
-  - 필요 시 꺼내고, 사용 후 반환하여 재사용
-- 스택 표현
-  - 순번 기반으로 로컬 위치를 계산해 정렬
-  - 개수 변경 시 표시 오브젝트를 추가/제거하여 동기화
+- 화덕: 생산 흐름(쿨타임/최대 적재량 등)과 시각적 개수 표현
+- 카운터: 손님 주문 처리(수량 차감/충족 판정)와 연동
 
-🎯 의도
-- 성능(가비지, Instantiate/Destroy 비용)을 줄이고, 시각적 개수 표현을 안정적으로 유지합니다.
+<br>
+
+<a name="objects"></a>
+### 6) 골드/박스/고기 오브젝트 처리
+반복 생성/표시가 많은 오브젝트들은 안정적으로 관리되도록 구성했습니다.
+
+- 개수 변화에 따라 시각적 스택 표현 동기화
+- 골드 획득 및 표시 UI 연동
+- 박스/고기 흐름(생성-이동-소비)의 상태 전이 연결
 
 <br>
 
@@ -209,12 +178,23 @@ MonsterReady는 Pizza Ready를 참고해 제작한 하이퍼 캐주얼 3D 타이
 
 <a name="tech-stack"></a>
 ## 🧩 기술 스택
-- Unity
+- Unity 3D (2022.3.21f1)
 - C#
 - A* Pathfinding (그리드 노드 기반)
-- 상태 기반 AI(손님 NPC)
-- 트리거 기반 상호작용
-- Object Pooling
+- 상태 기반 NPC 로직
+- 트리거 + 입력 이벤트 기반 상호작용
+
+<br>
+
+---
+
+<br>
+
+<a name="docs"></a>
+## 🗂️ 개발 문서
+개발 과정에서 사용한 문서(개발 사양서/클래스 다이어그램/작업 규칙/커밋 메시지 규칙 등)는 아래 노션에 정리했습니다.
+
+- Notion: https://www.notion.so/1d68c79bfc3f80059f14cd13f8e2000a
 
 <br>
 
@@ -224,5 +204,8 @@ MonsterReady는 Pizza Ready를 참고해 제작한 하이퍼 캐주얼 3D 타이
 
 <a name="developer"></a>
 ## 👨‍💻 개발자 소개
-- GitHub: https://github.com/RedRaccoon177
-
+- GitHub: [https://github.com/RedRaccoon177]
+- Tistory: [https://wearelast99.tistory.com/]
+- YouTube: [유튜브 채널](https://www.youtube.com/@%EC%9D%B4%EC%9C%A0-z9c)
+- Canva 포트폴리오: [포트폴리오](https://www.canva.com/design/DAGusJR6Rj8/BOtICI6F1raShPyHHewjxg/view?utm_content=DAGusJR6Rj8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h691958bd9a)
+- Canva 이력서: [이력서](https://www.canva.com/design/DAGj7YKBoc8/YPk_CLe8B1taKTE-nneUJA/view?utm_content=DAGj7YKBoc8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha914d97458)

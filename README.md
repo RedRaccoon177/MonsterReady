@@ -171,7 +171,7 @@ MonsterReady는 Pizza Ready를 참고해 제작한 **경영 시뮬레이션 / �
 <br>
 
 <a name="core-scripts"></a>
-### 7) 📌 핵심 스크립트(책임)
+### 7) 📌 핵심 스크립트
 - 손님 NPC
   - `CustomerAI` : 손님 상태 관리 및 표시 갱신
   - `CustomerMoveToCounterState` : 카운터 이동

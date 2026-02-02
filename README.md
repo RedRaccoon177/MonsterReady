@@ -11,7 +11,7 @@
   <a href="https://www.youtube.com/shorts/4Ec7ibARAys">
     <img src="https://img.shields.io/badge/Portfolio%20Video-YouTube-red?logo=youtube&logoColor=white" />
   </a>
-  <a href="https://www.notion.so/1d68c79bfc3f80059f14cd13f8e2000a">
+  <a href="https://www.notion.so/1d68c79bfc3f80059f14cd13f8e2000a?source=copy_link">
     <img src="https://img.shields.io/badge/Dev%20Notes-Notion-black?logo=notion&logoColor=white" />
   </a>
 </p>

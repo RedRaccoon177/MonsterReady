@@ -216,8 +216,8 @@ MonsterReady는 Pizza Ready를 참고해 제작한 **경영 시뮬레이션 / �
 
 <a name="tech-stack"></a>
 ## 🧩 기술 스택
-- Unity 3D (2022.3.21f1)
-- C#
+- 엔진: Unity 3D (2022.3.21f1)
+- 언어: C#
 - A* Pathfinding (그리드 노드 기반)
 - 상태 기반 NPC 로직
 - 트리거 + 입력 이벤트 기반 상호작용
